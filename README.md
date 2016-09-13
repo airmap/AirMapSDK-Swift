@@ -1,9 +1,7 @@
-# AirMapSDK-Swift
-
+![AirMap: The Airspace Platform for Developers](Assets/AirMap.png)
 [![Version](https://img.shields.io/cocoapods/v/AirMapSDK.svg?style=flat)](http://cocoapods.org/pods/AirMapSDK) [![License](https://img.shields.io/cocoapods/l/AirMapSDK.svg?style=flat)](http://cocoapods.org/pods/AirMapSDK) [![Platform](https://img.shields.io/cocoapods/p/AirMapSDK.svg?style=flat)](http://cocoapods.org/pods/AirMapSDK)
 
 Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.
-
 
 ## Requirements
 
@@ -19,8 +17,6 @@ Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.
   
 ### Read Getting Started Guide
 [https://developers.airmap.com/v2.0/docs/ios-getting-started/](https://developers.airmap.com/v2.0/docs/ios-getting-started/)
-
-
 
 ## Installation
 
@@ -76,6 +72,6 @@ class ViewController : UIViewController {
 }
 ```
 
-##License 
+## License 
 
 See [LICENSE](https://raw.githubusercontent.com/airmap/AirMapSDK-Swift/master/LICENSE) for details

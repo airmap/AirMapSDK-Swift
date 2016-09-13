@@ -10,35 +10,65 @@ import Mapbox
 
 class AirMapMapboxMapViewDelegate: NSObject, MGLMapViewDelegate {
 	
-	var status: AirMapStatus!
-
-	func mapView(mapView: MGLMapView, fillColorForPolygonAnnotation annotation: MGLPolygon) -> UIColor {
-
-		let color: UIColor
-
-		if let status = status {
-			switch status.advisoryColor {
-			case .Gray:    color = .airMapGray()
-			case .Red:     color = .airMapRed()
-			case .Yellow:  color = .airMapYellow()
-			case .Green:   color = .airMapGreen()
-			}
-		} else {
-			color = .airMapGray()
-		}
-		return color.colorWithAlphaComponent(0.5)
+	var controlPointDelegate: ControlPointDelegate?
+	
+	func mapViewRegionIsChanging(mapView: MGLMapView) {
+		mapView.hideControlPoints(true)
 	}
-
+	
+	func mapView(mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+		mapView.hideObscuredMidPointControls()
+		mapView.hideControlPoints(false)
+	}
+	
 	func mapView(mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
-		return .clearColor()
+		return annotation is ControlPointView ? .airMapLightBlue() : .airMapGray()
 	}
-
-	func mapView(mapView: MGLMapView, imageForAnnotation annotation: MGLAnnotation) -> MGLAnnotationImage? {
-
-		if let flightIcon = AirMapImage.flightIcon(AirMapFlight.FlightType.Active) {
-			return MGLAnnotationImage(image: flightIcon, reuseIdentifier: "icon")
+	
+	func mapView(mapView: MGLMapView, lineWidthForPolylineAnnotation annotation: MGLPolyline) -> CGFloat {
+		return 2.5
+	}
+	
+	func mapView(mapView: MGLMapView, fillColorForPolygonAnnotation annotation: MGLPolygon) -> UIColor {
+		if annotation is RedAdvisory {
+			return UIColor.airMapRed()
+		} else {
+			return UIColor.airMapLightBlue()
 		}
+	}
+	
+	func mapView(mapView: MGLMapView, alphaForShapeAnnotation annotation: MGLShape) -> CGFloat {
+		switch annotation {
+		case is MGLPolyline:
+			return 1.0
+		case is RedAdvisory:
+			return 0.25
+		default:
+			return 0.5
+		}
+	}
+	
+	func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
+		
+		if let controlPoint = annotation as? ControlPoint {
+			if let controlPointView = mapView.dequeueReusableAnnotationViewWithIdentifier(String(controlPoint.type)) as? ControlPointView {
+				return controlPointView
+			} else {
+				let controlPointView = ControlPointView(type: controlPoint.type)
+				controlPointView.delegate = controlPointDelegate
+				return controlPointView
+			}
+		}
+		
+		if let invalidIntersection = annotation as? InvalidIntersection {
+			if let invalidIntersectionView = mapView.dequeueReusableAnnotationViewWithIdentifier(String(InvalidIntersectionView)) as? InvalidIntersectionView {
+				return invalidIntersectionView
+			} else {
+				return InvalidIntersectionView()
+			}
+		}
+		
 		return nil
 	}
-
+	
 }

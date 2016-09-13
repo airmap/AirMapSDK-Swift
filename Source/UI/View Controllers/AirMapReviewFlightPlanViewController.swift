@@ -30,7 +30,7 @@ class AirMapReviewFlightPlanViewController: UIViewController, UIScrollViewDelega
 	private let mapViewDelegate = AirMapMapboxMapViewDelegate()
 	private let activityIndicator = ActivityIndicator()
 	private let disposeBag = DisposeBag()
-
+	
 	override var navigationController: AirMapFlightPlanNavigationController? {
 		return super.navigationController as? AirMapFlightPlanNavigationController
 	}
@@ -49,8 +49,8 @@ class AirMapReviewFlightPlanViewController: UIViewController, UIScrollViewDelega
 		setupEmbeddedViews()
 		
 		mapView.delegate = mapViewDelegate
-		mapViewDelegate.status = navigationController?.status.value
-
+		mapView.configure(layers: [], theme: .Light)
+		
 		let flight: AirMapFlight
 		if existingFlight != nil {
 			flight = existingFlight.value
@@ -60,15 +60,12 @@ class AirMapReviewFlightPlanViewController: UIViewController, UIScrollViewDelega
 			navigationItem.leftBarButtonItem = nil
 		}
 		
-		let polygon = AirMapFlightRadiusAnnotation.polygon(flight.coordinate, radius: flight.buffer!)
-		mapView.addAnnotations([flight, polygon])
-	}
-	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		let insets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-		mapView.showAnnotations(mapView.annotations!, edgePadding: insets, animated: false)
+		if let annotations = flight.annotationRepresentations() {
+			mapView.addAnnotations(annotations)
+			dispatch_async(dispatch_get_main_queue()) {
+				self.mapView.showAnnotations(annotations, edgePadding: UIEdgeInsetsMake(10, 40, 10, 40), animated: true)
+			}
+		}
 	}
 	
 	override func canBecomeFirstResponder() -> Bool {

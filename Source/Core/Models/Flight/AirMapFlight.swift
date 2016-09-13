@@ -114,7 +114,7 @@ extension AirMapFlight: Mappable {
 		statuses    <-  map["statuses"]
 		permitsIds  <-  map["permits"]
 		buffer      <-  map["buffer"]
-		geometry    <- (map["geometry"], geoJSONToAirMapGeometryTransform())
+		geometry    <- (map["geometry"], GeoJSONToAirMapGeometryTransform())
 		
 		var endTime: NSDate?
 		endTime     <- (map["end_time"], dateTransform)

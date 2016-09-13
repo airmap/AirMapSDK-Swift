@@ -42,7 +42,7 @@ extension AirMap_Aircraft {
 
 	*/
 	public class func getModel(modelId: String, handler: AirMapAircraftModelResponseHandler) {
-		aircraftClient.getModel(modelId)
+		aircraftClient.getModel(modelId).subscribe(handler)
 	}
 
 }

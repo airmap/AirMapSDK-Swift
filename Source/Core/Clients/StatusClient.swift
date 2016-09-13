@@ -104,7 +104,7 @@ internal class StatusClient: HTTPClient {
 	                  weather: Bool = false,
 	                  date: NSDate = NSDate()) -> Observable<AirMapStatus> {
 
-		let geo = geometricStringRepresentation(geometry)
+		let geo = geometricStringRepresentation(geometry + [geometry.first!])
 
 		let sharedParams = AirMapStatusSharedRequestParams(coordinate: takeOffPoint,
 		                                                   types: types,

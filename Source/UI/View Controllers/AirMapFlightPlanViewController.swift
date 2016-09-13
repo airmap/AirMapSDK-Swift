@@ -63,19 +63,18 @@ class AirMapFlightPlanViewController: UIViewController {
 	@IBOutlet weak var mapView: AirMapMapView!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var nextButton: UIButton!
-	@IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
-
-	private let buffer   = Variable(UIConstants.defaultBufferPreset.value)
+	
 	private let altitude = Variable(UIConstants.defaultAltitudePreset.value)
 	private var startsAt = Variable(nil as NSDate?)
 	private let duration = Variable(UIConstants.defaultDurationPreset.value)
 	private let pilot    = Variable(nil as AirMapPilot?)
 	private let aircraft = Variable(nil as AirMapAircraft?)
 
-	private let mapViewDelegate = AirMapMapboxMapViewDelegate()
 	private var sections = [TableSection]()
 	private let disposeBag = DisposeBag()
 	private let activityIndicator = ActivityIndicator()
+	
+	private let mapViewDelegate = AirMapMapboxMapViewDelegate()
 
 	override var navigationController: AirMapFlightPlanNavigationController? {
 		return super.navigationController as? AirMapFlightPlanNavigationController
@@ -84,10 +83,8 @@ class AirMapFlightPlanViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		mapView.addAnnotation(navigationController!.flight.value)
-		mapView.delegate = mapViewDelegate
-
 		setupTable()
+		setupMap()
 		setupBindings()
 
 		AirMap.rx_getAuthenticatedPilot()
@@ -99,7 +96,7 @@ class AirMapFlightPlanViewController: UIViewController {
 			.bindTo(pilot)
 			.addDisposableTo(disposeBag)
 	}
-
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		guard let identifier = segue.identifier else { return }
 
@@ -133,13 +130,16 @@ class AirMapFlightPlanViewController: UIViewController {
 
 	private func setupTable() {
 
-		let flightDataSection =  DataSection(title: nil, rows: [
-			FlightPlanDataTableRow(title: Variable("Flight Radius"), value: buffer, values: UIConstants.bufferPresets),
+		let flightDataSection =  DataSection(title: "Flight", rows: [
 			FlightPlanDataTableRow(title: Variable("Altitude"), value: altitude, values: UIConstants.altitudePresets),
-			FlightPlanDataTableRow(title: Variable("Duration"), value: duration, values: UIConstants.durationPresets),
-			FlightPlanDataTableRow(title: Variable("Starts"), value: startsAt, values: nil)
 			])
 		sections.append(flightDataSection)
+
+		let flightTimeSection =  DataSection(title: "Date & Time", rows: [
+			FlightPlanDataTableRow(title: Variable("Starts"), value: startsAt, values: nil),
+			FlightPlanDataTableRow(title: Variable("Duration"), value: duration, values: UIConstants.durationPresets)
+			])
+		sections.append(flightTimeSection)
 
 		let associatedModels = AssociatedObjectsSection(title: "Pilot & Aircraft", rows: [
 			AssociatedPilotModelRow(title: Variable("Select Pilot Profile"), value: pilot),
@@ -148,13 +148,27 @@ class AirMapFlightPlanViewController: UIViewController {
 		)
 		sections.append(associatedModels)
 
-		let bundle = NSBundle(forClass: self.dynamicType)
+		let bundle = NSBundle(forClass: AirMap.self)
 		let image = UIImage(named: "airmap_share_logo", inBundle: bundle, compatibleWithTraitCollection: nil)
 
 		let shareSection = SocialSection(title: "Share My Flight", rows: [
 			SocialSharingRow(logo: image!, value: navigationController!.shareFlight)
 			])
 		sections.append(shareSection)
+	}
+	
+	private func setupMap() {
+		
+		let flight = navigationController!.flight.value
+		mapView.configure(layers: [], theme: .Light)
+		mapView.delegate = mapViewDelegate
+		
+		if let annotations = navigationController?.flight.value.annotationRepresentations() {
+			mapView.addAnnotations(annotations)
+			dispatch_async(dispatch_get_main_queue()) {
+				self.mapView.showAnnotations(annotations, edgePadding: UIEdgeInsetsMake(10, 40, 10, 40), animated: true)
+			}
+		}
 	}
 
 	private func setupBindings() {
@@ -163,13 +177,6 @@ class AirMapFlightPlanViewController: UIViewController {
 		let status = navigationController!.status
 		let shareFlight = navigationController!.shareFlight
 		let requiredPermits = navigationController!.requiredPermits
-
-		let bufferObsl = buffer.asObservable().throttle(0.3, scheduler: MainScheduler.instance).distinctUntilChanged()
-		let locationBufferObsl = Observable.combineLatest(location.asObservable(), bufferObsl) { ($0, $1) }
-
-		buffer.asObservable().distinct()
-			.subscribeNext { flight.value.buffer = $0 }
-			.addDisposableTo(disposeBag)
 
 		altitude.asObservable()
 			.subscribeNext { flight.value.maxAltitude = $0 }
@@ -184,13 +191,7 @@ class AirMapFlightPlanViewController: UIViewController {
 			.subscribeNext { flight.value.pilotId = $0.pilotId }
 			.addDisposableTo(disposeBag)
 
-		Observable.combineLatest(status.asObservable(), pilot.asObservable()) { $0 != nil && $1 != nil }
-			.bindTo(nextButton.rx_enabled)
-			.addDisposableTo(disposeBag)
-
 		status.asObservable()
-			.doOnNext { [weak self] status in
-				self?.mapViewDelegate.status = status }
 			.map {
 				let advisories = $0?.advisories ?? []
 				let requirements = advisories.map { $0.requirements }.flatMap { $0 }
@@ -211,23 +212,6 @@ class AirMapFlightPlanViewController: UIViewController {
 				.flatMap { $0 } ?? []
 			}
 			.bindTo(requiredPermits)
-			.addDisposableTo(disposeBag)
-
-		locationBufferObsl
-			.doOnNext { location, buffer in
-				flight.value.coordinate = location
-				flight.value.buffer = buffer
-			}
-			.flatMap { [unowned self] (coordinate, buffer) in
-				AirMap.rx_checkCoordinate(coordinate, buffer: buffer)
-					.trackActivity(self.activityIndicator)
-			}
-			.asOptional()
-			.bindTo(status)
-			.addDisposableTo(disposeBag)
-
-		Observable.combineLatest(locationBufferObsl, status.asObservable()) { ($0, $1).0 }
-			.subscribeNext(unowned(self, AirMapFlightPlanViewController.updateMapAnnotations))
 			.addDisposableTo(disposeBag)
 
 		shareFlight.asObservable()
@@ -254,19 +238,6 @@ class AirMapFlightPlanViewController: UIViewController {
 			.addDisposableTo(disposeBag)
 	}
 
-	func updateMapAnnotations(location: CLLocationCoordinate2D, buffer: CLLocationDistance) {
-
-		mapView.centerCoordinate = location
-		mapView.annotations?.forEach { mapView.removeAnnotation($0) }
-
-		let polygon = AirMapFlightRadiusAnnotation.polygon(location, radius: buffer)
-		mapView.addAnnotation(polygon)
-		mapView.addAnnotation(navigationController!.flight.value)
-
-		let insets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-		mapView.showAnnotations([polygon], edgePadding: insets, animated: false)
-	}
-
 	@IBAction func next() {
 
 		let status = navigationController!.status.value!
@@ -279,25 +250,13 @@ class AirMapFlightPlanViewController: UIViewController {
 			AirMap.rx_createFlight(navigationController!.flight.value)
 				.trackActivity(activityIndicator)
 				.doOnError { [weak self] error in
-					self?.navigationController!.flightPlanDelegate.airMapFlightPlanDidEncounter(error as NSError)
+					self?.navigationController!.flightPlanDelegate.airMapFlightPlanDidEncounter(error as! NSError)
 				}
 				.subscribeNext(navigationController!.flightPlanDelegate.airMapFlightPlanDidCreate)
 				.addDisposableTo(disposeBag)
 		}
 	}
-
-	@IBAction func maximize(button: UIButton) {
-
-		mapViewHeightConstraint.constant = button.selected ? 120 : 120 + tableView.frame.height
-		button.selected = !button.selected
-		UIView.animateWithDuration(0.4, delay: 0, options: [.BeginFromCurrentState, .AllowUserInteraction], animations: view.layoutIfNeeded, completion: nil)
-		let annotationInsets = UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
-		mapView.showAnnotations(mapView.annotations!, edgePadding: annotationInsets, animated: true)
-	}
-
-	@IBAction func dismiss() {
-		dismissViewControllerAnimated(true, completion: nil)
-	}
+	
 }
 
 extension AirMapFlightPlanViewController: UITableViewDataSource, UITableViewDelegate {
@@ -320,7 +279,7 @@ extension AirMapFlightPlanViewController: UITableViewDataSource, UITableViewDele
 		case is DataSection:
 
 			switch row {
-
+				
 			case let doubleRow as FlightPlanDataTableRow<Double>:
 				let cell = tableView.dequeueReusableCellWithIdentifier("flightDataCell", forIndexPath: indexPath) as! AirMapFlightDataCell
 				cell.model = doubleRow
@@ -330,7 +289,7 @@ extension AirMapFlightPlanViewController: UITableViewDataSource, UITableViewDele
 				let cell = tableView.dequeueReusableCellWithIdentifier("startsAtCell", forIndexPath: indexPath) as! AirMapFlightDataDateCell
 				cell.model = dateRow
 				return cell
-
+				
 			default:
 				fatalError()
 			}

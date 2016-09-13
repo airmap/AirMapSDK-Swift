@@ -12,6 +12,7 @@ typealias AirMap_Internal = AirMap
 extension AirMap_Internal {
 
 	@nonobjc internal static let aircraftClient = AircraftClient()
+	@nonobjc internal static let airspaceClient = AirspaceClient()
 	@nonobjc internal static let flightClient = FlightClient()
 	@nonobjc internal static let permitClient = PermitClient()
 	@nonobjc internal static let pilotClient = PilotClient()

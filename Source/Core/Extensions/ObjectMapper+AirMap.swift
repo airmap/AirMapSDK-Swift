@@ -66,27 +66,40 @@ class CsvToArrayTransform: TransformType {
 }
 
 
-class geoJSONToAirMapGeometryTransform: TransformType {
+class GeoJSONToAirMapGeometryTransform: TransformType {
 	typealias Object = AirMapGeometry
 	typealias JSON = String
 	
 	func transformFromJSON(value: AnyObject?) -> AirMapGeometry? {
 		
-		if let geometry = value as? [String : AnyObject] {
-			if let type = geometry["type"] as? String {
-				switch type {
-				case "Polygon":
-					return geometry["coordinates"] as? AirMapPolygon
-				case "Point":
-					return geometry["coordinates"] as? AirMapPoint
-				case "LineString":
-					return geometry["coordinates"] as? AirMapPath
-				default:
-					return nil
-				}
-			}
+		guard
+			let geometry = value as? [String : AnyObject],
+			let type = geometry["type"] as? String
+			else {
+				return nil
 		}
 		
+		switch type {
+		case "Polygon":
+			if let coordinates = geometry["coordinates"] as? [[[Double]]] {
+				
+				let polygon = AirMapPolygon()
+				let coords: [CLLocationCoordinate2D] = (coordinates.first ?? [])
+					.map { ($0[1], $0[0]) }
+					.map(CLLocationCoordinate2D.init)
+				
+				polygon.coordinates = coords
+
+				
+				return polygon
+			}
+		case "Point":
+			return geometry["coordinates"] as? AirMapPoint
+		case "LineString":
+			return geometry["coordinates"] as? AirMapPath
+		default:
+			return nil
+		}
 		return nil
 	}
 	

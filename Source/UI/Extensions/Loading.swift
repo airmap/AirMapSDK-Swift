@@ -39,7 +39,7 @@ extension Loading where Self: UIViewController {
 			LoadingWindow.sharedInstance.alpha = 0
 			}, completion: { _ in
 				LoadingWindow.sharedInstance.hidden = true
-				let mainWindow = UIApplication.sharedApplication().windows.first?.makeKeyAndVisible()
+				UIApplication.sharedApplication().windows.first?.makeKeyAndVisible()
 				self.view.inputAccessoryView?.userInteractionEnabled = true
 				self.view.inputView?.userInteractionEnabled = true
 		})

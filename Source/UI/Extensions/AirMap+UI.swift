@@ -41,6 +41,7 @@ extension AirMap_UI {
 	*/
 	public class func flightPlanViewController(location location: CLLocationCoordinate2D, flightPlanDelegate: AirMapFlightPlanDelegate) -> AirMapFlightPlanNavigationController? {
 
+		// FIXME:
 		guard AirMap.authSession.hasValidCredentials() else { return nil }
 
 		let storyboard = UIStoryboard(name: "AirMapUI", bundle: NSBundle(forClass: AirMap.self))
@@ -48,8 +49,8 @@ extension AirMap_UI {
 		let flightPlanNav = storyboard.instantiateInitialViewController() as! AirMapFlightPlanNavigationController
 		flightPlanNav.flightPlanDelegate = flightPlanDelegate
 
-		let flightVC = flightPlanNav.viewControllers.first as! AirMapFlightPlanViewController
-		flightVC.location = Variable(location)
+		let flightVC = flightPlanNav.viewControllers.first as! AirMapCreateFlightTypeViewController
+		flightPlanNav.flight.value.coordinate = location
 
 		return flightPlanNav
 	}

@@ -46,6 +46,8 @@ Pod::Spec.new do |s|
 		ui.dependency 'Mapbox-iOS-SDK', '~> 3.3'
 		ui.dependency 'RxDataSources', '~> 0.9.0'
 		ui.dependency 'Lock', '~> 1.27.1'
+		ui.dependency 'SwiftSimplify'
+		ui.dependency 'SwiftTurf'
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Source/UI/**/{*.storyboard,*.xcassets}']
 	end

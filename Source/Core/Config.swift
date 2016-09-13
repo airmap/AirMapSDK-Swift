@@ -15,6 +15,9 @@ struct Config {
 		static var aircraftUrl: String {
 			return AirMapApi.urlForResource("aircraft", version: 2)
 		}
+		static var airspaceUrl: String {
+			return AirMapApi.urlForResource("airspace", version: 2)
+		}
 		static var flightUrl: String {
 			return AirMapApi.urlForResource("flight", version: 2)
 		}
@@ -41,7 +44,7 @@ struct Config {
 			static let grantType = "urn:ietf:params:oauth:grant-type:jwt-bearer"
 			static let keychainKeyRefreshToken = "com.airmap.airmapsdk.refresh_token"
 		}
-
+		
 		static let dateFormat  = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // Ex: 2016-06-30T16:54:17.606Z
 		static let smsCodeLength = 6
 	}
@@ -70,4 +73,13 @@ struct Config {
 		static let clientId = UIDevice.currentDevice().identifierForVendor!.UUIDString
 		#endif
 	}
+
+	struct Maps {
+		static let pointsPerCirclePolygon = CGFloat(90)
+		static let bufferSliderLinearity: Double = 2
+		static let minimumRadius: CLLocationDistance = 10
+		static let maximumRadius: CLLocationDistance = 1_000
+		static let feetPerMeters: Double = 3.2808
+	}
+	
 }

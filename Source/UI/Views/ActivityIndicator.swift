@@ -47,7 +47,7 @@ public class ActivityIndicator : DriverConvertibleType {
 			.distinctUntilChanged()
 	}
 	
-	private func trackActivityOfObservable<O: ObservableConvertibleType>(_ source: O) -> Observable<O.E> {
+	private func trackActivityOfObservable<O: ObservableConvertibleType>(source: O) -> Observable<O.E> {
 		return Observable.using({ () -> ActivityToken<O.E> in
 			self.increment()
 			return ActivityToken(source: source.asObservable(), disposeAction: self.decrement)

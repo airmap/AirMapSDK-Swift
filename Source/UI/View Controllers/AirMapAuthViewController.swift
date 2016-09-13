@@ -145,8 +145,6 @@ extension AFJSONResponseSerializer {
 						let data = try! NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
 						return airmap_responseObjectForResponse(response, data: data, error: error)
 					}
-					
-
 				}
 			}
 		}

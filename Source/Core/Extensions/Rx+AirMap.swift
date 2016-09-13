@@ -7,19 +7,26 @@
 //
 
 import RxSwift
+import RxCocoa
 
 extension ObservableType {
 	
 	public func mapToVoid() -> Observable<Void> {
-		return self.map { _ -> Void in
-			return ()
-		}
+		return self.map { _ -> Void in }
 	}
-	
+
 	public func asOptional() -> Observable<E?> {
 		return self.map {
 			Optional.Some($0)
 		}
 	}
 	
+}
+
+extension Driver {
+	
+	public func mapToVoid() -> Driver<Void> {
+		return self.map { _ -> Void in }
+	}
+
 }

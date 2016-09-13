@@ -182,6 +182,19 @@ extension RxAirMap_Status {
 
 }
 
+private typealias RxAirMap_Airspace = AirMap
+extension RxAirMap_Airspace {
+
+	class func rx_getAirspace(airspaceId: String) -> Observable<AirMapAirspace> {
+		return airspaceClient.getAirspace(airspaceId)
+	}
+	
+	class func rx_listAirspace(airspaceIds: [String]) -> Observable<[AirMapAirspace]> {
+		return airspaceClient.listAirspace(airspaceIds)
+	}	
+
+}
+
 #if AIRMAP_TRAFFIC
 
 class RxAirMapTrafficDelegateProxy: DelegateProxy, DelegateProxyType {

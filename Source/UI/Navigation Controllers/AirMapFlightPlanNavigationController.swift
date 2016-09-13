@@ -28,6 +28,13 @@ public class AirMapFlightPlanNavigationController: UINavigationController {
 	let existingPermits = Variable([AirMapPilotPermit]())
 
 	let selectedPermits = Variable([(advisory: AirMapStatusAdvisory, permit: AirMapAvailablePermit, pilotPermit: AirMapPilotPermit)]())
+	
+	public override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+		navigationBar.shadowImage = UIImage()
+	}
 
 	public override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return .LightContent

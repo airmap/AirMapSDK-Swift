@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import SwiftTurf
 
 extension CLLocation {
 	
@@ -17,4 +18,5 @@ extension CLLocation {
 		let index = Int((bearing/22.5) + 0.5) % 16
 		return directions[index]
 	}
+	
 }
