@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 		core.osx.frameworks = 'AppKit'
 		core.source_files = ['Source/Core/**/{*.h,*.m,*.swift}', 'Source/Rx/*']
 		core.dependency 'SimpleKeychain'
-		core.dependency 'Alamofire'
+		core.dependency 'Alamofire', '3.5.0'
 		core.dependency 'JWTDecode'
 		core.dependency 'Log'
 		core.dependency 'ObjectMapper'
