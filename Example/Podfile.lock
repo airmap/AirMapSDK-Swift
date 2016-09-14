@@ -1,37 +1,37 @@
 PODS:
-  - AirMapSDK (0.1.6):
-    - AirMapSDK/Core (= 0.1.6)
-    - AirMapSDK/Telemetry (= 0.1.6)
-    - AirMapSDK/Traffic (= 0.1.6)
-    - AirMapSDK/UI (= 0.1.6)
-  - AirMapSDK/Core (0.1.6):
-    - Alamofire
+  - AirMapSDK (0.1.7):
+    - AirMapSDK/Core (= 0.1.7)
+    - AirMapSDK/Telemetry (= 0.1.7)
+    - AirMapSDK/Traffic (= 0.1.7)
+    - AirMapSDK/UI (= 0.1.7)
+  - AirMapSDK/Core (0.1.7):
+    - Alamofire (~> 3.5)
     - JWTDecode
     - Log
-    - ObjectMapper
+    - ObjectMapper (~> 1.4)
     - RxCocoa
     - RxSwift
     - RxSwiftExt
     - SimpleKeychain
-  - AirMapSDK/Telemetry (0.1.6):
+  - AirMapSDK/Telemetry (0.1.7):
     - AirMapSDK/Core
     - CocoaAsyncSocket
-    - CryptoSwift
+    - CryptoSwift (~> 0.5.2)
     - ProtocolBuffers-Swift
-  - AirMapSDK/Traffic (0.1.6):
+  - AirMapSDK/Traffic (0.1.7):
     - AirMapSDK/Core
     - SwiftMQTT (~> 1.0.2)
-  - AirMapSDK/UI (0.1.6):
+  - AirMapSDK/UI (0.1.7):
     - AirMapSDK/Core
     - libPhoneNumber-iOS
-    - Mapbox-iOS-SDK (~> 3.3.3)
+    - Mapbox-iOS-SDK (~> 3.3)
     - RxDataSources
-  - Alamofire (3.4.2)
+  - Alamofire (3.5.0)
   - CocoaAsyncSocket (7.5.0):
     - CocoaAsyncSocket/GCD (= 7.5.0)
   - CocoaAsyncSocket/GCD (7.5.0)
   - CryptoSwift (0.5.2)
-  - JWTDecode (1.1.0)
+  - JWTDecode (1.2.0)
   - libPhoneNumber-iOS (0.8.16)
   - Log (0.5)
   - Mapbox-iOS-SDK (3.3.4)
@@ -70,11 +70,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  AirMapSDK: 1951e419f7c5927739af2e25ac62bc9b563f64b4
-  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  AirMapSDK: 3753dbf45cf1f655a6fa1ba57232d6ba6cbb2f5a
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
   CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
-  JWTDecode: a6b91ad0bc798c723e9a29a368a6ead70edf7213
+  JWTDecode: ad85e373ff5835d029174dc277ede56a72c0c05b
   libPhoneNumber-iOS: acb5805f67892db37adc3440290a367923672b51
   Log: 5972312cb85cffbc56407b612936b610eb4af8a5
   Mapbox-iOS-SDK: b22da0d9703fcfb0a8b592b6a7f6a21264fe44b0
@@ -91,6 +91,6 @@ SPEC CHECKSUMS:
   SwiftMQTT: 43d17c8b49c77927530607b9d5fd836d02889cf1
   URITemplate: 398a48d6559e23b77bd41176b675b017ad1fc959
 
-PODFILE CHECKSUM: ab28cc4e45e70fedf36f28c26a0bae6b0a3c9ca7
+PODFILE CHECKSUM: b0342449841c9fccb0536676e2f056bb0ee2c809
 
 COCOAPODS: 1.0.1
