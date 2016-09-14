@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 		core.osx.frameworks = 'AppKit'
 		core.source_files = ['Source/Core/**/{*.h,*.m,*.swift}', 'Source/Rx/*']
 		core.dependency 'SimpleKeychain'
-		core.dependency 'Alamofire', '3.5.0'
+		core.dependency 'Alamofire', '~> 3.5.0'
 		core.dependency 'JWTDecode'
 		core.dependency 'Log'
 		core.dependency 'ObjectMapper'
@@ -60,7 +60,7 @@ Pod::Spec.new do |s|
 		telemetry.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_TELEMETRY' }
 		telemetry.dependency 'AirMapSDK/Core'
 		telemetry.dependency 'CocoaAsyncSocket'
-		telemetry.dependency 'CryptoSwift', '0.5.2'
+		telemetry.dependency 'CryptoSwift', '~> 0.5.2'
 		telemetry.dependency 'ProtocolBuffers-Swift'
 		telemetry.source_files = 'Source/Telemetry/*'
 	end
