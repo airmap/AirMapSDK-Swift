@@ -94,8 +94,11 @@ public class AirMapAuthViewController: UIViewController, UIWebViewDelegate {
 				
 				let findString = callbackUrl + "#"
 				let replaceString = findString.stringByReplacingOccurrencesOfString("#", withString: "?")
-				let url = url.absoluteString.stringByReplacingOccurrencesOfString(findString, withString: replaceString)
-				authenticateWithUrl(url)
+				
+				if let url = url.absoluteString?.stringByReplacingOccurrencesOfString(findString, withString: replaceString) {
+					
+					authenticateWithUrl(url)
+				}
 			}
 		
 		}
