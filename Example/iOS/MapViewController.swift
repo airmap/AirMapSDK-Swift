@@ -55,8 +55,25 @@ class MapViewController: UIViewController {
 	
 	private func handleLogin(pilot: AirMapPilot?, error: NSError?) {
 		
-		print(pilot)
-		self.dismissViewControllerAnimated(true, completion: nil)
+		guard let pilot = pilot where error == nil else {
+			AirMap.logger.error(error)
+			return
+		}
+		
+		dismissViewControllerAnimated(true, completion: {
+			if pilot.phoneVerified == false {
+				let verification = AirMap.phoneVerificationViewController(pilot, phoneVerificationDelegate: self)
+				self.presentViewController(verification, animated: true, completion: nil)
+			}
+		})
+
+	}
+}
+
+extension MapViewController: AirMapPhoneVerificationDelegate {
+	
+	func phoneVerificationDidVerifyPhoneNumber() {
+		dismissViewControllerAnimated(true, completion: nil)
 	}
 }
 

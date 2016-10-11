@@ -68,6 +68,24 @@ extension AirMap_UI {
 	
 	/**
 	
+	Creates an AirMap pilot phone verification view controller
+	
+	- parameter airMapAuthDelegate: The delegate to be notified when authentication succeeds or fails
+	
+	*/
+	public class func phoneVerificationViewController(pilot: AirMapPilot, phoneVerificationDelegate: AirMapPhoneVerificationDelegate) -> AirMapPhoneVerificationNavController {
+		
+		let storyboard = UIStoryboard(name: "AirMapUI", bundle: NSBundle(forClass: AirMap.self))
+		let nav = storyboard.instantiateViewControllerWithIdentifier("VerifyPhoneNumber") as! AirMapPhoneVerificationNavController
+		nav.phoneVerificationDelegate = phoneVerificationDelegate
+		let phoneVerificationVC = nav.viewControllers.first as! AirMapPhoneVerificationViewController
+		phoneVerificationVC.pilot = pilot
+		
+		return nav
+	}
+	
+	/**
+	
 	Creates a flight plan creation view controller that can be presented to the user based on a specified location. Airspace status, advisories, permiting, and digital notice are handled within the flow.
 
 	- parameter location: The lat/lon origin of the flight

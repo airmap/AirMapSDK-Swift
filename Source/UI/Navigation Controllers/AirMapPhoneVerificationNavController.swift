@@ -6,12 +6,12 @@
 //  Copyright © 2016 AirMap, Inc. All rights reserved.
 //
 
-protocol AirMapPhoneVerificationDelegate: class {
+public protocol AirMapPhoneVerificationDelegate: class {
 	
 	func phoneVerificationDidVerifyPhoneNumber()
 }
 
-class AirMapPhoneVerificationNavController: UINavigationController {
+public class AirMapPhoneVerificationNavController: UINavigationController {
 	
 	weak var phoneVerificationDelegate: AirMapPhoneVerificationDelegate?
 }
