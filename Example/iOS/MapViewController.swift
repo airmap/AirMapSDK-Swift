@@ -32,7 +32,7 @@ class MapViewController: UIViewController {
 		if let flightPlanController = AirMap.flightPlanViewController(location: mapView.centerCoordinate, flightPlanDelegate: self) {
 			presentViewController(flightPlanController, animated: true, completion: nil)
 		} else {
-			openLoginForm()
+			showLogin()
 		}
 	}
 	
@@ -47,9 +47,16 @@ class MapViewController: UIViewController {
 			.addDisposableTo(disposeBag)
 	}
 
-	func openLoginForm() {
-		let auth = AirMap.authViewController(airMapAuthSessionDelegate: self)
-		presentViewController(auth, animated: true, completion: nil)
+	private func showLogin() {
+
+		let login = AirMap.loginViewController(handleLogin)
+		presentViewController(login, animated: true, completion: nil)
+	}
+	
+	private func handleLogin(pilot: AirMapPilot?, error: NSError?) {
+		
+		print(pilot)
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 }
 

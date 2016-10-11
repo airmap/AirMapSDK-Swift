@@ -45,6 +45,7 @@ Pod::Spec.new do |s|
 		ui.dependency 'libPhoneNumber-iOS', '~> 0.8.16'
 		ui.dependency 'Mapbox-iOS-SDK', '~> 3.3'
 		ui.dependency 'RxDataSources', '~> 0.9.0'
+		ui.dependency 'Lock'
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Source/UI/**/{*.storyboard,*.xcassets}']
 	end

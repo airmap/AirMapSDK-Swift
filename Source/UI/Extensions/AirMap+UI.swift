@@ -6,11 +6,66 @@
 //  Copyright © 2016 AirMap, Inc. All rights reserved.
 //
 
+import Lock
 import RxSwift
+import RxCocoa
+
+public typealias AirMapLoginHandler = (AirMapPilot?, NSError?) -> Void
 
 private typealias AirMap_UI = AirMap
 extension AirMap_UI {
+	
+	/**
+	
+	Creates an Auth0 Lock login view controller that can be presented to the user.
+	
+	- parameter loginHandler: The block that is called upon completion of login flow
 
+	- returns: An A0LockViewController
+	
+	*/
+	public class func loginViewController(loginHandler: AirMapLoginHandler) -> A0LockViewController {
+		
+		let lock = A0Lock.init(clientId: AirMap.configuration.auth0ClientId, domain: "sso.airmap.io", configurationDomain: "sso.airmap.io")
+		
+		let theme = A0Theme()
+		theme.registerImageWithName("lock_login_image", bundle: NSBundle(forClass: AirMap.self), forKey: A0ThemeIconImageName)
+		theme.registerColor(UIColor.airMapGray(), forKey: A0ThemePrimaryButtonNormalColor)
+		theme.registerColor(UIColor.airMapGray(), forKey: A0ThemePrimaryButtonHighlightedColor)
+		A0Theme.sharedInstance().registerTheme(theme)
+
+		let lockController = A0LockViewController(lock: lock)
+		lockController.loginAfterSignUp = true
+		lockController.closable = true
+		lockController.onAuthenticationBlock = { profile, token in
+			guard let authToken = token else {
+				AirMap.logger.error("Unexpectedly failed to acquire token after login"); return
+			}
+			AirMap.authToken = authToken.idToken
+			AirMap.authSession.saveRefreshToken(authToken.refreshToken)
+			AirMap.rx_getAuthenticatedPilot().subscribe(loginHandler)
+		}
+		
+		let errorSubscription = NSNotificationCenter.defaultCenter()
+			.rx_notification(A0LockNotificationSignUpFailed)
+			.doOnNext { notification in
+				if let errorData = notification
+					.userInfo?[A0LockNotificationErrorParameterKey]?
+					.userInfo?[A0JSONResponseSerializerErrorDataKey] {
+					print(errorData)
+					// TODO: check if presented view is AlertViewController
+					lockController.dismissViewControllerAnimated(true, completion: nil)
+				}
+			}
+			.subscribe()
+		
+		lockController.onUserDismissBlock = { _ in
+			errorSubscription.dispose()
+		}
+		
+		return lockController
+	}
+	
 	/**
 	
 	Creates a flight plan creation view controller that can be presented to the user based on a specified location. Airspace status, advisories, permiting, and digital notice are handled within the flow.
