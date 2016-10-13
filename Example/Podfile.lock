@@ -42,13 +42,13 @@ PODS:
     - Lock
     - Mapbox-iOS-SDK (~> 3.3)
     - RxDataSources (~> 0.9.0)
-  - Alamofire (3.5.0)
+  - Alamofire (3.5.1)
   - CocoaAsyncSocket (7.5.0):
     - CocoaAsyncSocket/GCD (= 7.5.0)
   - CocoaAsyncSocket/GCD (7.5.0)
   - CryptoSwift (0.5.2)
   - JWTDecode (1.2.0)
-  - libPhoneNumber-iOS (0.8.16)
+  - libPhoneNumber-iOS (0.8.17)
   - Lock (1.27.1):
     - Lock/Core (= 1.27.1)
     - Lock/UI (= 1.27.1)
@@ -73,7 +73,7 @@ PODS:
   - Mockingjay/XCTest (1.2.2):
     - Mockingjay/Core
   - Nimble (4.1.0)
-  - ObjectMapper (1.4.0)
+  - ObjectMapper (1.5.0)
   - ProtocolBuffers-Swift (2.4.4)
   - Quick (0.9.3)
   - RxCocoa (2.6.0):
@@ -102,18 +102,18 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AirMapSDK: 3af9eee54088e91b923ab6bb144390440788b107
-  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
   CryptoSwift: c1ef79f901b86099a6fe8b3c7524cf9f3f3c8c40
   JWTDecode: ad85e373ff5835d029174dc277ede56a72c0c05b
-  libPhoneNumber-iOS: acb5805f67892db37adc3440290a367923672b51
+  libPhoneNumber-iOS: 9f083847f8cb9b81064cff2ed2c98cbf18d9f9f2
   Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
   Log: 5972312cb85cffbc56407b612936b610eb4af8a5
   Mapbox-iOS-SDK: b22da0d9703fcfb0a8b592b6a7f6a21264fe44b0
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   Mockingjay: 5de65f14108473afc6727e05df9a3ecc9cef8562
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
-  ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
+  ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
   ProtocolBuffers-Swift: de135396943077c5b84aee18df26b3fa6b47fb29
   Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b

@@ -49,7 +49,9 @@ class MapViewController: UIViewController {
 
 	private func showLogin() {
 
-		let login = AirMap.loginViewController(handleLogin)
+		let login = AirMap.authViewController(handleLogin)
+//		login.registerLogo("aircraft", bundle: NSBundle.mainBundle())
+		
 		presentViewController(login, animated: true, completion: nil)
 	}
 	
