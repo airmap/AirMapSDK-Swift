@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Alamofire
 
 internal class AirMapAuthClient: HTTPClient {
 
@@ -29,11 +30,15 @@ internal class AirMapAuthClient: HTTPClient {
 		return call(.POST, url:"/delegation", params: params, keyPath: nil)
 			.doOnNext { token in
 				AirMap.authToken = token.authToken
-//				AirMap.rx_getAuthenticatedPilot()
-//					.subscribeNext { pilot in
-//						AirMap.authSession.delegate?.airMapAuthSessionDidAuthenticate?(pilot)
-//					}
 			}
 		}
-
+	
+	func resendEmailVerification(resendLink:String?) {
+		
+		if let urlStr = resendLink?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! {
+			Alamofire.request(.GET, urlStr)
+				.responseJSON { response in
+			}
+		}
+	}
 }

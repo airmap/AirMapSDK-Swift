@@ -123,6 +123,11 @@ extension AFJSONResponseSerializer {
 			let payloadString = payload["error_description"] as? String {
 			if let payloadData = payloadString.dataUsingEncoding(NSUTF8StringEncoding) {
 				if let errorDict = try? NSJSONSerialization.JSONObjectWithData(payloadData, options: NSJSONReadingOptions()) {
+					
+					if let resendLink = errorDict["resend_link"] as? String{
+						AirMap.resendEmailVerificationLink(resendLink)
+					}
+					
 					if let type = errorDict["type"] as? String {
 						let message: String
 						switch type {
@@ -140,6 +145,8 @@ extension AFJSONResponseSerializer {
 						let data = try! NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
 						return airmap_responseObjectForResponse(response, data: data, error: error)
 					}
+					
+
 				}
 			}
 		}
