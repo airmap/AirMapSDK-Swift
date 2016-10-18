@@ -65,17 +65,17 @@ PODS:
   - Log (0.5)
   - Mapbox-iOS-SDK (3.3.4)
   - Masonry (0.6.4)
-  - Mockingjay (1.2.2):
-    - Mockingjay/Core (= 1.2.2)
-    - Mockingjay/XCTest (= 1.2.2)
-  - Mockingjay/Core (1.2.2):
+  - Mockingjay (1.3.1):
+    - Mockingjay/Core (= 1.3.1)
+    - Mockingjay/XCTest (= 1.3.1)
+  - Mockingjay/Core (1.3.1):
     - URITemplate (~> 1.3)
-  - Mockingjay/XCTest (1.2.2):
+  - Mockingjay/XCTest (1.3.1):
     - Mockingjay/Core
-  - Nimble (4.1.0)
+  - Nimble (5.0.0)
   - ObjectMapper (1.5.0)
   - ProtocolBuffers-Swift (2.4.4)
-  - Quick (0.9.3)
+  - Quick (0.10.0)
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
   - RxDataSources (0.9):
@@ -86,7 +86,7 @@ PODS:
     - RxSwift (~> 2.4)
   - SimpleKeychain (0.7.0)
   - SwiftMQTT (1.0.2)
-  - URITemplate (1.3.1)
+  - URITemplate (1.4.0)
 
 DEPENDENCIES:
   - AirMapSDK (from `../`)
@@ -97,7 +97,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   AirMapSDK:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -111,19 +111,19 @@ SPEC CHECKSUMS:
   Log: 5972312cb85cffbc56407b612936b610eb4af8a5
   Mapbox-iOS-SDK: b22da0d9703fcfb0a8b592b6a7f6a21264fe44b0
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
-  Mockingjay: 5de65f14108473afc6727e05df9a3ecc9cef8562
-  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  Mockingjay: e6ffe6106591d2555025842b1b655decc124f0ca
+  Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
   ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
   ProtocolBuffers-Swift: de135396943077c5b84aee18df26b3fa6b47fb29
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxDataSources: e169bba94a7be584df7c1e1487fa56edc8753ae6
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   RxSwiftExt: 01c16dd9916215e2d41d5755e2ec9d6119ec2ee8
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
   SwiftMQTT: 43d17c8b49c77927530607b9d5fd836d02889cf1
-  URITemplate: 398a48d6559e23b77bd41176b675b017ad1fc959
+  URITemplate: e2a2a0f9d398834fde67214b491c2c925c9baa06
 
 PODFILE CHECKSUM: b0342449841c9fccb0536676e2f056bb0ee2c809
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.3

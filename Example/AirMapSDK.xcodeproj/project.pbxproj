@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15A4E7A959DD57ECB400F6A1 /* Pods_AirMapSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE62349DC0A5B9212735A22 /* Pods_AirMapSDKTests.framework */; };
-		2068E26E1C643594AB530D90 /* Pods_AirMapSDK_Example_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D49023F5DEFB47E1C1736C /* Pods_AirMapSDK_Example_macOS.framework */; };
-		21C893DCADED9DE164CF9018 /* Pods_AirMapSDK_Example_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F96490668CD014C7C7F888B /* Pods_AirMapSDK_Example_iOS.framework */; };
 		5C24433F1D470CC900FB7F8A /* CoordinateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F11781D275AF10053CEA2 /* CoordinateFactory.swift */; };
 		5C3B7B8A1D3EA8C0004705EA /* pilot_authorized_get_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C3B7B891D3EA8C0004705EA /* pilot_authorized_get_success.json */; };
 		5C3B7B8C1D3EA8CE004705EA /* PilotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3B7B8B1D3EA8CE004705EA /* PilotTests.swift */; };
@@ -28,6 +25,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		893762282923BFC91D503B5B /* Pods_AirMapSDK_Example_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 560B430C597CB18C9BE3FE05 /* Pods_AirMapSDK_Example_macOS.framework */; };
 		9109E7B81D2DB7BA00C119E8 /* status_get_polygon_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 9109E7B71D2DB7BA00C119E8 /* status_get_polygon_success.json */; };
 		9109E7BA1D2DB8A100C119E8 /* status_get_path_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 9109E7B91D2DB8A100C119E8 /* status_get_path_success.json */; };
 		910F11711D274A450053CEA2 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910F11701D274A450053CEA2 /* TestCase.swift */; };
@@ -52,6 +50,8 @@
 		91F849BC1D5D8AEB00550D69 /* airmap.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 912A5BDA1D5B9DCC004B359B /* airmap.config.json */; };
 		91F9006D1D37448C005B1084 /* StatusAdvisoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F9006C1D37448C005B1084 /* StatusAdvisoriesTests.swift */; };
 		91F9006F1D3744CD005B1084 /* status_advisories_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F9006E1D3744CD005B1084 /* status_advisories_success.json */; };
+		B3DD3510DB2245BC3A0D743D /* Pods_AirMapSDK_Example_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD56C95663FBA7706A87AD4 /* Pods_AirMapSDK_Example_iOS.framework */; };
+		E6BA75812612D701A31DE8CC /* Pods_AirMapSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B7E2D212EF017252ABC5BF /* Pods_AirMapSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,11 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		013FD3346845265F161D3417 /* Pods-AirMapSDK-Example-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		091B9B4CD51B9DF5383C1795 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		10C85FB166A9D6B259C7AA5A /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		276608810D8DAED6F91BA14A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		4FE62349DC0A5B9212735A22 /* Pods_AirMapSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560B430C597CB18C9BE3FE05 /* Pods_AirMapSDK_Example_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDK_Example_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3B7B891D3EA8C0004705EA /* pilot_authorized_get_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pilot_authorized_get_success.json; path = Fixtures/pilot_authorized_get_success.json; sourceTree = "<group>"; };
 		5C3B7B8B1D3EA8CE004705EA /* PilotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotTests.swift; sourceTree = "<group>"; };
 		5C3B7B8F1D3EC2A0004705EA /* flight_get_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flight_get_success.json; path = Fixtures/flight_get_success.json; sourceTree = "<group>"; };
@@ -89,9 +86,9 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		60D49023F5DEFB47E1C1736C /* Pods_AirMapSDK_Example_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDK_Example_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65899E1ACF42AC911BEEB736 /* Pods-AirMapSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		73A68E3150D3B04CFF6AF7D2 /* AirMapSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AirMapSDK.podspec; path = ../AirMapSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		78DE54A882FD5191C8453E39 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8866D68BF714C66F18D17D87 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		9109E7B71D2DB7BA00C119E8 /* status_get_polygon_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = status_get_polygon_success.json; path = Fixtures/status_get_polygon_success.json; sourceTree = "<group>"; };
 		9109E7B91D2DB8A100C119E8 /* status_get_path_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = status_get_path_success.json; path = Fixtures/status_get_path_success.json; sourceTree = "<group>"; };
 		910F11701D274A450053CEA2 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
@@ -119,9 +116,12 @@
 		91B783091D6373DA0034A5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91F9006C1D37448C005B1084 /* StatusAdvisoriesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusAdvisoriesTests.swift; sourceTree = "<group>"; };
 		91F9006E1D3744CD005B1084 /* status_advisories_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = status_advisories_success.json; path = Fixtures/status_advisories_success.json; sourceTree = "<group>"; };
-		9F96490668CD014C7C7F888B /* Pods_AirMapSDK_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDK_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3A69789AD50E41D68B4D6B2 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		D9A4E1BD6513C05E146BCD9C /* Pods-AirMapSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD56C95663FBA7706A87AD4 /* Pods_AirMapSDK_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDK_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC54ABA344196CE5779B4C93 /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D1AF60D25A30D0298147DA8E /* Pods-AirMapSDK-Example-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDK-Example-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		D35409D41D87A0A0FDC88B1B /* Pods-AirMapSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6B7E2D212EF017252ABC5BF /* Pods_AirMapSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3635C24EA52A71AB969812 /* Pods-AirMapSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		F22062793E9F961EED1127FB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21C893DCADED9DE164CF9018 /* Pods_AirMapSDK_Example_iOS.framework in Frameworks */,
+				B3DD3510DB2245BC3A0D743D /* Pods_AirMapSDK_Example_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15A4E7A959DD57ECB400F6A1 /* Pods_AirMapSDKTests.framework in Frameworks */,
+				E6BA75812612D701A31DE8CC /* Pods_AirMapSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,34 +146,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2068E26E1C643594AB530D90 /* Pods_AirMapSDK_Example_macOS.framework in Frameworks */,
+				893762282923BFC91D503B5B /* Pods_AirMapSDK_Example_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		476DA58777962E68195CFAC3 /* Pods */ = {
+		20F86B514C4080D130F5454B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				091B9B4CD51B9DF5383C1795 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */,
-				013FD3346845265F161D3417 /* Pods-AirMapSDK-Example-iOS.release.xcconfig */,
-				D9A4E1BD6513C05E146BCD9C /* Pods-AirMapSDKTests.debug.xcconfig */,
-				65899E1ACF42AC911BEEB736 /* Pods-AirMapSDKTests.release.xcconfig */,
-				10C85FB166A9D6B259C7AA5A /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */,
-				D3A69789AD50E41D68B4D6B2 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4DC8E816FDF19BD341413BA7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9F96490668CD014C7C7F888B /* Pods_AirMapSDK_Example_iOS.framework */,
-				60D49023F5DEFB47E1C1736C /* Pods_AirMapSDK_Example_macOS.framework */,
-				4FE62349DC0A5B9212735A22 /* Pods_AirMapSDKTests.framework */,
+				AAD56C95663FBA7706A87AD4 /* Pods_AirMapSDK_Example_iOS.framework */,
+				560B430C597CB18C9BE3FE05 /* Pods_AirMapSDK_Example_macOS.framework */,
+				D6B7E2D212EF017252ABC5BF /* Pods_AirMapSDKTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F5ED503D962544636026179 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78DE54A882FD5191C8453E39 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */,
+				D1AF60D25A30D0298147DA8E /* Pods-AirMapSDK-Example-iOS.release.xcconfig */,
+				CC54ABA344196CE5779B4C93 /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */,
+				8866D68BF714C66F18D17D87 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */,
+				D35409D41D87A0A0FDC88B1B /* Pods-AirMapSDKTests.debug.xcconfig */,
+				EA3635C24EA52A71AB969812 /* Pods-AirMapSDKTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -183,10 +183,10 @@
 				607FACD21AFB9204008FA782 /* Example iOS */,
 				91B783011D6373DA0034A5A6 /* Example-macOS */,
 				607FACD11AFB9204008FA782 /* Products */,
-				4DC8E816FDF19BD341413BA7 /* Frameworks */,
 				918451101D270C64003B3D26 /* Tests */,
-				476DA58777962E68195CFAC3 /* Pods */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				2F5ED503D962544636026179 /* Pods */,
+				20F86B514C4080D130F5454B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,12 +306,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "AirMapSDK-Example-iOS" */;
 			buildPhases = (
-				46F6F2DF13F3F66D445B607F /* [CP] Check Pods Manifest.lock */,
+				70580C0A9C2EC1E0AB03C6C8 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
-				4DD1C4DCCECEDC5017B1391C /* [CP] Embed Pods Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				A3101B230BA166EA2D0F0C23 /* [CP] Copy Pods Resources */,
+				E352F5DDA19D815388D5F248 /* [CP] Embed Pods Frameworks */,
+				59F99C464B7DD87DA84C92CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,12 +326,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 918451161D270C64003B3D26 /* Build configuration list for PBXNativeTarget "AirMapSDKTests" */;
 			buildPhases = (
-				3F400FDF04FB298C64220D0F /* [CP] Check Pods Manifest.lock */,
+				30DDC5703D399DC86319BCA7 /* [CP] Check Pods Manifest.lock */,
 				9184510B1D270C64003B3D26 /* Sources */,
 				9184510C1D270C64003B3D26 /* Frameworks */,
 				9184510D1D270C64003B3D26 /* Resources */,
-				6726E5594B24D188DBCF82D7 /* [CP] Embed Pods Frameworks */,
-				28880A4BDE2BE050ED71D79D /* [CP] Copy Pods Resources */,
+				E223F7612F84F706DEFCCB6D /* [CP] Embed Pods Frameworks */,
+				F1F6180889A37CB3EE0B5457 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,12 +347,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91B7830A1D6373DA0034A5A6 /* Build configuration list for PBXNativeTarget "AirMapSDK-Example-macOS" */;
 			buildPhases = (
-				F908C4436B60E85FCCFDDF47 /* [CP] Check Pods Manifest.lock */,
+				4C8F9EC179BAC13130E363D9 /* [CP] Check Pods Manifest.lock */,
 				91B782FC1D6373DA0034A5A6 /* Sources */,
 				91B782FD1D6373DA0034A5A6 /* Frameworks */,
 				91B782FE1D6373DA0034A5A6 /* Resources */,
-				5C1DE15AC1D302A16B12CC23 /* [CP] Embed Pods Frameworks */,
-				F97FFCA00DEA834A20628361 /* [CP] Copy Pods Resources */,
+				1E2178F555FC9594D3B8941B /* [CP] Embed Pods Frameworks */,
+				A43CD507E412590E1848419F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -466,67 +466,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		28880A4BDE2BE050ED71D79D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F400FDF04FB298C64220D0F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		46F6F2DF13F3F66D445B607F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4DD1C4DCCECEDC5017B1391C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5C1DE15AC1D302A16B12CC23 /* [CP] Embed Pods Frameworks */ = {
+		1E2178F555FC9594D3B8941B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -541,22 +481,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6726E5594B24D188DBCF82D7 /* [CP] Embed Pods Frameworks */ = {
+		30DDC5703D399DC86319BCA7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A3101B230BA166EA2D0F0C23 /* [CP] Copy Pods Resources */ = {
+		4C8F9EC179BAC13130E363D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		59F99C464B7DD87DA84C92CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -571,7 +526,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F908C4436B60E85FCCFDDF47 /* [CP] Check Pods Manifest.lock */ = {
+		70580C0A9C2EC1E0AB03C6C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -583,10 +538,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F97FFCA00DEA834A20628361 /* [CP] Copy Pods Resources */ = {
+		A43CD507E412590E1848419F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -599,6 +554,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDK-Example-macOS/Pods-AirMapSDK-Example-macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E223F7612F84F706DEFCCB6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E352F5DDA19D815388D5F248 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDK-Example-iOS/Pods-AirMapSDK-Example-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1F6180889A37CB3EE0B5457 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirMapSDKTests/Pods-AirMapSDKTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -766,7 +766,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 091B9B4CD51B9DF5383C1795 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */;
+			baseConfigurationReference = 78DE54A882FD5191C8453E39 /* Pods-AirMapSDK-Example-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -783,7 +783,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 013FD3346845265F161D3417 /* Pods-AirMapSDK-Example-iOS.release.xcconfig */;
+			baseConfigurationReference = D1AF60D25A30D0298147DA8E /* Pods-AirMapSDK-Example-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -800,7 +800,7 @@
 		};
 		918451171D270C64003B3D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9A4E1BD6513C05E146BCD9C /* Pods-AirMapSDKTests.debug.xcconfig */;
+			baseConfigurationReference = D35409D41D87A0A0FDC88B1B /* Pods-AirMapSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -817,7 +817,7 @@
 		};
 		918451181D270C64003B3D26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65899E1ACF42AC911BEEB736 /* Pods-AirMapSDKTests.release.xcconfig */;
+			baseConfigurationReference = EA3635C24EA52A71AB969812 /* Pods-AirMapSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -833,7 +833,7 @@
 		};
 		91B7830B1D6373DA0034A5A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10C85FB166A9D6B259C7AA5A /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */;
+			baseConfigurationReference = CC54ABA344196CE5779B4C93 /* Pods-AirMapSDK-Example-macOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -853,7 +853,7 @@
 		};
 		91B7830C1D6373DA0034A5A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3A69789AD50E41D68B4D6B2 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */;
+			baseConfigurationReference = 8866D68BF714C66F18D17D87 /* Pods-AirMapSDK-Example-macOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
