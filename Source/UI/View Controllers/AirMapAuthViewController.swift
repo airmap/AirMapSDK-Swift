@@ -178,14 +178,10 @@ extension UIAlertController {
 		}
 	}
 	
-	
-	
 	public func airmap_viewWillAppear(animated: Bool) {
+		// Updating Auth0 Alert Title
 		if self.title == "There was an error logging in" || self.title == "There was an error signing up" {
 			self.title = "Alert"
 		}
 	}
 }
-
-
-
