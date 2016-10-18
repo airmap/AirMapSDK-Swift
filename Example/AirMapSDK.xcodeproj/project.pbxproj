@@ -71,6 +71,7 @@
 		5C3B7B8B1D3EA8CE004705EA /* PilotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotTests.swift; sourceTree = "<group>"; };
 		5C3B7B8F1D3EC2A0004705EA /* flight_get_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flight_get_success.json; path = Fixtures/flight_get_success.json; sourceTree = "<group>"; };
 		5C40A9601D36BD66009761F3 /* flights_get_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flights_get_success.json; path = Fixtures/flights_get_success.json; sourceTree = "<group>"; };
+		5CD871C21DB5ADA6007C1C02 /* AirMapSDK-Example-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AirMapSDK-Example-iOS.entitlements"; sourceTree = "<group>"; };
 		5CD99DD81D41832600D21B72 /* empty_flights_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = empty_flights_success.json; path = Fixtures/empty_flights_success.json; sourceTree = "<group>"; };
 		5CD99DDC1D418FCE00D21B72 /* permit_get_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = permit_get_success.json; path = Fixtures/permit_get_success.json; sourceTree = "<group>"; };
 		5CD99DDE1D418FEC00D21B72 /* PermitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermitTests.swift; sourceTree = "<group>"; };
@@ -179,6 +180,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				5CD871C21DB5ADA6007C1C02 /* AirMapSDK-Example-iOS.entitlements */,
 				912A5BDA1D5B9DCC004B359B /* airmap.config.json */,
 				607FACD21AFB9204008FA782 /* Example iOS */,
 				91B783011D6373DA0034A5A6 /* Example-macOS */,
@@ -379,6 +381,9 @@
 						DevelopmentTeam = 9P9UW98328;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 0;
 							};
@@ -770,6 +775,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AirMapSDK-Example-iOS.entitlements";
 				DEVELOPMENT_TEAM = 9P9UW98328;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -787,6 +793,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AirMapSDK-Example-iOS.entitlements";
 				DEVELOPMENT_TEAM = 9P9UW98328;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
