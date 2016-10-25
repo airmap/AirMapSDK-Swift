@@ -94,6 +94,8 @@ class AirMapCreateFlightTypeViewController: UIViewController {
 	private let state = Variable(DrawingUIState.Panning)
 	private let buffer = Variable(Meters(304.8))
 	
+	private let controlPointsHidden = Variable(false)
+	
 	private var flight: AirMapFlight {
 		return (navigationController as! AirMapFlightPlanNavigationController).flight.value
 	}
@@ -272,6 +274,10 @@ extension AirMapCreateFlightTypeViewController {
 			.asDriver(onErrorJustReturn: false)
 			.drive(advisoriesInfoButton.rx_enabled)
 			.addDisposableTo(disposeBag)
+		
+		controlPointsHidden.asDriver()
+			.driveNext(mapView.hideControlPoints)
+			.addDisposableTo(disposeBag)
 	}
 	
 	private func setupMap() {
@@ -280,6 +286,19 @@ extension AirMapCreateFlightTypeViewController {
 		mapView.configure(layers: [], theme: .Standard)
 		mapView.delegate = mapViewDelegate
 		mapViewDelegate.controlPointDelegate = self
+		
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleAnnotations))
+		mapView.addGestureRecognizer(tapGesture)
+		
+		// Prevent calling of single tap for multi-tap gestures (i.e. double taps)
+		mapView.gestureRecognizers?
+			.flatMap { $0 as? UITapGestureRecognizer }
+			.filter { $0.numberOfTapsRequired > 1 }
+			.forEach { tapGesture.requireGestureRecognizerToFail($0) }
+ 	}
+	
+	@objc private func toggleAnnotations() {
+		controlPointsHidden.value = !controlPointsHidden.value
 	}
 	
 	private func setupDrawingOverlay() {
@@ -399,7 +418,9 @@ extension AirMapCreateFlightTypeViewController {
 			drawingOverlayView.hidden = true
 			editingOverlayView.clearPath()
 			
-			mapView.hideControlPoints(false)
+			if selectedGeoType.value != .Point {
+				mapView.hideControlPoints(false)
+			}
 
 		case .Drawing:
 			
@@ -436,7 +457,9 @@ extension AirMapCreateFlightTypeViewController {
 			
 			mapView.userInteractionEnabled = true
 			drawingOverlayView.hidden = true
-			mapView.hideControlPoints(true)
+			if selectedGeoType.value != .Point {
+				mapView.hideControlPoints(true)
+			}
 		}
 		
 		mapView.hideObscuredMidPointControls()
@@ -695,6 +718,8 @@ extension AirMapCreateFlightTypeViewController {
 	
 	private func drawFlightArea(geoType: AirMapFlight.FlightGeometryType, coordinates: [CLLocationCoordinate2D], buffer: Meters = 0, validation: (valid: Bool, kinks: FeatureCollection?)) {
 		
+		controlPointsHidden.value = false
+
 		mapView.annotations?
 			.filter { ($0 is MGLPolygon || $0 is MGLPolyline || $0 is InvalidIntersection) && !($0 is RedAdvisory) }
 			.forEach { mapView.removeAnnotation($0) }
