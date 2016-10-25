@@ -235,7 +235,8 @@ extension AirMapCreateFlightTypeViewController {
 			.bindTo((navigationController as! AirMapFlightPlanNavigationController).status)
 		
 		status
-			.subscribeNext(unowned(self, $.applyStatusColorToNextButton))
+			.map { $0.advisoryColor }
+			.subscribeNext(unowned(self, $.applyAdvisoryColorToNextButton))
 			.addDisposableTo(disposeBag)
 
 		status
@@ -279,6 +280,8 @@ extension AirMapCreateFlightTypeViewController {
 	// MARK: Configure
 
 	func configureForType(type: AirMapFlight.FlightGeometryType) {
+		
+		applyAdvisoryColorToNextButton(.Gray)
 		
 		if let annotations = mapView.annotations {
 			mapView.removeAnnotations(annotations)
@@ -617,8 +620,8 @@ extension AirMapCreateFlightTypeViewController {
 		}
 	}
 	
-	private func applyStatusColorToNextButton(status: AirMapStatus) {
-		switch status.advisoryColor {
+	private func applyAdvisoryColorToNextButton(advisoryColor: AirMapStatus.StatusColor) {
+		switch advisoryColor {
 		case .Red:
 			nextButton.backgroundColor = UIColor.airMapRed()
 			nextButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
