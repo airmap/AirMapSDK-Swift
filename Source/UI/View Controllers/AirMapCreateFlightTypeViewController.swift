@@ -298,7 +298,9 @@ extension AirMapCreateFlightTypeViewController {
  	}
 	
 	@objc private func toggleAnnotations() {
-		controlPointsHidden.value = !controlPointsHidden.value
+		if selectedGeoType.value != .Point {
+			controlPointsHidden.value = !controlPointsHidden.value
+		}
 	}
 	
 	private func setupDrawingOverlay() {
