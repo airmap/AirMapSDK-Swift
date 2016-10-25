@@ -303,25 +303,25 @@ public enum AirMapAirspaceType: Int {
 
 		switch self {
 		case Airport:
-			return "Airports"
+			return "Airport"
 		case .Heliport:
-			return "Heliports"
+			return "Heliport"
 		case Park:
-			return "Parks"
+			return "Park"
 		case PowerPlant:
-			return "Power Plants"
+			return "Power Plant"
 		case ControlledAirspace:
 			return "Controlled Airspace"
 		case School:
-			return "Schools"
+			return "School"
 		case SpecialUse:
 			return "Special Use Airspace"
 		case TFR:
-			return "Temporary Flight Restrictions"
+			return "Temporary Flight Restriction"
 		case Wildfires:
-			return "Wildfires"
+			return "Wildfire"
 		case .Hospital:
-			return "Hospitals"
+			return "Hospital"
 		}
 	}
 

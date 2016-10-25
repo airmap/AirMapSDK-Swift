@@ -15,6 +15,34 @@ import ObjectMapper
 		case Yellow = "yellow"
 		case Green  = "green"
 		case Gray   = "gray"
+		
+		public static var allColors: [StatusColor] {
+			return [.Red, .Yellow, .Green, .Gray]
+		}
+		
+		public var description: String {
+			switch self {
+			case .Red:
+				return "Restricted"
+			case .Yellow:
+				return "Caution/Action Required"
+			case .Green, .Gray:
+				return "Informational"
+			}
+		}
+		
+		public var colorRepresentation: UIColor {
+			switch self {
+			case .Red:
+				return .airMapRed()
+			case .Yellow:
+				return .airMapYellow()
+			case .Green:
+				return .airMapGreen()
+			case .Gray:
+				return .airMapGray()
+			}
+		}
 	}
 
 	public var maxSafeDistance = 0

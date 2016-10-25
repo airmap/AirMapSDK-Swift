@@ -80,8 +80,9 @@ class AirMapCreateFlightTypeViewController: UIViewController {
 	@IBOutlet weak var toolTip: UILabel!
 	
 	@IBOutlet var flightTypeButtons: [AirMapFlightTypeButton]!
-	@IBOutlet var nextButton: UIButton!
-	@IBOutlet var inputViewContainer: UIView!
+	@IBOutlet weak var nextButton: UIButton!
+	@IBOutlet weak var advisoriesInfoButton: UIButton!
+	@IBOutlet weak var inputViewContainer: UIView!
 	
 	private let drawingOverlayView = AirMapDrawingOverlayView()
 	private let editingOverlayView = AirMapPointEditingOverlay()
@@ -147,10 +148,17 @@ extension AirMapCreateFlightTypeViewController {
 		case "pushFlightDetails":
 			let flightDetails = segue.destinationViewController as! AirMapFlightPlanViewController
 			flightDetails.location = Variable(flight.coordinate)
+		case "modalAdvisories":
+			let nav = segue.destinationViewController as! UINavigationController
+			let advisoriesVC = nav.viewControllers.first as! AirMapAdvisoriesViewController
+			let status = (navigationController as! AirMapFlightPlanNavigationController).status.value!
+			advisoriesVC.status = Variable(status)
 		default:
 			break
 		}
 	}
+	
+	@IBAction func unwindToFlightPlanMap(segue: UIStoryboardSegue) { /* IB hook; keep */ }
 	
 	override func canBecomeFirstResponder() -> Bool {
 		return true
@@ -225,22 +233,26 @@ extension AirMapCreateFlightTypeViewController {
 			.drive(nextButton.rx_enabled)
 			.addDisposableTo(disposeBag)
 
-		let status = validatedInput
+		let status = (navigationController as! AirMapFlightPlanNavigationController).status
+		
+		validatedInput
 			.asObservable()
 			.filter { $0.3.valid }
 			.flatMapLatest(unowned(self, $.getStatus))
 			.shareReplayLatestWhileConnected()
-		
-		status
 			.map { Optional.Some($0) }
-			.bindTo((navigationController as! AirMapFlightPlanNavigationController).status)
+			.bindTo(status)
 		
 		status
-			.map { $0.advisoryColor }
-			.subscribeNext(unowned(self, $.applyAdvisoryColorToNextButton))
+			.asObservable()
+			.map { $0?.advisoryColor ?? .Gray }
+			.asDriver(onErrorJustReturn: .Yellow)
+			.driveNext(unowned(self, $.applyAdvisoryColorToNextButton))
 			.addDisposableTo(disposeBag)
 
 		status
+			.asObservable()
+			.unwrap()
 			.map { $0.advisories.filter { $0.color == .Red } }
 			.map { $0.map { $0.id as String } }
 			.flatMapLatest { ids -> Observable<[AirMapAirspace]> in
@@ -252,6 +264,13 @@ extension AirMapCreateFlightTypeViewController {
 			}
 			.asDriver(onErrorJustReturn: [])
 			.driveNext(unowned(self, $.drawRedAdvisoryAirspaces))
+			.addDisposableTo(disposeBag)
+
+		status
+			.asObservable()
+			.map { $0 != nil }
+			.asDriver(onErrorJustReturn: false)
+			.drive(advisoriesInfoButton.rx_enabled)
 			.addDisposableTo(disposeBag)
 	}
 	
@@ -282,7 +301,7 @@ extension AirMapCreateFlightTypeViewController {
 
 	func configureForType(type: AirMapFlight.FlightGeometryType) {
 		
-		applyAdvisoryColorToNextButton(.Gray)
+		(navigationController as! AirMapFlightPlanNavigationController).status.value = nil
 		
 		if let annotations = mapView.annotations {
 			mapView.removeAnnotations(annotations)
@@ -340,7 +359,7 @@ extension AirMapCreateFlightTypeViewController {
 		let trashIconSelected = UIImage(named: "trash_icon_selected", inBundle: bundle, compatibleWithTraitCollection: nil)
 		let trashIconHighlighted = UIImage(named: "trash_icon_highlighted", inBundle: bundle, compatibleWithTraitCollection: nil)
 		toolTip.superview?.backgroundColor = UIColor.airMapGray().colorWithAlphaComponent(0.25)
-
+		
 		switch state {
 		
 		case .Panning:
@@ -622,20 +641,16 @@ extension AirMapCreateFlightTypeViewController {
 	}
 	
 	private func applyAdvisoryColorToNextButton(advisoryColor: AirMapStatus.StatusColor) {
+		
 		switch advisoryColor {
-		case .Red:
-			nextButton.backgroundColor = UIColor.airMapRed()
-			nextButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-			nextButton.setTitleColor(UIColor.whiteColor().colorWithAlphaComponent(0.5), forState: .Disabled)
-		case .Yellow:
-			nextButton.backgroundColor = UIColor.airMapYellow()
-			nextButton.setTitleColor(UIColor.airMapGray(), forState: .Normal)
-			nextButton.setTitleColor(UIColor.airMapGray().colorWithAlphaComponent(0.5), forState: .Disabled)
-		default:
-			nextButton.backgroundColor = UIColor.airMapGray()
-			nextButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-			nextButton.setTitleColor(UIColor.whiteColor().colorWithAlphaComponent(0.5), forState: .Disabled)
+		case .Red, .Gray:
+			inputViewContainer.backgroundColor = advisoryColor.colorRepresentation
+			inputViewContainer.tintColor = .whiteColor()
+		case .Yellow, .Green:
+			inputViewContainer.backgroundColor = advisoryColor.colorRepresentation
+			inputViewContainer.tintColor = .airMapGray()
 		}
+		nextButton.setTitleColor(nextButton.tintColor.colorWithAlphaComponent(0.5), forState: .Disabled)
 	}
 	
 	// MARK: Drawing

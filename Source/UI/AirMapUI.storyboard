@@ -240,6 +240,7 @@ Line two details would be here.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="1eA-nR-8lo" id="CgF-d5-KpY"/>
+                        <outlet property="advisoriesInfoButton" destination="QV9-dV-Hou" id="kEd-rR-7hU"/>
                         <outlet property="bufferSlider" destination="edb-PY-xVw" id="HWq-s4-pUg"/>
                         <outlet property="bufferTitleLabel" destination="69c-Tr-wUG" id="fXB-qX-cCu"/>
                         <outlet property="bufferValueLabel" destination="uVU-1B-8kY" id="YPU-tE-XZi"/>
@@ -258,14 +259,12 @@ Line two details would be here.</string>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPh-hd-dib">
-                            <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="eSk-hl-Tz2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                            <state key="normal" title="Next">
-                                <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
+                            <state key="normal" title="Next"/>
                             <state key="disabled">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -273,14 +272,19 @@ Line two details would be here.</string>
                                 <segue destination="78z-6S-Kd1" kind="show" identifier="pushFlightDetails" id="J5M-SN-zqg"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV9-dV-Hou">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV9-dV-Hou">
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="V0H-MG-dxT"/>
+                                <constraint firstAttribute="width" constant="65" id="V0H-MG-dxT"/>
                             </constraints>
                             <state key="normal" image="info_icon_advisories"/>
+                            <connections>
+                                <segue destination="OcD-bb-4X7" kind="presentation" identifier="modalAdvisories" id="Xzp-3v-Ex4"/>
+                            </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.2156862745" green="0.24313725489999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="kPh-hd-dib" secondAttribute="trailing" id="23r-dR-Eio"/>
                         <constraint firstItem="QV9-dV-Hou" firstAttribute="leading" secondItem="GoI-QY-7Mb" secondAttribute="leading" id="HmM-y9-HCB"/>
@@ -288,7 +292,7 @@ Line two details would be here.</string>
                         <constraint firstItem="QV9-dV-Hou" firstAttribute="top" secondItem="GoI-QY-7Mb" secondAttribute="top" id="KLx-SR-Pr8"/>
                         <constraint firstItem="kPh-hd-dib" firstAttribute="top" secondItem="GoI-QY-7Mb" secondAttribute="top" id="grK-Wt-d0H"/>
                         <constraint firstAttribute="bottom" secondItem="kPh-hd-dib" secondAttribute="bottom" id="jZR-tg-LQZ"/>
-                        <constraint firstItem="kPh-hd-dib" firstAttribute="leading" secondItem="QV9-dV-Hou" secondAttribute="trailing" id="yWB-uV-AYu"/>
+                        <constraint firstItem="kPh-hd-dib" firstAttribute="leading" secondItem="GoI-QY-7Mb" secondAttribute="leading" constant="16" id="yEl-cV-Ozo"/>
                     </constraints>
                 </view>
             </objects>
@@ -314,6 +318,8 @@ Line two details would be here.</string>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsRotating" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsTilting" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsScrolling" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsZooming" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-zT-0iZ">
@@ -556,7 +562,96 @@ Line two details would be here.</string>
                 <viewControllerPlaceholder referencedIdentifier="FAQNav" id="J9h-2S-gd0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKE-1D-9TT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="389.5" y="856"/>
+            <point key="canvasLocation" x="387" y="855"/>
+        </scene>
+        <!--Airspace Advisories-->
+        <scene sceneID="Mss-hB-Ycd">
+            <objects>
+                <tableViewController id="gc2-XS-SaI" customClass="AirMapAdvisoriesViewController" customModule="AirMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="pXx-s1-GeR">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AirMapAdvisoryCell" rowHeight="58" id="K1B-xh-wcj" customClass="AirMapAdvisoryCell" customModule="AirMap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="375" height="58"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K1B-xh-wcj" id="9QT-Te-p40">
+                                    <frame key="frameInset" width="375" height="57"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advisory Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DW-v6-ClH">
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" red="0.2156862745" green="0.24313725489999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-mD-ma5">
+                                            <color key="backgroundColor" red="0.98823529409999999" green="0.29803921570000003" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="HQZ-gj-5ao"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advisory Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1e-sI-VMa">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.2156862745" green="0.24313725489999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="c1e-sI-VMa" firstAttribute="top" secondItem="8DW-v6-ClH" secondAttribute="bottom" constant="2" id="0Fm-mo-spZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="c1e-sI-VMa" secondAttribute="trailing" constant="16" id="DUc-Dk-oty"/>
+                                        <constraint firstAttribute="bottom" secondItem="1dB-mD-ma5" secondAttribute="bottom" id="YUk-rt-Dxo"/>
+                                        <constraint firstItem="8DW-v6-ClH" firstAttribute="top" secondItem="9QT-Te-p40" secondAttribute="top" constant="8" id="b9V-wc-O68"/>
+                                        <constraint firstItem="c1e-sI-VMa" firstAttribute="leading" secondItem="8DW-v6-ClH" secondAttribute="leading" id="bTN-0k-Yhn"/>
+                                        <constraint firstAttribute="bottom" secondItem="c1e-sI-VMa" secondAttribute="bottom" constant="8" id="mgt-e5-bdN"/>
+                                        <constraint firstItem="8DW-v6-ClH" firstAttribute="leading" secondItem="1dB-mD-ma5" secondAttribute="trailing" constant="12" id="q5J-zO-Six"/>
+                                        <constraint firstItem="1dB-mD-ma5" firstAttribute="leading" secondItem="9QT-Te-p40" secondAttribute="leading" id="tyV-gu-Rk9"/>
+                                        <constraint firstAttribute="trailing" secondItem="8DW-v6-ClH" secondAttribute="trailing" constant="16" id="uTj-QC-UhM"/>
+                                        <constraint firstItem="1dB-mD-ma5" firstAttribute="top" secondItem="9QT-Te-p40" secondAttribute="top" id="zMC-gr-1yu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colorView" destination="1dB-mD-ma5" id="dmA-VF-N7x"/>
+                                    <outlet property="name" destination="8DW-v6-ClH" id="L6G-Gi-oT7"/>
+                                    <outlet property="type" destination="c1e-sI-VMa" id="8Z0-ml-ltT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gc2-XS-SaI" id="ihN-nl-GW9"/>
+                            <outlet property="delegate" destination="gc2-XS-SaI" id="zLa-Ev-FSV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Airspace Advisories" id="yk1-9H-q3n">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="JTX-n6-s2o">
+                            <connections>
+                                <segue destination="7fo-c0-6Sa" kind="unwind" unwindAction="unwindToFlightPlanMap:" id="8Tl-HW-5FN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkq-pH-7T7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7fo-c0-6Sa" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="1315"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ajs-kt-gsK">
+            <objects>
+                <navigationController id="OcD-bb-4X7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="Esf-20-NJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gc2-XS-SaI" kind="relationship" relationship="rootViewController" id="Okt-53-6Nm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9f3-mP-v23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-484" y="1315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R0J-K9-qwi">
@@ -1707,11 +1802,11 @@ for this Flight</string>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="customFieldCell" rowHeight="50" id="d6z-x2-Nt5" customClass="AirMapPermitCustomPropertyCell" customModule="AirMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="238.5" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="d6z-x2-Nt5" id="DEU-wH-DL9">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6z-x2-Nt5" id="DEU-wH-DL9">
                                     <frame key="frameInset" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qY3-a1-olP">
+                                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qY3-a1-olP">
                                             <frame key="frameInset" width="375" height="1000"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="jrX-iS-pdi"/>
@@ -1805,6 +1900,12 @@ for this Flight</string>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVj-Bo-JEJ" customClass="AirMapMapView" customModule="AirMap" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsZooming" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsScrolling" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsRotating" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsTilting" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="8BE-J7-rU0" id="mBG-2r-OgO"/>
                                 </connections>
@@ -2010,22 +2111,22 @@ for this Flight</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-9g-dCK">
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="flightDetailsCell" textLabel="5Hx-9E-ZCg" detailTextLabel="nW1-yH-qKX" style="IBUITableViewCellStyleValue2" id="kik-er-LKK">
-                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="flightDetailsCell" textLabel="5Hx-9E-ZCg" detailTextLabel="nW1-yH-qKX" style="IBUITableViewCellStyleValue2" id="kik-er-LKK">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kik-er-LKK" id="5No-71-RY7">
-                                            <frame key="frameInset" width="1000" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Hx-9E-ZCg">
-                                                    <frame key="frameInset" minX="164" minY="12" width="91" height="20"/>
+                                                    <frame key="frameInset" minX="15" minY="12" width="91" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1000ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nW1-yH-qKX">
-                                                    <frame key="frameInset" minX="261" minY="12" width="51" height="20"/>
+                                                    <frame key="frameInset" minX="112" minY="12" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2034,22 +2135,22 @@ for this Flight</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aircraftCell" textLabel="EbB-bz-kAx" detailTextLabel="eSj-Ew-X4F" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="dA7-TV-pZj">
-                                        <rect key="frame" x="0.0" y="99.5" width="1000" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="aircraftCell" textLabel="EbB-bz-kAx" detailTextLabel="eSj-Ew-X4F" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="dA7-TV-pZj">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dA7-TV-pZj" id="Sf2-hJ-gr6">
-                                            <frame key="frameInset" width="1000" height="59"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Drone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EbB-bz-kAx">
-                                                    <frame key="frameInset" minX="164" minY="13" width="73" height="20"/>
+                                                    <frame key="frameInset" minX="15" minY="13" width="73" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Make and Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eSj-Ew-X4F">
-                                                    <frame key="frameInset" minX="164" minY="33" width="86" height="14"/>
+                                                    <frame key="frameInset" minX="15" minY="33" width="86" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2058,11 +2159,11 @@ for this Flight</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="airMapCell" rowHeight="44" id="kOH-G1-rAz">
-                                        <rect key="frame" x="0.0" y="159.5" width="1000" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="airMapCell" rowHeight="44" id="kOH-G1-rAz">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kOH-G1-rAz" id="Mvt-bS-Hzr">
-                                            <frame key="frameInset" width="1000" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airmap_share_logo" translatesAutoresizingMaskIntoConstraints="NO" id="J0q-Fc-eam"/>
@@ -2125,14 +2226,14 @@ for this Flight</string>
                                 <color key="tintColor" red="0.53333333329999999" green="0.85882352939999995" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="permitNameCell" textLabel="FUn-yd-J9S" style="IBUITableViewCellStyleDefault" id="zF6-37-xOx">
-                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zF6-37-xOx" id="hlG-CU-dXR">
-                                            <frame key="frameInset" width="818" height="43"/>
+                                            <frame key="frameInset" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Permit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FUn-yd-J9S">
-                                                    <frame key="frameInset" minX="164" width="654" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2146,21 +2247,21 @@ for this Flight</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="permitDetailCell" textLabel="Iq8-jx-S7U" detailTextLabel="cPb-RR-ZAS" style="IBUITableViewCellStyleValue1" id="BHr-BC-pJc">
-                                        <rect key="frame" x="0.0" y="99.5" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BHr-BC-pJc" id="n6S-tt-0jJ">
-                                            <frame key="frameInset" width="1000" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Student ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iq8-jx-S7U">
-                                                    <frame key="frameInset" minX="164" minY="12" width="77" height="20"/>
+                                                    <frame key="frameInset" minX="15" minY="12" width="77" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AA1234567" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cPb-RR-ZAS">
-                                                    <frame key="frameInset" minX="751" minY="12" width="85" height="20"/>
+                                                    <frame key="frameInset" minX="275" minY="12" width="85" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2284,14 +2385,14 @@ for this Flight</string>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="digitalCell" textLabel="7ki-Pk-vZf" style="IBUITableViewCellStyleDefault" id="gfc-Cw-7hw">
-                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gfc-Cw-7hw" id="gpq-4A-BBZ">
-                                            <frame key="frameInset" width="1000" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Authority Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7ki-Pk-vZf">
-                                                    <frame key="frameInset" minX="164" width="672" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2302,21 +2403,21 @@ for this Flight</string>
                                         <color key="tintColor" red="0.98823529409999999" green="0.29803921570000003" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noDigitalCell" textLabel="sOI-To-hV4" detailTextLabel="bcF-gu-B7s" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="T3p-bb-YLE">
-                                        <rect key="frame" x="0.0" y="99.5" width="1000" height="55"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T3p-bb-YLE" id="IMm-74-B9d">
-                                            <frame key="frameInset" width="1000" height="54.5"/>
+                                            <frame key="frameInset" width="375" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Authority Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sOI-To-hV4">
-                                                    <frame key="frameInset" minX="164" minY="9" width="119" height="19.5"/>
+                                                    <frame key="frameInset" minX="15" minY="8" width="119" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bcF-gu-B7s">
-                                                    <frame key="frameInset" minX="164" minY="28.5" width="39.5" height="18"/>
+                                                    <frame key="frameInset" minX="15" minY="28" width="40" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2479,7 +2580,7 @@ for this Flight</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpE-RR-XcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-484" y="1170"/>
+            <point key="canvasLocation" x="-1439" y="1315"/>
         </scene>
         <!--Air MapFAQ View Controller-->
         <scene sceneID="qbD-mz-Bf5">

@@ -10,6 +10,12 @@ protocol Dequeueable {
 	static var reuseIdentifier: String { get }
 }
 
+extension Dequeueable {
+	static var reuseIdentifier: String {
+		return String(Self)
+	}
+}
+
 protocol ObjectAssignable {
 	associatedtype ObjectType
 	func setObject(object: ObjectType?)
