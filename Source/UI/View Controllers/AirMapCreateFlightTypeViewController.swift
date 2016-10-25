@@ -81,6 +81,7 @@ class AirMapCreateFlightTypeViewController: UIViewController {
 	
 	@IBOutlet var flightTypeButtons: [AirMapFlightTypeButton]!
 	@IBOutlet var nextButton: UIButton!
+	@IBOutlet var inputViewContainer: UIView!
 	
 	private let drawingOverlayView = AirMapDrawingOverlayView()
 	private let editingOverlayView = AirMapPointEditingOverlay()
@@ -99,7 +100,7 @@ class AirMapCreateFlightTypeViewController: UIViewController {
 	private let disposeBag = DisposeBag()
 	
 	override var inputAccessoryView: UIView? {
-		return nextButton
+		return inputViewContainer
 	}
 	
 	private static let bufferFormatter: NSNumberFormatter = {
