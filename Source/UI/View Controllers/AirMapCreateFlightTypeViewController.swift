@@ -705,7 +705,7 @@ extension AirMapCreateFlightTypeViewController {
 		case .Path:
 			let pathCoordinates = controlPoints.value.map { $0.coordinate }
 			let lineString = LineString(geometry: pathCoordinates)
-			guard let bufferedPath = SwiftTurf.buffer(lineString, distance: radius) else { return }
+			guard let bufferedPath = SwiftTurf.buffer(lineString, distance: radius / 2) else { return }
 			let proposedPoints = bufferedPath.geometry.map {
 				$0.map { mapView.convertCoordinate($0, toPointToView: mapView)
 				}
@@ -750,7 +750,7 @@ extension AirMapCreateFlightTypeViewController {
 			
 			flight.geometry = pathGeometry
 			flight.coordinate = coordinates.first!
-			flight.buffer = buffer
+			flight.buffer = buffer / 2
 			
 			if let annotations = flight.annotationRepresentations() {
 				mapView.addAnnotations(annotations)
