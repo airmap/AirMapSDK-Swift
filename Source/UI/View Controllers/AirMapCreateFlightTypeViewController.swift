@@ -839,17 +839,22 @@ extension AirMapCreateFlightTypeViewController: DrawingOverlayDelegate {
 		
 		let bottomPadding: CGFloat
 		
-		switch selectedGeoType.value {
-		case .Path:
-			guard geometry.count > 1 else { return }
-		case .Polygon:
-			guard geometry.count > 2 else { return }
-		case .Point:
-			fatalError()
-		}
-		
 		let coordinates = geometry.map { point in
 			mapView.convertPoint(point, toCoordinateFromView: drawingOverlayView)
+		}
+
+		// Validate drawn input
+		// Discard shapes not meeting minimum/maximum number of points
+		switch selectedGeoType.value {
+		case .Path:
+			guard coordinates.count > 1 && coordinates.count <= 25 else { return }
+		case .Polygon:
+			guard coordinates.count > 2 else { return }
+			// Discard polygons with too many self-intersections
+			let polygon = Polygon(geometry: [coordinates])
+			guard SwiftTurf.kinks(polygon)?.features.count <= 5 else { return }
+		case .Point:
+			fatalError("Point-based shapes don't draw freehand geometry")
 		}
 		
 		let vertexControlPoints: [ControlPoint] = coordinates.map {
