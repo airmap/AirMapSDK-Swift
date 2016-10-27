@@ -284,6 +284,8 @@ extension AirMapCreateFlightTypeViewController {
 		
 		mapView.centerCoordinate = flight.coordinate
 		mapView.configure(layers: [], theme: .Standard)
+		mapView.minimumZoomLevel = 8
+		mapView.maximumZoomLevel = 22
 		mapView.delegate = mapViewDelegate
 		mapViewDelegate.controlPointDelegate = self
 		
