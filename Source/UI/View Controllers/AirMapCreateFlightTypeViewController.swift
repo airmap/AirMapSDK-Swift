@@ -385,14 +385,23 @@ extension AirMapCreateFlightTypeViewController {
 		
 		case .Panning:
 			
+			// No existing shape
 			if controlPoints.value.count == 0 {
 				
-				toolTip.text = "Tap the hand icon to freehand draw any shape."
+				switch selectedGeoType.value {
+				case .Path:
+					toolTip.text = "Tap the hand icon to freehand draw any path."
+				case .Polygon:
+					toolTip.text = "Tap the hand icon to freehand draw any area."
+				case .Point:
+					toolTip.text = "Drag the center point to position your flight area."
+				}
 				actionButton.setImage(drawIcon, forState: .Normal)
 				actionButton.setImage(drawIconSelected, forState: .Highlighted)
 				actionButton.setImage(drawIconSelected, forState: .Selected)
 				actionButton.addTarget(self, action: #selector(toggleDrawing), forControlEvents: .TouchUpInside)
 				
+			// Has existing shape
 			} else {
 				
 				let coordinates = controlPoints.value
@@ -431,7 +440,7 @@ extension AirMapCreateFlightTypeViewController {
 				toolTip.text = "Draw a freehand path"
 				drawingOverlayView.tolerance = 8
 			case .Polygon:
-				toolTip.text = "Draw a freehand shape"
+				toolTip.text = "Draw a freehand area"
 				drawingOverlayView.tolerance = 11
 			case .Point:
 				fatalError()
