@@ -8,7 +8,7 @@
 
 import RxSwift
 
-public protocol AirMapFlightPlanDelegate {
+public protocol AirMapFlightPlanDelegate: class {
 
 	func airMapFlightPlanDidCreate(flight: AirMapFlight)
 	func airMapFlightPlanDidEncounter(error: NSError)
@@ -16,7 +16,7 @@ public protocol AirMapFlightPlanDelegate {
 
 public class AirMapFlightPlanNavigationController: UINavigationController {
 
-	var flightPlanDelegate: AirMapFlightPlanDelegate!
+	weak var flightPlanDelegate: AirMapFlightPlanDelegate!
 
 	let flight = Variable(AirMapFlight())
 	let status = Variable(nil as AirMapStatus?)

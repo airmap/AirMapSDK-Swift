@@ -11,14 +11,14 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-protocol AirMapPhoneCountrySelectorDelegate {
+protocol AirMapPhoneCountrySelectorDelegate: class {
 	func phoneCountrySelectorDidSelect(country name: String, country code: String)
 	func phoneCountrySelectorDidCancel()
 }
 
 class AirMapPhoneCountryViewController: UITableViewController {
 	
-	var selectionDelegate: AirMapPhoneCountrySelectorDelegate?
+	weak var selectionDelegate: AirMapPhoneCountrySelectorDelegate?
 	
 	var locale: NSLocale!
 	var selectedCountryIdentifier: String!

@@ -6,13 +6,13 @@
 //  Copyright © 2016 AirMap, Inc. All rights reserved.
 //
 
-protocol AirMapPermitDecisionFlowDelegate {
+protocol AirMapPermitDecisionFlowDelegate: class {
 	func decisionFlowDidSelectPermit(permit: AirMapAvailablePermit, requiredBy advisory: AirMapStatusAdvisory, with customProperties: [AirMapPilotPermitCustomProperty])
 }
 
 class AirMapPermitDecisionNavController: UINavigationController {
 
-	var permitDecisionFlowDelegate: AirMapPermitDecisionFlowDelegate!
+	weak var permitDecisionFlowDelegate: AirMapPermitDecisionFlowDelegate!
 	
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return .LightContent

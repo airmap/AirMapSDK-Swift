@@ -10,7 +10,7 @@ import Mapbox
 
 class AirMapMapboxMapViewDelegate: NSObject, MGLMapViewDelegate {
 	
-	var controlPointDelegate: ControlPointDelegate?
+	weak var controlPointDelegate: ControlPointDelegate?
 	
 	func mapView(mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
 		mapView.hideObscuredMidPointControls()

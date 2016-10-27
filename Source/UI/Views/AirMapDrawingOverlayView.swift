@@ -9,13 +9,13 @@
 import UIKit
 import SwiftSimplify
 
-protocol DrawingOverlayDelegate {
+protocol DrawingOverlayDelegate: class {
 	func overlayDidDraw(geometry: [CGPoint])
 }
 
 class AirMapDrawingOverlayView: UIView {
 	
-	var delegate: DrawingOverlayDelegate?
+	weak var delegate: DrawingOverlayDelegate?
 	
 	var tolerance: Float = 10
 	var discardsDuplicateClosingPoint = false

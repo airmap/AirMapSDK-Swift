@@ -112,11 +112,6 @@ class AirMapCreateFlightTypeViewController: UIViewController {
 		return $0
 	}(NSNumberFormatter())
 	
-	
-	deinit {
-		print("deinit", self)
-	}
-
 }
 
 extension AirMapCreateFlightTypeViewController {
@@ -206,8 +201,8 @@ extension AirMapCreateFlightTypeViewController {
 			.addDisposableTo(disposeBag)
 	
 		let snappedBuffer = bufferSlider.rx_value.asDriver()
-			.map(sliderValueToBuffer)
-		
+			.map(unowned(self, $.sliderValueToBuffer))
+
 		snappedBuffer.map { $0.displayString }
 			.drive(bufferValueLabel.rx_text)
 			.addDisposableTo(disposeBag)
@@ -225,7 +220,7 @@ extension AirMapCreateFlightTypeViewController {
 			.combineLatest(geoType, coordinates, buffer.asDriver()) { [unowned self] geoType, coordinates, buffer in
 				(geoType, coordinates, buffer, self.geometryValidation(geoType, coordinates: coordinates))
 			}
-	
+
 		validatedInput
 			.driveNext(unowned(self, $.drawFlightArea))
 			.addDisposableTo(disposeBag)

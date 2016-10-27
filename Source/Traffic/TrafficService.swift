@@ -30,7 +30,7 @@ internal class TrafficService: MQTTSessionDelegate {
 		case SubscriptionFailed
 	}
 
-	internal var delegate: AirMapTrafficObserver?
+	internal weak var delegate: AirMapTrafficObserver?
 
 	internal var authToken: String? {
 		set { client.password = authToken }

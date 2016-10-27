@@ -121,7 +121,7 @@ class AirMapCreateAircraftViewController: UITableViewController {
 		}
 
 		action.doOnCompleted { [weak self] _ in
-				self?.navigationController?.aircraftDelegate
+				self?.navigationController?.aircraftDelegate?
 					.aircraftNavController(self!.navigationController!, didCreateOrModify: self!.aircraft)
 			}
 			.subscribe()

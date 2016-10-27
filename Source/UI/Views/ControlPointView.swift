@@ -25,7 +25,7 @@ class ControlPoint: MGLPointAnnotation {
 	}
 }
 
-protocol ControlPointDelegate {
+protocol ControlPointDelegate: class {
 	func didStartDragging(controlPoint: ControlPointView)
 	func didDrag(controlPoint: ControlPointView, to point: CGPoint)
 	func didEndDragging(controlPoint: ControlPointView)
@@ -33,7 +33,7 @@ protocol ControlPointDelegate {
 
 class ControlPointView: MGLAnnotationView {
 	
-	var delegate: ControlPointDelegate?
+	weak var delegate: ControlPointDelegate?
 	
 	var controlPoint: ControlPoint? {
 		return annotation as? ControlPoint

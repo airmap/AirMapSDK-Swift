@@ -27,7 +27,7 @@ class AirMapAuthSession {
 	var enableCertificatePinning: Bool = false
 	var userId: String = ""
 	var expiresAt: NSDate!
-	var delegate: AirMapAuthSessionDelegate?
+	weak var delegate: AirMapAuthSessionDelegate?
 
 	private let disposeBag = DisposeBag()
 

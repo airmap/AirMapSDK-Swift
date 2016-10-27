@@ -6,7 +6,7 @@
 //  Copyright © 2016 AirMap, Inc. All rights reserved.
 //
 
-@objc public protocol AirMapAuthSessionDelegate {
+@objc public protocol AirMapAuthSessionDelegate: class {
 	func airmapSessionShouldAuthenticate()
 	optional func airMapAuthSessionDidAuthenticate(pilot: AirMapPilot)
 	func airMapAuthSessionAuthenticationDidFail(error: NSError)

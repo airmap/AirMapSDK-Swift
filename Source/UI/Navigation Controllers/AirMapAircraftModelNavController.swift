@@ -6,12 +6,12 @@
 //  Copyright © 2016 AirMap, Inc. All rights reserved.
 //
 
-public protocol AirMapAircraftModelSelectionDelegate {
+public protocol AirMapAircraftModelSelectionDelegate: class {
 	
 	func didSelectAircraftModel(model: AirMapAircraftModel?)
 }
 
 public class AirMapAircraftModelNavController: UINavigationController {
 	
-	public var aircraftModelSelectionDelegate: AirMapAircraftModelSelectionDelegate?
+	public weak var aircraftModelSelectionDelegate: AirMapAircraftModelSelectionDelegate?
 }
