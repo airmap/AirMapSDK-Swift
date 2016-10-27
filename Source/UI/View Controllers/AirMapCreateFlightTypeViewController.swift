@@ -558,6 +558,7 @@ extension AirMapCreateFlightTypeViewController {
 		
 		controlPoints.value = []
 		state.value = .Panning
+		(navigationController as! AirMapFlightPlanNavigationController).status.value = nil
 	}
 		
 	@IBAction func dismiss() {
