@@ -21,7 +21,7 @@ extension UIColor {
 	}
 	
 	class func airMapGreen() -> UIColor {
-		return UIColor(red: 126.0/255.0, green: 211.0/255.0, blue: 33.0/255.0, alpha: 1.0)
+		return UIColor(red: 108.0/255.0, green: 194.0/255.0, blue: 74.0/255.0, alpha: 1.0)
 	}
 	
 	class func airMapYellow() -> UIColor {
