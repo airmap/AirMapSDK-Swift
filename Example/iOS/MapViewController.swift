@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
 	private func showAuthController() {
 
 		let authViewController = AirMap.authViewController(handleLogin)
-//		login.registerLogo("<YOUR_LOGO_CONNECT_WITH_AIRMAP>", bundle: NSBundle.mainBundle())
+//		authViewController.registerLogo("<YOUR_LOGO_CONNECT_WITH_AIRMAP>", bundle: NSBundle.mainBundle())
 		
 		presentViewController(authViewController, animated: true, completion: nil)
 	}
@@ -73,9 +73,10 @@ class MapViewController: UIViewController {
 			if pilot.phoneVerified == false {
 				let verification = AirMap.phoneVerificationViewController(pilot, phoneVerificationDelegate: self)
 				self.presentViewController(verification, animated: true, completion: nil)
+			} else {
+				self.addFlight()
 			}
 		})
-
 	}
 }
 
