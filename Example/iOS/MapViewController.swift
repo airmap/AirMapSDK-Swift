@@ -32,7 +32,7 @@ class MapViewController: UIViewController {
 		if let flightPlanController = AirMap.flightPlanViewController(location: mapView.centerCoordinate, flightPlanDelegate: self) {
 			presentViewController(flightPlanController, animated: true, completion: nil)
 		} else {
-			showLogin()
+			showAuthController()
 		}
 	}
 	
@@ -47,12 +47,12 @@ class MapViewController: UIViewController {
 			.addDisposableTo(disposeBag)
 	}
 
-	private func showLogin() {
+	private func showAuthController() {
 
-		let login = AirMap.authViewController(handleLogin)
-//		login.registerLogo("aircraft", bundle: NSBundle.mainBundle())
+		let authViewController = AirMap.authViewController(handleLogin)
+//		login.registerLogo("<YOUR_LOGO_CONNECT_WITH_AIRMAP>", bundle: NSBundle.mainBundle())
 		
-		presentViewController(login, animated: true, completion: nil)
+		presentViewController(authViewController, animated: true, completion: nil)
 	}
 	
 	private func handleLogin(pilot: AirMapPilot?, error: NSError?) {
@@ -63,6 +63,7 @@ class MapViewController: UIViewController {
 		}
 		
 		dismissViewControllerAnimated(true, completion: {
+			
 			if pilot.phoneVerified == false {
 				let verification = AirMap.phoneVerificationViewController(pilot, phoneVerificationDelegate: self)
 				self.presentViewController(verification, animated: true, completion: nil)
