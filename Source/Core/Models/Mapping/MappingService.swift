@@ -278,9 +278,9 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 		case .Wildfires:
 			return .Wildfires
 		case .HazardAreas:
-			return .HazardAreas
+			return .HazardArea
 		case .RecreationalAreas:
-			return .RecreationalAreas
+			return .RecreationalArea
 		}
 	}
 }
