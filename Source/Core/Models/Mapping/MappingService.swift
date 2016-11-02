@@ -15,6 +15,8 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 
 	case TFRs
 	case Wildfires
+	case HazardAreas
+	case RecreationalAreas
 	case Prohibited
 	case Restricted
 	case NationalParks
@@ -61,6 +63,10 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "tfrs"
 		case .Wildfires:
 			return "wildfires"
+		case HazardAreas:
+			return "hazard_areas"
+		case RecreationalAreas:
+			return "aerial_recreational_areas"
 		case .Prohibited:
 			return "sua_prohibited"
 		case .Restricted:
@@ -105,6 +111,10 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "TFRs"
 		case .Wildfires:
 			return "Wildfires"
+		case .HazardAreas:
+			return "Hazard Areas"
+		case .RecreationalAreas:
+			return "Aerial Recreational Areas"
 		case .Prohibited, .Restricted:
 			return "Special Use Airspace"
 		case .NationalParks:
@@ -123,6 +133,7 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Airport"
 		case .ClassB, .ClassC, .ClassD, .ClassE, .EssentialAirspace:
 			return "Controlled Airspace"
+
 		}
 	}
 
@@ -133,6 +144,10 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Temporary Flight Restriction"
 		case .Wildfires:
 			return "Wildfires"
+		case .HazardAreas:
+			return "Hazard Areas"
+		case .RecreationalAreas:
+			return "Aerial Recreational Areas"
 		case .Prohibited:
 			return "Prohibited Area"
 		case .Restricted:
@@ -177,6 +192,10 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Temporary flight restriction"
 		case .Wildfires:
 			return "Wildfires"
+		case .HazardAreas:
+			return "Hazard Areas"
+		case .RecreationalAreas:
+			return "Aerial Recreational Areas"
 		case .Prohibited:
 			return "Prohibited airspace"
 		case .Restricted:
@@ -256,6 +275,10 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 
 		case .Wildfires:
 		     return .Wildfires
+		case .HazardAreas:
+			return .HazardAreas
+		case .RecreationalAreas:
+			return .RecreationalAreas
 		}
 	}
 }
@@ -272,6 +295,8 @@ public enum AirMapAirspaceType: Int {
 	case SpecialUse
 	case TFR
 	case Wildfires
+	case HazardAreas
+	case RecreationalAreas
 
 	public var type: String {
 
@@ -284,6 +309,8 @@ public enum AirMapAirspaceType: Int {
 			return "park"
 		case PowerPlant:
 			return "power_plant"
+		case .Hospital:
+			return "hospital"
 		case ControlledAirspace:
 			return "controlled_airspace"
 		case School:
@@ -294,8 +321,10 @@ public enum AirMapAirspaceType: Int {
 			return "tfr"
 		case Wildfires:
 			return "wildfire"
-		case Hospital:
-			return "hospital"
+		case HazardAreas:
+			return "hazard_area"
+		case RecreationalAreas:
+			return "recreational_area"
 		}
 	}
 
@@ -321,6 +350,10 @@ public enum AirMapAirspaceType: Int {
 		case Wildfires:
 			return "Wildfires"
 		case .Hospital:
+			return "Hospitals"
+		case .HazardAreas:
+			return "Hospitals"
+		case .RecreationalAreas:
 			return "Hospitals"
 		}
 	}
@@ -363,6 +396,10 @@ public enum AirMapAirspaceType: Int {
 			return .TFR
 		case AirMapAirspaceType.Wildfires.type:
 			return .Wildfires
+		case AirMapAirspaceType.HazardAreas.type:
+			return .HazardAreas
+		case AirMapAirspaceType.RecreationalAreas.type:
+			return .RecreationalAreas
 		default:
 			return nil
 		}
