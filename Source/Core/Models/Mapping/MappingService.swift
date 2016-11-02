@@ -12,7 +12,7 @@ Supported Map Layers
 
 */
 public enum AirMapLayerType: Int, CustomStringConvertible {
-
+	
 	case TFRs
 	case Wildfires
 	case HazardAreas
@@ -34,7 +34,7 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 	case ClassD
 	case ClassE
 	case EssentialAirspace
-
+	
 	public static let allLayerTypes = [
 		TFRs,
 		Wildfires,
@@ -55,9 +55,9 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 		AirportsCommercialPrivate,
 		AirportsRecreationalPrivate
 	]
-
+	
 	public var type: String {
-
+		
 		switch self {
 		case .TFRs:
 			return "tfrs"
@@ -103,9 +103,9 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "class_b,class_c,class_d,class_e0"
 		}
 	}
-
+	
 	public var category: String {
-
+		
 		switch self {
 		case .TFRs:
 			return "TFRs"
@@ -133,12 +133,12 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Airport"
 		case .ClassB, .ClassC, .ClassD, .ClassE, .EssentialAirspace:
 			return "Controlled Airspace"
-
+			
 		}
 	}
-
+	
 	public var title: String {
-
+		
 		switch self {
 		case .TFRs:
 			return "Temporary Flight Restriction"
@@ -184,9 +184,9 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Essential Airspace (B, C, D & E)"
 		}
 	}
-
+	
 	public var description: String {
-
+		
 		switch self {
 		case .TFRs:
 			return "Temporary flight restriction"
@@ -232,9 +232,9 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			return "Essential Airspace (B, C, D & E)"
 		}
 	}
-
+	
 	public var airSpaceType: AirMapAirspaceType {
-
+		
 		switch self {
 		case .AirportsCommercial,
 		     .AirportsRecreational,
@@ -244,37 +244,37 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 			
 		case .Heliports :
 			return .Heliport
-
+			
 		case .NationalParks,
 		     .NOAA:
-
+			
 			return AirMapAirspaceType.Park
-
+			
 		case .ClassB,
 		     .ClassC,
 		     .ClassD,
 		     .ClassE,
 		     .EssentialAirspace:
 			return .ControlledAirspace
-
+			
 		case .Hospitals:
-		     return.Hospital
-
+			return.Hospital
+			
 		case .PowerPlants:
 			return .PowerPlant
-
+			
 		case .Schools:
 			return .School
-
+			
 		case .TFRs:
 			return .TFR
-
+			
 		case .Restricted,
 		     .Prohibited:
 			return .SpecialUse
-
+			
 		case .Wildfires:
-		     return .Wildfires
+			return .Wildfires
 		case .HazardAreas:
 			return .HazardAreas
 		case .RecreationalAreas:
@@ -284,7 +284,7 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 }
 
 public enum AirMapAirspaceType: Int {
-
+	
 	case Airport
 	case Heliport
 	case Park
@@ -297,9 +297,9 @@ public enum AirMapAirspaceType: Int {
 	case Wildfires
 	case HazardArea
 	case RecreationalArea
-
+	
 	public var type: String {
-
+		
 		switch self {
 		case Airport:
 			return "airport"
@@ -327,9 +327,9 @@ public enum AirMapAirspaceType: Int {
 			return "recreational_area"
 		}
 	}
-
+	
 	public var title: String {
-
+		
 		switch self {
 		case Airport:
 			return "Airport"
@@ -357,7 +357,7 @@ public enum AirMapAirspaceType: Int {
 			return "Recreational Area"
 		}
 	}
-
+	
 	public static let allAirspaceTypes: [AirMapAirspaceType] = [
 		.Airport,
 		.Heliport,
@@ -370,9 +370,9 @@ public enum AirMapAirspaceType: Int {
 		.TFR,
 		.Wildfires
 	]
-
+	
 	public static func airspaceTypeFromName(name: String) -> AirMapAirspaceType? {
-
+		
 		switch name {
 		case AirMapAirspaceType.Airport.type:
 			return .Airport
@@ -412,12 +412,12 @@ Supported Map Themes
 
 */
 public enum AirMapMapTheme: Int {
-
+	
 	case Standard
 	case Dark
 	case Light
 	case Satellite
-
+	
 	public var name: String {
 		switch self {
 		case .Standard:
@@ -430,28 +430,28 @@ public enum AirMapMapTheme: Int {
 			return "satellite"
 		}
 	}
-
+	
 }
 
 internal class MappingService {
-
+	
 	/**
-
+	
 	Generates and returns map tile source url based upon Map Layers & Theme.
-
+	
 	- parameter layers: An array of AirMapMapLayer's.
 	- parameter theme: An AirMapMapTheme.
-
+	
 	- returns: NSURL?
-
+	
 	*/
 	func tileSourceUrl(layers: [AirMapLayerType], theme: AirMapMapTheme) -> NSURL? {
-
+		
 		let apiKey = AirMap.configuration.airMapApiKey
 		let tiles  = layers.count == 0 ? "_-_" : layers.flatMap {$0.type}.joinWithSeparator(",")
 		let urlString = Config.AirMapApi.mapTilesUrl + "/\(tiles)?&theme=\(theme.name)&apikey=\(apiKey)&token=\(apiKey)"
-
+		
 		return  NSURL(string: urlString)
 	}
-
+	
 }
