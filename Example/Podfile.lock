@@ -65,7 +65,7 @@ PODS:
   - Lock/WebView (1.27.1):
     - Lock/CoreUI
   - Log (0.5)
-  - Mapbox-iOS-SDK (3.4.0-alpha.4)
+  - Mapbox-iOS-SDK (3.3.4)
   - Masonry (0.6.4)
   - Mockingjay (1.3.1):
     - Mockingjay/Core (= 1.3.1)
@@ -89,24 +89,20 @@ PODS:
   - SimpleKeychain (0.7.0)
   - SwiftMQTT (1.0.2)
   - SwiftSimplify (0.1.2)
-  - SwiftTurf (1.0.0)
+  - SwiftTurf (0.1.0)
   - URITemplate (1.4.0)
 
 DEPENDENCIES:
   - AirMapSDK (from `../`)
-  - Mapbox-iOS-SDK (from `https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-alpha.4/platform/ios/Mapbox-iOS-SDK.podspec`)
+  - Mapbox-iOS-SDK
   - Mockingjay
   - Nimble
   - Quick
-  - SwiftTurf (from `../../SwiftTurf/`)
+  - SwiftTurf
 
 EXTERNAL SOURCES:
   AirMapSDK:
     :path: "../"
-  Mapbox-iOS-SDK:
-    :podspec: https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-alpha.4/platform/ios/Mapbox-iOS-SDK.podspec
-  SwiftTurf:
-    :path: "../../SwiftTurf/"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -118,7 +114,7 @@ SPEC CHECKSUMS:
   libPhoneNumber-iOS: 9f083847f8cb9b81064cff2ed2c98cbf18d9f9f2
   Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
   Log: 5972312cb85cffbc56407b612936b610eb4af8a5
-  Mapbox-iOS-SDK: b14d722619c333740fdd77818770876df53b70e1
+  Mapbox-iOS-SDK: b22da0d9703fcfb0a8b592b6a7f6a21264fe44b0
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   Mockingjay: e6ffe6106591d2555025842b1b655decc124f0ca
   Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
@@ -132,9 +128,9 @@ SPEC CHECKSUMS:
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
   SwiftMQTT: 43d17c8b49c77927530607b9d5fd836d02889cf1
   SwiftSimplify: 93b4a4504a5c6c549c1c1e1ca6745c0a6670bb04
-  SwiftTurf: eb81c87ed9e5bb862d215d1485a823bf452044c6
+  SwiftTurf: 6439e391910890c0aeb0c5003a4a50b20f6251c2
   URITemplate: e2a2a0f9d398834fde67214b491c2c925c9baa06
 
-PODFILE CHECKSUM: abb2ee17db1d94474dfdfca2deee52c730695ddc
+PODFILE CHECKSUM: 3b89ac40fead0f3104895af627c170a9ec87b5ad
 
 COCOAPODS: 1.1.1

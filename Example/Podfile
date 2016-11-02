@@ -3,8 +3,8 @@ use_frameworks!
 target 'AirMapSDK-Example-iOS' do
 	platform :ios, '8.0'
 	pod 'AirMapSDK', :path => '../'
-	pod 'Mapbox-iOS-SDK', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.4.0-alpha.4/platform/ios/Mapbox-iOS-SDK.podspec'
-	pod 'SwiftTurf', :path => '../../SwiftTurf/'
+	pod 'Mapbox-iOS-SDK'
+	pod 'SwiftTurf'
 end
 
 target 'AirMapSDK-Example-macOS' do
