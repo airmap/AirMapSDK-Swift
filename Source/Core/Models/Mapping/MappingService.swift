@@ -38,6 +38,8 @@ public enum AirMapLayerType: Int, CustomStringConvertible {
 	public static let allLayerTypes = [
 		TFRs,
 		Wildfires,
+		HazardAreas,
+		RecreationalAreas,
 		Prohibited,
 		Restricted,
 		NationalParks,
@@ -368,7 +370,9 @@ public enum AirMapAirspaceType: Int {
 		.School,
 		.SpecialUse,
 		.TFR,
-		.Wildfires
+		.Wildfires,
+		.HazardArea,
+		.RecreationalArea
 	]
 	
 	public static func airspaceTypeFromName(name: String) -> AirMapAirspaceType? {
