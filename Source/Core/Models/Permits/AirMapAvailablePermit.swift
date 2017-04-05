@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class AirMapAvailablePermit: Hashable, Equatable {
+public class AirMapAvailablePermit: NSObject {
 
 	public internal(set) var id = ""
 	public fileprivate(set) var name = ""
@@ -20,7 +20,7 @@ public class AirMapAvailablePermit: Hashable, Equatable {
 	public internal(set) var customProperties = [AirMapPilotPermitCustomProperty]()
 	public internal(set) var organizationId = ""
 	
-	internal init() {}
+	internal override init() {}
 	public required init?(map: Map) {}
 	
 	fileprivate static let validityFormatter: DateComponentsFormatter = {
@@ -37,7 +37,7 @@ public class AirMapAvailablePermit: Hashable, Equatable {
 		return AirMapAvailablePermit.validityFormatter.string(from: TimeInterval(minutes * 60))
 	}
 	
-	public var hashValue: Int {
+	public override var hashValue: Int {
 		return id.hashValue
 	}
 }

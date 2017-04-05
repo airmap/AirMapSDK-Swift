@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class AirMapStatusWeather {
+open class AirMapStatusWeather : NSObject {
 
 	open var condition: String!
 	open var wind: AirMapStatusWeatherWind!

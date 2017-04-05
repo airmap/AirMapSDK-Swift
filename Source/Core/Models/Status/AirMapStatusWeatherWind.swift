@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class AirMapStatusWeatherWind {
+open class AirMapStatusWeatherWind : NSObject {
 	
 	open var heading: Int = 0
 	open var speed: Int = 0 // km/h

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class AirMapStatusAdvisory: Hashable, Equatable {
+open class AirMapStatusAdvisory: NSObject {
 
 	open fileprivate(set) var id: String!
 	open fileprivate(set) var name: String = ""
@@ -42,11 +42,11 @@ open class AirMapStatusAdvisory: Hashable, Equatable {
 		}
 	}
 	
-	open var hashValue: Int {
+	open override var hashValue: Int {
 		return id.hashValue
 	}
 	
-	open func isEqual(_ object: Any?) -> Bool {
+	open override func isEqual(_ object: Any?) -> Bool {
 		if let object = object as? AirMapStatusAdvisory {
 			return object.id == self.id
 		} else {

@@ -8,14 +8,14 @@
 
 import ObjectMapper
 
-open class AirMapOrganization: Hashable, Equatable {
+open class AirMapOrganization: NSObject {
 
 	open fileprivate(set) var id: String!
 	open fileprivate(set) var name: String = ""
 	
 	public required init?(map: Map) {}
 	
-	open var hashValue: Int {
+	open override var hashValue: Int {
 		return id.hashValue
 	}
 }

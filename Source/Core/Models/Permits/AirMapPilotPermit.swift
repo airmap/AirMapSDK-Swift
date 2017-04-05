@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class AirMapPilotPermit: Hashable, Equatable {
+public class AirMapPilotPermit: NSObject {
 
 	public enum PermitStatus: String {
 		case accepted
@@ -27,11 +27,11 @@ public class AirMapPilotPermit: Hashable, Equatable {
 	public var permitDetails: AirMapPilotPermitShortDetails!
 	public var organization: AirMapOrganization?
 
-	public init() {}
+	public override init() {}
 	
 	public required init?(map: Map) {}
 	
-	public var hashValue: Int {
+	public override var hashValue: Int {
 		return id.isEmpty ? permitId.hashValue : id.hashValue
 	}
 	
