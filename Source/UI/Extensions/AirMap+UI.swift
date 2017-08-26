@@ -146,9 +146,13 @@ extension AirMap_UI {
 	
 	*/
 	public class func login(from viewController: UIViewController, with authHandler: @escaping AirMapAuthHandler) {
-		
+        guard let auth0ClientId = AirMap.configuration.auth0ClientId else {
+            AirMap.logger.warning("airmap.config.json is missing an Auth0 Client ID (auth0.client_id)")
+            return
+        }
+
 		Lock
-			.classic(clientId: AirMap.configuration.auth0ClientId, domain: Config.AirMapApi.Auth.ssoDomain)
+			.classic(clientId: auth0ClientId, domain: Config.AirMapApi.Auth.ssoDomain)
 			.withOptions { options in
 				options.scope = "openid offline_access"
 				options.parameters = ["device": Bundle.main.bundleIdentifier ?? "AirMap SDK iOS"]

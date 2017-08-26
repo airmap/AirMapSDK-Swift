@@ -21,7 +21,20 @@ public enum Result<T> {
 public class AirMap {
 	
 	// The current environment settings and configuration of the AirMap SDK
-	public internal(set) static var configuration = AirMapConfiguration.loadConfig()
+    private static var customConfiguration: AirMapConfiguration?
+
+    public static var configuration: AirMapConfiguration {
+        get {
+            if customConfiguration == nil {
+                customConfiguration = .default
+            }
+            return customConfiguration!
+        }
+
+        set {
+            customConfiguration = newValue
+        }
+    }
 
 	/// A JWT auth token that identifies the logged in user accessing the service. Required for all authenticated endpoints.
 	public static var authToken: String? {
