@@ -34,12 +34,13 @@ extension AirMap {
 	public class func phoneVerificationViewController(_ pilot: AirMapPilot, phoneVerificationDelegate: AirMapPhoneVerificationDelegate) -> AirMapPhoneVerificationNavController {
 		
 		let storyboard = UIStoryboard(name: "AirMapUI", bundle: AirMapBundle.ui)
-		let nav = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumber") as! AirMapPhoneVerificationNavController
-		nav.phoneVerificationDelegate = phoneVerificationDelegate
-		let phoneVerificationVC = nav.viewControllers.first as! AirMapPhoneVerificationViewController
+		let phoneNav = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumber") as! AirMapPhoneVerificationNavController
+		phoneNav.phoneVerificationDelegate = phoneVerificationDelegate
+
+		let phoneVerificationVC = phoneNav.viewControllers.first as! AirMapPhoneVerificationViewController
 		phoneVerificationVC.pilot = pilot
 		
-		return nav
+		return phoneNav
 	}
 	
 	/// Returns a navigation controller that creates or modifies an AirMapAircraft
