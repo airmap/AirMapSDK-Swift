@@ -64,4 +64,27 @@ public extension Color {
 		return .black
 	}
 
+	public static var primary: Color {
+		var primaryColor: Color?
+		if #available(iOS 11.0, *) {
+			primaryColor =  UIColor(named: "Primary")
+		}
+		return primaryColor ?? .airMapDarkGray
+	}
+
+	public static var secondary: Color {
+		var secondaryColor: Color?
+		if #available(iOS 11.0, *) {
+			secondaryColor =  UIColor(named: "Secondary")
+		}
+		return secondaryColor ?? .airMapDarkGray
+	}
+
+	public static var highlight: Color {
+		var highlightColor: Color?
+		if #available(iOS 11.0, *) {
+			highlightColor =  UIColor(named: "Highlight")
+		}
+		return highlightColor ?? .airMapLightBlue
+	}
 }
