@@ -36,7 +36,7 @@ open class AirMapNavBar: UINavigationBar {
 		isTranslucent = false
 		barStyle = .black
 		tintColor = .white
-		barTintColor = .airMapDarkGray
+		barTintColor = .primary
 	}
 	
 }
