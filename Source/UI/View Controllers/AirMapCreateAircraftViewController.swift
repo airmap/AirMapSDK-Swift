@@ -67,7 +67,9 @@ class AirMapCreateAircraftViewController: UITableViewController {
 			makeAndModelCell.accessoryType = .none
 			makeAndModelCell.textLabel?.alpha = 0.5
 		}
+		
 		setupBindings()
+		setupBranding()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -130,6 +132,10 @@ class AirMapCreateAircraftViewController: UITableViewController {
 			.disposed(by: disposeBag)
 	}
 	
+	fileprivate func setupBranding() {
+		nextButton.backgroundColor = .primary
+	}
+
 	// MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

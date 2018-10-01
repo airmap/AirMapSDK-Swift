@@ -57,6 +57,10 @@ open class AirMapPilotProfileField {
 class AirMapFormTextField: UITableViewCell {
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var label: UILabel!
+
+	override func awakeFromNib() {
+		label.textColor = .highlight
+	}
 }
 
 public class AirMapPilotProfileViewController: UITableViewController, AnalyticsTrackable {
@@ -89,6 +93,7 @@ public class AirMapPilotProfileViewController: UITableViewController, AnalyticsT
 		
 		setupTableView()
 		setupBindings()
+		setupBranding()
 	}
 	
 	public override func viewDidAppear(_ animated: Bool) {
@@ -262,6 +267,10 @@ public class AirMapPilotProfileViewController: UITableViewController, AnalyticsT
 			.disposed(by: disposeBag)
 	}
 	
+	fileprivate func setupBranding() {
+		saveButton.backgroundColor = .primary
+	}
+
 	@IBAction func savePilot() {
 		
 		trackEvent(.tap, label: "Save")

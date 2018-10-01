@@ -50,10 +50,12 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 		setupDefaultCountryCode()
 		setupPhoneNumberField()
 		setupBindings()
-		
+		setupBranding()
+
 		if let p = pilot.phone {
 			phone.text = PartialFormatter().formatPartial(p)
 		}
@@ -122,6 +124,10 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 			.disposed(by: disposeBag)
 	}
 	
+	fileprivate func setupBranding() {
+		submitButton.backgroundColor = .primary
+	}
+
 	fileprivate func setupDefaultCountryCode() {
 		regionCode = Locale.current.regionCode ?? "US"
 		country.text = Locale.current.localizedString(forRegionCode: regionCode) ?? "United States"
