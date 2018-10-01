@@ -110,10 +110,11 @@ extension AirMap {
 				options.closable = true
 			}
 			.withStyle { style in
-				style.logo = LazyImage(name: "airmap_login_logo", bundle: Bundle(for: AirMap.self))
+				let login_logo = UIImage(named: "login_logo", in: Bundle.main, compatibleWith: nil)
+				style.logo = (login_logo != nil) ? LazyImage(name: "login_logo", bundle: Bundle.main) : LazyImage(name: "airmap_login_logo", bundle: Bundle(for: AirMap.self))
 				style.hideTitle = true
 				style.headerColor = UIColor(white: 0.9, alpha: 1.0)
-				style.primaryColor = .airMapLightBlue
+				style.primaryColor = .primary
 			}
 			.onAuth { credentials in
 				authToken = credentials.idToken
