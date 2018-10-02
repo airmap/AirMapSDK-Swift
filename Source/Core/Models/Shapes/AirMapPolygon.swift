@@ -21,7 +21,7 @@
 import Foundation
 public class AirMapPolygon: AirMapGeometry {
 	
-	public var coordinates: [[Coordinate2D]]!
+	public var coordinates: [[Coordinate2D]]
 	
 	public var type: AirMapFlightGeometryType {
 		return .polygon
@@ -35,7 +35,7 @@ public class AirMapPolygon: AirMapGeometry {
 		
 		var params = [String: Any]()
 		
-		if (coordinates?.count ?? 0) >= 1 {
+		if coordinates.count >= 1 {
 			
 			let coordinates = self.coordinates.map { (coordinates) -> [Coordinate2D] in
 				coordinates.reduce([Coordinate2D]()) { (result, next) -> [Coordinate2D] in
