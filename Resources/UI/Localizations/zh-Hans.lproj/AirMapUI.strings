@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Make & Model"; ObjectID = "XDN-d5-eoX"; Note = "CREATE_AIRCRAFT_MAKE_AND_MODEL|Label for the row label that displays the Make and Model of an aircraft"; */
-"XDN-d5-eoX.text" = "生产厂家与型号";
+"XDN-d5-eoX.text" = "品牌&型号";
 
 /* Class = "UITextField"; placeholder = "Nickname"; ObjectID = "blN-px-yT6"; Note = "CREATE_AIRCRAFT_NICKNAME|Placeholder label for the textfield where a user inputs the nickname for an aircraft"; */
 "blN-px-yT6.placeholder" = "昵称";
@@ -8,13 +8,13 @@
 "K03-vU-4zj.normalTitle" = "保存";
 
 /* Class = "UINavigationItem"; title = "Create Aircraft"; ObjectID = "Z9F-I6-niw"; Note = "CREATE_AIRCRAFT_TITLE|Title for the view where you can create a new aircraft"; */
-"Z9F-I6-niw.title" = "创建无人机";
+"Z9F-I6-niw.title" = "创建飞机";
 
 /* Class = "UINavigationItem"; title = "Manufacturers"; ObjectID = "a84-JL-ndb"; Note = "MANUFACTURERS_TITLE|Title for the view that displays a list of all aircraft manufacturers"; */
-"a84-JL-ndb.title" = "厂家";
+"a84-JL-ndb.title" = "制造商";
 
 /* Class = "UINavigationItem"; title = "Models"; ObjectID = "9xB-Yl-FrO"; Note = "MODELS_TITLE|Title for the view that displays a list of all aircraft models"; */
-"9xB-Yl-FrO.title" = "模型";
+"9xB-Yl-FrO.title" = "型号";
 
 /* Class = "UINavigationItem"; title = "Select Country"; ObjectID = "dcW-Vd-KfC"; Note = "PHONE_COUNTRY_TITLE|Title for the view that allows a user to select their phone numbers country"; */
 "dcW-Vd-KfC.title" = "选择国家";
@@ -29,13 +29,13 @@
 "MVj-Qg-sch.title" = "验证电话号码";
 
 /* Class = "UILabel"; text = "By providing your number, you agree to receive texts about your flights at this number. Carrier message & data rates may apply.\n\nAirMap will send you a text message when your digital notice has been successfully submitted.\n"; ObjectID = "2Na-rR-yZi"; Note = "PHONE_VERIFICATION_HEADER|Copy describing the process of verifying your phone number"; */
-"2Na-rR-yZi.text" = "通过提供您的号码, 您同意接收有关您的飞行在这个数字的文本。可以应用载波消息和数据速率。当您的数字通知成功提交时, AirMap 将向您发送一条文本消息。";
+"2Na-rR-yZi.text" = "提供编号即表示您同意接收该编号对应的有关您飞行的文本。运营商信息和数据费率可能适用。\n\n当您的数字通知成功提交后，AirMap会向您发送一条短信。\n";
 
 /* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "vme-QM-SG8"; Note = "PHONE_VERIFICATION_PHONE|Placeholder label for the text field where a user types their phone number"; */
 "vme-QM-SG8.placeholder" = "电话号码";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "mhb-zV-IBV"; Note = "PHONE_VERIFICATION_SAVE_BUTTON|Title for button that saves and submits the users phone number for verification"; */
-"mhb-zV-IBV.normalTitle" = "提交";
+"mhb-zV-IBV.normalTitle" = "保存";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "lre-WH-pt9"; Note = "PHONE_VERIFICATION_SUBMIT_BUTTON|Title for button that allows the user to submit the SMS code for verification"; */
 "lre-WH-pt9.normalTitle" = "提交";
@@ -62,7 +62,7 @@
 "ERY-u7-YqH.normalTitle" = "提交";
 
 /* Class = "UINavigationItem"; title = "Verify Code"; ObjectID = "7C4-bp-tif"; Note = "SMS_LOGIN_CODE_TITLE|Title for the view where a user enters their SMS verification code"; */
-"7C4-bp-tif.title" = "验证代码";
+"7C4-bp-tif.title" = "验证码";
 
 /* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "61d-PT-JN7"; Note = "SMS_LOGIN_PHONE_NUMBER_PLACEHOLDER|Label for field that the user types their phone number into"; */
 "61d-PT-JN7.placeholder" = "电话号码";

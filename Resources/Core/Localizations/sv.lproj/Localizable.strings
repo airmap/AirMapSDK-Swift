@@ -1,8 +1,8 @@
 /* Label for advisories that are stup to receive digital notice */
-"ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "Accepterar Digital Notice";
+"ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "Accepterar digitalt meddelande";
 
 /* Displayed when an advisory has not provided a contact phone */
-"ADVISORY_PHONE_NOT_PROVIDED" = "Inget telefonnummer finns";
+"ADVISORY_PHONE_NOT_PROVIDED" = "Telefonnummer inte angivet";
 
 /* Label and format for displaying the end time of temporary flight restriction */
 "ADVISORY_TFR_ENDS_FORMAT" = "Slutar: %1$@";
@@ -14,10 +14,10 @@
 "ADVISORY_TFR_STARTS_FORMAT" = "Startar: %1$@";
 
 /* Format and unit for wildfire advisory in the area unit acres */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ Tunnland";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ tunnland";
 
 /* Format and unit for wildfire advisory in the area unit hectares */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ Hektar";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ hektar";
 
 /* Label for wildfire advisory cells where size is unknown */
 "ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "Storlek okänd";
@@ -32,16 +32,16 @@
 "AIRCRAFT_TITLE_UPDATE_EXISTING" = "Uppdatera flygplan";
 
 /* Name for airspace type Aerial Recreational Area */
-"AIRSPACE_TYPE_AERIAL_REC_AREA" = "Rekreationsområde";
+"AIRSPACE_TYPE_AERIAL_REC_AREA" = "Rekreationsområde i luften";
 
 /* Name for airspace type Airport */
 "AIRSPACE_TYPE_AIRPORT" = "Flygplats";
 
 /* Name for airspace type AMA Field (Academy of Model Aeronautics) */
-"AIRSPACE_TYPE_AMA_FIELD" = "AMA fält";
+"AIRSPACE_TYPE_AMA_FIELD" = "AMA field";
 
 /* Name for airspace type City */
-"AIRSPACE_TYPE_CITY" = "Staden";
+"AIRSPACE_TYPE_CITY" = "Stad";
 
 /* Name for airspace type Controlled Airspace */
 "AIRSPACE_TYPE_CONTROLLED" = "Kontrollerat luftrum";
@@ -50,22 +50,22 @@
 "AIRSPACE_TYPE_COUNTRY" = "Land";
 
 /* Name for airspace type County */
-"AIRSPACE_TYPE_COUNTY" = "County";
+"AIRSPACE_TYPE_COUNTY" = "Län";
 
 /* Name for airspace type Custom */
-"AIRSPACE_TYPE_CUSTOM" = "Anpassad";
+"AIRSPACE_TYPE_CUSTOM" = "Anpassat";
 
 /* Name for airspace type Embassy */
-"AIRSPACE_TYPE_EMBASSY" = "Ambassaden";
+"AIRSPACE_TYPE_EMBASSY" = "Ambassad";
 
 /* Name for airspace type Emergency */
-"AIRSPACE_TYPE_EMERGENCY" = "Aktivitet i första responder";
+"AIRSPACE_TYPE_EMERGENCY" = "Nödutryckningsaktivitet";
 
 /* Name for airspace type Federal Building */
 "AIRSPACE_TYPE_FEDERAL_BUILDING" = "Federal byggnad";
 
 /* Name for airspace type Flight Information Region */
-"AIRSPACE_TYPE_FIR" = "Flyginformations region";
+"AIRSPACE_TYPE_FIR" = "Flyginformationsregion";
 
 /* Name for airspace type Fire */
 "AIRSPACE_TYPE_FIRE" = "Brand";
@@ -74,10 +74,10 @@
 "AIRSPACE_TYPE_GLIDERPORT" = "Gliderport";
 
 /* Name for airspace type Hazard Area */
-"AIRSPACE_TYPE_HAZARD_AREA" = "Farligt område";
+"AIRSPACE_TYPE_HAZARD_AREA" = "Riskområde";
 
 /* Name for airspace type Heliport */
-"AIRSPACE_TYPE_HELIPORT" = "Heliport";
+"AIRSPACE_TYPE_HELIPORT" = "Landningsplats för helikopter";
 
 /* Name for airspace type Highway */
 "AIRSPACE_TYPE_HIGHWAY" = "Motorväg";
@@ -86,13 +86,13 @@
 "AIRSPACE_TYPE_HOSPITAL" = "Sjukhus";
 
 /* Name for airspace type Industrial Property */
-"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "Industriell ägande";
+"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "Industriområde";
 
 /* Name for airspace type Japan Base Admin (Smallest unit of Japanse administrative units) */
-"AIRSPACE_TYPE_JAPAN_BASE" = "Japan Base admin";
+"AIRSPACE_TYPE_JAPAN_BASE" = "Japan Base Admin";
 
 /* Name for airspace type Military Property */
-"AIRSPACE_TYPE_MILITARY_PROPERTY" = "Militär fastighet";
+"AIRSPACE_TYPE_MILITARY_PROPERTY" = "Militärområde";
 
 /* Name for airspace type National Park */
 "AIRSPACE_TYPE_NATIONAL_PARK" = "Nationalpark";
@@ -101,10 +101,10 @@
 "AIRSPACE_TYPE_NOTAM" = "NOTAM";
 
 /* Name for airspace type Police Station */
-"AIRSPACE_TYPE_POLICE_STATION" = "Polisstationen";
+"AIRSPACE_TYPE_POLICE_STATION" = "Polisstation";
 
 /* Name for airspace type Powerline */
-"AIRSPACE_TYPE_POWERLINE" = "Powerline";
+"AIRSPACE_TYPE_POWERLINE" = "Kraftledning";
 
 /* Name for airspace type Power Plant */
 "AIRSPACE_TYPE_POWER_PLANT" = "Kraftverk";
@@ -113,133 +113,133 @@
 "AIRSPACE_TYPE_PRISON" = "Fängelse";
 
 /* Name for airspace type Railway */
-"AIRSPACE_TYPE_RAILWAY" = "Järnväg";
+"AIRSPACE_TYPE_RAILWAY" = "Tågspår";
 
 /* Name for airspace type Residential Property */
 "AIRSPACE_TYPE_RESIDENTIAL_PROPERTY" = "Bostadsfastighet";
 
 /* Name for airspace type School */
-"AIRSPACE_TYPE_SCHOOL" = "Skolan";
+"AIRSPACE_TYPE_SCHOOL" = "Skola";
 
 /* Name for airspace type Seaplane Base */
-"AIRSPACE_TYPE_SEAPLANE_BASE" = "Sjöflygplan bas";
+"AIRSPACE_TYPE_SEAPLANE_BASE" = "Sjöflygplansbas";
 
 /* Name for airspace type Special Use Airspace */
-"AIRSPACE_TYPE_SPECIAL_USE" = "Särskilt användningsområde";
+"AIRSPACE_TYPE_SPECIAL_USE" = "Specialluftrum";
 
 /* Name for airspace type Stadium */
-"AIRSPACE_TYPE_STADIUM" = "Stadium";
+"AIRSPACE_TYPE_STADIUM" = "Stadion";
 
 /* Name for airspace type State */
-"AIRSPACE_TYPE_STATE" = "Statliga";
+"AIRSPACE_TYPE_STATE" = "Stat";
 
 /* Name for airspace type Subprefecture */
-"AIRSPACE_TYPE_SUBPREFECTURE" = "Subprefecture";
+"AIRSPACE_TYPE_SUBPREFECTURE" = "Subprefektur";
 
 /* Name for airspace type Supercity (Japan related) */
 "AIRSPACE_TYPE_SUPERCITY" = "Supercity";
 
 /* Name for airspace type FAA Temporary Flight Restriction */
-"AIRSPACE_TYPE_TFR_FAA" = "Tillfällig flyg begränsning";
+"AIRSPACE_TYPE_TFR_FAA" = "Tillfälliga flygbegränsningar";
 
 /* Name for airspace type Ultralight Field */
-"AIRSPACE_TYPE_ULM_FIELD" = "Ultralätta fält";
+"AIRSPACE_TYPE_ULM_FIELD" = "Ultralätt fält";
 
 /* Generic catchall placeholder/name for airspace type is new and unknown at time of development but present via the advisories or map sources */
-"AIRSPACE_TYPE_UNCLASSIFIED" = "Oklassificerade";
+"AIRSPACE_TYPE_UNCLASSIFIED" = "Oklassificerat";
 
 /* Name for airspace type University */
-"AIRSPACE_TYPE_UNIVERSITY" = "University";
+"AIRSPACE_TYPE_UNIVERSITY" = "Universitet";
 
 /* Name for airspace type Waterway */
-"AIRSPACE_TYPE_WATERWAY" = "Vattenvägar";
+"AIRSPACE_TYPE_WATERWAY" = "Vattenväg";
 
 /* Name for airspace type WildFire */
-"AIRSPACE_TYPE_WILDFIRE" = "Wildfire";
+"AIRSPACE_TYPE_WILDFIRE" = "Löpeld";
 
 /* The request with the authority has been accepted */
-"AUTHORIZATION_ACCEPTED" = "Godkända";
+"AUTHORIZATION_ACCEPTED" = "Godkänd";
 
 /* The request with the authority has been cancelled */
-"AUTHORIZATION_CANCELLED_SUBMISSION" = "Auktorisering annullerad";
+"AUTHORIZATION_CANCELLED_SUBMISSION" = "Auktorisering avbruten";
 
 /* The request with the authority has not been requested */
-"AUTHORIZATION_NOT_REQUESTED" = "Auktorisering har inte begärts";
+"AUTHORIZATION_NOT_REQUESTED" = "Auktorisering inte begärd";
 
 /* The request with the authority has been made and a response is pending */
-"AUTHORIZATION_PENDING" = "Auktorisering pågår";
+"AUTHORIZATION_PENDING" = "Auktorisering behandlas";
 
 /* The request with the authority has been rejected */
 "AUTHORIZATION_REJECTED" = "Auktorisering avvisad";
 
 /* The request with the authority will be rejected once the flight plan is submitted */
-"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Avvisad vid inlämning";
+"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Avvisas vid inlämning";
 
 /* The request with the authority will be accepted once the flight plan is submitted */
 "AUTHORIZATION_UPON_SUBMISSION" = "Auktorisering vid inlämning";
 
 /* Login message when a user's account has been blacklisted. */
-"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Ditt konto har svart listats. Vänligen kontakta Security@airmap.com";
+"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Ditt konto är svartlistat. Kontakta security@airmap.com";
 
 /* Login message when a user must verify their email address */
-"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Din e-postadress måste verifieras. Vänligen kontrollera Inkorgen.";
+"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Du måste bekräfta din e-postadress. Kontrollera din inkorg.";
 
 /* Login message when a user failed to authenticate */
 "AUTH_ERROR_UNAUTHORIZED" = "Obehörig";
 
 /* Navigation title for failed login attempt */
-"AUTH_FAILED_LOGIN_TITLE" = "Alert";
+"AUTH_FAILED_LOGIN_TITLE" = "Varning";
 
 /* Abbreviation for East */
-"CARDINAL_DIRECTION_E" = "E";
+"CARDINAL_DIRECTION_E" = "Ö";
 
 /* Abbreviation for East North East */
-"CARDINAL_DIRECTION_ENE" = "Ene";
+"CARDINAL_DIRECTION_ENE" = "ONO";
 
 /* Abbreviation for East South East */
-"CARDINAL_DIRECTION_ESE" = "Ese";
+"CARDINAL_DIRECTION_ESE" = "OSO";
 
 /* Abbreviation for North */
 "CARDINAL_DIRECTION_N" = "N";
 
 /* Abbreviation for North East */
-"CARDINAL_DIRECTION_NE" = "Ne";
+"CARDINAL_DIRECTION_NE" = "NO";
 
 /* Abbreviation for North North East */
-"CARDINAL_DIRECTION_NNNE" = "Nordlig";
+"CARDINAL_DIRECTION_NNNE" = "NNO";
 
 /* Abbreviation for North North West */
-"CARDINAL_DIRECTION_NNW" = "Sydlig";
+"CARDINAL_DIRECTION_NNW" = "NNV";
 
 /* Abbreviation for North West */
-"CARDINAL_DIRECTION_NW" = "Nw";
+"CARDINAL_DIRECTION_NW" = "NV";
 
 /* Abbreviation for South */
 "CARDINAL_DIRECTION_S" = "S";
 
 /* Abbreviation for South East */
-"CARDINAL_DIRECTION_SE" = "Se";
+"CARDINAL_DIRECTION_SE" = "SO";
 
 /* Abbreviation for South South East */
-"CARDINAL_DIRECTION_SSE" = "Sse";
+"CARDINAL_DIRECTION_SSE" = "SSO";
 
 /* Abbreviation for South South West */
-"CARDINAL_DIRECTION_SSW" = "Ssw";
+"CARDINAL_DIRECTION_SSW" = "SSV";
 
 /* Abbreviation for South West */
-"CARDINAL_DIRECTION_SW" = "Sw";
+"CARDINAL_DIRECTION_SW" = "SV";
 
 /* Abbreviation for West */
-"CARDINAL_DIRECTION_W" = "W";
+"CARDINAL_DIRECTION_W" = "V";
 
 /* Abbreviation for West North West */
-"CARDINAL_DIRECTION_WNW" = "Västlig";
+"CARDINAL_DIRECTION_WNW" = "VNV";
 
 /* Abbreviation for West South West */
-"CARDINAL_DIRECTION_WSW" = "Vsv";
+"CARDINAL_DIRECTION_WSW" = "VSV";
 
 /* Request cancelled error */
-"ERROR_CANCELLED" = "Begäran avbröts innan den kunde slutföras";
+"ERROR_CANCELLED" = "Förfrågan avbröts innan den kunde slutföras";
 
 /* A conflict exists with the attempted request */
 "ERROR_CONFLICT" = "Det finns en konflikt";
@@ -251,40 +251,40 @@
 "ERROR_SERIALIZATION" = "Servern returnerade ett obearbetat svar.";
 
 /* Server failure error */
-"ERROR_SERVER" = "Servern kunde inte slutföra din begäran.";
+"ERROR_SERVER" = "Servern kunde inte slutföra din förfrågan.";
 
 /* Authorization failure error */
-"ERROR_UNAUTHORIZED" = "Obehörig. Vänligen kontrollera inloggningsuppgifter.";
+"ERROR_UNAUTHORIZED" = "Obehörigt. Kontrollera inloggningsuppgifter.";
 
 /* The radius around a point-based flight's center */
 "FLIGHT_DRAWING_RADIUS" = "Radie";
 
 /* Call to action to fine-tune the geometry of a flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Dra valfri punkt att flytta. Lägg till en ny punkt genom att dra i valfri mitt.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Dra en punkt för att flytta. Dra en mittpunkt för att lägga till en ny punkt.";
 
 /* Call to action to drag a point to the trash to delete. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Dra punkt till papperskorgen för att ta bort";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Dra punkt till skräp för att ta bort";
 
 /* Call to action to draw an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "Rita ett flyg område";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "Rita ett flygområde";
 
 /* Call to action to draw a path-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "Rita en flyg bana";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "Rita en flygväg";
 
 /* Call to action to drag the center position of a point-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Dra mittpunkten för att placera ditt flyg område.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Dra mittpunkten för att märka ut ditt flygområde.";
 
 /* Call to action to tap the icon to begin drawing a flight area. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Tryck på handikonen för att rita ett flyg område.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Tryck på handikonen för att rita ett flygområde.";
 
 /* Call to action to tap the icon to begin drawing a flight path. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Tryck på handikonen för att rita en flyg bana.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Tryck på handikonen för att rita en flygväg.";
 
 /* Displayed when the user has drawn an invalid shaping, overlapping with conflicting permitted zones */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "Flygområdet kan inte överlappa med konfliktzoner för tillståndskrav.";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "Flygområdet kan inte överlappa motstridiga zoner som kräver tillstånd.";
 
 /* Call to action to fix self-intersecting geometries of an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Ogiltig flygplats. Justera flygområdet så att det inte överlappar sig självt.";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Ogiltigt flygområde. Justera flygområdet så att det inte överlappar sig själv.";
 
 /* The width of a path-based flight extending outward from the centerline */
 "FLIGHT_DRAWING_WIDTH" = "Bredd";
@@ -308,10 +308,10 @@
 "FLIGHT_PLAN_ROW_TITLE_DURATION" = "Varaktighet";
 
 /* Title for the row displaying flight plan max altitude AGL (above ground level) */
-"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Max höjd AGL";
+"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Max höjd över marken";
 
 /* Call to action title for the user to select a pilot profile */
-"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Välj pilot profil";
+"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Välj pilotprofil";
 
 /* Title for the row displaying flight plan radius */
 "FLIGHT_PLAN_ROW_TITLE_RADIUS" = "Radie";
@@ -320,22 +320,22 @@
 "FLIGHT_PLAN_ROW_TITLE_START_TIME" = "Startar";
 
 /* Title for the section displaying the pilot and aircraft details */
-"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilot & flygplan";
+"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilot och flygplan";
 
 /* Title for the section displaying flight plan details */
-"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Flyg";
+"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Flygtur";
 
 /* Title for the section displaying social sharing features */
-"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "Dela mitt flyg";
+"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "Dela min flygtur";
 
 /* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
-"MANUAL_AUTHORIZATION" = "Manuell auktorisering väntar på inlämning";
+"MANUAL_AUTHORIZATION" = "Manuell auktorisering i väntan på inlämning";
 
 /* Table section title for other selectable countries */
-"PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "Andra";
+"PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "Övrigt";
 
 /* Table section title for the currently selected country */
-"PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "Valda landet";
+"PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "Markerat land";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
 "PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "Begär ny SMS-kod";
@@ -344,16 +344,16 @@
 "PHONE_VERIFICATION_TRY_AGAIN" = "Försök igen";
 
 /* Message presented to a user when the SMS code they input is incorrect and verification of that code has failed */
-"PHONE_VERIFICATION_VERIFICATION_FAILED" = "Verifiering av telefonnummer misslyckades";
+"PHONE_VERIFICATION_VERIFICATION_FAILED" = "Verifiering av telefonnumret misslyckades";
 
 /* Format for displaying the given + family name of a user. 1) given name 2) family name */
 "PILOT_FULL_NAME_FORMAT" = "%1$@ %2$@";
 
 /* Table row label for FAA registration number */
-"PILOT_PROFILE_FAA_REGISTRATION" = "FAA registreringsnummer";
+"PILOT_PROFILE_FAA_REGISTRATION" = "FAA-registreringsnummer";
 
 /* Label for the pilot profile email */
-"PILOT_PROFILE_LABEL_EMAIL" = "Email";
+"PILOT_PROFILE_LABEL_EMAIL" = "E-post";
 
 /* Label for the pilot profile first name */
 "PILOT_PROFILE_LABEL_FIRST_NAME" = "Förnamn";
@@ -368,22 +368,22 @@
 "PILOT_PROFILE_LABEL_USERNAME" = "Användarnamn";
 
 /* Section header for the pilot profile additional info section */
-"PILOT_PROFILE_SECTION_ADDITIONAL" = "Ytterligare information";
+"PILOT_PROFILE_SECTION_ADDITIONAL" = "Övriga uppgifter";
 
 /* Section header for the pilot profile personal info section */
-"PILOT_PROFILE_SECTION_PERSONAL" = "Personlig information";
+"PILOT_PROFILE_SECTION_PERSONAL" = "Personuppgifter";
 
 /* Format for displaying a user's number of aircraft and flights */
-"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ Flygplan %2$@ Flyg";
+"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ flygplan, %2$@ flygturer";
 
 /* Displayed for authorities that are setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Accepterar Digital Notice";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Accepterar digitalt meddelande";
 
 /* Displayed for authorities that are NOT setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "Följande myndigheter på detta område accepterar inte Digital Notice";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "Följande myndigheter i det här området accepterar inte digitalt meddelande";
 
 /* Displayed in the flight plan review notices tab when there are no notices to display */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "Det finns inga meddelanden om detta flyg.";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "Det finns inga meddelanden för den här flygturen.";
 
 /* Label for the section header that displays all the Optional rulesets */
 "RULESETS_SECTION_OPTIONAL" = "Valfri";
@@ -392,73 +392,73 @@
 "RULESETS_SECTION_PICK_ONE" = "Välj en";
 
 /* Label for the section header that displays all the Required rulesets */
-"RULESETS_SECTION_REQUIRED" = "Krävs";
+"RULESETS_SECTION_REQUIRED" = "Nödvändig";
 
 /* Label for rulesets that can be optionally enabled by the user */
-"RULESET_SELECTION_TYPE_OPTIONAL" = "Valfri";
+"RULESET_SELECTION_TYPE_OPTIONAL" = "Frivillig";
 
 /* Label for rulesets that are part of a group in which one and only one ruleset can be enabled by the user */
 "RULESET_SELECTION_TYPE_PICKONE" = "Välj en";
 
 /* Label for rulesets that must be enabled by the user */
-"RULESET_SELECTION_TYPE_REQUIRED" = "Krävs";
+"RULESET_SELECTION_TYPE_REQUIRED" = "Obligatorisk";
 
 /* Description for status advisory color Green */
-"STATUS_GREEN_DESCRIPTION" = "Informativt";
+"STATUS_GREEN_DESCRIPTION" = "Information";
 
 /* Description for status advisory color Orange */
 "STATUS_ORANGE_DESCRIPTION" = "Åtgärd krävs";
 
 /* Description for status advisory color Red */
-"STATUS_RED_DESCRIPTION" = "Flyg strängt reglerat";
+"STATUS_RED_DESCRIPTION" = "Flygturen strängt reglerad";
 
 /* Description for status advisory color Yellow */
-"STATUS_YELLOW_DESCRIPTION" = "Rådgivning";
+"STATUS_YELLOW_DESCRIPTION" = "Rådgivande";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) distance, 4) direction, 5) time */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "Trafik %1$@\nAltitude %2$@\n%3$@ %4$@ %5$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "Trafik %1$@\nHöjd %2$@\n%3$@ %4$@ %5$@";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) ground speed */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "Trafik %1$@\nAltitude %2$@\n%3$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "Trafik %1$@\nHöjd %2$@\n%3$@";
 
 /* Name for the imperial system of measurement */
-"UNITS_IMPERIAL" = "Imperial";
+"UNITS_IMPERIAL" = "Brittisk måttenhet";
 
 /* Name for the metric system of measurement */
-"UNITS_METRIC" = "Metriska";
+"UNITS_METRIC" = "Metersystem";
 
 /* Unit and format for displaying nautical miles */
-"UNITS_NAUTICAL_MILE_FORMAT" = "%@ Nm";
+"UNITS_NAUTICAL_MILE_FORMAT" = "%@ NM";
 
 /* Unit and format for displaying speed in knots */
-"UNITS_SPEED_FORMAT_KNOTS" = "%@ KTS";
+"UNITS_SPEED_FORMAT_KNOTS" = "%@ kts";
 
 /* Unit and format for displaying speed in meters per second */
-"UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m";
+"UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m/s";
 
 /* Unit and format for displaying speed in miles per hour */
-"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ Mph";
+"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ mph";
 
 /* Unit and format for displaying a speed range in meters per second */
-"UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ m";
+"UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ m/s";
 
 /* Unit and format for displaying a speed range in miles per hour */
-"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ Mph";
+"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ mph";
 
 /* Unit and format for displaying temperature in Celcius */
-"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@° c";
+"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@°C";
 
 /* Unit and format for displaying temperature in Fahrenheit */
-"UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@° f";
+"UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@°F";
 
 /* The request with the authority has been accepted */
-"VALIDATION_ACCEPTED" = "Validerade";
+"VALIDATION_ACCEPTED" = "Validerad";
 
 /* No validation request has been filed */
 "VALIDATION_NOT_REQUESTED" = "Validering har inte begärts";
 
 /* The request with the authority has been made and a response is pending */
-"VALIDATION_PENDING" = "Validering pågår";
+"VALIDATION_PENDING" = "Validering behandlas";
 
 /* The request with the authority has been rejected */
-"VALIDATION_REJECTED" = "Avvisad saknad information";
+"VALIDATION_REJECTED" = "Avvisad saknar information";

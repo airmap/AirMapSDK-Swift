@@ -1,14 +1,14 @@
 /* Class = "UILabel"; text = "Make & Model"; ObjectID = "XDN-d5-eoX"; Note = "CREATE_AIRCRAFT_MAKE_AND_MODEL|Label for the row label that displays the Make and Model of an aircraft"; */
-"XDN-d5-eoX.text" = "Typ und Modell";
+"XDN-d5-eoX.text" = "Herstellung & Modell";
 
 /* Class = "UITextField"; placeholder = "Nickname"; ObjectID = "blN-px-yT6"; Note = "CREATE_AIRCRAFT_NICKNAME|Placeholder label for the textfield where a user inputs the nickname for an aircraft"; */
-"blN-px-yT6.placeholder" = "Nickname";
+"blN-px-yT6.placeholder" = "Spitzname";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "K03-vU-4zj"; Note = "CREATE_AIRCRAFT_SAVE_BUTTON|Title for the button that saves a user's changes to a new or existing aircraft"; */
 "K03-vU-4zj.normalTitle" = "Speichern";
 
 /* Class = "UINavigationItem"; title = "Create Aircraft"; ObjectID = "Z9F-I6-niw"; Note = "CREATE_AIRCRAFT_TITLE|Title for the view where you can create a new aircraft"; */
-"Z9F-I6-niw.title" = "Fluggerät anlegen";
+"Z9F-I6-niw.title" = "Flugzeug erstellen";
 
 /* Class = "UINavigationItem"; title = "Manufacturers"; ObjectID = "a84-JL-ndb"; Note = "MANUFACTURERS_TITLE|Title for the view that displays a list of all aircraft manufacturers"; */
 "a84-JL-ndb.title" = "Hersteller";
@@ -20,46 +20,46 @@
 "dcW-Vd-KfC.title" = "Land auswählen";
 
 /* Class = "UILabel"; text = "SMS Code"; ObjectID = "p8q-LE-2ew"; Note = "PHONE_VERIFICATION_CODE_HEADER|Header text for view where a user can input their SMS verification code"; */
-"p8q-LE-2ew.text" = "SMS Code";
+"p8q-LE-2ew.text" = "SMS-Code";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "dDO-AY-LlB"; Note = "PHONE_VERIFICATION_CODE_PLACEHOLDER|Placeholder label for the textfield where a user can input their SMS verification code"; */
 "dDO-AY-LlB.placeholder" = "Code";
 
 /* Class = "UINavigationItem"; title = "Verify Phone Number"; ObjectID = "MVj-Qg-sch"; Note = "PHONE_VERIFICATION_CODE_TITLE|Title for the view where a user can verify an SMS token"; */
-"MVj-Qg-sch.title" = "Telefonnummer verifizieren";
+"MVj-Qg-sch.title" = "Telefonnummer überprüfen";
 
 /* Class = "UILabel"; text = "By providing your number, you agree to receive texts about your flights at this number. Carrier message & data rates may apply.\n\nAirMap will send you a text message when your digital notice has been successfully submitted.\n"; ObjectID = "2Na-rR-yZi"; Note = "PHONE_VERIFICATION_HEADER|Copy describing the process of verifying your phone number"; */
-"2Na-rR-yZi.text" = "Durch das angeben der Telefonnummer wird dem Empfang von SMS-Nachrichten zugestimmt. Übliche Preise für Empfang von SMS fallen abhängig vom Mobilfunkvertrag an. AirMap wird eine SMS senden sobald die digital Notifizerung erfolgreich übermittelt wurde.";
+"2Na-rR-yZi.text" = "Mit der Angabe Ihrer Nummer erklären Sie sich damit einverstanden, Texte über Ihre Flüge unter dieser Nummer zu erhalten. Es können Gebühren für Nachrichten und Datenübertragung anfallen.\n\nAirMap sendet Ihnen eine SMS, wenn Ihre digitale Mitteilung erfolgreich übermittelt wurde.\n";
 
 /* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "vme-QM-SG8"; Note = "PHONE_VERIFICATION_PHONE|Placeholder label for the text field where a user types their phone number"; */
 "vme-QM-SG8.placeholder" = "Telefonnummer";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "mhb-zV-IBV"; Note = "PHONE_VERIFICATION_SAVE_BUTTON|Title for button that saves and submits the users phone number for verification"; */
-"mhb-zV-IBV.normalTitle" = "Einreichen";
+"mhb-zV-IBV.normalTitle" = "Speichern";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "lre-WH-pt9"; Note = "PHONE_VERIFICATION_SUBMIT_BUTTON|Title for button that allows the user to submit the SMS code for verification"; */
 "lre-WH-pt9.normalTitle" = "Senden";
 
 /* Class = "UINavigationItem"; title = "Phone Number Verification"; ObjectID = "4g7-2z-c9g"; Note = "PHONE_VERIFICATION_TITLE|Title for view that allows a user to verify their phone number"; */
-"4g7-2z-c9g.title" = "Verifikation der Telefonnummer";
+"4g7-2z-c9g.title" = "Überprüfung der Telefonnummer";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "kCX-rY-nIt"; Note = "PILOT_PROFILE_SAVE_BUTTON|Title for the button that saves any changes to a user's profile"; */
 "kCX-rY-nIt.normalTitle" = "Speichern";
 
 /* Class = "UINavigationItem"; title = "Pilot Profile"; ObjectID = "q0o-oq-I1W"; Note = "PILOT_PROFILE_TITLE|Title for view where a user can modify their user profile"; */
-"q0o-oq-I1W.title" = "Profil";
+"q0o-oq-I1W.title" = "Pilotenprofil";
 
 /* Class = "UINavigationItem"; title = "Select Aircraft"; ObjectID = "7vR-GS-NPr"; Note = "SELECT_AIRCRAFT_TITLE|Title for the view where you can select an aircraft for a flight"; */
-"7vR-GS-NPr.title" = "Fluggerät auswählen";
+"7vR-GS-NPr.title" = "Flugzeug auswählen";
 
 /* Class = "UILabel"; text = "SMS Code"; ObjectID = "oG7-qM-t5D"; Note = "SMS_LOGIN_CODE_HEADER|Header text for view where a user can input their SMS verification code"; */
-"oG7-qM-t5D.text" = "SMS code gesendet";
+"oG7-qM-t5D.text" = "SMS-Code";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "L0X-0f-Pm9"; Note = "SMS_LOGIN_CODE_PLACEHOLDER|Placeholder label for the textfield where a user can input their SMS verification code"; */
 "L0X-0f-Pm9.placeholder" = "Code";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ERY-u7-YqH"; Note = "SMS_LOGIN_CODE_SUBMIT_BUTTON|Title for button that allows a user to submit an SMS code for verification"; */
-"ERY-u7-YqH.normalTitle" = "Einreichen";
+"ERY-u7-YqH.normalTitle" = "Absenden";
 
 /* Class = "UINavigationItem"; title = "Verify Code"; ObjectID = "7C4-bp-tif"; Note = "SMS_LOGIN_CODE_TITLE|Title for the view where a user enters their SMS verification code"; */
 "7C4-bp-tif.title" = "Code verifizieren";
@@ -71,4 +71,4 @@
 "cdb-du-WXE.normalTitle" = "Speichern";
 
 /* Class = "UINavigationItem"; title = "Login"; ObjectID = "CJG-Jj-2c2"; Note = "SMS_LOGIN_TITLE|Title for view that allows a user to login via SMS"; */
-"CJG-Jj-2c2.title" = "Login";
+"CJG-Jj-2c2.title" = "Anmelden";

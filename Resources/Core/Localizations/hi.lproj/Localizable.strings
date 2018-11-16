@@ -1,50 +1,50 @@
 /* Label for advisories that are stup to receive digital notice */
-"ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "डिजिटल सूचना स्वीकार करता है";
+"ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "डिजिटल नोटिस स्वीकार करता है";
 
 /* Displayed when an advisory has not provided a contact phone */
-"ADVISORY_PHONE_NOT_PROVIDED" = "कोई फ़ोन नंबर उपलब्ध नहीं कराया";
+"ADVISORY_PHONE_NOT_PROVIDED" = "कोई फ़ोन संख्या प्रस्तुत नहीं की गई";
 
 /* Label and format for displaying the end time of temporary flight restriction */
-"ADVISORY_TFR_ENDS_FORMAT" = "समाप्त होता: %1$@";
+"ADVISORY_TFR_ENDS_FORMAT" = "समाप्त: %1$@";
 
 /* Never ending duration for a TFR */
 "ADVISORY_TFR_PERMANENT" = "स्थायी";
 
 /* Label and format for displaying the start time of temporary flight restriction */
-"ADVISORY_TFR_STARTS_FORMAT" = "शुरू: %1$@";
+"ADVISORY_TFR_STARTS_FORMAT" = "आरंभ: %1$@";
 
 /* Format and unit for wildfire advisory in the area unit acres */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ एकड़";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ एकड़";
 
 /* Format and unit for wildfire advisory in the area unit hectares */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ हेक्टेयर";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ हैक्टेयर";
 
 /* Label for wildfire advisory cells where size is unknown */
-"ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "आकार अज्ञात";
+"ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "नामालूम आकार";
 
 /* Call to action when a user has not selected an aircraft */
 "AIRCRAFT_SELECT_AIRCRAFT" = "विमान का चयन करें";
 
 /* Title to display for the view creating a new aircraft */
-"AIRCRAFT_TITLE_CREATE_NEW" = "विमान बनाएं";
+"AIRCRAFT_TITLE_CREATE_NEW" = "विमान की संरचना करें";
 
 /* Title to display for the view when updating an existing aircraft */
-"AIRCRAFT_TITLE_UPDATE_EXISTING" = "अद्यतन विमान";
+"AIRCRAFT_TITLE_UPDATE_EXISTING" = "विमान अपडेट करें";
 
 /* Name for airspace type Aerial Recreational Area */
 "AIRSPACE_TYPE_AERIAL_REC_AREA" = "हवाई मनोरंजन क्षेत्र";
 
 /* Name for airspace type Airport */
-"AIRSPACE_TYPE_AIRPORT" = "हवाई अड्डे";
+"AIRSPACE_TYPE_AIRPORT" = "हवाई-अड्डा";
 
 /* Name for airspace type AMA Field (Academy of Model Aeronautics) */
-"AIRSPACE_TYPE_AMA_FIELD" = "ामा मैदान";
+"AIRSPACE_TYPE_AMA_FIELD" = "AMA फ़ील्ड";
 
 /* Name for airspace type City */
 "AIRSPACE_TYPE_CITY" = "शहर";
 
 /* Name for airspace type Controlled Airspace */
-"AIRSPACE_TYPE_CONTROLLED" = "नियंत्रित हवाई क्षेत्र";
+"AIRSPACE_TYPE_CONTROLLED" = "नियंत्रित हवाई-क्षेत्र";
 
 /* Name for airspace type Country */
 "AIRSPACE_TYPE_COUNTRY" = "देश";
@@ -59,22 +59,22 @@
 "AIRSPACE_TYPE_EMBASSY" = "दूतावास";
 
 /* Name for airspace type Emergency */
-"AIRSPACE_TYPE_EMERGENCY" = "पहले उत्तरदाता गतिविधि";
+"AIRSPACE_TYPE_EMERGENCY" = "प्रथम उत्तरदाता गतिविधि";
 
 /* Name for airspace type Federal Building */
 "AIRSPACE_TYPE_FEDERAL_BUILDING" = "संघीय भवन";
 
 /* Name for airspace type Flight Information Region */
-"AIRSPACE_TYPE_FIR" = "उड़ान जानकारी क्षेत्र";
+"AIRSPACE_TYPE_FIR" = "उड़ान जानकारी क्षेत्र";
 
 /* Name for airspace type Fire */
-"AIRSPACE_TYPE_FIRE" = "आग";
+"AIRSPACE_TYPE_FIRE" = "अग्नि";
 
 /* Name for airspace type Gliderport */
-"AIRSPACE_TYPE_GLIDERPORT" = "Gliderport";
+"AIRSPACE_TYPE_GLIDERPORT" = "ग्लाइडर पोर्ट";
 
 /* Name for airspace type Hazard Area */
-"AIRSPACE_TYPE_HAZARD_AREA" = "खतरा क्षेत्र";
+"AIRSPACE_TYPE_HAZARD_AREA" = "संकट क्षेत्र";
 
 /* Name for airspace type Heliport */
 "AIRSPACE_TYPE_HELIPORT" = "हेलीपोर्ट";
@@ -83,31 +83,31 @@
 "AIRSPACE_TYPE_HIGHWAY" = "राजमार्ग";
 
 /* Name for airspace type Hospital */
-"AIRSPACE_TYPE_HOSPITAL" = "अस्पताल";
+"AIRSPACE_TYPE_HOSPITAL" = "हॉस्पिटल";
 
 /* Name for airspace type Industrial Property */
-"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "औद्योगिक संपदा";
+"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "औद्योगिक संपत्ति";
 
 /* Name for airspace type Japan Base Admin (Smallest unit of Japanse administrative units) */
-"AIRSPACE_TYPE_JAPAN_BASE" = "जापान बेस व्यवस्थापक";
+"AIRSPACE_TYPE_JAPAN_BASE" = "जापान बेस एडमिन";
 
 /* Name for airspace type Military Property */
-"AIRSPACE_TYPE_MILITARY_PROPERTY" = "सैंय संपदा";
+"AIRSPACE_TYPE_MILITARY_PROPERTY" = "सैन्य संपत्ति";
 
 /* Name for airspace type National Park */
-"AIRSPACE_TYPE_NATIONAL_PARK" = "राष्ट्रीय उद्यान";
+"AIRSPACE_TYPE_NATIONAL_PARK" = "राष्ट्रीय पार्क";
 
 /* Name for airspace type NOTAM */
-"AIRSPACE_TYPE_NOTAM" = "नोटं";
+"AIRSPACE_TYPE_NOTAM" = "NOTAM";
 
 /* Name for airspace type Police Station */
-"AIRSPACE_TYPE_POLICE_STATION" = "पुलिस स्टेशन";
+"AIRSPACE_TYPE_POLICE_STATION" = "पुलिस थाना";
 
 /* Name for airspace type Powerline */
-"AIRSPACE_TYPE_POWERLINE" = "Powerline";
+"AIRSPACE_TYPE_POWERLINE" = "ऊर्जा लाईन";
 
 /* Name for airspace type Power Plant */
-"AIRSPACE_TYPE_POWER_PLANT" = "पावर प्लांट";
+"AIRSPACE_TYPE_POWER_PLANT" = "ऊर्जा संयंत्र";
 
 /* Name for airspace type Prison */
 "AIRSPACE_TYPE_PRISON" = "जेल";
@@ -122,10 +122,10 @@
 "AIRSPACE_TYPE_SCHOOL" = "स्कूल";
 
 /* Name for airspace type Seaplane Base */
-"AIRSPACE_TYPE_SEAPLANE_BASE" = "सीप्लेन आधार";
+"AIRSPACE_TYPE_SEAPLANE_BASE" = "जलविमान बेस";
 
 /* Name for airspace type Special Use Airspace */
-"AIRSPACE_TYPE_SPECIAL_USE" = "विशेष प्रयोग हवाई क्षेत्र";
+"AIRSPACE_TYPE_SPECIAL_USE" = "विशेष उपयोग हवाई-क्षेत्र";
 
 /* Name for airspace type Stadium */
 "AIRSPACE_TYPE_STADIUM" = "स्टेडियम";
@@ -134,55 +134,55 @@
 "AIRSPACE_TYPE_STATE" = "राज्य";
 
 /* Name for airspace type Subprefecture */
-"AIRSPACE_TYPE_SUBPREFECTURE" = "उपजनपद";
+"AIRSPACE_TYPE_SUBPREFECTURE" = "उप-प्रशासक प्रान्त";
 
 /* Name for airspace type Supercity (Japan related) */
-"AIRSPACE_TYPE_SUPERCITY" = "Supercity";
+"AIRSPACE_TYPE_SUPERCITY" = "सुपरसिटी";
 
 /* Name for airspace type FAA Temporary Flight Restriction */
-"AIRSPACE_TYPE_TFR_FAA" = "अस्थाई उड़ान प्रतिबंध";
+"AIRSPACE_TYPE_TFR_FAA" = "अस्थाई उड़ान प्रतिबन्ध";
 
 /* Name for airspace type Ultralight Field */
-"AIRSPACE_TYPE_ULM_FIELD" = "अल्ट्रालाइट मैदान";
+"AIRSPACE_TYPE_ULM_FIELD" = "अल्ट्रालाइट फ़ील्ड";
 
 /* Generic catchall placeholder/name for airspace type is new and unknown at time of development but present via the advisories or map sources */
 "AIRSPACE_TYPE_UNCLASSIFIED" = "अवर्गीकृत";
 
 /* Name for airspace type University */
-"AIRSPACE_TYPE_UNIVERSITY" = "विश्वविद्यालय";
+"AIRSPACE_TYPE_UNIVERSITY" = "महाविद्यालय";
 
 /* Name for airspace type Waterway */
 "AIRSPACE_TYPE_WATERWAY" = "जलमार्ग";
 
 /* Name for airspace type WildFire */
-"AIRSPACE_TYPE_WILDFIRE" = "जंगल";
+"AIRSPACE_TYPE_WILDFIRE" = "अग्निकाण्ड";
 
 /* The request with the authority has been accepted */
-"AUTHORIZATION_ACCEPTED" = "अनुमोदित";
+"AUTHORIZATION_ACCEPTED" = "स्वीकृत";
 
 /* The request with the authority has been cancelled */
-"AUTHORIZATION_CANCELLED_SUBMISSION" = "प्राधिकरण रद्द";
+"AUTHORIZATION_CANCELLED_SUBMISSION" = "अनुमति रद्द की गई";
 
 /* The request with the authority has not been requested */
-"AUTHORIZATION_NOT_REQUESTED" = "प्राधिकरण ने अनुरोध नहीं किया";
+"AUTHORIZATION_NOT_REQUESTED" = "अनुमति का अनुरोध नहीं किया गया";
 
 /* The request with the authority has been made and a response is pending */
-"AUTHORIZATION_PENDING" = "प्राधिकरण लंबित";
+"AUTHORIZATION_PENDING" = "अनुमति विचाराधीन है";
 
 /* The request with the authority has been rejected */
-"AUTHORIZATION_REJECTED" = "प्राधिकरण अस्वीकृत";
+"AUTHORIZATION_REJECTED" = "अनुमति अस्वीकृत";
 
 /* The request with the authority will be rejected once the flight plan is submitted */
-"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "प्रस्तुत करने पर निर";
+"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "प्रस्तुति के पश्चात अस्वीकृत";
 
 /* The request with the authority will be accepted once the flight plan is submitted */
-"AUTHORIZATION_UPON_SUBMISSION" = "जमा करने पर प्राधिकरण";
+"AUTHORIZATION_UPON_SUBMISSION" = "प्रस्तुति के पश्चात स्वीकृत";
 
 /* Login message when a user's account has been blacklisted. */
-"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "आपके खाते को ब्लैकलिस्ट किया गया है । कृपया संपर्क security@airmap.com";
+"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "आपका खाता काली सूची में लिखा गया है।  कृप्या security@airmap.com से संपर्क करें।";
 
 /* Login message when a user must verify their email address */
-"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "आपका ईमेल पता सत्यापित करने की आवश्यकता है । कृपया अपने इनबॉक्स की जांच करें ।";
+"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "आपके ईमेल पते का सत्यापन होना शेष है।  कृप्या अपना इन-बॉक्स देखें।";
 
 /* Login message when a user failed to authenticate */
 "AUTH_ERROR_UNAUTHORIZED" = "अनधिकृत";
@@ -191,16 +191,16 @@
 "AUTH_FAILED_LOGIN_TITLE" = "चेतावनी";
 
 /* Abbreviation for East */
-"CARDINAL_DIRECTION_E" = "ई";
+"CARDINAL_DIRECTION_E" = "E";
 
 /* Abbreviation for East North East */
-"CARDINAL_DIRECTION_ENE" = "िेने";
+"CARDINAL_DIRECTION_ENE" = "ENE";
 
 /* Abbreviation for East South East */
-"CARDINAL_DIRECTION_ESE" = "Ese";
+"CARDINAL_DIRECTION_ESE" = "ESE";
 
 /* Abbreviation for North */
-"CARDINAL_DIRECTION_N" = "एन";
+"CARDINAL_DIRECTION_N" = "N";
 
 /* Abbreviation for North East */
 "CARDINAL_DIRECTION_NE" = "NE";
@@ -212,124 +212,124 @@
 "CARDINAL_DIRECTION_NNW" = "NNW";
 
 /* Abbreviation for North West */
-"CARDINAL_DIRECTION_NW" = "एनडब्ल्यू";
+"CARDINAL_DIRECTION_NW" = "NW";
 
 /* Abbreviation for South */
-"CARDINAL_DIRECTION_S" = "एस";
+"CARDINAL_DIRECTION_S" = "S";
 
 /* Abbreviation for South East */
-"CARDINAL_DIRECTION_SE" = "एसई";
+"CARDINAL_DIRECTION_SE" = "SE";
 
 /* Abbreviation for South South East */
-"CARDINAL_DIRECTION_SSE" = "Sse";
+"CARDINAL_DIRECTION_SSE" = "SSE";
 
 /* Abbreviation for South South West */
-"CARDINAL_DIRECTION_SSW" = "Ssw";
+"CARDINAL_DIRECTION_SSW" = "SSW";
 
 /* Abbreviation for South West */
-"CARDINAL_DIRECTION_SW" = "Sw";
+"CARDINAL_DIRECTION_SW" = "SW";
 
 /* Abbreviation for West */
-"CARDINAL_DIRECTION_W" = "डब्ल्यू";
+"CARDINAL_DIRECTION_W" = "W";
 
 /* Abbreviation for West North West */
-"CARDINAL_DIRECTION_WNW" = "उ";
+"CARDINAL_DIRECTION_WNW" = "WNW";
 
 /* Abbreviation for West South West */
 "CARDINAL_DIRECTION_WSW" = "WSW";
 
 /* Request cancelled error */
-"ERROR_CANCELLED" = "पूर्ण होने से पहले रद्द करने का अनुरोध करें";
+"ERROR_CANCELLED" = "पूरा करने से पूर्व रद्द करने का अनुरोध करें";
 
 /* A conflict exists with the attempted request */
-"ERROR_CONFLICT" = "कोई विरोध मौजूद है";
+"ERROR_CONFLICT" = "एक टकराव मौजूद है";
 
 /* A generic server error message with an associated error code */
-"ERROR_GENERIC_FORMAT" = "सर्वर ने कोई त्रुटि लौटाई । (%@)";
+"ERROR_GENERIC_FORMAT" = "सर्वर ने एक त्रुटि लौटाई है।  (%@)";
 
 /* Response serialization failure error */
-"ERROR_SERIALIZATION" = "सर्वर ने कोई प्रक्रियात्मक प्रतिसाद लौटाया ।";
+"ERROR_SERIALIZATION" = "सर्वर ने एक संसाधित न किये जाने योग्य उत्तर लौटाया है।";
 
 /* Server failure error */
-"ERROR_SERVER" = "सर्वर आपके अनुरोध को पूरा नहीं कर सका ।";
+"ERROR_SERVER" = "सर्वर आपका अनुरोध पूरा नहीं कर सका है।";
 
 /* Authorization failure error */
-"ERROR_UNAUTHORIZED" = "अनधिकृत. कृपया लॉगिन क्रेडेंशियल्स की जांच करें ।";
+"ERROR_UNAUTHORIZED" = "अनधिकृत  कृप्या लॉग-इन विवरण चेक करें।";
 
 /* The radius around a point-based flight's center */
 "FLIGHT_DRAWING_RADIUS" = "त्रिज्या";
 
 /* Call to action to fine-tune the geometry of a flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "किसी भी बिंदु को ले जाने के लिए खींचें । कोई नया बिंदु जोड़ने के लिए कोई मध्यबिंदु खींचें ।";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "किसी पॉइंट को हिलाने के लिये ड्रैग करें।  कोई नया पॉइंट जोड़ने के लिये कोई मध्य-पॉइंट ड्रैग करें।";
 
 /* Call to action to drag a point to the trash to delete. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "हटाने के लिए ट्रैश पर पॉइंट खींचें";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "मिटाने के लिये पॉइंट को ट्रेश तक ड्रैग करें।";
 
 /* Call to action to draw an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "उड़ान क्षेत्र आरेखित करना";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "उड़ान क्षेत्र तैयार करें";
 
 /* Call to action to draw a path-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "कोई फ़्लाइट पथ आरेखित करना";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "उड़ान मार्ग तैयार करें";
 
 /* Call to action to drag the center position of a point-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "केंद्र बिंदु को अपनी फ़्लाइट क्षेत्र की स्थिति में खींचें.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "अपना उड़ान क्षेत्र स्थापित करने हेतु केंद्र बिन्दु को ड्रैग करें।";
 
 /* Call to action to tap the icon to begin drawing a flight area. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "एक उड़ान क्षेत्र आकर्षित करने के लिए हाथ आइकन टैप करें ।";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "उड़ान क्षेत्र तैयार करने हेतु हाथ के आइकॉन पर टैप करें।";
 
 /* Call to action to tap the icon to begin drawing a flight path. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "एक उड़ान पथ आकर्षित करने के लिए हाथ आइकन टैप करें ।";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "उड़ान मार्ग तैयार करने हेतु हाथ के आइकॉन पर टैप करें।";
 
 /* Displayed when the user has drawn an invalid shaping, overlapping with conflicting permitted zones */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "फ़्लाइट क्षेत्र विरोधी अनुमति आवश्यकता ज़ोन के साथ ओवरलैप नहीं कर सकता ।";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "उड़ान क्षेत्र विरोधाभासी परमिट आवश्यकता क्षेत्र के साथ ओवरलैप नहीं कर सकता हैं।";
 
 /* Call to action to fix self-intersecting geometries of an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "अमांय फ़्लाइट क्षेत्र । उड़ान क्षेत्र को समायोजित करें ताकि वह स्वयं के साथ ओवरलैप न करें ।";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "अमान्य उड़ान क्षेत्र  उड़ान क्षेत्र व्यवस्थित करें ताकि यह स्वयं पर ही ओवरलैप न हो जाये।";
 
 /* The width of a path-based flight extending outward from the centerline */
-"FLIGHT_DRAWING_WIDTH" = "चौड़ाई";
+"FLIGHT_DRAWING_WIDTH" = "चोड़ाई";
 
 /* Title for the button to advance to the next screen */
-"FLIGHT_PLAN_BUTTON_TITLE_NEXT" = "अगले";
+"FLIGHT_PLAN_BUTTON_TITLE_NEXT" = "अगला";
 
 /* Title for the button to save and create the flight */
-"FLIGHT_PLAN_BUTTON_TITLE_SAVE" = "सहेजें";
+"FLIGHT_PLAN_BUTTON_TITLE_SAVE" = "सेव";
 
 /* Call to action title for the user to select an aircraft */
-"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "विमान का चयन करें";
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "विमान चयन करें";
 
 /* Title for the row displaying the name of the aircraft */
 "FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "विमान";
 
 /* Title for the row displaying flight plan buffer */
-"FLIGHT_PLAN_ROW_TITLE_BUFFER" = "बफ़र";
+"FLIGHT_PLAN_ROW_TITLE_BUFFER" = "प्रतिरोधक";
 
 /* Title for the row displaying flight plan duration */
 "FLIGHT_PLAN_ROW_TITLE_DURATION" = "अवधि";
 
 /* Title for the row displaying flight plan max altitude AGL (above ground level) */
-"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "अधिकतम ऊंचाई एजीएल";
+"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "अधिकतम ऊंचाई AGL";
 
 /* Call to action title for the user to select a pilot profile */
-"FLIGHT_PLAN_ROW_TITLE_PILOT" = "पायलट प्रोफ़ाइल का चयन करें";
+"FLIGHT_PLAN_ROW_TITLE_PILOT" = "पायलट प्रोफ़ाइल चयन करें";
 
 /* Title for the row displaying flight plan radius */
 "FLIGHT_PLAN_ROW_TITLE_RADIUS" = "त्रिज्या";
 
 /* Title for the row displaying flight plan start time */
-"FLIGHT_PLAN_ROW_TITLE_START_TIME" = "शुरू";
+"FLIGHT_PLAN_ROW_TITLE_START_TIME" = "आरंभ होना";
 
 /* Title for the section displaying the pilot and aircraft details */
-"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "पायलट & विमान";
+"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "पायलट और विमान";
 
 /* Title for the section displaying flight plan details */
-"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "उड़ान";
+"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "उड़ान";
 
 /* Title for the section displaying social sharing features */
-"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "मेरी उड़ान साझा करें";
+"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "मेरी उड़ान साझा करें";
 
 /* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
-"MANUAL_AUTHORIZATION" = "मैंयुअल प्राधिकरण लंबित सबमिशन";
+"MANUAL_AUTHORIZATION" = "प्रस्तुति पर्यंत वास्तविक अनुमति";
 
 /* Table section title for other selectable countries */
 "PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "अन्य";
@@ -338,13 +338,13 @@
 "PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "चयनित देश";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
-"PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "नए एसएमएस कोड का अनुरोध करें";
+"PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "नये SMS कोड का अनुरोध करें";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to try again */
-"PHONE_VERIFICATION_TRY_AGAIN" = "फिर कोशिश करो";
+"PHONE_VERIFICATION_TRY_AGAIN" = "पुन: प्रयास करें";
 
 /* Message presented to a user when the SMS code they input is incorrect and verification of that code has failed */
-"PHONE_VERIFICATION_VERIFICATION_FAILED" = "फ़ोन नंबर सत्यापन विफल";
+"PHONE_VERIFICATION_VERIFICATION_FAILED" = "फ़ोन संख्या सत्यापन असफल रहा";
 
 /* Format for displaying the given + family name of a user. 1) given name 2) family name */
 "PILOT_FULL_NAME_FORMAT" = "%1$@ %2$@";
@@ -356,109 +356,109 @@
 "PILOT_PROFILE_LABEL_EMAIL" = "ईमेल";
 
 /* Label for the pilot profile first name */
-"PILOT_PROFILE_LABEL_FIRST_NAME" = "प्रथम नाम";
+"PILOT_PROFILE_LABEL_FIRST_NAME" = "नाम";
 
 /* Label for the pilot profile last name */
-"PILOT_PROFILE_LABEL_LAST_NAME" = "अंतिम नाम";
+"PILOT_PROFILE_LABEL_LAST_NAME" = "कुलनाम";
 
 /* Label for the pilot profile phone */
-"PILOT_PROFILE_LABEL_PHONE" = "फोन";
+"PILOT_PROFILE_LABEL_PHONE" = "फ़ोन";
 
 /* Label for the pilot profile username */
-"PILOT_PROFILE_LABEL_USERNAME" = "उपयोगकर्ता";
+"PILOT_PROFILE_LABEL_USERNAME" = "उपयोगकर्ता का नाम";
 
 /* Section header for the pilot profile additional info section */
 "PILOT_PROFILE_SECTION_ADDITIONAL" = "अतिरिक्त जानकारी";
 
 /* Section header for the pilot profile personal info section */
-"PILOT_PROFILE_SECTION_PERSONAL" = "व्यक्तिगत जानकारी";
+"PILOT_PROFILE_SECTION_PERSONAL" = "निजी जानकारी";
 
 /* Format for displaying a user's number of aircraft and flights */
-"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ विमान %2$@ उड़ानें";
+"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ विमान, %2$@ उड़ानें";
 
 /* Displayed for authorities that are setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "डिजिटल सूचना स्वीकार करता है";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "डिजिटल नोटिस स्वीकार करना";
 
 /* Displayed for authorities that are NOT setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "इस क्षेत्र में निम्न प्राधिकारी डिजिटल सूचना स्वीकार नहीं करते";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "इस क्षेत्र में निम्न प्राधिकरण डिजिटल नोटिस स्वीकार नहीं करते हैं।";
 
 /* Displayed in the flight plan review notices tab when there are no notices to display */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "इस उड़ान के लिए कोई नोटिस नहीं हैं ।";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "इस उड़ान के लिये कोई नोटिस नहीं हैं।";
 
 /* Label for the section header that displays all the Optional rulesets */
 "RULESETS_SECTION_OPTIONAL" = "वैकल्पिक";
 
 /* Label for the section header that displays all the Pick One rulesets */
-"RULESETS_SECTION_PICK_ONE" = "एक उठाओ";
+"RULESETS_SECTION_PICK_ONE" = "एक चुनें";
 
 /* Label for the section header that displays all the Required rulesets */
-"RULESETS_SECTION_REQUIRED" = "आवश्यक";
+"RULESETS_SECTION_REQUIRED" = "चाहिये";
 
 /* Label for rulesets that can be optionally enabled by the user */
 "RULESET_SELECTION_TYPE_OPTIONAL" = "वैकल्पिक";
 
 /* Label for rulesets that are part of a group in which one and only one ruleset can be enabled by the user */
-"RULESET_SELECTION_TYPE_PICKONE" = "एक उठाओ";
+"RULESET_SELECTION_TYPE_PICKONE" = "एक चुनें";
 
 /* Label for rulesets that must be enabled by the user */
-"RULESET_SELECTION_TYPE_REQUIRED" = "आवश्यक";
+"RULESET_SELECTION_TYPE_REQUIRED" = "चाहिये";
 
 /* Description for status advisory color Green */
-"STATUS_GREEN_DESCRIPTION" = "जानकारी";
+"STATUS_GREEN_DESCRIPTION" = "अंतरराष्ट्रीय";
 
 /* Description for status advisory color Orange */
-"STATUS_ORANGE_DESCRIPTION" = "आवश्यक कार्रवाई";
+"STATUS_ORANGE_DESCRIPTION" = "कार्यवाही चाहिये";
 
 /* Description for status advisory color Red */
-"STATUS_RED_DESCRIPTION" = "उड़ान कड़ाई से विनियमित";
+"STATUS_RED_DESCRIPTION" = "दृढ़तापूर्वक नियंत्रित उड़ान";
 
 /* Description for status advisory color Yellow */
-"STATUS_YELLOW_DESCRIPTION" = "सलाह";
+"STATUS_YELLOW_DESCRIPTION" = "परामर्श";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) distance, 4) direction, 5) time */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "यातायात %1$@\nAltitude %2$@\n%3$@ %4$@ %5$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "ट्रैफिक %1$@\nऊंचाई %2$@\n%3$@ %4$@ %5$@";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) ground speed */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "यातायात %1$@\nAltitude %2$@\n%3$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "ट्रैफिक %1$@\nऊंचाई %2$@\n%3$@";
 
 /* Name for the imperial system of measurement */
-"UNITS_IMPERIAL" = "शाही";
+"UNITS_IMPERIAL" = "राजसी";
 
 /* Name for the metric system of measurement */
-"UNITS_METRIC" = "मीट्रिक";
+"UNITS_METRIC" = "मेट्रिक";
 
 /* Unit and format for displaying nautical miles */
-"UNITS_NAUTICAL_MILE_FORMAT" = "%@ एनएम";
+"UNITS_NAUTICAL_MILE_FORMAT" = "%@ NM";
 
 /* Unit and format for displaying speed in knots */
 "UNITS_SPEED_FORMAT_KNOTS" = "%@ kts";
 
 /* Unit and format for displaying speed in meters per second */
-"UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ मी";
+"UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m/s";
 
 /* Unit and format for displaying speed in miles per hour */
-"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ मील प्रति घंटा";
+"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ mph";
 
 /* Unit and format for displaying a speed range in meters per second */
-"UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ मी";
+"UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ m/s";
 
 /* Unit and format for displaying a speed range in miles per hour */
-"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ मील प्रति घंटा";
+"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "[[%1$@-%2$@ mph";
 
 /* Unit and format for displaying temperature in Celcius */
-"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@° c";
+"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@°C";
 
 /* Unit and format for displaying temperature in Fahrenheit */
-"UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@° f";
+"UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@°F";
 
 /* The request with the authority has been accepted */
-"VALIDATION_ACCEPTED" = "मान्य";
+"VALIDATION_ACCEPTED" = "सत्यापित";
 
 /* No validation request has been filed */
-"VALIDATION_NOT_REQUESTED" = "मांयता अनुरोध नहीं किया गया";
+"VALIDATION_NOT_REQUESTED" = "सत्यापन की मांग नहीं की गई";
 
 /* The request with the authority has been made and a response is pending */
-"VALIDATION_PENDING" = "मांयता लंबित";
+"VALIDATION_PENDING" = "सत्यापन विचाराधीन";
 
 /* The request with the authority has been rejected */
-"VALIDATION_REJECTED" = "अस्वीकृत अनुपलब्ध जानकारी";
+"VALIDATION_REJECTED" = "अनुपलब्ध जानकारी अस्वीकृत";

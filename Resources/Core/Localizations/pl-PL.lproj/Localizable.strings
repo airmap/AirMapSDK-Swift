@@ -2,22 +2,22 @@
 "ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "Akceptuje powiadomienia cyfrowe";
 
 /* Displayed when an advisory has not provided a contact phone */
-"ADVISORY_PHONE_NOT_PROVIDED" = "Brak numeru telefonu";
+"ADVISORY_PHONE_NOT_PROVIDED" = "Nie podano numeru telefonu";
 
 /* Label and format for displaying the end time of temporary flight restriction */
-"ADVISORY_TFR_ENDS_FORMAT" = "Kończy się: %1$@";
+"ADVISORY_TFR_ENDS_FORMAT" = "Koniec: %1$@";
 
 /* Never ending duration for a TFR */
-"ADVISORY_TFR_PERMANENT" = "Stałe";
+"ADVISORY_TFR_PERMANENT" = "Stały";
 
 /* Label and format for displaying the start time of temporary flight restriction */
-"ADVISORY_TFR_STARTS_FORMAT" = "Zaczyna się: %1$@";
+"ADVISORY_TFR_STARTS_FORMAT" = "Start: %1$@";
 
 /* Format and unit for wildfire advisory in the area unit acres */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ Akrów";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ akry/akrów";
 
 /* Format and unit for wildfire advisory in the area unit hectares */
-"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ Hektarów";
+"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ hektary/hektarów";
 
 /* Label for wildfire advisory cells where size is unknown */
 "ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "Rozmiar nieznany";
@@ -26,13 +26,13 @@
 "AIRCRAFT_SELECT_AIRCRAFT" = "Wybierz samolot";
 
 /* Title to display for the view creating a new aircraft */
-"AIRCRAFT_TITLE_CREATE_NEW" = "Stwórz samolot";
+"AIRCRAFT_TITLE_CREATE_NEW" = "Utwórz Samoloty";
 
 /* Title to display for the view when updating an existing aircraft */
-"AIRCRAFT_TITLE_UPDATE_EXISTING" = "Aktualizacja samolotów";
+"AIRCRAFT_TITLE_UPDATE_EXISTING" = "Uaktualnij Samoloty";
 
 /* Name for airspace type Aerial Recreational Area */
-"AIRSPACE_TYPE_AERIAL_REC_AREA" = "Antena terenu rekreacyjnego";
+"AIRSPACE_TYPE_AERIAL_REC_AREA" = "Rekreacyjny obszar lotniczy";
 
 /* Name for airspace type Airport */
 "AIRSPACE_TYPE_AIRPORT" = "Lotnisko";
@@ -41,16 +41,16 @@
 "AIRSPACE_TYPE_AMA_FIELD" = "Pole AMA";
 
 /* Name for airspace type City */
-"AIRSPACE_TYPE_CITY" = "Miasta";
+"AIRSPACE_TYPE_CITY" = "Miasto";
 
 /* Name for airspace type Controlled Airspace */
-"AIRSPACE_TYPE_CONTROLLED" = "Kontrolowana przestrzeń";
+"AIRSPACE_TYPE_CONTROLLED" = "Kontrolowana przestrzeń powietrzna";
 
 /* Name for airspace type Country */
-"AIRSPACE_TYPE_COUNTRY" = "Kraju";
+"AIRSPACE_TYPE_COUNTRY" = "Kraj";
 
 /* Name for airspace type County */
-"AIRSPACE_TYPE_COUNTY" = "County";
+"AIRSPACE_TYPE_COUNTY" = "Powiat";
 
 /* Name for airspace type Custom */
 "AIRSPACE_TYPE_CUSTOM" = "Niestandardowe";
@@ -59,40 +59,40 @@
 "AIRSPACE_TYPE_EMBASSY" = "Ambasada";
 
 /* Name for airspace type Emergency */
-"AIRSPACE_TYPE_EMERGENCY" = "Aktywność pierwszego obiektu odpowiadającego";
+"AIRSPACE_TYPE_EMERGENCY" = "Aktywność pierwszego respondera";
 
 /* Name for airspace type Federal Building */
-"AIRSPACE_TYPE_FEDERAL_BUILDING" = "Budynek Federalny";
+"AIRSPACE_TYPE_FEDERAL_BUILDING" = "Budynek fereralny";
 
 /* Name for airspace type Flight Information Region */
-"AIRSPACE_TYPE_FIR" = "Region informacji o lotach";
+"AIRSPACE_TYPE_FIR" = "Rejon Informacji Powietrznej";
 
 /* Name for airspace type Fire */
-"AIRSPACE_TYPE_FIRE" = "Ognia";
+"AIRSPACE_TYPE_FIRE" = "Pożary";
 
 /* Name for airspace type Gliderport */
-"AIRSPACE_TYPE_GLIDERPORT" = "Gliderport";
+"AIRSPACE_TYPE_GLIDERPORT" = "Lotnisko dla paralotni";
 
 /* Name for airspace type Hazard Area */
-"AIRSPACE_TYPE_HAZARD_AREA" = "Obszar zagrożenia";
+"AIRSPACE_TYPE_HAZARD_AREA" = "Obszary zagrożenia";
 
 /* Name for airspace type Heliport */
 "AIRSPACE_TYPE_HELIPORT" = "Heliport";
 
 /* Name for airspace type Highway */
-"AIRSPACE_TYPE_HIGHWAY" = "Autostrady";
+"AIRSPACE_TYPE_HIGHWAY" = "Autostrada";
 
 /* Name for airspace type Hospital */
 "AIRSPACE_TYPE_HOSPITAL" = "Szpital";
 
 /* Name for airspace type Industrial Property */
-"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "Własność przemysłowa";
+"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "Nieruchomość przemysłowa";
 
 /* Name for airspace type Japan Base Admin (Smallest unit of Japanse administrative units) */
-"AIRSPACE_TYPE_JAPAN_BASE" = "Japonia Base admin";
+"AIRSPACE_TYPE_JAPAN_BASE" = "Japońska baza administracyjna";
 
 /* Name for airspace type Military Property */
-"AIRSPACE_TYPE_MILITARY_PROPERTY" = "Właściwość militarna";
+"AIRSPACE_TYPE_MILITARY_PROPERTY" = "Nieruchomość wojskowa";
 
 /* Name for airspace type National Park */
 "AIRSPACE_TYPE_NATIONAL_PARK" = "Park Narodowy";
@@ -101,37 +101,37 @@
 "AIRSPACE_TYPE_NOTAM" = "NOTAM";
 
 /* Name for airspace type Police Station */
-"AIRSPACE_TYPE_POLICE_STATION" = "Policji";
+"AIRSPACE_TYPE_POLICE_STATION" = "Budynek policji";
 
 /* Name for airspace type Powerline */
-"AIRSPACE_TYPE_POWERLINE" = "Powerline";
+"AIRSPACE_TYPE_POWERLINE" = "Linie napięcia";
 
 /* Name for airspace type Power Plant */
-"AIRSPACE_TYPE_POWER_PLANT" = "Elektrowni";
+"AIRSPACE_TYPE_POWER_PLANT" = "Elektrownia";
 
 /* Name for airspace type Prison */
-"AIRSPACE_TYPE_PRISON" = "Więzienia";
+"AIRSPACE_TYPE_PRISON" = "Więzienie";
 
 /* Name for airspace type Railway */
-"AIRSPACE_TYPE_RAILWAY" = "Kolejowa";
+"AIRSPACE_TYPE_RAILWAY" = "Kolej";
 
 /* Name for airspace type Residential Property */
-"AIRSPACE_TYPE_RESIDENTIAL_PROPERTY" = "Nieruchomości mieszkaniowe";
+"AIRSPACE_TYPE_RESIDENTIAL_PROPERTY" = "Nieruchomość mieszkalna";
 
 /* Name for airspace type School */
 "AIRSPACE_TYPE_SCHOOL" = "Szkoła";
 
 /* Name for airspace type Seaplane Base */
-"AIRSPACE_TYPE_SEAPLANE_BASE" = "Baza hydroplanem";
+"AIRSPACE_TYPE_SEAPLANE_BASE" = "Baza hydroplanów";
 
 /* Name for airspace type Special Use Airspace */
-"AIRSPACE_TYPE_SPECIAL_USE" = "Przestrzeń powietrzną do użytku specjalnego";
+"AIRSPACE_TYPE_SPECIAL_USE" = "Przestrzeń powietrzna specjalnego przeznaczenia";
 
 /* Name for airspace type Stadium */
-"AIRSPACE_TYPE_STADIUM" = "Stadium";
+"AIRSPACE_TYPE_STADIUM" = "Stadion";
 
 /* Name for airspace type State */
-"AIRSPACE_TYPE_STATE" = "Państwa";
+"AIRSPACE_TYPE_STATE" = "Stan";
 
 /* Name for airspace type Subprefecture */
 "AIRSPACE_TYPE_SUBPREFECTURE" = "Podprefektura";
@@ -140,94 +140,94 @@
 "AIRSPACE_TYPE_SUPERCITY" = "Supercity";
 
 /* Name for airspace type FAA Temporary Flight Restriction */
-"AIRSPACE_TYPE_TFR_FAA" = "Tymczasowe ograniczenie lotu";
+"AIRSPACE_TYPE_TFR_FAA" = "Tymczasowe ograniczenia lotów";
 
 /* Name for airspace type Ultralight Field */
-"AIRSPACE_TYPE_ULM_FIELD" = "Pole";
+"AIRSPACE_TYPE_ULM_FIELD" = "Pole Ultralight";
 
 /* Generic catchall placeholder/name for airspace type is new and unknown at time of development but present via the advisories or map sources */
-"AIRSPACE_TYPE_UNCLASSIFIED" = "Niesklasyfikowane";
+"AIRSPACE_TYPE_UNCLASSIFIED" = "Niesklasyfikowany";
 
 /* Name for airspace type University */
 "AIRSPACE_TYPE_UNIVERSITY" = "Uniwersytet";
 
 /* Name for airspace type Waterway */
-"AIRSPACE_TYPE_WATERWAY" = "Śródlądowej";
+"AIRSPACE_TYPE_WATERWAY" = "Droga wodna";
 
 /* Name for airspace type WildFire */
-"AIRSPACE_TYPE_WILDFIRE" = "Wildfire";
+"AIRSPACE_TYPE_WILDFIRE" = "Pożar";
 
 /* The request with the authority has been accepted */
 "AUTHORIZATION_ACCEPTED" = "Zatwierdzone";
 
 /* The request with the authority has been cancelled */
-"AUTHORIZATION_CANCELLED_SUBMISSION" = "Anulowano autoryzację";
+"AUTHORIZATION_CANCELLED_SUBMISSION" = "Autoryzacja anulowana";
 
 /* The request with the authority has not been requested */
-"AUTHORIZATION_NOT_REQUESTED" = "Nie zażądano autoryzacji";
+"AUTHORIZATION_NOT_REQUESTED" = "Autoryzacja nieżądana";
 
 /* The request with the authority has been made and a response is pending */
 "AUTHORIZATION_PENDING" = "Autoryzacja oczekująca";
 
 /* The request with the authority has been rejected */
-"AUTHORIZATION_REJECTED" = "Upoważnienie odrzucone";
+"AUTHORIZATION_REJECTED" = "Autoryzacja odrzucona";
 
 /* The request with the authority will be rejected once the flight plan is submitted */
-"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Odrzucone po złożeniu";
+"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Odrzucono po złożeniu";
 
 /* The request with the authority will be accepted once the flight plan is submitted */
 "AUTHORIZATION_UPON_SUBMISSION" = "Autoryzacja po złożeniu";
 
 /* Login message when a user's account has been blacklisted. */
-"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Twoje konto zostało wciągnięty na czarną listę. Prosimy o kontakt z Security@airmap.com";
+"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Twoje konto zostało dodane na czarną listę. Prosimy o kontakt z security@airmap.com.";
 
 /* Login message when a user must verify their email address */
-"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Twój adres e-mail musi zostać zweryfikowany. Proszę sprawdzić swoją skrzynkę odbiorczą.";
+"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Twój adres e-mail musi zostać zweryfikowany. Sprawdź swoją skrzynkę pocztową.";
 
 /* Login message when a user failed to authenticate */
-"AUTH_ERROR_UNAUTHORIZED" = "Nieautoryzowanych";
+"AUTH_ERROR_UNAUTHORIZED" = "Nieautoryzowany";
 
 /* Navigation title for failed login attempt */
-"AUTH_FAILED_LOGIN_TITLE" = "Alert";
+"AUTH_FAILED_LOGIN_TITLE" = "Komunikat";
 
 /* Abbreviation for East */
 "CARDINAL_DIRECTION_E" = "E";
 
 /* Abbreviation for East North East */
-"CARDINAL_DIRECTION_ENE" = "Ene";
+"CARDINAL_DIRECTION_ENE" = "ENE";
 
 /* Abbreviation for East South East */
-"CARDINAL_DIRECTION_ESE" = "Ese";
+"CARDINAL_DIRECTION_ESE" = "ESE";
 
 /* Abbreviation for North */
 "CARDINAL_DIRECTION_N" = "N";
 
 /* Abbreviation for North East */
-"CARDINAL_DIRECTION_NE" = "Ne";
+"CARDINAL_DIRECTION_NE" = "NE";
 
 /* Abbreviation for North North East */
 "CARDINAL_DIRECTION_NNNE" = "NNE";
 
 /* Abbreviation for North North West */
-"CARDINAL_DIRECTION_NNW" = "Nnw";
+"CARDINAL_DIRECTION_NNW" = "NNW";
 
 /* Abbreviation for North West */
-"CARDINAL_DIRECTION_NW" = "Nw";
+"CARDINAL_DIRECTION_NW" = "NW";
 
 /* Abbreviation for South */
 "CARDINAL_DIRECTION_S" = "S";
 
 /* Abbreviation for South East */
-"CARDINAL_DIRECTION_SE" = "Se";
+"CARDINAL_DIRECTION_SE" = "SE";
 
 /* Abbreviation for South South East */
-"CARDINAL_DIRECTION_SSE" = "Sse";
+"CARDINAL_DIRECTION_SSE" = "SSE";
 
 /* Abbreviation for South South West */
-"CARDINAL_DIRECTION_SSW" = "Ssw";
+"CARDINAL_DIRECTION_SSW" = "SSW";
 
 /* Abbreviation for South West */
-"CARDINAL_DIRECTION_SW" = "Sw";
+"CARDINAL_DIRECTION_SW" = "SW";
 
 /* Abbreviation for West */
 "CARDINAL_DIRECTION_W" = "W";
@@ -236,55 +236,55 @@
 "CARDINAL_DIRECTION_WNW" = "WNW";
 
 /* Abbreviation for West South West */
-"CARDINAL_DIRECTION_WSW" = "Wsw";
+"CARDINAL_DIRECTION_WSW" = "WSW";
 
 /* Request cancelled error */
-"ERROR_CANCELLED" = "Żądanie anulowane przed jego ukończeniem";
+"ERROR_CANCELLED" = "Prośba anulowana przed jej ukończeniem.";
 
 /* A conflict exists with the attempted request */
-"ERROR_CONFLICT" = "Istnieje konflikt";
+"ERROR_CONFLICT" = "Wystąpił konflikt.";
 
 /* A generic server error message with an associated error code */
 "ERROR_GENERIC_FORMAT" = "Serwer zwrócił błąd. (%@)";
 
 /* Response serialization failure error */
-"ERROR_SERIALIZATION" = "Serwer zwrócił odpowiedź nieprzetworzonych.";
+"ERROR_SERIALIZATION" = "Serwer zwrócił nieprzetworzoną odpowiedź.";
 
 /* Server failure error */
-"ERROR_SERVER" = "Serwer nie może ukończyć żądania.";
+"ERROR_SERVER" = "Serwer nie mógł zakończyć Twojej prośby.";
 
 /* Authorization failure error */
-"ERROR_UNAUTHORIZED" = "Nieautoryzowanych. Proszę sprawdzić dane logowania.";
+"ERROR_UNAUTHORIZED" = "Nieautoryzowany. Sprawdź dane logowania.";
 
 /* The radius around a point-based flight's center */
 "FLIGHT_DRAWING_RADIUS" = "Promień";
 
 /* Call to action to fine-tune the geometry of a flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Przeciągnij dowolny punkt, aby przenieść. Przeciągnij dowolny punkt środkowy w celu dodania nowego punktu.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Przeciągnij dowolny punkt, aby go przenieść. Przeciągnij dowolny środkowy punkt, aby dodać nowy punkt.";
 
 /* Call to action to drag a point to the trash to delete. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Przeciągnij punkt do kosza, aby usunąć";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Przeciągnij punkt do kosza, aby go usunąć.";
 
 /* Call to action to draw an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "Rysowanie obszaru lotu";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "Wyznacz obszar lotu.";
 
 /* Call to action to draw a path-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "Rysowanie ścieżki lotu";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "Wyznacz trasę lotu.";
 
 /* Call to action to drag the center position of a point-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Przeciągnij punkt środkowy, aby ustawić obszar lotu.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Przeciągnij środkowy punkt, aby ustawić swój obszar lotu.";
 
 /* Call to action to tap the icon to begin drawing a flight area. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Dotknij ikony dłoni, aby narysować obszar lotu.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Dotknij ikonę rączki, aby wyznaczyć obszar lotu.";
 
 /* Call to action to tap the icon to begin drawing a flight path. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Stuknij ikonę rączki, aby narysować ścieżkę lotu.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Dotknij ikonę rączki, aby wyznaczyć trasę lotu.";
 
 /* Displayed when the user has drawn an invalid shaping, overlapping with conflicting permitted zones */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "Obszar lotów nie może pokrywać się ze strefami zapotrzebowania powodującymi konflikt.";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "Strefa lotów nie może pokrywać się ze strefami wymagającymi kolidującego zezwolenia.";
 
 /* Call to action to fix self-intersecting geometries of an area-based flight. */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Nieprawidłowy obszar lotu. Dostosuj obszar lotu tak, aby nie nakładał się na siebie.";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Błędny obszar lotu. Dostosuj obszar lotu tak, lotu, aby nie zachodził na siebie.";
 
 /* The width of a path-based flight extending outward from the centerline */
 "FLIGHT_DRAWING_WIDTH" = "Szerokość";
@@ -296,55 +296,55 @@
 "FLIGHT_PLAN_BUTTON_TITLE_SAVE" = "Zapisz";
 
 /* Call to action title for the user to select an aircraft */
-"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "Wybierz samolot";
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "Wybierz samolot.";
 
 /* Title for the row displaying the name of the aircraft */
-"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "Samolot";
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "Lotnictwo";
 
 /* Title for the row displaying flight plan buffer */
-"FLIGHT_PLAN_ROW_TITLE_BUFFER" = "Buforu";
+"FLIGHT_PLAN_ROW_TITLE_BUFFER" = "Bufor";
 
 /* Title for the row displaying flight plan duration */
-"FLIGHT_PLAN_ROW_TITLE_DURATION" = "Długość";
+"FLIGHT_PLAN_ROW_TITLE_DURATION" = "Czas trwania";
 
 /* Title for the row displaying flight plan max altitude AGL (above ground level) */
-"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Maksymalna wysokość AGL";
+"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Maksymalna wysokość nad lądem";
 
 /* Call to action title for the user to select a pilot profile */
-"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Wybierz profil pilotażowy";
+"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Wybierz profil pilota";
 
 /* Title for the row displaying flight plan radius */
 "FLIGHT_PLAN_ROW_TITLE_RADIUS" = "Promień";
 
 /* Title for the row displaying flight plan start time */
-"FLIGHT_PLAN_ROW_TITLE_START_TIME" = "Zaczyna się";
+"FLIGHT_PLAN_ROW_TITLE_START_TIME" = "Starty";
 
 /* Title for the section displaying the pilot and aircraft details */
-"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilot & samolot";
+"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilot i Samolot";
 
 /* Title for the section displaying flight plan details */
-"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Lotu";
+"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Lot";
 
 /* Title for the section displaying social sharing features */
-"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "Udostępnij mój lot";
+"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "Udostępnij lot";
 
 /* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
-"MANUAL_AUTHORIZATION" = "Ręczna autoryzacja do czasu przesłania";
+"MANUAL_AUTHORIZATION" = "Autoryzacja manualna oczekująca po złożeniu";
 
 /* Table section title for other selectable countries */
-"PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "Innych";
+"PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "Inne";
 
 /* Table section title for the currently selected country */
-"PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "Wybrany kraj";
+"PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "Wybierz kraj";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
-"PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "Poproś o nowy kod SMS";
+"PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "Żądaj nowej wiadomości z kodem";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to try again */
-"PHONE_VERIFICATION_TRY_AGAIN" = "Próbuj ponownie";
+"PHONE_VERIFICATION_TRY_AGAIN" = "Spróbuj ponownie";
 
 /* Message presented to a user when the SMS code they input is incorrect and verification of that code has failed */
-"PHONE_VERIFICATION_VERIFICATION_FAILED" = "Weryfikacja numeru telefonu nie powiodła się";
+"PHONE_VERIFICATION_VERIFICATION_FAILED" = "Weryfikacja numeru telefonu sie nie powiodła";
 
 /* Format for displaying the given + family name of a user. 1) given name 2) family name */
 "PILOT_FULL_NAME_FORMAT" = "%1$@ %2$@";
@@ -353,7 +353,7 @@
 "PILOT_PROFILE_FAA_REGISTRATION" = "Numer rejestracyjny FAA";
 
 /* Label for the pilot profile email */
-"PILOT_PROFILE_LABEL_EMAIL" = "Adres e-mail";
+"PILOT_PROFILE_LABEL_EMAIL" = "E-mail";
 
 /* Label for the pilot profile first name */
 "PILOT_PROFILE_LABEL_FIRST_NAME" = "Imię";
@@ -365,85 +365,85 @@
 "PILOT_PROFILE_LABEL_PHONE" = "Telefon";
 
 /* Label for the pilot profile username */
-"PILOT_PROFILE_LABEL_USERNAME" = "Nazwę użytkownika";
+"PILOT_PROFILE_LABEL_USERNAME" = "Nazwa użytkownika";
 
 /* Section header for the pilot profile additional info section */
 "PILOT_PROFILE_SECTION_ADDITIONAL" = "Dodatkowe informacje";
 
 /* Section header for the pilot profile personal info section */
-"PILOT_PROFILE_SECTION_PERSONAL" = "Informacje osobiste";
+"PILOT_PROFILE_SECTION_PERSONAL" = "Osobiste informacje";
 
 /* Format for displaying a user's number of aircraft and flights */
-"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ Samolot %2$@ Loty";
+"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ Samoloty, %2$@ loty";
 
 /* Displayed for authorities that are setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Akceptuje powiadomienia cyfrowe";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Akceptuje powiadomienia cyfrowe.";
 
 /* Displayed for authorities that are NOT setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "Następujące organy w tej dziedzinie nie akceptują informacji cyfrowych";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "Następujące władze nie akceptują powiadomień cyfrowych.";
 
 /* Displayed in the flight plan review notices tab when there are no notices to display */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "Nie ma żadnych powiadomień dotyczących tego lotu.";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "Nie ma powiadomień dla tego lotu.";
 
 /* Label for the section header that displays all the Optional rulesets */
-"RULESETS_SECTION_OPTIONAL" = "Opcjonalne";
+"RULESETS_SECTION_OPTIONAL" = "Opcjonalnie";
 
 /* Label for the section header that displays all the Pick One rulesets */
-"RULESETS_SECTION_PICK_ONE" = "Wybrać jeden";
+"RULESETS_SECTION_PICK_ONE" = "Wybierz jeden";
 
 /* Label for the section header that displays all the Required rulesets */
 "RULESETS_SECTION_REQUIRED" = "Wymagane";
 
 /* Label for rulesets that can be optionally enabled by the user */
-"RULESET_SELECTION_TYPE_OPTIONAL" = "Opcjonalne";
+"RULESET_SELECTION_TYPE_OPTIONAL" = "Opcjonalny";
 
 /* Label for rulesets that are part of a group in which one and only one ruleset can be enabled by the user */
-"RULESET_SELECTION_TYPE_PICKONE" = "Wybrać jeden";
+"RULESET_SELECTION_TYPE_PICKONE" = "Wybierz jeden";
 
 /* Label for rulesets that must be enabled by the user */
-"RULESET_SELECTION_TYPE_REQUIRED" = "Wymagane";
+"RULESET_SELECTION_TYPE_REQUIRED" = "Wymagany";
 
 /* Description for status advisory color Green */
-"STATUS_GREEN_DESCRIPTION" = "Informacyjne";
+"STATUS_GREEN_DESCRIPTION" = "Informacyjny";
 
 /* Description for status advisory color Orange */
-"STATUS_ORANGE_DESCRIPTION" = "Wymagane działanie";
+"STATUS_ORANGE_DESCRIPTION" = "Wymagana akcja";
 
 /* Description for status advisory color Red */
-"STATUS_RED_DESCRIPTION" = "Ściśle regulowane loty";
+"STATUS_RED_DESCRIPTION" = "Lot ściśle regulowany";
 
 /* Description for status advisory color Yellow */
-"STATUS_YELLOW_DESCRIPTION" = "Klasyfikatory";
+"STATUS_YELLOW_DESCRIPTION" = "Zalecany";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) distance, 4) direction, 5) time */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "Ruchu %1$@\nAltitude %2$@\n%3$@ %4$@ %5$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "Natężenie ruchu %1$@\nWysokość %2$@\n%3$@ %4$@ %5$@";
 
 /* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) ground speed */
-"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "Ruchu %1$@\nAltitude %2$@\n%3$@";
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "Natężenie ruchu %1$@\nWysokość %2$@\n%3$@";
 
 /* Name for the imperial system of measurement */
-"UNITS_IMPERIAL" = "Imperial";
+"UNITS_IMPERIAL" = "Imperialne";
 
 /* Name for the metric system of measurement */
-"UNITS_METRIC" = "Metrycznych";
+"UNITS_METRIC" = "Metryczne";
 
 /* Unit and format for displaying nautical miles */
-"UNITS_NAUTICAL_MILE_FORMAT" = "%@ Nm";
+"UNITS_NAUTICAL_MILE_FORMAT" = "%@ NM";
 
 /* Unit and format for displaying speed in knots */
-"UNITS_SPEED_FORMAT_KNOTS" = "%@ Kts";
+"UNITS_SPEED_FORMAT_KNOTS" = "%@ kts";
 
 /* Unit and format for displaying speed in meters per second */
 "UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m/s";
 
 /* Unit and format for displaying speed in miles per hour */
-"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ Mph";
+"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ mph";
 
 /* Unit and format for displaying a speed range in meters per second */
 "UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ m/s";
 
 /* Unit and format for displaying a speed range in miles per hour */
-"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ Mph";
+"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ mph";
 
 /* Unit and format for displaying temperature in Celcius */
 "UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@°C";
@@ -452,13 +452,13 @@
 "UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@°F";
 
 /* The request with the authority has been accepted */
-"VALIDATION_ACCEPTED" = "Sprawdzone";
+"VALIDATION_ACCEPTED" = "Zatwierdzony";
 
 /* No validation request has been filed */
-"VALIDATION_NOT_REQUESTED" = "Nie zażądano sprawdzania poprawności";
+"VALIDATION_NOT_REQUESTED" = "Walidacja nieżądana";
 
 /* The request with the authority has been made and a response is pending */
-"VALIDATION_PENDING" = "Walidacja oczekująca";
+"VALIDATION_PENDING" = "Walidacja w oczekiwaniu";
 
 /* The request with the authority has been rejected */
-"VALIDATION_REJECTED" = "Odrzucone brakujące informacje";
+"VALIDATION_REJECTED" = "Odrzucono brakujące informacje";

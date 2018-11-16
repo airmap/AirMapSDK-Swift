@@ -1,20 +1,20 @@
 /* Class = "UILabel"; text = "Make & Model"; ObjectID = "XDN-d5-eoX"; Note = "CREATE_AIRCRAFT_MAKE_AND_MODEL|Label for the row label that displays the Make and Model of an aircraft"; */
-"XDN-d5-eoX.text" = "ทำให้รุ่น";
+"XDN-d5-eoX.text" = "แบบและรุ่น";
 
 /* Class = "UITextField"; placeholder = "Nickname"; ObjectID = "blN-px-yT6"; Note = "CREATE_AIRCRAFT_NICKNAME|Placeholder label for the textfield where a user inputs the nickname for an aircraft"; */
-"blN-px-yT6.placeholder" = "เล่น";
+"blN-px-yT6.placeholder" = "ชื่อเล่น";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "K03-vU-4zj"; Note = "CREATE_AIRCRAFT_SAVE_BUTTON|Title for the button that saves a user's changes to a new or existing aircraft"; */
 "K03-vU-4zj.normalTitle" = "บันทึก";
 
 /* Class = "UINavigationItem"; title = "Create Aircraft"; ObjectID = "Z9F-I6-niw"; Note = "CREATE_AIRCRAFT_TITLE|Title for the view where you can create a new aircraft"; */
-"Z9F-I6-niw.title" = "สร้างเครื่องบิน";
+"Z9F-I6-niw.title" = "สร้างอากาศยาน";
 
 /* Class = "UINavigationItem"; title = "Manufacturers"; ObjectID = "a84-JL-ndb"; Note = "MANUFACTURERS_TITLE|Title for the view that displays a list of all aircraft manufacturers"; */
-"a84-JL-ndb.title" = "ผลิต";
+"a84-JL-ndb.title" = "ผู้ผลิต";
 
 /* Class = "UINavigationItem"; title = "Models"; ObjectID = "9xB-Yl-FrO"; Note = "MODELS_TITLE|Title for the view that displays a list of all aircraft models"; */
-"9xB-Yl-FrO.title" = "รุ่น";
+"9xB-Yl-FrO.title" = "รุ่นอากาศยาน";
 
 /* Class = "UINavigationItem"; title = "Select Country"; ObjectID = "dcW-Vd-KfC"; Note = "PHONE_COUNTRY_TITLE|Title for the view that allows a user to select their phone numbers country"; */
 "dcW-Vd-KfC.title" = "เลือกประเทศ";
@@ -26,16 +26,16 @@
 "dDO-AY-LlB.placeholder" = "รหัส";
 
 /* Class = "UINavigationItem"; title = "Verify Phone Number"; ObjectID = "MVj-Qg-sch"; Note = "PHONE_VERIFICATION_CODE_TITLE|Title for the view where a user can verify an SMS token"; */
-"MVj-Qg-sch.title" = "ตรวจสอบหมายเลขโทรศัพท์";
+"MVj-Qg-sch.title" = "ยืนยันหมายเลขโทรศัพท์";
 
 /* Class = "UILabel"; text = "By providing your number, you agree to receive texts about your flights at this number. Carrier message & data rates may apply.\n\nAirMap will send you a text message when your digital notice has been successfully submitted.\n"; ObjectID = "2Na-rR-yZi"; Note = "PHONE_VERIFICATION_HEADER|Copy describing the process of verifying your phone number"; */
-"2Na-rR-yZi.text" = "คุณตกลงที่จะรับข้อความเกี่ยวกับเที่ยวบินของคุณที่หมายเลขนี้ ข้อความของผู้ให้บริการอาจใช้อัตราข้อมูล ระดับชั้น. AirMap จะส่งข้อความตัวอักษรเมื่อการแจ้งเตือนแบบดิจิทัลของคุณถูกส่งเรียบร้อยแล้ว คลาส ";
+"2Na-rR-yZi.text" = "การระบุหมายเลขของคุณแสดงว่าคุณยินยอมที่จะรับข้อความเกี่ยวกับการบินของคุณตามหมายเลขนี้ ซึ่งอาจมีอัตราค่าบริการในการรับข้อความและข้อมูลของผู้ให้บริการ\n\nAirMap จะส่งข้อความถึงคุณเมื่อการแจ้งเตือนแบบดิจิทัลถูกส่งเรียบร้อยแล้ว\n";
 
 /* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "vme-QM-SG8"; Note = "PHONE_VERIFICATION_PHONE|Placeholder label for the text field where a user types their phone number"; */
 "vme-QM-SG8.placeholder" = "หมายเลขโทรศัพท์";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "mhb-zV-IBV"; Note = "PHONE_VERIFICATION_SAVE_BUTTON|Title for button that saves and submits the users phone number for verification"; */
-"mhb-zV-IBV.normalTitle" = "ส่ง";
+"mhb-zV-IBV.normalTitle" = "บันทึก";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "lre-WH-pt9"; Note = "PHONE_VERIFICATION_SUBMIT_BUTTON|Title for button that allows the user to submit the SMS code for verification"; */
 "lre-WH-pt9.normalTitle" = "ส่ง";
@@ -47,10 +47,10 @@
 "kCX-rY-nIt.normalTitle" = "บันทึก";
 
 /* Class = "UINavigationItem"; title = "Pilot Profile"; ObjectID = "q0o-oq-I1W"; Note = "PILOT_PROFILE_TITLE|Title for view where a user can modify their user profile"; */
-"q0o-oq-I1W.title" = "รายละเอียดนักบิน";
+"q0o-oq-I1W.title" = "โปรไฟล์นักบิน";
 
 /* Class = "UINavigationItem"; title = "Select Aircraft"; ObjectID = "7vR-GS-NPr"; Note = "SELECT_AIRCRAFT_TITLE|Title for the view where you can select an aircraft for a flight"; */
-"7vR-GS-NPr.title" = "เลือกเครื่องบิน";
+"7vR-GS-NPr.title" = "เลือกอากาศยาน";
 
 /* Class = "UILabel"; text = "SMS Code"; ObjectID = "oG7-qM-t5D"; Note = "SMS_LOGIN_CODE_HEADER|Header text for view where a user can input their SMS verification code"; */
 "oG7-qM-t5D.text" = "รหัส SMS";
@@ -62,7 +62,7 @@
 "ERY-u7-YqH.normalTitle" = "ส่ง";
 
 /* Class = "UINavigationItem"; title = "Verify Code"; ObjectID = "7C4-bp-tif"; Note = "SMS_LOGIN_CODE_TITLE|Title for the view where a user enters their SMS verification code"; */
-"7C4-bp-tif.title" = "รหัสยืนยัน";
+"7C4-bp-tif.title" = "ยืนยันรหัส";
 
 /* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "61d-PT-JN7"; Note = "SMS_LOGIN_PHONE_NUMBER_PLACEHOLDER|Label for field that the user types their phone number into"; */
 "61d-PT-JN7.placeholder" = "หมายเลขโทรศัพท์";
@@ -71,4 +71,4 @@
 "cdb-du-WXE.normalTitle" = "บันทึก";
 
 /* Class = "UINavigationItem"; title = "Login"; ObjectID = "CJG-Jj-2c2"; Note = "SMS_LOGIN_TITLE|Title for view that allows a user to login via SMS"; */
-"CJG-Jj-2c2.title" = "เข้า สู่ ระบบ";
+"CJG-Jj-2c2.title" = "เข้าสู่ระบบ";
