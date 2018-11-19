@@ -1,0 +1,464 @@
+/* Label for advisories that are stup to receive digital notice */
+"ADVISORY_ACCEPTS_DIGITAL_NOTICE" = "Accepteert de aankondiging van de digitale";
+
+/* Displayed when an advisory has not provided a contact phone */
+"ADVISORY_PHONE_NOT_PROVIDED" = "Geen telefoonnummer";
+
+/* Label and format for displaying the end time of temporary flight restriction */
+"ADVISORY_TFR_ENDS_FORMAT" = "Uiteinden: %1$@";
+
+/* Never ending duration for a TFR */
+"ADVISORY_TFR_PERMANENT" = "Permanente";
+
+/* Label and format for displaying the start time of temporary flight restriction */
+"ADVISORY_TFR_STARTS_FORMAT" = "Start: %1$@";
+
+/* Format and unit for wildfire advisory in the area unit acres */
+"ADVISORY_WILDFIRE_SIZE_FORMAT_ACRES" = "%1$@ acres";
+
+/* Format and unit for wildfire advisory in the area unit hectares */
+"ADVISORY_WILDFIRE_SIZE_FORMAT_HECTARES" = "%1$@ hectare";
+
+/* Label for wildfire advisory cells where size is unknown */
+"ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "Grootte onbekend";
+
+/* Call to action when a user has not selected an aircraft */
+"AIRCRAFT_SELECT_AIRCRAFT" = "Selecteer vliegtuigen";
+
+/* Title to display for the view creating a new aircraft */
+"AIRCRAFT_TITLE_CREATE_NEW" = "Vliegtuigen maken";
+
+/* Title to display for the view when updating an existing aircraft */
+"AIRCRAFT_TITLE_UPDATE_EXISTING" = "Bijwerken van vliegtuigen";
+
+/* Name for airspace type Aerial Recreational Area */
+"AIRSPACE_TYPE_AERIAL_REC_AREA" = "Luchtfoto recreatiegebied";
+
+/* Name for airspace type Airport */
+"AIRSPACE_TYPE_AIRPORT" = "Luchthaven";
+
+/* Name for airspace type AMA Field (Academy of Model Aeronautics) */
+"AIRSPACE_TYPE_AMA_FIELD" = "AMA veld";
+
+/* Name for airspace type City */
+"AIRSPACE_TYPE_CITY" = "Stad";
+
+/* Name for airspace type Controlled Airspace */
+"AIRSPACE_TYPE_CONTROLLED" = "Gecontroleerd luchtruim";
+
+/* Name for airspace type Country */
+"AIRSPACE_TYPE_COUNTRY" = "Land";
+
+/* Name for airspace type County */
+"AIRSPACE_TYPE_COUNTY" = "County";
+
+/* Name for airspace type Custom */
+"AIRSPACE_TYPE_CUSTOM" = "Aangepaste";
+
+/* Name for airspace type Embassy */
+"AIRSPACE_TYPE_EMBASSY" = "Ambassade";
+
+/* Name for airspace type Emergency */
+"AIRSPACE_TYPE_EMERGENCY" = "Eerste Responder activiteit";
+
+/* Name for airspace type Federal Building */
+"AIRSPACE_TYPE_FEDERAL_BUILDING" = "Federal Building";
+
+/* Name for airspace type Flight Information Region */
+"AIRSPACE_TYPE_FIR" = "Vluchtinformatiegebied";
+
+/* Name for airspace type Fire */
+"AIRSPACE_TYPE_FIRE" = "Brand";
+
+/* Name for airspace type Gliderport */
+"AIRSPACE_TYPE_GLIDERPORT" = "Gliderport";
+
+/* Name for airspace type Hazard Area */
+"AIRSPACE_TYPE_HAZARD_AREA" = "Gevaar gebied";
+
+/* Name for airspace type Heliport */
+"AIRSPACE_TYPE_HELIPORT" = "Helihaven";
+
+/* Name for airspace type Highway */
+"AIRSPACE_TYPE_HIGHWAY" = "Snelweg";
+
+/* Name for airspace type Hospital */
+"AIRSPACE_TYPE_HOSPITAL" = "Ziekenhuis";
+
+/* Name for airspace type Industrial Property */
+"AIRSPACE_TYPE_INDUSTRIAL_PROPERTY" = "Industriële eigendom";
+
+/* Name for airspace type Japan Base Admin (Smallest unit of Japanse administrative units) */
+"AIRSPACE_TYPE_JAPAN_BASE" = "Japan basis Admin";
+
+/* Name for airspace type Military Property */
+"AIRSPACE_TYPE_MILITARY_PROPERTY" = "Militaire eigenschap";
+
+/* Name for airspace type National Park */
+"AIRSPACE_TYPE_NATIONAL_PARK" = "Nationaal Park";
+
+/* Name for airspace type NOTAM */
+"AIRSPACE_TYPE_NOTAM" = "NOTAM";
+
+/* Name for airspace type Police Station */
+"AIRSPACE_TYPE_POLICE_STATION" = "Politiebureau";
+
+/* Name for airspace type Powerline */
+"AIRSPACE_TYPE_POWERLINE" = "Powerline";
+
+/* Name for airspace type Power Plant */
+"AIRSPACE_TYPE_POWER_PLANT" = "Elektriciteitscentrale";
+
+/* Name for airspace type Prison */
+"AIRSPACE_TYPE_PRISON" = "Gevangenis";
+
+/* Name for airspace type Railway */
+"AIRSPACE_TYPE_RAILWAY" = "Spoorwegen";
+
+/* Name for airspace type Residential Property */
+"AIRSPACE_TYPE_RESIDENTIAL_PROPERTY" = "Residentieel onroerend goed";
+
+/* Name for airspace type School */
+"AIRSPACE_TYPE_SCHOOL" = "School";
+
+/* Name for airspace type Seaplane Base */
+"AIRSPACE_TYPE_SEAPLANE_BASE" = "Watervliegtuig Base";
+
+/* Name for airspace type Special Use Airspace */
+"AIRSPACE_TYPE_SPECIAL_USE" = "Speciaal gebruik luchtruim";
+
+/* Name for airspace type Stadium */
+"AIRSPACE_TYPE_STADIUM" = "Stadion";
+
+/* Name for airspace type State */
+"AIRSPACE_TYPE_STATE" = "Staat";
+
+/* Name for airspace type Subprefecture */
+"AIRSPACE_TYPE_SUBPREFECTURE" = "Oprichting van de subprefectuur";
+
+/* Name for airspace type Supercity (Japan related) */
+"AIRSPACE_TYPE_SUPERCITY" = "Supercity";
+
+/* Name for airspace type FAA Temporary Flight Restriction */
+"AIRSPACE_TYPE_TFR_FAA" = "Tijdelijke vlucht beperking";
+
+/* Name for airspace type Ultralight Field */
+"AIRSPACE_TYPE_ULM_FIELD" = "Ultralichte veld";
+
+/* Generic catchall placeholder/name for airspace type is new and unknown at time of development but present via the advisories or map sources */
+"AIRSPACE_TYPE_UNCLASSIFIED" = "Niet-geclassificeerde";
+
+/* Name for airspace type University */
+"AIRSPACE_TYPE_UNIVERSITY" = "Universiteit";
+
+/* Name for airspace type Waterway */
+"AIRSPACE_TYPE_WATERWAY" = "Binnenwateren";
+
+/* Name for airspace type WildFire */
+"AIRSPACE_TYPE_WILDFIRE" = "Wildvuur";
+
+/* The request with the authority has been accepted */
+"AUTHORIZATION_ACCEPTED" = "Goedgekeurd";
+
+/* The request with the authority has been cancelled */
+"AUTHORIZATION_CANCELLED_SUBMISSION" = "Vergunning geannuleerd";
+
+/* The request with the authority has not been requested */
+"AUTHORIZATION_NOT_REQUESTED" = "Vergunning niet om gevraagd";
+
+/* The request with the authority has been made and a response is pending */
+"AUTHORIZATION_PENDING" = "Vergunning in afwachting van";
+
+/* The request with the authority has been rejected */
+"AUTHORIZATION_REJECTED" = "Vergunning geweigerd";
+
+/* The request with the authority will be rejected once the flight plan is submitted */
+"AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Verworpen op vertoon";
+
+/* The request with the authority will be accepted once the flight plan is submitted */
+"AUTHORIZATION_UPON_SUBMISSION" = "Vergunning op vertoon";
+
+/* Login message when a user's account has been blacklisted. */
+"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Uw account heeft op de zwarte lijst. Neem contact op met security@airmap.com";
+
+/* Login message when a user must verify their email address */
+"AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Uw e-mailadres moet worden gecontroleerd. Controleer uw postvak in.";
+
+/* Login message when a user failed to authenticate */
+"AUTH_ERROR_UNAUTHORIZED" = "Onbevoegde";
+
+/* Navigation title for failed login attempt */
+"AUTH_FAILED_LOGIN_TITLE" = "Waarschuwen";
+
+/* Abbreviation for East */
+"CARDINAL_DIRECTION_E" = "E";
+
+/* Abbreviation for East North East */
+"CARDINAL_DIRECTION_ENE" = "ONO";
+
+/* Abbreviation for East South East */
+"CARDINAL_DIRECTION_ESE" = "ESE";
+
+/* Abbreviation for North */
+"CARDINAL_DIRECTION_N" = "N";
+
+/* Abbreviation for North East */
+"CARDINAL_DIRECTION_NE" = "NE";
+
+/* Abbreviation for North North East */
+"CARDINAL_DIRECTION_NNNE" = "NNO";
+
+/* Abbreviation for North North West */
+"CARDINAL_DIRECTION_NNW" = "NNW";
+
+/* Abbreviation for North West */
+"CARDINAL_DIRECTION_NW" = "NW";
+
+/* Abbreviation for South */
+"CARDINAL_DIRECTION_S" = "S";
+
+/* Abbreviation for South East */
+"CARDINAL_DIRECTION_SE" = "SE";
+
+/* Abbreviation for South South East */
+"CARDINAL_DIRECTION_SSE" = "SSE";
+
+/* Abbreviation for South South West */
+"CARDINAL_DIRECTION_SSW" = "SSW";
+
+/* Abbreviation for South West */
+"CARDINAL_DIRECTION_SW" = "SW";
+
+/* Abbreviation for West */
+"CARDINAL_DIRECTION_W" = "W";
+
+/* Abbreviation for West North West */
+"CARDINAL_DIRECTION_WNW" = "WNW";
+
+/* Abbreviation for West South West */
+"CARDINAL_DIRECTION_WSW" = "WSW";
+
+/* Request cancelled error */
+"ERROR_CANCELLED" = "Aanvraag geannuleerd voordat deze kon worden voltooid";
+
+/* A conflict exists with the attempted request */
+"ERROR_CONFLICT" = "Een conflict bestaat";
+
+/* A generic server error message with an associated error code */
+"ERROR_GENERIC_FORMAT" = "De server een fout geretourneerd. (%@)";
+
+/* Response serialization failure error */
+"ERROR_SERIALIZATION" = "De server heeft een onverwerkbare antwoord teruggestuurd.";
+
+/* Server failure error */
+"ERROR_SERVER" = "Uw aanvraag kon niet worden voltooid door de server.";
+
+/* Authorization failure error */
+"ERROR_UNAUTHORIZED" = "Onbevoegde. Controleer inloggegevens.";
+
+/* The radius around a point-based flight's center */
+"FLIGHT_DRAWING_RADIUS" = "Straal";
+
+/* Call to action to fine-tune the geometry of a flight. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Sleep elk punt te verplaatsen. Sleep een middelpunt om toe te voegen een nieuw punt.";
+
+/* Call to action to drag a point to the trash to delete. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Sleep naar de Prullenbak te verwijderen";
+
+/* Call to action to draw an area-based flight. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_AREA" = "Tekenen van een vlucht gebied";
+
+/* Call to action to draw a path-based flight. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAW_FREEHAND_PATH" = "Tekenen van een vliegroute";
+
+/* Call to action to drag the center position of a point-based flight. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Sleep het middelpunt om te plaatsen uw vlucht-gebied.";
+
+/* Call to action to tap the icon to begin drawing a flight area. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Tik op het handpictogram om te tekenen van een gebied van de vlucht.";
+
+/* Call to action to tap the icon to begin drawing a flight path. */
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Tik op het handpictogram om een vlucht pad te tekenen.";
+
+/* Displayed when the user has drawn an invalid shaping, overlapping with conflicting permitted zones */
+"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "Vlucht gebied elkaar niet overlappen met tegenstrijdige vergunning vereiste zones.";
+
+/* Call to action to fix self-intersecting geometries of an area-based flight. */
+"FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Ongeldige vlucht gebied. Vlucht gebied aanpassen zodat het niet met zichzelf overlapt.";
+
+/* The width of a path-based flight extending outward from the centerline */
+"FLIGHT_DRAWING_WIDTH" = "Breedte";
+
+/* Title for the button to advance to the next screen */
+"FLIGHT_PLAN_BUTTON_TITLE_NEXT" = "Volgende";
+
+/* Title for the button to save and create the flight */
+"FLIGHT_PLAN_BUTTON_TITLE_SAVE" = "Opslaan";
+
+/* Call to action title for the user to select an aircraft */
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "Selecteer vliegtuigen";
+
+/* Title for the row displaying the name of the aircraft */
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "Vliegtuigen";
+
+/* Title for the row displaying flight plan buffer */
+"FLIGHT_PLAN_ROW_TITLE_BUFFER" = "Buffer";
+
+/* Title for the row displaying flight plan duration */
+"FLIGHT_PLAN_ROW_TITLE_DURATION" = "Duur";
+
+/* Title for the row displaying flight plan max altitude AGL (above ground level) */
+"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Max hoogte AGL";
+
+/* Call to action title for the user to select a pilot profile */
+"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Pilot profiel selecteren";
+
+/* Title for the row displaying flight plan radius */
+"FLIGHT_PLAN_ROW_TITLE_RADIUS" = "Straal";
+
+/* Title for the row displaying flight plan start time */
+"FLIGHT_PLAN_ROW_TITLE_START_TIME" = "Begint";
+
+/* Title for the section displaying the pilot and aircraft details */
+"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Piloot & vliegtuig";
+
+/* Title for the section displaying flight plan details */
+"FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Vlucht";
+
+/* Title for the section displaying social sharing features */
+"FLIGHT_PLAN_SECTION_HEADER_SHARE" = "Delen van mijn vlucht";
+
+/* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
+"MANUAL_AUTHORIZATION" = "Handmatige vergunning in afwachting indiening";
+
+/* Table section title for other selectable countries */
+"PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "Andere";
+
+/* Table section title for the currently selected country */
+"PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "Geselecteerde land";
+
+/* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
+"PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "Nieuwe SMS-Code aanvragen";
+
+/* Message that is presented after a phone verification has failed, encouraging the user to try again */
+"PHONE_VERIFICATION_TRY_AGAIN" = "&Opnieuw";
+
+/* Message presented to a user when the SMS code they input is incorrect and verification of that code has failed */
+"PHONE_VERIFICATION_VERIFICATION_FAILED" = "Telefoon nummer verificatie mislukt";
+
+/* Format for displaying the given + family name of a user. 1) given name 2) family name */
+"PILOT_FULL_NAME_FORMAT" = "%1$@ %2$@";
+
+/* Table row label for FAA registration number */
+"PILOT_PROFILE_FAA_REGISTRATION" = "Registratienummer van de FAA";
+
+/* Label for the pilot profile email */
+"PILOT_PROFILE_LABEL_EMAIL" = "E-mail";
+
+/* Label for the pilot profile first name */
+"PILOT_PROFILE_LABEL_FIRST_NAME" = "Voornaam";
+
+/* Label for the pilot profile last name */
+"PILOT_PROFILE_LABEL_LAST_NAME" = "Achternaam";
+
+/* Label for the pilot profile phone */
+"PILOT_PROFILE_LABEL_PHONE" = "Telefoon";
+
+/* Label for the pilot profile username */
+"PILOT_PROFILE_LABEL_USERNAME" = "Gebruikersnaam";
+
+/* Section header for the pilot profile additional info section */
+"PILOT_PROFILE_SECTION_ADDITIONAL" = "Extra Info";
+
+/* Section header for the pilot profile personal info section */
+"PILOT_PROFILE_SECTION_PERSONAL" = "Persoonlijke Info";
+
+/* Format for displaying a user's number of aircraft and flights */
+"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ vliegtuigen, %2$@ vluchten";
+
+/* Displayed for authorities that are setup to receive digital notice */
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Accepteert de aankondiging van de digitale";
+
+/* Displayed for authorities that are NOT setup to receive digital notice */
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "De volgende instanties op dit gebied accepteren geen digitale kennisgeving";
+
+/* Displayed in the flight plan review notices tab when there are no notices to display */
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_SECTION_HEADER_NO_NOTICES" = "Er zijn geen berichten voor deze vlucht.";
+
+/* Label for the section header that displays all the Optional rulesets */
+"RULESETS_SECTION_OPTIONAL" = "Optioneel";
+
+/* Label for the section header that displays all the Pick One rulesets */
+"RULESETS_SECTION_PICK_ONE" = "Kies een";
+
+/* Label for the section header that displays all the Required rulesets */
+"RULESETS_SECTION_REQUIRED" = "Vereist";
+
+/* Label for rulesets that can be optionally enabled by the user */
+"RULESET_SELECTION_TYPE_OPTIONAL" = "Optioneel";
+
+/* Label for rulesets that are part of a group in which one and only one ruleset can be enabled by the user */
+"RULESET_SELECTION_TYPE_PICKONE" = "Kies een";
+
+/* Label for rulesets that must be enabled by the user */
+"RULESET_SELECTION_TYPE_REQUIRED" = "Vereist";
+
+/* Description for status advisory color Green */
+"STATUS_GREEN_DESCRIPTION" = "Informatieve";
+
+/* Description for status advisory color Orange */
+"STATUS_ORANGE_DESCRIPTION" = "Actie vereist";
+
+/* Description for status advisory color Red */
+"STATUS_RED_DESCRIPTION" = "Vlucht strikt gereglementeerd";
+
+/* Description for status advisory color Yellow */
+"STATUS_YELLOW_DESCRIPTION" = "Adviezen";
+
+/* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) distance, 4) direction, 5) time */
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT" = "Verkeer %1$@ hoogte %2$@ %3$@ %4$@ %5$@";
+
+/* Format for traffic alerts. 1) aircraft id, 2) altitude, 3) ground speed */
+"TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT" = "Verkeer %1$@ hoogte %2$@ %3$@";
+
+/* Name for the imperial system of measurement */
+"UNITS_IMPERIAL" = "Imperial";
+
+/* Name for the metric system of measurement */
+"UNITS_METRIC" = "Metrisch";
+
+/* Unit and format for displaying nautical miles */
+"UNITS_NAUTICAL_MILE_FORMAT" = "%@ NM";
+
+/* Unit and format for displaying speed in knots */
+"UNITS_SPEED_FORMAT_KNOTS" = "%@ kts";
+
+/* Unit and format for displaying speed in meters per second */
+"UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m/s";
+
+/* Unit and format for displaying speed in miles per hour */
+"UNITS_SPEED_FORMAT_MILES_PER_HOUR" = "%@ mph";
+
+/* Unit and format for displaying a speed range in meters per second */
+"UNITS_SPEED_RANGE_FORMAT_METERS_PER_SECOND" = "%1$@-%2$@ m/s";
+
+/* Unit and format for displaying a speed range in miles per hour */
+"UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ mph";
+
+/* Unit and format for displaying temperature in Celcius */
+"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@°C";
+
+/* Unit and format for displaying temperature in Fahrenheit */
+"UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@°F";
+
+/* The request with the authority has been accepted */
+"VALIDATION_ACCEPTED" = "Gevalideerd";
+
+/* No validation request has been filed */
+"VALIDATION_NOT_REQUESTED" = "Validatie niet om gevraagd";
+
+/* The request with the authority has been made and a response is pending */
+"VALIDATION_PENDING" = "In afwachting van validatie";
+
+/* The request with the authority has been rejected */
+"VALIDATION_REJECTED" = "Verworpen van ontbrekende Info";
