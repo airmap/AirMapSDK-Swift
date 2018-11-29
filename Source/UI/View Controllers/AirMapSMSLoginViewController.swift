@@ -50,8 +50,8 @@ class AirMapSMSLoginViewController: UITableViewController, AnalyticsTrackable, A
         super.viewDidLoad()
         
         setupBindings()
-		setupBranding()
-		setupDefaultCountryCode()
+        setupBranding()
+        setupDefaultCountryCode()
         setupPhoneNumberField()
     }
     
