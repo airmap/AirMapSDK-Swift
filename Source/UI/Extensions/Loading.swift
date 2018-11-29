@@ -100,7 +100,7 @@ class LoadingWindow: UIWindow {
 
         let window = LoadingWindow(frame: UIScreen.main.bounds)
         window.rootViewController = LoadingRootViewController()
-        window.backgroundColor = UIColor.airMapDarkGray.withAlphaComponent(0.75)
+        window.backgroundColor = UIColor.primary.withAlphaComponent(0.75)
         window.windowLevel = UIWindowLevelAlert + 1
         
         return window
