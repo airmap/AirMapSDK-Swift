@@ -114,7 +114,7 @@ extension AirMap {
 				style.logo = (login_logo != nil) ? LazyImage(name: "login_logo", bundle: Bundle.main) : LazyImage(name: "airmap_login_logo", bundle: Bundle(for: AirMap.self))
 				style.hideTitle = true
 				style.headerColor = UIColor(white: 0.9, alpha: 1.0)
-				style.primaryColor = .primary
+				style.primaryColor = .highlight
 			}
 			.onAuth { credentials in
 				authToken = credentials.idToken
