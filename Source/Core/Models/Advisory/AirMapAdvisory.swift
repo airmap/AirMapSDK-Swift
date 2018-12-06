@@ -108,10 +108,11 @@ public struct AirMapAdvisory {
 	}
 	
 	/// Controlled Airspace advisory properties
-	public struct ControlledAirspaceProperties: AdvisoryProperties {
+	public struct ControlledAirspaceProperties: AdvisoryProperties, HasOptionalURL {
 		public let type: String?
 		public let isLaancProvider: Bool?
 		public let supportsAuthorization: Bool?
+		public let url: URL?
 	}
 	
 	/// City properties

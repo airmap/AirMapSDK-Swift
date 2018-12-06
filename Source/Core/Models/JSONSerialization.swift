@@ -181,6 +181,7 @@ extension AirMapAdvisory.ControlledAirspaceProperties: ImmutableMappable {
 		type                   =  try  map.value("type")
 		isLaancProvider        =  try? map.value("laanc")
 		supportsAuthorization  =  try? map.value("authorization")
+		url                    =  try? map.value("url", using: URLTransform())
 	}
 }
 
