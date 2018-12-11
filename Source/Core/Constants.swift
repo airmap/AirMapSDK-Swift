@@ -19,7 +19,7 @@
 //
 
 #if os(iOS) || os(tvOS)
-    import UIKit.UIDevice
+import UIKit.UIDevice
 #endif
 
 import ObjectMapper
@@ -32,7 +32,7 @@ struct Constants {
 			return url(for: "advisory", v: 1)
 		}
 		static var aircraftUrl: String {
-            return url(for: "aircraft", v: 2)
+			return url(for: "aircraft", v: 2)
 		}
 		static var airspaceUrl: String {
 			return url(for: "airspace", v: 2)
@@ -41,7 +41,7 @@ struct Constants {
 			return url(for: "auth", v: 1)
 		}
 		static var flightUrl: String {
-            return url(for: "flight", v: 2)
+			return url(for: "flight", v: 2)
 		}
 		static var tileDataUrl: String {
 			return url(for: "tiledata", v: 1)
@@ -126,11 +126,11 @@ struct Constants {
 		static let jurisdictionsStyleLayerId = "jurisdictions"
 		static let jurisdictionFeatureAttributesKey = "jurisdiction"
 		static let airmapLayerPrefix = "airmap"
-        static let rulesetSourcePrefix = "airmap_ruleset_"
-        static let tileMinimumZoomLevel = 7
-        static let tileMaximumZoomLevel = 12
-        static let temporalLayerRefreshInterval: TimeInterval = 20
-        static let futureTemporalWindow: TimeInterval = 4*60*60 // 4 hours
+		static let rulesetSourcePrefix = "airmap_ruleset_"
+		static let tileMinimumZoomLevel = 7
+		static let tileMaximumZoomLevel = 12
+		static let temporalLayerRefreshInterval: TimeInterval = 20
+		static let futureTemporalWindow: TimeInterval = 4*60*60 // 4 hours
 		
 		static var styleUrl: URL {
 			return AirMap.configuration.airMapMapStyle ?? URL(string: "https://cdn.airmap.com/static/map-styles/0.8.6/")!
