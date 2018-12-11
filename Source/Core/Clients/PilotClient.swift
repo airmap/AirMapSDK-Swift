@@ -24,7 +24,7 @@ import RxSwift
 internal class PilotClient: HTTPClient {
 
 	init() {
-		super.init(basePath: Constants.AirMapApi.pilotUrl)
+		super.init(basePath: Constants.Api.pilotUrl)
 	}
 
 	enum PilotClientError: Error {

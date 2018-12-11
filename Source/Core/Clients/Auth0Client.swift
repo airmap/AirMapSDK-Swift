@@ -39,11 +39,11 @@ internal class Auth0Client: HTTPClient {
 		}
 
 		var params = [String: Any]()
-		params["grant_type"] = Constants.AirMapApi.Auth.grantType
+		params["grant_type"] = Constants.Auth.grantType
 		params["client_id"] = AirMap.configuration.auth0ClientId
 		params["api_type"] = "app"
 		params["refresh_token"] = refreshToken
-		params["scope"] = Constants.AirMapApi.Auth.scope
+		params["scope"] = Constants.Auth.scope
 
 		return perform(method: .post, path:"/delegation", params: params, keyPath: nil)
 			.do(onNext: { token in
@@ -81,7 +81,7 @@ internal class Auth0Client: HTTPClient {
 		params["connection"] = "sms"
 		params["grant_type"] = "password"
 		params["device"] = deviceId
-		params["scope"] = Constants.AirMapApi.Auth.scope
+		params["scope"] = Constants.Auth.scope
         
         return perform(method: .post, path:"/oauth/ro", params: params, keyPath: nil)
             .do(onNext: { credentials in

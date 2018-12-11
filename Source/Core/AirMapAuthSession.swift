@@ -118,13 +118,13 @@ internal class AirMapAuthSession {
 
 	internal static func saveRefreshToken(_ token: String?) {
 		if let token = token {
-			A0SimpleKeychain().setString(token, forKey: Constants.AirMapApi.Auth.keychainKeyRefreshToken)
+			A0SimpleKeychain().setString(token, forKey: Constants.Auth.keychainKeyRefreshToken)
 		} else {
-			A0SimpleKeychain().deleteEntry(forKey: Constants.AirMapApi.Auth.keychainKeyRefreshToken)
+			A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainKeyRefreshToken)
 		}
 	}
 
 	internal func getRefreshToken() -> String? {
-		return A0SimpleKeychain().string(forKey: Constants.AirMapApi.Auth.keychainKeyRefreshToken)
+		return A0SimpleKeychain().string(forKey: Constants.Auth.keychainKeyRefreshToken)
 	}
 }

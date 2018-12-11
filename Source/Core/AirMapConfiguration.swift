@@ -53,12 +53,15 @@ public struct AirMapConfiguration {
 	/// Units used for displaying temperature values
 	public var temperatureUnits: TemperatureUnits = .celcius
 
-	public let airMapDomain: String
-	public let airMapApiDomain: String
+	public var airMapApiDomain: String {
+		return host(for: "api")
+	}
+
 	public let auth0Host: String
 	public let auth0ClientId: String
 	public let auth0Scope: String
 
+	let airMapDomain: String
 	let airMapApiOverrides: [String: String]?
 	let airMapEnvironment: String?
 	let airMapPinCertificates: Bool
@@ -91,7 +94,19 @@ extension AirMapConfiguration {
 			)
 		}
 	}()
-	
+}
+
+extension AirMapConfiguration {
+
+	func host(for resource: String) -> String {
+		return [airMapEnvironment, resource, airMapDomain]
+			.compactMap({ $0 })
+			.joined(separator: ".")
+	}
+
+	func override(for resource: String) -> String? {
+		return airMapApiOverrides?[resource]
+	}
 }
 
 // MARK: - JSON Serialization
@@ -112,7 +127,6 @@ extension AirMapConfiguration: ImmutableMappable {
 			auth0Host             = (try? map.value("auth0.host")) ?? "sso.airmap.io"
 			auth0Scope            = (try? map.value("auth0.scope")) ?? "openid offline_access"
 			airMapDomain          = (try? map.value("airmap.domain")) ?? "airmap.com"
-			airMapApiDomain       = (try? map.value("airmap.api_domain")) ?? "api.airmap.com"
 			airMapEnvironment     =  try? map.value("airmap.environment")
 			airMapApiOverrides    =  try? map.value("airmap.api_overrides")
 			airMapMapStyle        =  try? map.value("airmap.map_style", using: URLTransform())

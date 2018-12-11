@@ -26,7 +26,7 @@ public extension Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 		dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-		dateFormatter.dateFormat = Constants.AirMapApi.dateFormat
+		dateFormatter.dateFormat = Constants.Api.dateFormat
 		return dateFormatter.string(from: self)
 	}
 	

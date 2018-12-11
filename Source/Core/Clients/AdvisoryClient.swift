@@ -25,7 +25,7 @@ import SwiftTurf
 internal class AdvisoryClient: HTTPClient {
 	
 	init() {
-		super.init(basePath: Constants.AirMapApi.advisoryUrl)
+		super.init(basePath: Constants.Api.advisoryUrl)
 	}
 	
 	enum AdvisoryClientError: Error {

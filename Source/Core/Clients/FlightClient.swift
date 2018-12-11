@@ -28,7 +28,7 @@ internal class FlightClient: HTTPClient {
 	}
 
 	init() {
-		super.init(basePath: Constants.AirMapApi.flightUrl)
+		super.init(basePath: Constants.Api.flightUrl)
 	}
 
 	#if AIRMAP_TELEMETRY

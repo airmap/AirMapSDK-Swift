@@ -24,7 +24,7 @@ import RxSwift
 internal class AircraftClient: HTTPClient {
 	
 	init() {
-		super.init(basePath: Constants.AirMapApi.aircraftUrl)
+		super.init(basePath: Constants.Api.aircraftUrl)
 	}
 	
 	func listManufacturers() -> Observable<[AirMapAircraftManufacturer]> {

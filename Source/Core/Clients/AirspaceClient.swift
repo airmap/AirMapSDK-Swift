@@ -24,7 +24,7 @@ import RxSwift
 internal class AirspaceClient: HTTPClient {
 	
 	init() {
-		super.init(basePath: Constants.AirMapApi.airspaceUrl)
+		super.init(basePath: Constants.Api.airspaceUrl)
 	}
 	
 	func getAirspace(_ airspaceId: AirMapAirspaceId) -> Observable<AirMapAirspace> {

@@ -25,11 +25,11 @@ internal class TrafficClient: MQTTSession {
 	
 	init() {
 		super.init(
-			host: Constants.AirMapTraffic.host,
-			port: Constants.AirMapTraffic.port,
-			clientID: Constants.AirMapTraffic.clientId,
+			host: Constants.Traffic.host,
+			port: Constants.Traffic.port,
+			clientID: Constants.Traffic.clientId,
 			cleanSession: true,
-			keepAlive: Constants.AirMapTraffic.keepAlive,
+			keepAlive: Constants.Traffic.keepAlive,
 			useSSL: true
 		)
 	}

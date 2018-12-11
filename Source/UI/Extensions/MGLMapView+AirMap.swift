@@ -221,7 +221,7 @@ extension MGLVectorSource {
 			MGLTileSourceOption.minimumZoomLevel: NSNumber(value: Constants.Maps.tileMinimumZoomLevel),
 			MGLTileSourceOption.maximumZoomLevel: NSNumber(value: Constants.Maps.tileMaximumZoomLevel)
 		]
-		let sourcePath = Constants.AirMapApi.tileDataUrl + "/\(ruleset.id.rawValue)/\(layerNames)/{z}/{x}/{y}?apikey=\(AirMap.configuration.airMapApiKey)"
+		let sourcePath = Constants.Api.tileDataUrl + "/\(ruleset.id.rawValue)/\(layerNames)/{z}/{x}/{y}?apikey=\(AirMap.configuration.airMapApiKey)"
 		
 		self.init(identifier: ruleset.tileSourceIdentifier, tileURLTemplates: [sourcePath], options: options)
 	}

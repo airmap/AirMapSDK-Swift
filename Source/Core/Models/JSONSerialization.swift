@@ -46,7 +46,7 @@ extension AirMapAdvisory: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		
-		let dateTransform = CustomDateFormatTransform(formatString: Constants.AirMapApi.dateFormat)
+		let dateTransform = CustomDateFormatTransform(formatString: Constants.Api.dateFormat)
 		
 		do {
 			id            =  try  map.value("id")
@@ -196,7 +196,7 @@ extension AirMapAdvisory.CustomProperties: ImmutableMappable {
 extension AirMapAdvisory.EmergencyProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		effective   =  try? map.value("date_effective", using: Constants.AirMapApi.dateTransform)
+		effective   =  try? map.value("date_effective", using: Constants.Api.dateTransform)
 		type        =  try? map.value("type")
 	}
 }
@@ -204,7 +204,7 @@ extension AirMapAdvisory.EmergencyProperties: ImmutableMappable {
 extension AirMapAdvisory.FireProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		effective  =  try? map.value("date_effective", using: Constants.AirMapApi.dateTransform)
+		effective  =  try? map.value("date_effective", using: Constants.Api.dateTransform)
 	}
 }
 
@@ -257,8 +257,8 @@ extension AirMapAdvisory.TFRProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		url        =  try  map.value("url", using: URLTransform())
-		startTime  =  try? map.value("effective_start", using: Constants.AirMapApi.dateTransform)
-		endTime    =  try? map.value("effective_end", using: Constants.AirMapApi.dateTransform)
+		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
+		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
 		type       =  try? map.value("type")
 		sport      =  try? map.value("sport")
 		venue      =  try? map.value("venue")
@@ -268,7 +268,7 @@ extension AirMapAdvisory.TFRProperties: ImmutableMappable {
 extension AirMapAdvisory.WildfireProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		effective   =  try? map.value("date_effective", using: Constants.AirMapApi.dateTransform)
+		effective   =  try? map.value("date_effective", using: Constants.Api.dateTransform)
 		size        =  try? map.value("size")
 	}
 }
@@ -434,7 +434,7 @@ extension AirMapFlight: Mappable {
 			coordinate.longitude = lng
 		}
 		
-		let dateTransform = CustomDateFormatTransform(formatString: Constants.AirMapApi.dateFormat)
+		let dateTransform = CustomDateFormatTransform(formatString: Constants.Api.dateFormat)
 		
 		id          	<- (map["id"], AirMapIdTransform())
 		flightPlanId	<- (map["flight_plan_id"], AirMapIdTransform())
@@ -500,7 +500,7 @@ extension AirMapFlightBriefing: ImmutableMappable {
 			throw AirMapError.server
 		}
 		
-		let dateTransform = CustomDateFormatTransform(formatString: Constants.AirMapApi.dateFormat)
+		let dateTransform = CustomDateFormatTransform(formatString: Constants.Api.dateFormat)
 		do {
 			createdAt      =  try  map.value("created_at", using: dateTransform)
 			rulesets       =  try  map.value("rulesets")
@@ -690,7 +690,7 @@ extension AirMapWeather: ImmutableMappable {
 
 extension AirMapWeather.Observation: ImmutableMappable {
 	
-	private static let dateTransform = CustomDateFormatTransform(formatString: Constants.AirMapApi.dateFormat)
+	private static let dateTransform = CustomDateFormatTransform(formatString: Constants.Api.dateFormat)
 	
 	public init(map: Map) throws {
 		do {

@@ -60,7 +60,7 @@ open class AirMapLoginWithCodeViewController: UITableViewController, AnalyticsTr
     fileprivate func setupBindings() {
         
         smsTextField.rx.text.asObservable()
-            .map { $0?.count == Constants.AirMapApi.smsCodeLength }
+            .map { $0?.count == Constants.Api.smsCodeLength }
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: disposeBag)
         

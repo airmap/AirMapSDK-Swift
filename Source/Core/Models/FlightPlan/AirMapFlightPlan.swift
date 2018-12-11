@@ -71,7 +71,7 @@ public class AirMapFlightPlan: Mappable {
 	public required init?(map: Map) {
 		
 		do {
-			let dateTransform = Constants.AirMapApi.dateTransform
+			let dateTransform = Constants.Api.dateTransform
 			startTime = try map.value("start_time", using: dateTransform)
 			let endTime: Date = try map.value("end_time", using: dateTransform)
 			duration = endTime.timeIntervalSince(startTime)
@@ -87,7 +87,7 @@ public class AirMapFlightPlan: Mappable {
 	
 	public func mapping(map: Map) {
 		
-		let dateTransform = Constants.AirMapApi.dateTransform
+		let dateTransform = Constants.Api.dateTransform
 		let geoJSONTransform = GeoJSONToAirMapGeometryTransform()
 
 		id                  <-  (map["id"], AirMapIdTransform())

@@ -32,7 +32,7 @@ extension AirMapPilotStats: ImmutableMappable {
 	public init(map: Map) throws {
 		totalFlights    =  try map.value("flight.total")
 		totalAircraft   =  try map.value("aircraft.total")
-		lastFlightTime  =  try? map.value("flight.last_flight_time", using: Constants.AirMapApi.dateTransform)
+		lastFlightTime  =  try? map.value("flight.last_flight_time", using: Constants.Api.dateTransform)
 	}
 	
 }

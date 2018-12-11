@@ -55,7 +55,7 @@ public class AirMapTraffic: NSObject {
 	public required init?(map: Map) {}
 
 	public func isExpired() -> Bool {
-		let expirationInterval = Constants.AirMapTraffic.expirationInterval
+		let expirationInterval = Constants.Traffic.expirationInterval
 		return createdAt.addingTimeInterval(expirationInterval) < Date()
 	}
 
@@ -78,8 +78,8 @@ extension AirMapTraffic: Mappable {
 		groundSpeed   <- (map["ground_speed_kts"], StringToDoubleTransform())
 		trueHeading   <- (map["true_heading"], StringToIntTransform())
 		properties    <-  map["properties"]
-		timestamp     <- (map["timestamp"], Constants.AirMapApi.dateTransform)
-		recordedTime  <- (map["recorded_time"], Constants.AirMapApi.dateTransform)
+		timestamp     <- (map["timestamp"], Constants.Api.dateTransform)
+		recordedTime  <- (map["recorded_time"], Constants.Api.dateTransform)
 
 		var latitude: String!
 		var longitude: String!
