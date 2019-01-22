@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 	s.name              = 'AirMapSDK'
 	s.module_name       = 'AirMap'
 	s.author            = 'AirMap, Inc.'
-	s.version           = '2.1.0'
+	s.version           = '3.0.0.beta.1'
 	s.summary           = 'AirMap SDK for iOS & macOS'
 	s.description       = 'Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.'
 	s.license           = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -32,7 +32,6 @@ Pod::Spec.new do |s|
 		core.dependency 'ObjectMapper'
 		core.dependency 'SwiftTurf'
 		core.dependency 'SimpleKeychain'
-		core.dependency 'JWTDecode'
 		core.dependency 'RxSwift'
 		core.dependency 'RxSwiftExt'
 		core.dependency 'RxCocoa'
@@ -48,7 +47,7 @@ Pod::Spec.new do |s|
 		ui.dependency 'PhoneNumberKit'
 		ui.dependency 'RxDataSources'
 		ui.dependency 'Mapbox-iOS-SDK', '<4.0'
-		ui.dependency 'Lock', '>= 2.5.0'
+		ui.dependency 'AppAuth'
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/Localizations/**/*']
 	end

@@ -40,54 +40,73 @@ internal class PilotClient: HTTPClient {
 	}
 
 	func getAuthenticatedPilot() -> Observable<AirMapPilot> {
-		AirMap.logger.debug("GET Authenticated Pilot", AirMap.authSession.userId)
-		return perform(method: .get, path: "/\(AirMap.authSession.userId)", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapPilot> in
+			AirMap.logger.debug("GET Authenticated Pilot", credentials.pilot)
+			return self.perform(method: .get, path: "/\(credentials.pilot)", auth: credentials)
+		}
 	}
 
 	func update(_ pilot: AirMapPilot) -> Observable<AirMapPilot> {
-		AirMap.logger.debug("Update Pilot", pilot)
-		guard let pilotId = pilot.id else { return .error(PilotClientError.invalidPilotIdentifier) }
-		return perform(method: .patch, path: "/\(pilotId)", params: pilot.params(), update: pilot, checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapPilot> in
+			AirMap.logger.debug("Update Pilot", pilot)
+			guard let pilotId = pilot.id else { return .error(PilotClientError.invalidPilotIdentifier) }
+			return self.perform(method: .patch, path: "/\(pilotId)", params: pilot.params(), update: pilot, auth: credentials)
+		}
 	}
 	
 	func sendVerificationToken() -> Observable<Void> {
-		AirMap.logger.debug("Send Phone Number SMS Verification Token")
-		return perform(method: .post, path: "/\(AirMap.authSession.userId)/phone/send_token")
+		return withCredentials().flatMap { (credentials) -> Observable<Void> in
+			AirMap.logger.debug("Send Phone Number SMS Verification Token")
+			return self.perform(method: .post, path: "/\(credentials.pilot)/phone/send_token", auth: credentials)
+		}
 	}
 
 	func verifySMS(token: String) -> Observable<AirMapPilotVerified> {
-		AirMap.logger.debug("Verify SMS Token")
-		let params = ["token": Int(token) ?? 0]
-		return perform(method: .post, path: "/\(AirMap.authSession.userId)/phone/verify_token", params: params)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapPilotVerified> in
+			AirMap.logger.debug("Verify SMS Token")
+			let params = ["token": Int(token) ?? 0]
+			return self.perform(method: .post, path: "/\(credentials.pilot)/phone/verify_token", params: params, auth: credentials)
+		}
 	}
 
 	// MARK: Aircraft
 	
 	func listAircraft() -> Observable<[AirMapAircraft]> {
-		AirMap.logger.debug("List Aircraft")
-		return perform(method: .get, path: "/\(AirMap.authSession.userId)/aircraft", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<[AirMapAircraft]> in
+			AirMap.logger.debug("List Aircraft")
+			return self.perform(method: .get, path: "/\(credentials.pilot)/aircraft", auth: credentials)
+		}
 	}
 
 	func getAircraft(_ aircraftId: AirMapAircraftId) -> Observable<AirMapAircraft> {
-		AirMap.logger.debug("Get Aircraft")
-		return perform(method: .get, path: "/\(AirMap.authSession.userId)/aircraft/\(aircraftId)", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapAircraft> in
+			AirMap.logger.debug("Get Aircraft")
+			return self.perform(method: .get, path: "/\(credentials.pilot)/aircraft/\(aircraftId)", auth: credentials)
+		}
 	}
 
 	func createAircraft(_ aircraft: AirMapAircraft) -> Observable<AirMapAircraft> {
-		AirMap.logger.debug("Create Aircraft", aircraft)
-		return perform(method: .post, path: "/\(AirMap.authSession.userId)/aircraft", params: aircraft.toJSON(), update: aircraft, checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapAircraft> in
+			AirMap.logger.debug("Create Aircraft", aircraft)
+			return self.perform(method: .post, path: "/\(credentials.pilot)/aircraft", params: aircraft.toJSON(), update: aircraft, auth: credentials)
+		}
 	}
 
 	func updateAircraft(_ aircraft: AirMapAircraft) -> Observable<AirMapAircraft> {
-		AirMap.logger.debug("Update Aircraft", aircraft)
-		guard let aircraftId = aircraft.id, let nickname = aircraft.nickname else { return .error(PilotClientError.invalidAircraftIdentifier) }
-		let params = ["nickname" : nickname]
-		return perform(method: .patch, path: "/\(AirMap.authSession.userId)/aircraft/\(aircraftId)", params: params, update: aircraft, checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapAircraft> in
+			AirMap.logger.debug("Update Aircraft", aircraft)
+			guard let aircraftId = aircraft.id, let nickname = aircraft.nickname else { return .error(PilotClientError.invalidAircraftIdentifier) }
+			let params = ["nickname" : nickname]
+			return self.perform(method: .patch, path: "/\(credentials.pilot)/aircraft/\(aircraftId)", params: params, update: aircraft, auth: credentials)
+		}
 	}
 
 	func deleteAircraft(_ aircraft: AirMapAircraft) -> Observable<Void> {
-		AirMap.logger.debug("Delete Aircraft", aircraft)
-		guard let aircraftId = aircraft.id else { return .error(PilotClientError.invalidAircraftIdentifier) }
-		return perform(method: .delete, path: "/\(AirMap.authSession.userId)/aircraft/\(aircraftId)", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<Void> in
+			AirMap.logger.debug("Delete Aircraft", aircraft)
+			guard let aircraftId = aircraft.id else { return .error(PilotClientError.invalidAircraftIdentifier) }
+			return self.perform(method: .delete, path: "/\(credentials.pilot)/aircraft/\(aircraftId)", auth: credentials)
+		}
 	}
+
 }

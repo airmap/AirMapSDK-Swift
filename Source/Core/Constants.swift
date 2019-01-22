@@ -23,6 +23,7 @@ import UIKit.UIDevice
 #endif
 
 import ObjectMapper
+import AppAuth
 
 struct Constants {
 
@@ -72,11 +73,11 @@ struct Constants {
 	}
 
 	struct Auth {
-		static let scope = AirMap.configuration.auth0Scope
-		static let grantType = "urn:ietf:params:oauth:grant-type:jwt-bearer"
-		static let keychainKeyRefreshToken = "com.airmap.airmapsdk.refresh_token"
-		static let termsOfServiceUrl = "https://www.\(AirMap.configuration.airMapDomain)/terms"
-		static let privacyPolicyUrl = "https://www.\(AirMap.configuration.airMapDomain)/privacy"
+		static let identityProvider = "https://\(AirMap.configuration.host(for: "auth"))/realms/airmap/"
+		static let scopes = [OIDScopeOpenID, OIDScopeEmail, "airmap-api", "offline_access"]
+		static let keychainAuthState = "com.airmap.airmapsdk.auth_state"
+		static let termsOfServiceUrl = "https://www.\(AirMap.configuration.domain)/terms"
+		static let privacyPolicyUrl = "https://www.\(AirMap.configuration.domain)/privacy"
 	}
 
 	struct Telemetry {
@@ -133,7 +134,8 @@ struct Constants {
 		static let futureTemporalWindow: TimeInterval = 4*60*60 // 4 hours
 		
 		static var styleUrl: URL {
-			return AirMap.configuration.airMapMapStyle ?? URL(string: "https://cdn.airmap.com/static/map-styles/0.8.6/")!
+			return AirMap.configuration.mapStyle ??
+				URL(string: "https://cdn.airmap.com/static/map-styles/0.9.6/")!
 		}
 	}
 }

@@ -19,7 +19,6 @@
 //
 
 import RxSwift
-import Lock
 
 extension AirMap {
 	
@@ -51,7 +50,7 @@ extension AirMap {
 	/// - Returns: An AirMapAircraftModelNavController if Pilot is Authenticated, otherwise nil
 	public class func aircraftNavController(_ aircraft: AirMapAircraft?, delegate: AirMapAircraftNavControllerDelegate) -> AirMapAircraftNavController? {
 		
-		guard AirMap.authSession.hasValidCredentials() else {
+		guard AirMap.authService.isAuthorized else {
 			AirMap.logger.error(AirMap.self, "Cannot create or modify aicraft; user not authenticated")
 			return nil
 		}
@@ -73,7 +72,7 @@ extension AirMap {
 	/// - Returns: An AirMapAircraftModelNavController if Pilot is Authenticated, otherwise nil.
 	public class func aircraftModelViewController(_ aircraftSelectionDelegate: AirMapAircraftModelSelectionDelegate) -> AirMapAircraftModelNavController? {
 
-		guard AirMap.authSession.hasValidCredentials() else {
+		guard AirMap.authService.isAuthorized else {
 			return nil
 		}
 
@@ -84,61 +83,5 @@ extension AirMap {
 
 		return aircraftNav
 	}
-	
-	public typealias AirMapAuthHandler = (Result<AirMapPilot>) -> Void
-	
-	public enum AirMapAuthError: Error {
-		case emailBlacklisted
-		case error(description: String)
-	}
-
-	/// Presents a login view for the user to authenticate with the AirMap platform
-	///
-	/// - Parameters:
-	///   - viewController: The viewController from which to present the login view
-	///   - authHandler: The block that is called upon completion of login flow
-	public class func login(from viewController: UIViewController, with authHandler: @escaping AirMapAuthHandler) {
-		
-		Lock
-			.classic(clientId: AirMap.configuration.auth0ClientId, domain: configuration.auth0Host)
-			.withOptions { options in
-				let config = Constants.Auth.self
-				options.scope = config.scope
-				options.parameters = ["device": Bundle.main.bundleIdentifier ?? "AirMap SDK iOS"]
-				options.termsOfService = config.termsOfServiceUrl
-				options.privacyPolicy = config.privacyPolicyUrl
-				options.closable = true
-			}
-			.withStyle { style in
-				let login_logo = UIImage(named: "login_logo", in: Bundle.main, compatibleWith: nil)
-				style.logo = (login_logo != nil) ? LazyImage(name: "login_logo", bundle: Bundle.main) : LazyImage(name: "airmap_login_logo", bundle: Bundle(for: AirMap.self))
-				style.hideTitle = true
-				style.headerColor = UIColor(white: 0.9, alpha: 1.0)
-				style.primaryColor = .highlight
-			}
-			.onAuth { credentials in
-				authToken = credentials.idToken
-				authSession.refreshToken = credentials.refreshToken
-				rx.getAuthenticatedPilot().thenSubscribe(authHandler)
-			}
-			.onError { error in
-				let airMapError = AirMapError.client(error)
-				authHandler(Result<AirMapPilot>.error(airMapError))
-			}
-			.present(from: viewController)
-	}
-		
-    /// Creates an AirMapSMSLoginNavController that can be presented to the user.
-    ///
-    /// - Parameter delegate: The block that is called upon completion/error of login flow
-    /// - Returns: An AirMapSMSLoginNavController
-    public class func smsLoginController(delegate: AirMapSMSLoginDelegate?) -> AirMapSMSLoginNavController {
-        
-        let storyboard = UIStoryboard(name: "AirMapUI", bundle: AirMapBundle.ui)
-        
-        let authController = storyboard.instantiateViewController(withIdentifier: String(describing: AirMapSMSLoginNavController.self)) as! AirMapSMSLoginNavController
-        authController.smsLoginDelegate = delegate
-        return authController
-    }
 	
 }

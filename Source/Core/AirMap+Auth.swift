@@ -25,62 +25,61 @@ import Foundation
 /// Protocol for handling AirMap authentication state changes
 public protocol AirMapAuthSessionDelegate: class {
 	func airmapSessionShouldAuthenticate()
-	func airMapAuthSessionDidAuthenticate(_ pilot: AirMapPilot)
 	func airMapAuthSessionAuthenticationDidFail(_ error: Error)
 }
+
+public typealias AirMapAuthHandler = (Result<AirMapPilot>) -> Void
 
 extension AirMap {
 	
 	// MARK: - Auth
 
-	/// A JWT auth token that identifies the logged in user accessing the service. Required for all authenticated endpoints.
+	/// Returns the user authorization status
+	public static var isAuthorized: Bool {
+		return authService.isAuthorized
+	}
+
+	/// A JWT auth token that identifies the logged-in user.
 	public static var authToken: String? {
-		didSet { authSession.authToken = authToken }
+		return authService.authToken
 	}
 
-	/// Setting the auth session delegate automatically calls the delegate whenever a pilot authenticated, fails to
-	/// authenticate or needs to re-authenticate after a token expiration
+	/// Setting the auth session delegate automatically calls the delegate should a pilot
+	/// need to re-authenticate after a refresh token expiration or invalidation
 	public static var authSessionDelegate: AirMapAuthSessionDelegate? {
-		didSet { authSession.delegate = authSessionDelegate }
+		didSet { authService.delegate = authSessionDelegate }
 	}
 
-	/// Refresh the auth token. Also notifies the `AirMapAuthSessionDelegate` upon completion
+	/// Authenticates an Anonymous User associated with the Developer API Key.
 	///
-	/// - Parameter completion: A completion handler to call with the Result
-	public static func refreshAuthToken(_ completion: @escaping (Result<AirMapToken>) -> Void) {
-		rx.refreshAuthToken().thenSubscribe(completion)
+	/// - Parameters:
+	///   - userId: a third-party, non-AirMap user id
+	///   - completion: A completion handler to call with the Result
+	public static func performAnonymousLogin(userId: String, completion: @escaping (Result<Void>) -> Void) {
+		rx.performAnonymousLogin(userId: userId).thenSubscribe(completion)
 	}
-    
-    /// Authenticates an Anonymous User associated with the Developer API Key and returns an AuthToken.
-    ///
-    /// - Parameters:
-    ///   - userId: a third-party, non-AirMap user id
-    ///   - completion: A completion handler to call with the Result
-    public static func performAnonymousLogin(userId: String, completion: @escaping (Result<AirMapToken>) -> Void) {
-        rx.performAnonymousLogin(userId: userId).thenSubscribe(completion)
-    }
-	
-	/// Initiates passwordless authentication by sending the provided phone number a verification code via SMS
+
+	/// Log out the currently authenticated pilot
+	public static func logout(from vc: UIViewController) {
+		authService.logout(from: vc).thenSubscribe({ _ in })
+	}
+
+	/// Presents a login view for the user to authenticate with the AirMap platform
 	///
 	/// - Parameters:
-	///   - phoneNumber: The phone number to send the verification code to
-	///   - completion: A completion handler to call with the Result
-	public static func startPasswordlessLogin(with phoneNumber: String, completion: @escaping (Result<Void>) -> Void) {
-        auth0Client.startPasswordlessLogin(with: phoneNumber).thenSubscribe(completion)
-    }
-    
-	/// Completes passwordless login by verifying the phone number and verification code
+	///   - viewController: The viewController from which to present the login view
+	///   - authHandler: The block that is called upon completion of login flow
+	public static func login(from viewController: UIViewController, with authHandler: @escaping AirMapAuthHandler) {
+		authService.login(from: viewController)
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+			.thenSubscribe(authHandler)
+	}
+
+	/// Resumes the login flow by handling a callback url
 	///
-	/// - Parameters:
-	///   - phoneNumber: The phone number to use for authentication
-	///   - code: The SMS verification code that was received
-	///   - completion: A completion handler to call with the Result
-	public static func verifyPasswordlessLogin(with phoneNumber: String, code: String, completion: @escaping (Result<Auth0Credentials>) -> Void) {
-        auth0Client.verifyPasswordlessLogin(with: phoneNumber, code: code).thenSubscribe(completion)
-    }
-    
-    /// Log out the currently authenticated pilot
-    public static func logout() {
-        authToken = nil
+	/// - Parameter url: The URL with which the application was called
+	/// - Returns: A boolean indicating that the handler was able to handle the request
+	public static func resumeLogin(with callback: URL) -> Bool {
+		return authService.resumeLogin(with: callback)
 	}
 }

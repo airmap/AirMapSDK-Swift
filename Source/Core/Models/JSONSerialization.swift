@@ -655,19 +655,7 @@ extension AirMapRule: ImmutableMappable {
 extension AirMapToken: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		authToken = try map.value("id_token")
-	}
-}
-
-// MARK: - Auth0Credentials
-
-extension Auth0Credentials: ImmutableMappable {
-	
-	public init(map: Map) throws {
-		accessToken   =  try map.value("access_token")
-		refreshToken  =  try map.value("refresh_token")
-		tokenType     =  try map.value("token_type")
-		idToken       =  try map.value("id_token")
+		idToken = try map.value("id_token")
 	}
 }
 

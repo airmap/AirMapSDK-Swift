@@ -154,12 +154,7 @@ public struct AirMapApiError: Mappable, LocalizedError {
 	public mutating func mapping(map: Map) {
 		message   <-  map["data.message"]
 		messages  <-  map["data.errors"]
-		code      <-  map["data.code"]
-		
-		// Auth0
-		if message == nil && messages.count == 0 {
-			message <- map["error_description"]
-		}
+		code      <-  map["data.code"]		
 	}
 	
 	public var description: String {

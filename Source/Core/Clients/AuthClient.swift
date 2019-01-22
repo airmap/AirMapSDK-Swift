@@ -20,7 +20,7 @@
 
 import Foundation
 import RxSwift
-import Alamofire
+import AppAuth
 
 internal class AuthClient: HTTPClient {
     
@@ -28,13 +28,14 @@ internal class AuthClient: HTTPClient {
         super.init(basePath: Constants.Api.authUrl)
     }
     
-    func performAnonymousLogin(userId: String) -> Observable<AirMapToken> {
+    func performAnonymousLogin(withForeign id: String) -> Observable<AirMapToken> {
         
-        let params = ["user_id": userId]
+        let params = ["user_id": id]
         
-        return perform(method: .post, path:"/anonymous/token", params: params, keyPath: "data")
+        return perform(method: .post, path: "/anonymous/token", params: params, keyPath: "data")
             .do(onNext: { token in
-                AirMap.authToken = token.authToken
+				// FIXME:
+				assertionFailure("not implemented")
             }, onError: { error in
                 AirMap.logger.debug("ERROR:", error)
             })

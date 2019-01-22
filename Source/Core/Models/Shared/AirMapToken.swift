@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct AirMapToken {
+struct AirMapToken {
 
-	public var authToken: String
+	var idToken: String
 }
