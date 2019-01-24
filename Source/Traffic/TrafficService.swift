@@ -97,7 +97,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			.map { flight, state in flight }
 			.unwrap()
 			.flatMap(unowned(self, TrafficService.subscribeToTraffic))
-			.catchError({ _ in return Observable.empty() })
 			.subscribe()
 			.disposed(by: disposeBag)
 
