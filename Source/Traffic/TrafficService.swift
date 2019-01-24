@@ -160,6 +160,7 @@ internal class TrafficService: MQTTSessionDelegate {
 		unsubscribeFromAllChannels()
 			.do(onDispose: { [unowned self] in
 				self.client.disconnect()
+				self.connectionState.value = .disconnected
 				self.currentFlight.value = nil
 				self.removeAllTraffic()
 			})
