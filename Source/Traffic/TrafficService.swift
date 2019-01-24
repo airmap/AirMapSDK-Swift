@@ -56,7 +56,6 @@ internal class TrafficService: MQTTSessionDelegate {
 	// MARK: - Setup
 
 	init() {
-
 		client.delegate = self
 		setupBindings()
 		connect()
@@ -198,7 +197,7 @@ internal class TrafficService: MQTTSessionDelegate {
 		let sa    = self.subscribe(flight, to: Constants.AirMapTraffic.trafficSituationalAwarenessChannel + flight.id!.rawValue)
 		let alert = self.subscribe(flight, to: Constants.AirMapTraffic.trafficAlertChannel + flight.id!.rawValue)
 
-		return unsubscribeFromAllChannels().concat(sa).concat(alert)
+		return unsubscribeFromAllChannels().concat(sa).concat(alert).catchErrorJustReturn(())
 	}
 
 	func subscribe(_ flight: AirMapFlight, to channel: String) -> Observable<Void> {
