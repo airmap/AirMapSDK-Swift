@@ -125,7 +125,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
 			
 		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
-			.debug("RECEIVED TRAFFIC"  )
 			.unwrap()
 			.bind(to: currentFlight)
 			.disposed(by: disposeBag)
