@@ -23,6 +23,7 @@ import CoreLocation
 import ObjectMapper
 import RxSwift
 import RxSwiftExt
+import RxCocoa
 
 internal class TrafficService: MQTTSessionDelegate {
 
@@ -49,8 +50,8 @@ internal class TrafficService: MQTTSessionDelegate {
 	fileprivate var expirationInterval = Constants.Traffic.expirationInterval
 	fileprivate var client = TrafficClient()
 	fileprivate var connectionState = Variable(ConnectionState.disconnected)
-	fileprivate var currentFlight = Variable(nil as AirMapFlight?)
-	fileprivate var receivedFlight = Variable(nil as AirMapFlight?)
+	fileprivate var currentFlight = BehaviorRelay<AirMapFlight?>(value: nil)
+	fileprivate var receivedFlight = BehaviorRelay<AirMapFlight?>(value: nil)
 
 	fileprivate let disposeBag = DisposeBag()
 
@@ -164,7 +165,7 @@ internal class TrafficService: MQTTSessionDelegate {
 			.do(onDispose: { [unowned self] in
 				self.client.disconnect()
 				self.connectionState.value = .disconnected
-				self.currentFlight.value = nil
+				self.currentFlight.accept(nil)
 				self.removeAllTraffic()
 			})
 			.subscribe()
@@ -172,7 +173,7 @@ internal class TrafficService: MQTTSessionDelegate {
 	}
 
 	func startObservingTraffic(for flight: AirMapFlight) {
-		receivedFlight.value = flight
+		receivedFlight.accept(flight)
 	}
 
 	// MARK: - Observable Methods
