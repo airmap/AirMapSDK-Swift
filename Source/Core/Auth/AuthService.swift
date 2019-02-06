@@ -189,7 +189,7 @@ class AuthService: NSObject {
 				state.stateChangeDelegate = self
 				state.errorDelegate = self
 			}
-			AuthService.save(authState)
+			AuthService.persist(authState)
 		}
 	}
 
@@ -220,7 +220,7 @@ class AuthService: NSObject {
 		)
 	}
 
-	private static func save(_ authState: AuthState) {
+	private static func persist(_ authState: AuthState) {
 		if case let .authenticated(state) = authState {
 			let archivedState = NSKeyedArchiver.archivedData(withRootObject: state)
 			A0SimpleKeychain().setData(archivedState, forKey: Constants.Auth.keychainAuthState)

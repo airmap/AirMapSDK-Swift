@@ -20,7 +20,6 @@
 
 import Foundation
 import AppAuth
-import RxSwift
 
 extension OIDAuthorizationRequest {
 
@@ -33,26 +32,7 @@ extension OIDAuthorizationRequest {
 
 		self.init(
 			configuration: configuration, clientId: clientId, clientSecret: nil, scopes: scopes,
-			redirectURL: redirectUrl, responseType: OIDResponseTypeCode, additionalParameters: nil
+			redirectURL: redirectUrl, responseType: OIDResponseTypeCode, additionalParameters: ["prompt": "login"]
 		)
-	}
-}
-
-extension Reactive where Base: OIDAuthState {
-
-	func getAccessToken(withAuth: Bool = true) -> Observable<String?> {
-		if !withAuth {
-			return Observable.of(nil)
-		}
-		return Observable<String?>.create({ (observer) -> Disposable in
-			self.base.performAction { (accessToken, idToken, error) in
-				if let error = error {
-					return observer.onError(error)
-				}
-				observer.onNext(accessToken)
-				observer.onCompleted()
-			}
-			return Disposables.create()
-		})
 	}
 }
