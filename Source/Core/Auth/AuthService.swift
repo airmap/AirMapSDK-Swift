@@ -22,7 +22,6 @@ import Foundation
 import AppAuth
 import SimpleKeychain
 import RxSwift
-import SafariServices
 
 class AuthService: NSObject {
 
@@ -96,34 +95,9 @@ class AuthService: NSObject {
 			.mapToVoid()
 	}
 
-	var logoutHandler: (window: UIWindow, completion: () -> Void)?
-
-	func logout(from vc: UIViewController) -> Observable<Void> {
-
-		return .create() { (observer) -> Disposable in
-
-			// AppAuth does not natively support logout.
-			// Load the logout page offscreen to destroy the persisted session
-			let url = URL(string: Constants.Auth.identityProvider + "protocol/openid-connect/logout")!
-			let sf = SFSafariViewController(url: url)
-			sf.delegate = self
-
-			// Create an offscreen window
-			let window = UIWindow(frame: UIScreen.main.bounds)
-			window.frame.origin.x = window.bounds.maxX
-			window.rootViewController = sf
-			window.makeKeyAndVisible()
-
-			self.logoutHandler = (window, {
-				HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
-				A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
-				self.authState = .loggedOut
-				observer.onNext(())
-				observer.onCompleted()
-			})
-
-			return Disposables.create {}
-		}
+	func logout()  {
+		A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
+		self.authState = .loggedOut
 	}
 
 	struct Credentials {
@@ -131,7 +105,7 @@ class AuthService: NSObject {
 		let pilot: AirMapPilotId
 	}
 
-	func withCredentials() -> Observable<Credentials> {
+	func performWithCredentials() -> Observable<Credentials> {
 
 		return .create { [unowned self] (observer) -> Disposable in
 
@@ -258,12 +232,3 @@ extension AuthService: OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
 		}
 	}
 }
-
-extension AuthService: SFSafariViewControllerDelegate {
-
-	func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
-		logoutHandler?.completion()
-		logoutHandler = nil
-	}
-}
-

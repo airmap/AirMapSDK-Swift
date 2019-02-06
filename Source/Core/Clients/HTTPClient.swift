@@ -23,7 +23,6 @@ import RxSwift
 import RxCocoa
 import Alamofire
 import ObjectMapper
-import AppAuth
 
 internal class HTTPClient {
 	
@@ -61,7 +60,7 @@ internal class HTTPClient {
 	}
 
 	func withCredentials() -> Observable<AuthService.Credentials> {
-		return AirMap.authService.withCredentials()
+		return AirMap.authService.performWithCredentials()
 	}
 
 	private func defaultHeaders(with accessToken: String?) -> HTTPHeaders {

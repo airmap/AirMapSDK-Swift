@@ -170,7 +170,7 @@ internal class TrafficService: MQTTSessionDelegate {
 
 	func connectWithFlight(_ flight: AirMapFlight) -> Observable<ConnectionState> {
 
-		return AirMap.authService.withCredentials()
+		return AirMap.authService.performWithCredentials()
 			.flatMap { (creds) -> Observable<ConnectionState> in
 				return Observable.create { (observer: AnyObserver<ConnectionState>) -> Disposable in
 
