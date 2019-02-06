@@ -50,6 +50,7 @@ internal class TrafficService: MQTTSessionDelegate {
 	fileprivate var client = TrafficClient()
 	fileprivate var connectionState = Variable(ConnectionState.disconnected)
 	fileprivate var currentFlight = Variable(nil as AirMapFlight?)
+	fileprivate var receivedFlight = Variable(nil as AirMapFlight?)
 
 	fileprivate let disposeBag = DisposeBag()
 
@@ -116,12 +117,16 @@ internal class TrafficService: MQTTSessionDelegate {
 			})
 			.disposed(by: disposeBag)
 
-		let refreshCurrentFlight = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance).mapToVoid()
+		let refreshCurrentFlightTimer = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance).mapToVoid()
 
-		refreshCurrentFlight
+		let refreshCurrentFlight = refreshCurrentFlightTimer
 			.filter {[unowned self] _ in AirMap.hasValidCredentials() && self.delegate != nil}
 			.skipWhile({[unowned self] _ in !AirMap.hasValidCredentials() || self.delegate == nil})
 			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
+			
+		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
+			.debug("RECEIVED TRAFFIC"  )
+			.unwrap()
 			.bind(to: currentFlight)
 			.disposed(by: disposeBag)
 
@@ -165,6 +170,10 @@ internal class TrafficService: MQTTSessionDelegate {
 			})
 			.subscribe()
 			.disposed(by: disposeBag)
+	}
+
+	func startObservingTraffic(for flight: AirMapFlight) {
+		receivedFlight.value = flight
 	}
 
 	// MARK: - Observable Methods
