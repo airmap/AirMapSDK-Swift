@@ -33,11 +33,5 @@ internal class AuthClient: HTTPClient {
         let params = ["user_id": id]
         
         return perform(method: .post, path: "/anonymous/token", params: params, keyPath: "data")
-            .do(onNext: { token in
-				// FIXME:
-				assertionFailure("not implemented")
-            }, onError: { error in
-                AirMap.logger.debug("ERROR:", error)
-            })
     }
 }
