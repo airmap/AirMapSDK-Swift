@@ -67,8 +67,8 @@ class LoginExampleViewController: UIViewController {
 		// Login as an anonymous user. The userId parameter here is a unique third-party identifier for the user
 		// on your platform, not AirMap. It may be used at a future date if a user wishes to create an AirMap account
 		// and associate any previously anonymous flights, telemetry, etc. with that account.
-		AirMap.performAnonymousLogin(userId: "abc123") { (result: Result<AirMapToken>) in
-			
+		AirMap.performAnonymousLogin(userId: "abc123") { (result) in
+
 			switch result {
 
 			// Handle the error case
