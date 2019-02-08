@@ -32,6 +32,12 @@ class LoginExampleViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		assert(Bundle.main.bundleIdentifier! != "com.airmap.AirMapSDK-Example-iOS",
+		 		"In order to test Login you must update the bundle Id " +
+			"to match with the corresponding clients bundle Id found in the dev portal. " +
+			"See documentation for more info."
+		)
+		
 		switch useCase! {
 		case .anonymousUser:
 			navigationItem.title = "Anonymous Login"
