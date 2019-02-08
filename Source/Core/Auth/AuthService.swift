@@ -133,14 +133,11 @@ class AuthService: NSObject {
 					if let error = error {
 						return observer.onError(error)
 					}
-					guard let accessToken = accessToken else {
-						return observer.onError(AirMapError.unauthorized)
-					}
-					guard let id = idToken, let token = OIDIDToken(idTokenString: id) else {
+					guard let tokenString = idToken, let token = OIDIDToken(idTokenString: tokenString) else {
 						return observer.onError(AirMapError.unauthorized)
 					}
 					let pilot = AirMapPilotId(rawValue: token.subject)
-					let creds = Credentials(token: accessToken, pilot: pilot)
+					let creds = Credentials(token: tokenString, pilot: pilot)
 					observer.onNext(creds)
 					observer.onCompleted()
 				}
@@ -208,6 +205,9 @@ class AuthService: NSObject {
 			return .loggedOut
 		}
 		guard let persistedState = NSKeyedUnarchiver.unarchiveObject(with: data) as? OIDAuthState else {
+			return .loggedOut
+		}
+		guard persistedState.isAuthorized else {
 			return .loggedOut
 		}
 		return .authenticated(persistedState)
