@@ -133,11 +133,14 @@ class AuthService: NSObject {
 					if let error = error {
 						return observer.onError(error)
 					}
-					guard let tokenString = idToken, let token = OIDIDToken(idTokenString: tokenString) else {
+					guard let accessToken = accessToken else {
 						return observer.onError(AirMapError.unauthorized)
 					}
-					let pilot = AirMapPilotId(rawValue: token.subject)
-					let creds = Credentials(token: tokenString, pilot: pilot)
+					guard let idToken = idToken, let id = OIDIDToken(idTokenString: idToken) else {
+						return observer.onError(AirMapError.unauthorized)
+					}
+					let pilot = AirMapPilotId(rawValue: id.subject)
+					let creds = Credentials(token: accessToken, pilot: pilot)
 					observer.onNext(creds)
 					observer.onCompleted()
 				}
