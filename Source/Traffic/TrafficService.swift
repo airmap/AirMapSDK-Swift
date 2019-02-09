@@ -56,7 +56,6 @@ internal class TrafficService: MQTTSessionDelegate {
 	// MARK: - Setup
 
 	init() {
-
 		client.delegate = self
 		setupBindings()
 		connect()
@@ -98,7 +97,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			.map { flight, state in flight }
 			.unwrap()
 			.flatMap(unowned(self, TrafficService.subscribeToTraffic))
-			.catchError({ _ in return Observable.empty() })
 			.subscribe()
 			.disposed(by: disposeBag)
 
@@ -159,6 +157,7 @@ internal class TrafficService: MQTTSessionDelegate {
 		unsubscribeFromAllChannels()
 			.do(onDispose: { [unowned self] in
 				self.client.disconnect()
+				self.connectionState.value = .disconnected
 				self.currentFlight.value = nil
 				self.removeAllTraffic()
 			})
@@ -199,7 +198,7 @@ internal class TrafficService: MQTTSessionDelegate {
 		let sa    = self.subscribe(flight, to: Constants.Traffic.awarenessTopic + flight.id!.rawValue)
 		let alert = self.subscribe(flight, to: Constants.Traffic.alertTopic + flight.id!.rawValue)
 
-		return unsubscribeFromAllChannels().concat(sa).concat(alert)
+		return unsubscribeFromAllChannels().concat(sa).concat(alert).catchErrorJustReturn(())
 	}
 
 	func subscribe(_ flight: AirMapFlight, to channel: String) -> Observable<Void> {
