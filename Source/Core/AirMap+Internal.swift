@@ -28,7 +28,7 @@ extension AirMap {
 	internal static let advisoryClient = AdvisoryClient()
 	internal static let aircraftClient = AircraftClient()
 	internal static let airspaceClient = AirspaceClient()
-    internal static let authClient = AuthClient()
+	internal static let authClient = AuthClient()
 	internal static let flightClient = FlightClient()
 	internal static let flightPlanClient = FlightPlanClient()
 	internal static let pilotClient = PilotClient()
@@ -45,6 +45,6 @@ extension AirMap {
 	internal static let trafficService = TrafficService()
 	#endif
 
-	internal static let disposeBag = DisposeBag()	
+	internal static let disposeBag = DisposeBag()
 
 }
