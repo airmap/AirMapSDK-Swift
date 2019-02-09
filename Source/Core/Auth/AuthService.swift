@@ -171,6 +171,11 @@ class AuthService: NSObject {
 
 	private func assertValidConfiguration() {
 
+		if #available(iOS 10.0, *) {
+			// Register of URL scheme unnecessary after iOS 10
+			return
+		}
+
 		// Verify that the custom url schemes have configured in your app's Info.plist
 		guard let urlTypes = Bundle.main.object(forInfoDictionaryKey: "CFBundleURLTypes") as? [Any], urlTypes.count > 0 else {
 			return assertionFailure("No url types has been configured for your project.")
