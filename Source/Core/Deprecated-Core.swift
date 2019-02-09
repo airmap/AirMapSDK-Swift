@@ -24,6 +24,15 @@ extension AirMapAdvisory {
 	
 	@available(*, unavailable, message: "Removed")
 	public var distance: Meters {
-		fatalError()
+		return 0
 	}
+}
+
+extension AirMap {
+
+	@available(*, unavailable, message: "Removed now that SDK manages refreshing access tokens")
+	public static func refreshAuthToken(_ completion: @escaping (Result<AirMapToken>) -> Void) {}
+
+	@available(*, unavailable, message: "Use Result<Void> instead of Result<AirMapToken>")
+	public static func performAnonymousLogin(userId: String, completion: @escaping (Result<AirMapToken>) -> Void) {}
 }
