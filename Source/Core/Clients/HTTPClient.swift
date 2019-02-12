@@ -70,7 +70,7 @@ internal class HTTPClient {
 		headers[Header.authorization.rawValue] = "Bearer \(accessToken ?? "")"
 		return headers
 	}
-		
+	
 	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", update object: T? = nil, auth: AuthService.Credentials? = nil) -> Observable<T> {
 
 		return Observable
@@ -160,13 +160,13 @@ internal class HTTPClient {
 			.trackActivity(HTTPClient.activity)
 	}
 	
-	internal func perform(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", auth: AuthService.Credentials? = nil) -> Observable<Void> {
+	internal func perform(method: HTTPMethod, customEncoding: URLEncoding? = nil, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", auth: AuthService.Credentials? = nil) -> Observable<Void> {
 
 		return Observable
 			.create { (observer: AnyObserver<Void>) -> Disposable in
 				let headers = self.defaultHeaders(with: auth?.token)
 				let request = self.manager
-					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method), headers: headers)
+					.request(self.absolute(path), method: method, parameters: params, encoding: customEncoding ?? self.encoding(method), headers: headers)
 					.airMapVoidResponse { (response: DataResponse<Void>) in
 						if let error = response.error {
 							if let error = error as? AirMapError, case AirMapError.cancelled = error {

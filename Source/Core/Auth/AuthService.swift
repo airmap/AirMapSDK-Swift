@@ -48,6 +48,17 @@ class AuthService: NSObject {
 			return state.lastTokenResponse?.accessToken
 		}
 	}
+	
+	var refreshToken: String? {
+		switch authState {
+		case .loggedOut:
+			return nil
+		case .anonymous(let token):
+			return nil
+		case .authenticated(let state):
+			return state.lastTokenResponse?.refreshToken
+		}
+	}
 
 	override init() {
 		super.init()
@@ -95,9 +106,12 @@ class AuthService: NSObject {
 			.mapToVoid()
 	}
 
-	func logout()  {
-		A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
-		self.authState = .loggedOut
+	func logout() -> Observable<Void> {
+		return AirMap.openIdClient.performLogout()
+			.do(onNext: { [weak self] (_) in
+				A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
+				self?.authState = .loggedOut
+			})
 	}
 
 	struct Credentials {
