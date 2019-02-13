@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 		core.dependency 'Alamofire'
 		core.dependency 'ObjectMapper'
 		core.dependency 'SwiftTurf'
-		core.dependency 'SimpleKeychain'
+		core.dependency 'KeychainAccess'
 		core.dependency 'RxSwift'
 		core.dependency 'RxSwiftExt'
 		core.dependency 'RxCocoa'

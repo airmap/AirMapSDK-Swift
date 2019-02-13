@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
           AirMap Docs
         </a>
-         (29% documented)
+         (30% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -158,13 +158,7 @@
             <a class="nav-group-name-link" href="Authentication.html">Authentication</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/AirMapToken.html">AirMapToken</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Authentication.html#/s:6AirMap16Auth0CredentialsV">Auth0Credentials</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/Auth0ApiError.html">Auth0ApiError</a>
+                <a class="nav-group-task-link" href="Authentication.html#/s:6AirMap0aB5TokenV">AirMapToken</a>
               </li>
             </ul>
           </li>
@@ -362,9 +356,6 @@
             <a class="nav-group-name-link" href="Other Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Enums/Auth0Error.html">Auth0Error</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/DistanceUnits.html">DistanceUnits</a>
               </li>
               <li class="nav-group-task">
@@ -460,6 +451,9 @@
                 <a class="nav-group-task-link" href="Other Typealiases.html#/s:6AirMap0aB15AircraftModelIda">AirMapAircraftModelId</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Typealiases.html#/s:6AirMap0aB11AuthHandlera">AirMapAuthHandler</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other Typealiases.html#/s:6AirMap0aB11AuthorityIda">AirMapAuthorityId</a>
               </li>
               <li class="nav-group-task">
@@ -514,7 +508,7 @@
           <div class="section-content">
             
             <p><img src="Resources/Core/AirMap.png" alt="AirMap: The Airspace Platform for Developers">
-<img src="https://img.shields.io/badge/Swift-4.0-lightgray.svg" alt="Swift 4.0"> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/v/AirMapSDK.svg?style=flat" alt="Version"></a> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/l/AirMapSDK.svg?style=flat" alt="License"></a> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/p/AirMapSDK.svg?style=flat" alt="Platform"></a></p>
+<img src="https://img.shields.io/badge/Swift-4.1-lightgray.svg" alt="Swift 4.1"> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/v/AirMapSDK.svg?style=flat" alt="Version"></a> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/l/AirMapSDK.svg?style=flat" alt="License"></a> <a href="http://cocoapods.org/pods/AirMapSDK"><img src="https://img.shields.io/cocoapods/p/AirMapSDK.svg?style=flat" alt="Platform"></a></p>
 
 <p>Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.</p>
 <h2 id='requirements' class='heading'>Requirements</h2>
@@ -523,7 +517,7 @@
 <ul>
 <li>iOS 9.0+,</li>
 <li>macOS 10.10+,</li>
-<li>Swift 4.0</li>
+<li>Swift 4.1</li>
 <li>Xcode 9.0+</li>
 </ul>
 <h3 id='sign-up-for-an-a-href-https-dashboard-airmap-io-developer-airmap-developer-account-a' class='heading'>Sign up for an <a href="https://dashboard.airmap.io/developer/">AirMap Developer Account.</a></h3>
@@ -538,7 +532,7 @@
 <h2 id='installation' class='heading'>Installation</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
-<p>Requires CocoaPods 1.3.0+</p>
+<p>Requires CocoaPods 1.4.0+</p>
 
 <p>The AirMap SDK is a CocoaPod written in Swift. CocoaPods is a dependency manager for Cocoa projects. If you don&rsquo;t have CocoaPods, You can install it with the following command:</p>
 
@@ -554,20 +548,7 @@
 <p>To integrate the AirMap SDK into your Xcode project, navigate to the directory that contains your project and create a new <strong>Podfile</strong> with <code>pod init</code> or open an existing one, then add <code>pod &#39;AirMapSDK&#39;</code> to the main target. Make sure to add the line <code>use_frameworks!</code>.</p>
 <pre class="highlight ruby"><code><span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
   <span class="n">use_frameworks!</span>
-  <span class="n">pod</span> <span class="s1">'AirMapSDK'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/airmap/AirMapSDK-Swift'</span><span class="p">,</span> <span class="ss">:tag</span> <span class="o">=&gt;</span> <span class="s1">'2.1.0'</span>
-<span class="k">end</span>
-
-<span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
-    <span class="c1"># List of Pods to use as Swift 3.2</span>
-    <span class="n">myTargets</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Lock'</span><span class="p">,</span> <span class="s1">'SwiftMQTT'</span><span class="p">]</span> 
-
-    <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
-        <span class="k">if</span> <span class="n">myTargets</span><span class="p">.</span><span class="nf">include?</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span>
-            <span class="n">target</span><span class="p">.</span><span class="nf">build_configurations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-                <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'SWIFT_VERSION'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'3.2'</span>
-            <span class="k">end</span>
-        <span class="k">end</span>
-    <span class="k">end</span>
+  <span class="n">pod</span> <span class="s1">'AirMapSDK'</span>
 <span class="k">end</span>
 </code></pre>
 
@@ -581,7 +562,7 @@
 <h4 id='carthage' class='heading'>Carthage</h4>
 
 <p>The AirMapSDK is also available via Carthage, however, only the Core subspec is currently available</p>
-<pre class="highlight plaintext"><code>github "AirMap/AirMapSDK-Swift" "2.1.0"
+<pre class="highlight plaintext"><code>github "AirMap/AirMapSDK-Swift"
 </code></pre>
 <h3 id='importing' class='heading'>Importing</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">AirMap</span>
@@ -597,7 +578,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/airmap" target="_blank" rel="external">AirMap, Inc.</a>. All rights reserved. (Last updated: 2018-06-20)</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/airmap" target="_blank" rel="external">AirMap, Inc.</a>. All rights reserved. (Last updated: 2019-02-10)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
