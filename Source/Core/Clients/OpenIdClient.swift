@@ -25,9 +25,9 @@ import Alamofire
 
 internal class OpenIdClient: HTTPClient {
 	
-    init() {
-        super.init(basePath: Constants.Auth.identityProvider)
-    }
+	init() {
+		super.init(basePath: Constants.Auth.identityProvider)
+	}
 	
  	func performLogout() -> Observable<Void> {
 		guard let refreshToken = AirMap.authService.refreshToken,
@@ -39,5 +39,5 @@ internal class OpenIdClient: HTTPClient {
 		return withCredentials().flatMap { (credentials) -> Observable<Void> in
 			return self.perform(method: .post, customEncoding: URLEncoding.httpBody, path: "protocol/openid-connect/logout", params: params, auth: credentials)
 		}
-    }
+	}
 }

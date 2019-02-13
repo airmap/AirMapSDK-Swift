@@ -113,7 +113,7 @@ class AuthService: NSObject {
 	func logout() -> Observable<Void> {
 		return AirMap.openIdClient.performLogout()
 			.do(onNext: { [weak self] (_) in
-			AuthService.keychain[Constants.Auth.keychainAuthState] = nil
+				AuthService.keychain[Constants.Auth.keychainAuthState] = nil
 				self?.authState = .loggedOut
 			})
 	}
