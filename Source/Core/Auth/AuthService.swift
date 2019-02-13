@@ -20,7 +20,7 @@
 
 import Foundation
 import AppAuth
-import SimpleKeychain
+import KeychainAccess
 import RxSwift
 
 class AuthService: NSObject {
@@ -53,6 +53,10 @@ class AuthService: NSObject {
 		super.init()
 		authState = AuthService.persistedState()
 	}
+
+	static let keychain = Keychain()
+		.synchronizable(true)
+		.accessibility(.afterFirstUnlock)
 
 	func login(from viewController: UIViewController) -> Observable<Void> {
 
@@ -96,7 +100,7 @@ class AuthService: NSObject {
 	}
 
 	func logout()  {
-		A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
+		AuthService.keychain[Constants.Auth.keychainAuthState] = nil
 		self.authState = .loggedOut
 	}
 
@@ -202,14 +206,14 @@ class AuthService: NSObject {
 	private static func persist(_ authState: AuthState) {
 		if case let .authenticated(state) = authState {
 			let archivedState = NSKeyedArchiver.archivedData(withRootObject: state)
-			A0SimpleKeychain().setData(archivedState, forKey: Constants.Auth.keychainAuthState)
+			AuthService.keychain[data: Constants.Auth.keychainAuthState] = archivedState
 		} else {
-			A0SimpleKeychain().deleteEntry(forKey: Constants.Auth.keychainAuthState)
+			AuthService.keychain[Constants.Auth.keychainAuthState] = nil
 		}
 	}
 
 	private static func persistedState() -> AuthState {
-		guard let data = A0SimpleKeychain().data(forKey: Constants.Auth.keychainAuthState) else {
+		guard let data = AuthService.keychain[data: Constants.Auth.keychainAuthState] else {
 			return .loggedOut
 		}
 		guard let persistedState = NSKeyedUnarchiver.unarchiveObject(with: data) as? OIDAuthState else {
