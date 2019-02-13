@@ -32,7 +32,7 @@ internal class OpenIdClient: HTTPClient {
  	func performLogout() -> Observable<Void> {
 		guard let refreshToken = AirMap.authService.refreshToken,
 			  let clientId = AirMapConfiguration.custom?.clientId
-		else { return Observable.error(AirMapError.unauthorized) }
+		else { return Observable.of(Void()) }
 
 		let params = ["refresh_token":  refreshToken, "client_id": clientId]
 
