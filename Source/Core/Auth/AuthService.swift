@@ -82,6 +82,9 @@ class AuthService: NSObject {
 				if let config = config {
 					let request = OIDAuthorizationRequest(from: config)
 					self.activeFlow = OIDAuthState.authState(byPresenting: request, presenting: viewController) { state, error in
+						if let error = error {
+							return observer.onError(AirMapError.unknown(underlying: error))
+						}
 						if let state = state {
 							self.authState = .authenticated(state)
 							self.activeFlow = nil
