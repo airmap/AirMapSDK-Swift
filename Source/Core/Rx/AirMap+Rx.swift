@@ -169,6 +169,11 @@ extension Reactive where Base: AirMap {
     public static func performAnonymousLogin(userId: String) -> Observable<Void> {
 		return AirMap.authService.loginAnonymously(withForeign: userId)
     }	
+
+ 	public static func login(from viewController: UIViewController) -> Observable<AirMapPilot> {
+		return AirMap.authService.login(from: viewController)
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+    }
 }
 
 /// Documentation found in AirMap+Rules.swift
