@@ -24,6 +24,21 @@ In the Info.plist file add a new URL. Go to MyProject → Info → URL Types and
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool { if AirMap.resumeLogin(with: url) { return true } return false }
 ```
 
+### Logout
+
+`AirMap.logout()` now takes a completion handler and will return `Result<Void>`.
+
+```
+  AirMap.logout(completion: { (result) in
+    switch result {
+    case .value(_):
+      // Do something on success 
+    case .error(let error):
+      // Do something on error
+    }
+  })
+```
+
 ### Checking Auth State
 
 To check the user's authentication state, check the public property `AirMap.isAuthorized`.
