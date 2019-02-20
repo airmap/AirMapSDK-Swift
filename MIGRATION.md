@@ -31,7 +31,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ```
   AirMap.logout(completion: { (result) in
     switch result {
-    case .value(_):
+    case .value:
       // Do something on success 
     case .error(let error):
       // Do something on error
