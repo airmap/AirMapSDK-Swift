@@ -60,8 +60,8 @@ extension AirMap {
 	}
 
 	/// Log out the currently authenticated pilot
-	public static func logout() {
-		authService.logout().thenSubscribe({ _ in })
+	public static func logout(completion: @escaping (Result<Void>) -> Void) {
+		authService.logout().thenSubscribe(completion)
 	}
 
 	/// Presents a login view for the user to authenticate with the AirMap platform
