@@ -256,7 +256,7 @@ extension AirMapAdvisory.SpecialUseProperties: ImmutableMappable {
 extension AirMapAdvisory.TFRProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		url        =  try  map.value("url", using: URLTransform())
+		url        =  try? map.value("url", using: URLTransform())
 		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
 		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
 		type       =  try? map.value("type")
