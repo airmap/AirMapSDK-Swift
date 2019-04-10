@@ -171,19 +171,19 @@ extension AirMapMapView {
 			.filter { !($0 is Optional<RxMGLMapViewDelegateProxy>) }
 			.delay(0.1, scheduler: MainScheduler.asyncInstance)
 
-		// Rebuild the observable chain if the delegate is replaced
+		// The latest jurisdictions for each delegate
 		let jurisdictions = latestDelegate
 			.flatMapLatest({ [unowned self] (_) -> Observable<[AirMapJurisdiction]> in
 				return self.jurisdictionsUpdate
 			})
 
-		// Rebuild the observable chain if the delegate is replaced
+		// The latest style for each delegate
 		let style = latestDelegate
 			.flatMapLatest({ [unowned self] (_) -> Observable<MGLStyle> in
 				return self.rx.mapDidFinishLoadingStyle.map({$1})
 			})
 
-		// Delay to prevent reentry warnings
+		// The latest unique rulesets
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
@@ -257,23 +257,7 @@ extension AirMapMapView {
 		isPitchEnabled = false
 		allowsRotating = false
 	}
-	
-	public var jurisdictionsUpdate: Observable<[AirMapJurisdiction]> {
-		return rx.mapDidFinishLoadingStyle
-			.flatMapLatest({ [unowned self] (style) -> Observable<[AirMapJurisdiction]> in
-				return Observable
-					.merge(
-						self.rx.regionIsChanging
-							.throttle(3, latest: true, scheduler: MainScheduler.instance),
-						self.rx.regionDidChangeAnimated.map({$0.mapView})
-							.throttle(1, latest: true, scheduler: MainScheduler.instance),
-						self.rx.mapDidFinishRenderingMap.map({$0.mapView})
-					)
-					.map({ $0.jurisdictions })
-					.distinctUntilChanged(==)
-			})
-	}
-	
+
 	// MARK: - Configuration
 	
 	private func configure(for theme: Theme) {
@@ -308,7 +292,25 @@ extension AirMapMapView {
 				addRuleset(ruleset, to: style, in: mapView)
 			})
 	}
-	
+
+	// MARK: - Reactive Variables
+
+	public var jurisdictionsUpdate: Observable<[AirMapJurisdiction]> {
+		return rx.mapDidFinishLoadingStyle
+			.flatMapLatest({ [unowned self] (style) -> Observable<[AirMapJurisdiction]> in
+				return Observable
+					.merge(
+						self.rx.regionIsChanging
+							.throttle(3, latest: true, scheduler: MainScheduler.instance),
+						self.rx.regionDidChangeAnimated.map({$0.mapView})
+							.throttle(1, latest: true, scheduler: MainScheduler.instance),
+						self.rx.mapDidFinishRenderingMap.map({$0.mapView})
+					)
+					.map({ $0.jurisdictions })
+					.distinctUntilChanged(==)
+			})
+	}
+
 	// MARK: - Getters
 	
 	private func jurisdictions(intersecting rect: CGRect) -> [AirMapJurisdiction] {
