@@ -169,6 +169,7 @@ extension AirMapMapView {
 		let latestDelegate = rx.observeWeakly(MGLMapViewDelegate.self, "delegate", options: .new)
 			.filter { !($0 is Optional<RxMGLMapViewDelegateProxy>) }
 			.observeOn(MainScheduler.asyncInstance)
+			.share()
 
 		// The latest jurisdictions for each delegate
 		let jurisdictions = latestDelegate
