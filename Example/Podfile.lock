@@ -20,7 +20,7 @@ PODS:
     - ProtocolBuffers-Swift (~> 4.0.6)
   - AirMapSDK/Traffic (3.0.0.beta.1):
     - AirMapSDK/Core
-    - SwiftMQTT (~> 3.0.1)
+    - SwiftMQTT (~> 3.0)
   - AirMapSDK/UI (3.0.0.beta.1):
     - AirMapSDK/Core
     - AppAuth
@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: ba39a721d9262a5eac5d3ea7cbab6c5e47169da3
+  AirMapSDK: 5887c9c3e808e901c34bc4b460f90c168eb666d5
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987

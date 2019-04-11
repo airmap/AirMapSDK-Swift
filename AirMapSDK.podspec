@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
 	s.subspec 'Traffic' do |traffic|
 		traffic.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_TRAFFIC' }
 		traffic.dependency 'AirMapSDK/Core'
-		traffic.dependency 'SwiftMQTT', '~> 3.0.1'
+		traffic.dependency 'SwiftMQTT', '~> 3.0'
 		traffic.source_files = 'Source/Traffic/*'
 	end
 	
