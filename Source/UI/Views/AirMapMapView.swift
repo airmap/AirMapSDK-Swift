@@ -164,12 +164,11 @@ extension AirMapMapView {
 			.disposed(by: disposeBag)
 
 		// Ensure we remain the delegate via Rx and any other delegates are set as the forward delegate
-		// Ignore duplicate events of the same delegate object
 		// Ignore Rx's delegate proxy to prevent infinite recursion
 		// Delay to prevent reentry warnings
 		let latestDelegate = rx.observeWeakly(MGLMapViewDelegate.self, "delegate", options: .new)
 			.filter { !($0 is Optional<RxMGLMapViewDelegateProxy>) }
-			.delay(0.1, scheduler: MainScheduler.asyncInstance)
+			.observeOn(MainScheduler.asyncInstance)
 
 		// The latest jurisdictions for each delegate
 		let jurisdictions = latestDelegate
