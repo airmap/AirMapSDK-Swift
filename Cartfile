@@ -15,7 +15,7 @@ binary "https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json" ~> 3.7
 github "auth0/Lock.swift" ~> 2.4
 
 # AirMapTraffic
-github "aciidb0mb3r/SwiftMQTT"
+github "aciidb0mb3r/SwiftMQTT" ~> 3.0.1
 github "robbiehanson/CocoaAsyncSocket"
 
 # AirMapTelemetry
