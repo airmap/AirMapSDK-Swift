@@ -174,7 +174,7 @@ extension AirMapMapView {
 		// The latest jurisdictions for each delegate
 		let jurisdictions = latestDelegate
 			.flatMapLatest({ [unowned self] (_) -> Observable<[AirMapJurisdiction]> in
-				return self.jurisdictionsUpdate
+				return self.rx.jurisdictions
 			})
 
 		// The latest style for each delegate
@@ -290,24 +290,6 @@ extension AirMapMapView {
 			.filter({ newSourceIds.contains($0.tileSourceIdentifier) })
 			.forEach({ (ruleset) in
 				addRuleset(ruleset, to: style, in: mapView)
-			})
-	}
-
-	// MARK: - Reactive Variables
-
-	public var jurisdictionsUpdate: Observable<[AirMapJurisdiction]> {
-		return rx.mapDidFinishLoadingStyle
-			.flatMapLatest({ [unowned self] (style) -> Observable<[AirMapJurisdiction]> in
-				return Observable
-					.merge(
-						self.rx.regionIsChanging
-							.throttle(3, latest: true, scheduler: MainScheduler.instance),
-						self.rx.regionDidChangeAnimated.map({$0.mapView})
-							.throttle(1, latest: true, scheduler: MainScheduler.instance),
-						self.rx.mapDidFinishRenderingMap.map({$0.mapView})
-					)
-					.map({ $0.jurisdictions })
-					.distinctUntilChanged(==)
 			})
 	}
 
