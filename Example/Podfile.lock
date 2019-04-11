@@ -20,7 +20,7 @@ PODS:
     - ProtocolBuffers-Swift (~> 4.0.6)
   - AirMapSDK/Traffic (3.0.0.beta.1):
     - AirMapSDK/Core
-    - SwiftMQTT (> 3.0, ~> 3.0)
+    - SwiftMQTT (> 3.0.0, ~> 3.0)
   - AirMapSDK/UI (3.0.0.beta.1):
     - AirMapSDK/Core
     - AppAuth
@@ -71,7 +71,7 @@ PODS:
     - RxSwiftExt/Core (= 3.3.0)
   - RxSwiftExt/Core (3.3.0):
     - RxSwift (~> 4.0)
-  - SwiftMQTT (3.0.0)
+  - SwiftMQTT (3.0.1)
   - SwiftTurf (0.3.2)
 
 DEPENDENCIES:
@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: d7dd437538209f856a2962442ab4271e387be575
+  AirMapSDK: e25c9038b2d55aeed98407416a472a26b0e60b4d
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -128,7 +128,7 @@ SPEC CHECKSUMS:
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   RxSwiftExt: 81afb48ab0602f503147417baeb3989d64c7687d
-  SwiftMQTT: acd344613d39c0371de62f9f494e129ca14da9d1
+  SwiftMQTT: 983eeb29e8c8173ed953e0238d2f99b79ff3ccd2
   SwiftTurf: 6ec29121fdb688a223aefca350843a9880e1489f
 
 PODFILE CHECKSUM: 49598a7476ee36a4c507bb3b31b4ae89b2632a65
