@@ -164,32 +164,42 @@ extension AirMapMapView {
 			.disposed(by: disposeBag)
 
 		// Ensure we remain the delegate via Rx and any other delegates are set as the forward delegate
-		// Ignore duplicate events of the same delegate object
 		// Ignore Rx's delegate proxy to prevent infinite recursion
 		// Delay to prevent reentry warnings
 		let latestDelegate = rx.observeWeakly(MGLMapViewDelegate.self, "delegate", options: .new)
-			.distinctUntilChanged(===)
 			.filter { !($0 is Optional<RxMGLMapViewDelegateProxy>) }
-			.delay(0.1, scheduler: MainScheduler.asyncInstance)
+			.observeOn(MainScheduler.asyncInstance)
+			.share()
 
-		// Rebuild the observable chain if the delegate is replaced
-		latestDelegate
-			.flatMapLatest({ [unowned self] _ -> Observable<Void> in
+		// The latest jurisdictions for each delegate
+		let jurisdictions = latestDelegate
+			.flatMapLatest({ [unowned self] (_) -> Observable<[AirMapJurisdiction]> in
+				return self.rx.jurisdictions
+			})
 
-				let style = self.rx.mapDidFinishLoadingStyle.map({$1})
+		// The latest style for each delegate
+		let style = latestDelegate
+			.flatMapLatest({ [unowned self] (_) -> Observable<MGLStyle> in
+				return self.rx.mapDidFinishLoadingStyle.map({$1})
+			})
+
+		// The latest unique rulesets
+		let rulesetConfig = self.rulesetConfigurationSubject
+			.distinctUntilChanged(==)
+
+		Observable.combineLatest(style, jurisdictions)
+			.flatMapLatest({ [weak self] (style, jurisdictions) -> Observable<Void> in
+				guard let `self` = self else { return Observable.of(Void()) }
+
 				let range = self.temporalRangeSubject
-				let jurisdictions = self.rx.jurisdictions
-
-				// Delay to prevent reentry warnings
-				let rulesetConfig = self.rulesetConfigurationSubject
-					.distinctUntilChanged(==)
 
 				// Configure the map with the active rulesets
 				// Notify the delegate of available jurisdictions and activated rulesets
-				let configureRulesets = Observable
-					.combineLatest(style, jurisdictions, rulesetConfig)
+				let configureRulesets = rulesetConfig
 					.observeOn(MainScheduler.asyncInstance)
-					.do(onNext: { [unowned self] (style, jurisdictions, rulesetsConfig) in
+					.do(onNext: { [weak self] rulesetsConfig in
+						guard let `self` = self else { return }
+
 						let activeRulesets = AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetsConfig)
 						AirMapMapView.configure(mapView: self, style: style, with: activeRulesets)
 						// Notify the delegate of available jurisdictions and activated rulesets
@@ -199,9 +209,8 @@ extension AirMapMapView {
 					.mapToVoid()
 
 				// Update temporal filters with either a sliding window or a fixed range
-				let configureTemporalLayers = Observable
-					.combineLatest(style, range)
-					.flatMapLatest({ (style, range) -> Observable<(MGLStyle, start: Date, end: Date)> in
+				let configureTemporalLayers = range
+					.flatMapLatest({ range -> Observable<(MGLStyle, start: Date, end: Date)> in
 						switch range {
 						case .fixed(let start, let end):
 							return Observable.of((style, start, end))
@@ -217,17 +226,12 @@ extension AirMapMapView {
 					.mapToVoid()
 
 				// Localize the map labels when the style is updated
-				let localizeLabels = style
-					.do(onNext: { (style) in
-						style.localizeLabels()
-						style.transition = MGLTransitionMake(1, 0)
-					})
-					.mapToVoid()
+				style.localizeLabels()
+				style.transition = MGLTransitionMake(1, 0)
 
 				return Observable.merge(
 					configureRulesets,
-					configureTemporalLayers,
-					localizeLabels
+					configureTemporalLayers
 				)
 			})
 			.subscribe()
@@ -253,7 +257,7 @@ extension AirMapMapView {
 		isPitchEnabled = false
 		allowsRotating = false
 	}
-	
+
 	// MARK: - Configuration
 	
 	private func configure(for theme: Theme) {
@@ -288,7 +292,7 @@ extension AirMapMapView {
 				addRuleset(ruleset, to: style, in: mapView)
 			})
 	}
-	
+
 	// MARK: - Getters
 	
 	private func jurisdictions(intersecting rect: CGRect) -> [AirMapJurisdiction] {
