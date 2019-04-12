@@ -275,7 +275,7 @@
 "FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Déplacez le point central pour positionner votre zone de vol.";
 
 /* Call to action to tap the icon to begin drawing a flight area. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Cliquez sur l'icône "main" pour dessiner une zone de vol.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Cliquez sur l'icône main pour dessiner une zone de vol.";
 
 /* Call to action to tap the icon to begin drawing a flight path. */
 "FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Cliquez sur l'icône de la main pour dessiner une trajectoire de vol.";
