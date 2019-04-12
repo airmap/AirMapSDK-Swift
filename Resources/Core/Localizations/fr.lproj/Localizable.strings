@@ -5,7 +5,7 @@
 "ADVISORY_PHONE_NOT_PROVIDED" = "Aucun numéro de téléphone fourni";
 
 /* Label and format for displaying the end time of temporary flight restriction */
-"ADVISORY_TFR_ENDS_FORMAT" = "Se termine : %1$@";
+"ADVISORY_TFR_ENDS_FORMAT" = "Fin: %1$@";
 
 /* Never ending duration for a TFR */
 "ADVISORY_TFR_PERMANENT" = "Permanent";
@@ -23,13 +23,13 @@
 "ADVISORY_WILDFIRE_SIZE_UNKNOWN" = "Étendue inconnue";
 
 /* Call to action when a user has not selected an aircraft */
-"AIRCRAFT_SELECT_AIRCRAFT" = "Sélectionner un avion";
+"AIRCRAFT_SELECT_AIRCRAFT" = "Sélectionner un appareil";
 
 /* Title to display for the view creating a new aircraft */
-"AIRCRAFT_TITLE_CREATE_NEW" = "Créer un avion";
+"AIRCRAFT_TITLE_CREATE_NEW" = "Créer un appareil";
 
 /* Title to display for the view when updating an existing aircraft */
-"AIRCRAFT_TITLE_UPDATE_EXISTING" = "Mise à jour avion";
+"AIRCRAFT_TITLE_UPDATE_EXISTING" = "Mettre à jour appareil";
 
 /* Name for airspace type Aerial Recreational Area */
 "AIRSPACE_TYPE_AERIAL_REC_AREA" = "Espace aérien récréatif";
@@ -68,7 +68,7 @@
 "AIRSPACE_TYPE_FIR" = "Région d'information de vol";
 
 /* Name for airspace type Fire */
-"AIRSPACE_TYPE_FIRE" = "Feu";
+"AIRSPACE_TYPE_FIRE" = "Incendie";
 
 /* Name for airspace type Gliderport */
 "AIRSPACE_TYPE_GLIDERPORT" = "Gliderport";
@@ -122,10 +122,10 @@
 "AIRSPACE_TYPE_SCHOOL" = "École";
 
 /* Name for airspace type Seaplane Base */
-"AIRSPACE_TYPE_SEAPLANE_BASE" = "Base pour hydravion";
+"AIRSPACE_TYPE_SEAPLANE_BASE" = "Base pour hydravions";
 
 /* Name for airspace type Special Use Airspace */
-"AIRSPACE_TYPE_SPECIAL_USE" = "Espace aérien à utilité particulière";
+"AIRSPACE_TYPE_SPECIAL_USE" = "Espace aérien à utilisation particulière (SUA)";
 
 /* Name for airspace type Stadium */
 "AIRSPACE_TYPE_STADIUM" = "Stade";
@@ -137,7 +137,7 @@
 "AIRSPACE_TYPE_SUBPREFECTURE" = "Sous-préfecture";
 
 /* Name for airspace type Supercity (Japan related) */
-"AIRSPACE_TYPE_SUPERCITY" = "Mégalopole";
+"AIRSPACE_TYPE_SUPERCITY" = "Mégapole";
 
 /* Name for airspace type FAA Temporary Flight Restriction */
 "AIRSPACE_TYPE_TFR_FAA" = "Restriction de vol  temporaire";
@@ -176,10 +176,10 @@
 "AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Refusée après examen de la demande";
 
 /* The request with the authority will be accepted once the flight plan is submitted */
-"AUTHORIZATION_UPON_SUBMISSION" = "Autorisée après examen de la demande";
+"AUTHORIZATION_UPON_SUBMISSION" = "Autorisation après examen de la demande";
 
 /* Login message when a user's account has been blacklisted. */
-"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Votre compte a été placé sur liste noire. Veuillez vous adresser à security@airmap.com.";
+"AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Votre compte a été placé sur liste noire. Veuillez vous adresser à security@airmap.com";
 
 /* Login message when a user must verify their email address */
 "AUTH_ERROR_EMAIL_NEEDS_VERIFICATION_REQUIRED" = "Votre adresse e-mail doit être confirmée. Veuillez consulter votre boîte de réception.";
@@ -260,7 +260,7 @@
 "FLIGHT_DRAWING_RADIUS" = "Rayon";
 
 /* Call to action to fine-tune the geometry of a flight. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Déplacez tout point à décaler. Déplacez tout point médian pour ajouter un nouveau point.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_MODIFY_GEOMETRY" = "Déplacez n'importe quel point. Déplacez tout point médian pour ajouter un nouveau point.";
 
 /* Call to action to drag a point to the trash to delete. */
 "FLIGHT_DRAWING_TOOLTIP_CTA_DRAG_TO_TRASH_TO_DELETE" = "Déplacez un point vers la poubelle pour le supprimer.";
@@ -275,13 +275,13 @@
 "FLIGHT_DRAWING_TOOLTIP_CTA_POSTIION_POINT" = "Déplacez le point central pour positionner votre zone de vol.";
 
 /* Call to action to tap the icon to begin drawing a flight area. */
-"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Cliquez sur l'icône de la main pour dessiner une zone de vol.";
+"FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_AREA" = "Cliquez sur l'icône "main" pour dessiner une zone de vol.";
 
 /* Call to action to tap the icon to begin drawing a flight path. */
 "FLIGHT_DRAWING_TOOLTIP_CTA_TAP_ICON_TO_DRAW_PATH" = "Cliquez sur l'icône de la main pour dessiner une trajectoire de vol.";
 
 /* Displayed when the user has drawn an invalid shaping, overlapping with conflicting permitted zones */
-"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "La zone de vol ne peut chevaucher des zones conflictuelles d'obligation de permis.";
+"FLIGHT_DRAWING_TOOLTIP_ERROR_OVERLAPPING_PERMIT_AREAS" = "La zone de vol ne peut chevaucher des zones conflictuelles de permis obligatoire.";
 
 /* Call to action to fix self-intersecting geometries of an area-based flight. */
 "FLIGHT_DRAWING_TOOLTIP_ERROR_SELF_INTERSECTING_GEOMETRY" = "Zone de vol erronée. Ajustez la zone de vol de façon à ce qu'elle ne se recoupe pas avec elle-même.";
@@ -296,10 +296,10 @@
 "FLIGHT_PLAN_BUTTON_TITLE_SAVE" = "Enregistrer";
 
 /* Call to action title for the user to select an aircraft */
-"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "Sélectionner un avion";
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT" = "Sélectionner un appareil";
 
 /* Title for the row displaying the name of the aircraft */
-"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "Avion";
+"FLIGHT_PLAN_ROW_TITLE_AIRCRAFT_NAME" = "Appareil";
 
 /* Title for the row displaying flight plan buffer */
 "FLIGHT_PLAN_ROW_TITLE_BUFFER" = "Tampon";
@@ -311,7 +311,7 @@
 "FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Altitude maximum au dessus du sol";
 
 /* Call to action title for the user to select a pilot profile */
-"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Sélectionner un profil du pilote";
+"FLIGHT_PLAN_ROW_TITLE_PILOT" = "Sélectionner un profil de pilote";
 
 /* Title for the row displaying flight plan radius */
 "FLIGHT_PLAN_ROW_TITLE_RADIUS" = "Rayon";
@@ -320,7 +320,7 @@
 "FLIGHT_PLAN_ROW_TITLE_START_TIME" = "Débute";
 
 /* Title for the section displaying the pilot and aircraft details */
-"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilote et avion";
+"FLIGHT_PLAN_SECTION_HEADER_ASSOCIATED" = "Pilote et appareil";
 
 /* Title for the section displaying flight plan details */
 "FLIGHT_PLAN_SECTION_HEADER_FLIGHT" = "Vol";
@@ -350,7 +350,7 @@
 "PILOT_FULL_NAME_FORMAT" = "%1$@ %2$@";
 
 /* Table row label for FAA registration number */
-"PILOT_PROFILE_FAA_REGISTRATION" = "Numéro d'enregistrement FAA";
+"PILOT_PROFILE_FAA_REGISTRATION" = "Numéro FAA d'enregistrement du pilote";
 
 /* Label for the pilot profile email */
 "PILOT_PROFILE_LABEL_EMAIL" = "E-mail";
@@ -374,10 +374,10 @@
 "PILOT_PROFILE_SECTION_PERSONAL" = "Informations personnelles";
 
 /* Format for displaying a user's number of aircraft and flights */
-"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ avion, %2$@ vols";
+"PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ appareil, %2$@ vols";
 
 /* Displayed for authorities that are setup to receive digital notice */
-"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Accepte les notifications numériques";
+"REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "Accepte les avis électroniques";
 
 /* Displayed for authorities that are NOT setup to receive digital notice */
 "REVIEW_FLIGHT_PLAN_NOTICES_TAB_DOES_NOT_ACCEPT_NOTICE" = "Dans cette zone, les autorités suivantes n'acceptent pas les notifications numériques.";
@@ -389,7 +389,7 @@
 "RULESETS_SECTION_OPTIONAL" = "Facultatif";
 
 /* Label for the section header that displays all the Pick One rulesets */
-"RULESETS_SECTION_PICK_ONE" = "Sélectionnez-en un";
+"RULESETS_SECTION_PICK_ONE" = "Sélectionnez";
 
 /* Label for the section header that displays all the Required rulesets */
 "RULESETS_SECTION_REQUIRED" = "Obligatoire";
@@ -398,13 +398,13 @@
 "RULESET_SELECTION_TYPE_OPTIONAL" = "Facultatif";
 
 /* Label for rulesets that are part of a group in which one and only one ruleset can be enabled by the user */
-"RULESET_SELECTION_TYPE_PICKONE" = "En choisir un";
+"RULESET_SELECTION_TYPE_PICKONE" = "Sélectionnez";
 
 /* Label for rulesets that must be enabled by the user */
 "RULESET_SELECTION_TYPE_REQUIRED" = "Requis";
 
 /* Description for status advisory color Green */
-"STATUS_GREEN_DESCRIPTION" = "Informationnel";
+"STATUS_GREEN_DESCRIPTION" = "Pour information";
 
 /* Description for status advisory color Orange */
 "STATUS_ORANGE_DESCRIPTION" = "Action requise";
@@ -428,10 +428,10 @@
 "UNITS_METRIC" = "Métrique";
 
 /* Unit and format for displaying nautical miles */
-"UNITS_NAUTICAL_MILE_FORMAT" = "%@ milles marins";
+"UNITS_NAUTICAL_MILE_FORMAT" = "%@ NM";
 
 /* Unit and format for displaying speed in knots */
-"UNITS_SPEED_FORMAT_KNOTS" = "%@ nœuds";
+"UNITS_SPEED_FORMAT_KNOTS" = "%@ kts";
 
 /* Unit and format for displaying speed in meters per second */
 "UNITS_SPEED_FORMAT_METERS_PER_SECOND" = "%@ m/s";
@@ -446,7 +446,7 @@
 "UNITS_SPEED_RANGE_FORMAT_MILES_PER_HOUR" = "%1$@-%2$@ km/h";
 
 /* Unit and format for displaying temperature in Celcius */
-"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@ °C";
+"UNITS_TEMPERATURE_CELCIUS_FORMAT" = "%1$@°C";
 
 /* Unit and format for displaying temperature in Fahrenheit */
 "UNITS_TEMPERATURE_FAHRENHEIT_FORMAT" = "%1$@ °F";
@@ -461,4 +461,4 @@
 "VALIDATION_PENDING" = "Validation en attente";
 
 /* The request with the authority has been rejected */
-"VALIDATION_REJECTED" = "Refusée pour informations manquantes";
+"VALIDATION_REJECTED" = "Refusé: informations manquantes";

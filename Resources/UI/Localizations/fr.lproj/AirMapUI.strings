@@ -8,7 +8,7 @@
 "K03-vU-4zj.normalTitle" = "Enregistrer";
 
 /* Class = "UINavigationItem"; title = "Create Aircraft"; ObjectID = "Z9F-I6-niw"; Note = "CREATE_AIRCRAFT_TITLE|Title for the view where you can create a new aircraft"; */
-"Z9F-I6-niw.title" = "Créer un avion";
+"Z9F-I6-niw.title" = "Créer un appareil";
 
 /* Class = "UINavigationItem"; title = "Manufacturers"; ObjectID = "a84-JL-ndb"; Note = "MANUFACTURERS_TITLE|Title for the view that displays a list of all aircraft manufacturers"; */
 "a84-JL-ndb.title" = "Constructeurs";
@@ -50,7 +50,7 @@
 "q0o-oq-I1W.title" = "Profil du pilote";
 
 /* Class = "UINavigationItem"; title = "Select Aircraft"; ObjectID = "7vR-GS-NPr"; Note = "SELECT_AIRCRAFT_TITLE|Title for the view where you can select an aircraft for a flight"; */
-"7vR-GS-NPr.title" = "Sélectionner un avion";
+"7vR-GS-NPr.title" = "Sélectionner un appareil";
 
 /* Class = "UILabel"; text = "SMS Code"; ObjectID = "oG7-qM-t5D"; Note = "SMS_LOGIN_CODE_HEADER|Header text for view where a user can input their SMS verification code"; */
 "oG7-qM-t5D.text" = "Code SMS";
