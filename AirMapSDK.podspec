@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
 		core.osx.frameworks = 'AppKit'
 		core.source_files = ['Source/Core/**/*.{h,m,swift}', 'Source/Rx/*']
 		core.dependency 'Alamofire'
+		core.dependency 'AppAuth'
 		core.dependency 'ObjectMapper'
 		core.dependency 'SwiftTurf'
 		core.dependency 'KeychainAccess'
@@ -47,7 +48,6 @@ Pod::Spec.new do |s|
 		ui.dependency 'PhoneNumberKit'
 		ui.dependency 'RxDataSources'
 		ui.dependency 'Mapbox-iOS-SDK', '<4.0'
-		ui.dependency 'AppAuth'
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/Localizations/**/*']
 	end
