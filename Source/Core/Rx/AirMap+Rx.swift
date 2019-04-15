@@ -174,10 +174,17 @@ extension Reactive where Base: AirMap {
 		return AirMap.authService.logout()
 	}
 
+	#if os(OSX)
+ 	public static func login() -> Observable<AirMapPilot> {
+		return AirMap.authService.login()
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+    }
+	#else
  	public static func login(from viewController: UIViewController) -> Observable<AirMapPilot> {
 		return AirMap.authService.login(from: viewController)
 			.flatMap(AirMap.rx.getAuthenticatedPilot)
     }
+	#endif
 }
 
 /// Documentation found in AirMap+Rules.swift

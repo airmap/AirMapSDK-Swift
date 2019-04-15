@@ -1,11 +1,12 @@
 PODS:
-  - AirMapSDK (3.0.0.beta.1):
-    - AirMapSDK/Core (= 3.0.0.beta.1)
-    - AirMapSDK/Telemetry (= 3.0.0.beta.1)
-    - AirMapSDK/Traffic (= 3.0.0.beta.1)
-    - AirMapSDK/UI (= 3.0.0.beta.1)
-  - AirMapSDK/Core (3.0.0.beta.1):
+  - AirMapSDK (3.0.0.beta.2):
+    - AirMapSDK/Core (= 3.0.0.beta.2)
+    - AirMapSDK/Telemetry (= 3.0.0.beta.2)
+    - AirMapSDK/Traffic (= 3.0.0.beta.2)
+    - AirMapSDK/UI (= 3.0.0.beta.2)
+  - AirMapSDK/Core (3.0.0.beta.2):
     - Alamofire
+    - AppAuth
     - KeychainAccess
     - Log
     - ObjectMapper
@@ -13,17 +14,16 @@ PODS:
     - RxSwift
     - RxSwiftExt
     - SwiftTurf
-  - AirMapSDK/Telemetry (3.0.0.beta.1):
+  - AirMapSDK/Telemetry (3.0.0.beta.2):
     - AirMapSDK/Core
     - CocoaAsyncSocket
     - CryptoSwift (~> 0.10.0)
     - ProtocolBuffers-Swift (~> 4.0.6)
-  - AirMapSDK/Traffic (3.0.0.beta.1):
+  - AirMapSDK/Traffic (3.0.0.beta.2):
     - AirMapSDK/Core
     - SwiftMQTT (> 3.0.0, ~> 3.0)
-  - AirMapSDK/UI (3.0.0.beta.1):
+  - AirMapSDK/UI (3.0.0.beta.2):
     - AirMapSDK/Core
-    - AppAuth
     - Mapbox-iOS-SDK (< 4.0)
     - PhoneNumberKit
     - RxDataSources
@@ -109,7 +109,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: e25c9038b2d55aeed98407416a472a26b0e60b4d
+  AirMapSDK: c5d3bffc553de7e37eb5a8632d4498537e844628
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987

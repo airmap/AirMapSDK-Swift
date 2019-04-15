@@ -69,6 +69,39 @@ class AuthService: NSObject {
 		.synchronizable(true)
 		.accessibility(.afterFirstUnlock)
 
+	#if os(OSX)
+	func login() -> Observable<Void> {
+
+		assertValidConfiguration()
+
+		return .create() { (observer) -> Disposable in
+			let issuer = URL(string: Constants.Auth.identityProvider)!
+			OIDAuthorizationService.discoverConfiguration(forIssuer: issuer) { [unowned self] (config, error) in
+				if let error = error {
+					return observer.onError(AirMapError.unknown(underlying: error))
+				}
+				if let config = config {
+					let request = OIDAuthorizationRequest(from: config)
+					self.activeFlow = OIDAuthState.authState(byPresenting: request) { state, error in
+						if let error = error {
+							return observer.onError(AirMapError.unknown(underlying: error))
+						}
+						if let state = state {
+							self.authState = .authenticated(state)
+							self.activeFlow = nil
+							observer.onNext(())
+							observer.onCompleted()
+						}
+					}
+				}
+			}
+			return Disposables.create {
+				self.activeFlow?.cancel()
+				self.activeFlow = nil
+			}
+		}
+	}
+	#else
 	func login(from viewController: UIViewController) -> Observable<Void> {
 
 		assertValidConfiguration()
@@ -100,6 +133,7 @@ class AuthService: NSObject {
 			}
 		}
 	}
+	#endif
 
 	func resumeLogin(with callback: URL) -> Bool {
 		return activeFlow?.resumeExternalUserAgentFlow(with: callback) ?? false
