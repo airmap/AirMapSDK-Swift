@@ -35,30 +35,30 @@ public typealias Hectares = Double
 
 public extension Feet {
 	
-    static let metersPerFoot: Meters = 1/3.28084
+	static let metersPerFoot: Meters = 1/3.28084
 
-    var meters: Meters {
+	var meters: Meters {
 		return self * Feet.metersPerFoot
 	}
 }
 
 public extension Meters {
 	
-    static let metersPerNauticalMile: Meters = 1852.0
-    static let metersPerStatuteMile: Meters = 1609.34
+	static let metersPerNauticalMile: Meters = 1852.0
+	static let metersPerStatuteMile: Meters = 1609.34
 
-    var nauticalMiles: NauticalMiles {
+	var nauticalMiles: NauticalMiles {
 		return self / Meters.metersPerNauticalMile
 	}
 	
-    var feet: Feet {
+	var feet: Feet {
 		return self / Feet.metersPerFoot
 	}
 }
 
 public extension Kilometers {
 	
-    var statuteMiles: StatuteMiles {
+	var statuteMiles: StatuteMiles {
 		return self * 1000 / Meters.metersPerStatuteMile
 	}
 }
@@ -77,20 +77,20 @@ public typealias KilometersPerHour = Double
 
 public extension Knots {
 	
-    static let metersPerSecondPerKnot = 0.514444
+	static let metersPerSecondPerKnot = 0.514444
 }
 
 public extension KilometersPerHour {
 	
-    var metersPerSecond: MetersPerSecond {
+	var metersPerSecond: MetersPerSecond {
 		return self / 3.6
 	}
 	
-    var milesPerHour: MilesPerHour {
+	var milesPerHour: MilesPerHour {
 		return self * 0.621371
 	}
 	
-    var knots: Knots {
+	var knots: Knots {
 		return self * 0.539957
 	}
 }
@@ -105,14 +105,14 @@ public typealias Fahrenheit = Double
 
 public extension Celcius {
 	
-    var fahrenheit: Fahrenheit {
+	var fahrenheit: Fahrenheit {
 		return (self * 9.0/5.0) + 32.0
 	}
 }
 
 public extension Fahrenheit {
 	
-    var celcius: Celcius {
+	var celcius: Celcius {
 		return (self - 32.0) * (5.0/9.0)
 	}
 }
@@ -122,7 +122,7 @@ public typealias InHg = Double
 
 public extension HPa {
 	
-    var inHg: InHg {
+	var inHg: InHg {
 		return self * 0.02953
 	}
 }
