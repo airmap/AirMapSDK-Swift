@@ -22,7 +22,7 @@ import Foundation
 
 public extension Date {
 	
-	public func iso8601String() -> String {
+    func iso8601String() -> String {
 		let dateFormatter = DateFormatter()
 		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 		dateFormatter.timeZone = TimeZone(abbreviation: "UTC")

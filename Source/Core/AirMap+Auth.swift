@@ -69,11 +69,19 @@ extension AirMap {
 	/// - Parameters:
 	///   - viewController: The viewController from which to present the login view
 	///   - authHandler: The block that is called upon completion of login flow
+	#if os(OSX)
+	public static func login(with authHandler: @escaping AirMapAuthHandler) {
+		authService.login()
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+			.thenSubscribe(authHandler)
+	}
+	#else
 	public static func login(from viewController: UIViewController, with authHandler: @escaping AirMapAuthHandler) {
 		authService.login(from: viewController)
 			.flatMap(AirMap.rx.getAuthenticatedPilot)
 			.thenSubscribe(authHandler)
 	}
+	#endif
 
 	/// Resumes the login flow by handling a callback url
 	///

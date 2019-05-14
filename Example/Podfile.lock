@@ -1,78 +1,82 @@
 PODS:
-  - AirMapSDK (3.0.0.beta.1):
-    - AirMapSDK/Core (= 3.0.0.beta.1)
-    - AirMapSDK/Telemetry (= 3.0.0.beta.1)
-    - AirMapSDK/Traffic (= 3.0.0.beta.1)
-    - AirMapSDK/UI (= 3.0.0.beta.1)
-  - AirMapSDK/Core (3.0.0.beta.1):
+  - AirMapSDK (3.0.0.beta.3):
+    - AirMapSDK/Core (= 3.0.0.beta.3)
+    - AirMapSDK/Telemetry (= 3.0.0.beta.3)
+    - AirMapSDK/Traffic (= 3.0.0.beta.3)
+    - AirMapSDK/UI (= 3.0.0.beta.3)
+  - AirMapSDK/Core (3.0.0.beta.3):
     - Alamofire
+    - AppAuth
     - KeychainAccess
     - Log
     - ObjectMapper
-    - RxCocoa
-    - RxSwift
-    - RxSwiftExt
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+    - RxSwiftExt (~> 3.4)
     - SwiftTurf
-  - AirMapSDK/Telemetry (3.0.0.beta.1):
+  - AirMapSDK/Telemetry (3.0.0.beta.3):
     - AirMapSDK/Core
     - CocoaAsyncSocket
     - CryptoSwift (~> 0.10.0)
     - ProtocolBuffers-Swift (~> 4.0.6)
-  - AirMapSDK/Traffic (3.0.0.beta.1):
+  - AirMapSDK/Traffic (3.0.0.beta.3):
     - AirMapSDK/Core
     - SwiftMQTT (> 3.0.0, ~> 3.0)
-  - AirMapSDK/UI (3.0.0.beta.1):
+  - AirMapSDK/UI (3.0.0.beta.3):
     - AirMapSDK/Core
-    - AppAuth
     - Mapbox-iOS-SDK (< 4.0)
     - PhoneNumberKit
     - RxDataSources
-  - Alamofire (4.7.3)
-  - AppAuth (0.95.0)
+  - Alamofire (4.8.2)
+  - AppAuth (0.95.1)
   - CocoaAsyncSocket (7.6.3)
   - CryptoSwift (0.10.0)
   - Differentiator (3.1.0)
-  - KeychainAccess (3.1.2)
+  - KeychainAccess (3.2.0)
   - Log (1.0)
   - Mapbox-iOS-SDK (3.7.8)
-  - Nimble (7.3.1)
-  - ObjectMapper (3.3.0)
-  - OHHTTPStubs (6.1.0):
-    - OHHTTPStubs/Default (= 6.1.0)
-  - OHHTTPStubs/Core (6.1.0)
-  - OHHTTPStubs/Default (6.1.0):
+  - Nimble (8.0.1)
+  - ObjectMapper (3.4.2)
+  - OHHTTPStubs (8.0.0):
+    - OHHTTPStubs/Default (= 8.0.0)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (6.1.0):
+  - OHHTTPStubs/JSON (8.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (6.1.0):
+  - OHHTTPStubs/NSURLSession (8.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (6.1.0)
-  - OHHTTPStubs/Swift (6.1.0):
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
     - OHHTTPStubs/Default
-  - PhoneNumberKit (2.1.0):
-    - PhoneNumberKit/PhoneNumberKitCore (= 2.1.0)
-    - PhoneNumberKit/UIKit (= 2.1.0)
-  - PhoneNumberKit/PhoneNumberKitCore (2.1.0)
-  - PhoneNumberKit/UIKit (2.1.0):
+  - PhoneNumberKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
+    - PhoneNumberKit/UIKit (= 2.6.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
+  - PhoneNumberKit/UIKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore
   - ProtocolBuffers-Swift (4.0.6)
-  - Quick (1.3.2)
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
+  - Quick (2.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
-  - RxSwiftExt (3.3.0):
-    - RxSwiftExt/Core (= 3.3.0)
-  - RxSwiftExt/Core (3.3.0):
+  - RxSwift (4.5.0)
+  - RxSwiftExt (3.4.0):
+    - RxSwiftExt/Core (= 3.4.0)
+    - RxSwiftExt/RxCocoa (= 3.4.0)
+  - RxSwiftExt/Core (3.4.0):
     - RxSwift (~> 4.0)
+  - RxSwiftExt/RxCocoa (3.4.0):
+    - RxCocoa (~> 4.0)
+    - RxSwiftExt/Core
   - SwiftMQTT (3.0.1)
-  - SwiftTurf (0.3.2)
+  - SwiftTurf (0.3.3)
 
 DEPENDENCIES:
   - AirMapSDK (from `../`)
@@ -109,27 +113,27 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: e25c9038b2d55aeed98407416a472a26b0e60b4d
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
+  AirMapSDK: f5133a80ca6d63cd23f98044375f192f96f859f4
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AppAuth: cd34aac431e5c77c46ec7f03935377faa8c5808b
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Log: 5e368c9528db07517d18d2d04ff5fe2b6f5a1e21
   Mapbox-iOS-SDK: a8b55533ef5c5e91b5a26533bd4fb0ec88a3b994
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
+  PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   ProtocolBuffers-Swift: 09b5cfcc641ab512d6aaa1d2cc3879a40432052c
-  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  RxSwiftExt: 81afb48ab0602f503147417baeb3989d64c7687d
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
   SwiftMQTT: 983eeb29e8c8173ed953e0238d2f99b79ff3ccd2
-  SwiftTurf: 6ec29121fdb688a223aefca350843a9880e1489f
+  SwiftTurf: 340da9dbf60fe7ded0cac158657ec463269d581c
 
 PODFILE CHECKSUM: 49598a7476ee36a4c507bb3b31b4ae89b2632a65
 

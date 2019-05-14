@@ -28,10 +28,10 @@ extension AirMapRuleset: Hashable, Equatable, Comparable {
 		return [.pickOne, .optional, .required].index(of: type)!
 	}
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
-	
+
 	public static func ==(lhs: AirMapRuleset, rhs: AirMapRuleset) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -43,10 +43,10 @@ extension AirMapRuleset: Hashable, Equatable, Comparable {
 
 extension AirMapAdvisory: Equatable, Hashable {
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
-	
+
 	public static func ==(lhs: AirMapAdvisory, rhs: AirMapAdvisory) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -73,9 +73,10 @@ extension AirMapAircraft: Equatable, Hashable {
 		return lhs.id == rhs.id
 	}
 	
-	public var hashValue: Int {
-		return id?.hashValue ?? model.id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id?.hashValue ?? model.id.hashValue)
 	}
+
 }
 
 extension AirMapAircraftManufacturer: Equatable, Hashable {
@@ -84,8 +85,8 @@ extension AirMapAircraftManufacturer: Equatable, Hashable {
 		return lhs.id == rhs.id
 	}
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
 }
 
@@ -95,8 +96,8 @@ extension AirMapAircraftModel: Equatable, Hashable {
 		return lhs.id == rhs.id
 	}
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
 }
 
@@ -106,17 +107,17 @@ extension AirMapAirspace: Equatable, Hashable {
 		return lhs.id == rhs.id
 	}
 	
-	var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
 }
 
 extension AirMapFlight: Equatable, Hashable {
 	
-	public var hashValue: Int {
-		return id?.rawValue.hashValue ?? createdAt.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id?.rawValue.hashValue ?? createdAt.hashValue)
 	}
-	
+
 	static public func ==(lhs: AirMapFlight, rhs: AirMapFlight) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -128,10 +129,9 @@ extension AirMapJurisdiction: Hashable, Equatable, Comparable {
 		return lhs.hashValue == rhs.hashValue
 	}
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
-	
 	
 	public static func <(lhs: AirMapJurisdiction, rhs: AirMapJurisdiction) -> Bool {
 		return lhs.region.order < rhs.region.order
@@ -147,10 +147,10 @@ extension AirMapJurisdiction.Region {
 
 extension AirMapFlightFeature: Hashable, Equatable {
 	
-	public var hashValue: Int {
-		return id.hashValue
+	public func hash(into hasher: inout Hasher) {
+		return hasher.combine(id.hashValue)
 	}
-	
+
 	public static func ==(lhs: AirMapFlightFeature, rhs: AirMapFlightFeature) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}

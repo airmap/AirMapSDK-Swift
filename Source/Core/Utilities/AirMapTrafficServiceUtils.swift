@@ -22,7 +22,7 @@ import Foundation
 
 open class AirMapTrafficServiceUtils {
 	
-	open static func directionFromBearing(_ bearing: Double, localized: Bool = true) -> String {
+    public static func directionFromBearing(_ bearing: Double, localized: Bool = true) -> String {
 		let index = Int((bearing/22.5) + 0.5) % 16
 		let directions = self.compassDirections(localized: localized)
 		return directions[index]
