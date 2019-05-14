@@ -42,7 +42,6 @@ extension ArchivedTelemetry.Report: ImmutableMappable {
 	}
 }
 
-
 struct TelemetryReportTransform: TransformType {
 
 	static let mapper = Mapper<ArchivedTelemetry.Report>()
@@ -66,4 +65,3 @@ struct TelemetryReportTransform: TransformType {
 		return nil
 	}
 }
-//https://test.api.airmap.com/archive/v1/telemetry/position?
