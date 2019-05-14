@@ -177,7 +177,6 @@ internal class TrafficService: MQTTSessionDelegate {
 		isActive.accept(true)
 
 		if AirMap.authService.isAuthorized && delegate != nil {
-
 			if connectionState.value != .disconnected {
 				disconnect()
 			}
@@ -510,4 +509,3 @@ internal class TrafficService: MQTTSessionDelegate {
 	}
 
 }
-
