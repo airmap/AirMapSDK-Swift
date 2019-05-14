@@ -28,43 +28,43 @@
 
 public extension Color {
 
-	public static var airMapLightBlue: Color {
+    static var airMapLightBlue: Color {
 		return Color(red: 136.0/255.0, green: 219.0/255.0, blue: 223.0/255.0, alpha: 1.0)
 	}
 
-	public static var airMapDarkBlue: Color {
+    static var airMapDarkBlue: Color {
 		return Color(red: 51.0/255.0, green: 63.0/255.0, blue: 72.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapDarkGray: Color {
+    static var airMapDarkGray: Color {
 		return Color(red: 51.0/255.0, green: 63.0/255.0, blue: 72.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapGreen: Color {
+    static var airMapGreen: Color {
 		return Color(red: 108.0/255.0, green: 194.0/255.0, blue: 74.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapYellow: Color {
+    static var airMapYellow: Color {
 		return Color(red: 249.0/255.0, green: 225.0/255.0, blue: 59.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapOrange: Color {
+    static var airMapOrange: Color {
 		return Color(red: 252.0/255.0, green: 145.0/255.0, blue: 0.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapLightGray: Color {
+    static var airMapLightGray: Color {
 		return Color(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapRed: Color {
+    static var airMapRed: Color {
 		return Color(red: 208.0/255.0, green: 1.0/255.0, blue: 27.0/255.0, alpha: 1.0)
 	}
 	
-	public static var airMapBlack: Color {
+    static var airMapBlack: Color {
 		return .black
 	}
 
-	public static var primary: Color {
+    static var primary: Color {
 		var primaryColor: Color?
 		if #available(iOS 11.0, *) {
 			primaryColor = Color(named: "Primary")
@@ -72,7 +72,7 @@ public extension Color {
 		return primaryColor ?? .airMapDarkGray
 	}
 
-	public static var secondary: Color {
+    static var secondary: Color {
 		var secondaryColor: Color?
 		if #available(iOS 11.0, *) {
 			secondaryColor = Color(named: "Secondary")
@@ -80,7 +80,7 @@ public extension Color {
 		return secondaryColor ?? Color(red: 40/255, green: 49/255, blue: 56/255, alpha: 1)
 	}
 
-	public static var highlight: Color {
+    static var highlight: Color {
 		var highlightColor: Color?
 		if #available(iOS 11.0, *) {
 			highlightColor = Color(named: "Highlight")

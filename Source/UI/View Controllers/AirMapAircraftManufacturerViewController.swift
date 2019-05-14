@@ -35,6 +35,7 @@ class AirMapAircraftManufacturerViewController: UITableViewController, Analytics
 		
 		AirMap
 			.rx.listManufacturers()
+			.map { $0.sorted { $0.name.lowercased() < $1.name.lowercased() } }
 			.bind(to: tableView.rx.items(cellIdentifier: "Cell")) { index, manufacturer, cell in
 				cell.textLabel?.text = manufacturer.name
 			}

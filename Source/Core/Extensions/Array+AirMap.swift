@@ -22,13 +22,13 @@ import Foundation
 
 public extension Array where Element: Equatable {
 	
-	public mutating func removeObject(_ object: Element) {
+    mutating func removeObject(_ object: Element) {
 		if let index = self.index(of: object) {
 			self.remove(at: index)
 		}
 	}
 	
-	public mutating func removeObjectsInArray(_ array: [Element]) {
+    mutating func removeObjectsInArray(_ array: [Element]) {
 		for object in array {
 			self.removeObject(object)
 		}

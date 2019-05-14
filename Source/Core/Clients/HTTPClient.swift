@@ -42,33 +42,42 @@ internal class HTTPClient {
 	
 	private lazy var manager: SessionManager = {
 		
-		let host = AirMap.configuration.airMapDomain
+		let host = AirMap.configuration.domain
 		let keys = ServerTrustPolicy.publicKeys(in: AirMapBundle.core)
 		
 		let serverTrustPolicies: [String: ServerTrustPolicy] = [
 			host: ServerTrustPolicy.pinPublicKeys(publicKeys: keys, validateCertificateChain: true, validateHost: true)
 		]
 
-		let manager = AirMap.configuration.airMapPinCertificates ?
+		let manager = AirMap.configuration.pinCertificates ?
 			SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)) : SessionManager()
-		
-		manager.adapter = AuthenticationAdapter()
-		
+
 		return manager
 	}()
 	
 	init(basePath: String) {
 		self.basePath = basePath
 	}
-		
-	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", update object: T? = nil, checkAuth: Bool = false) -> Observable<T> {
-		
+
+	func withCredentials() -> Observable<AuthService.Credentials> {
+		return AirMap.authService.performWithCredentials()
+	}
+
+	private func defaultHeaders(with accessToken: String?) -> HTTPHeaders {
+		var headers = [String: String]()
+		headers[Header.accept.rawValue] = MimeType.JSON.rawValue
+		headers[Header.apiKey.rawValue] = AirMap.configuration.apiKey
+		headers[Header.authorization.rawValue] = "Bearer \(accessToken ?? "")"
+		return headers
+	}
+	
+	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", update object: T? = nil, auth: AuthService.Credentials? = nil) -> Observable<T> {
+
 		return Observable
 			.create { (observer: AnyObserver<T>) -> Disposable in
-				
+				let headers = self.defaultHeaders(with: auth?.token)
 				let request = self.manager
-					.checkAuth(checkAuth)
-					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method))
+					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method), headers: headers)
 					.airMapResponseObject(keyPath: keyPath, mapTo: object) { response in
 						if let error = response.result.error {
 							if let error = error as? AirMapError, case AirMapError.cancelled = error {
@@ -84,7 +93,7 @@ internal class HTTPClient {
 							observer.on(.completed)
 						}
 				}
-				
+
 				return Disposables.create {
 					request.cancel()
 				}
@@ -92,14 +101,13 @@ internal class HTTPClient {
 			.trackActivity(HTTPClient.activity)
 	}
 	
-	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", update object: T? = nil, checkAuth: Bool = false) -> Observable<T?> {
+	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", update object: T? = nil, auth: AuthService.Credentials? = nil) -> Observable<T?> {
 		
 		return Observable
 			.create { (observer: AnyObserver<T?>) -> Disposable in
-				
+				let headers = self.defaultHeaders(with: auth?.token)
 				let request = self.manager
-					.checkAuth(checkAuth)
-					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method))
+					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method), headers: headers)
 					.airMapResponseObject(keyPath: keyPath, mapTo: object) { response in
 						if let error = response.result.error {
 							if let error = error as? AirMapError, case AirMapError.cancelled = error {
@@ -121,14 +129,13 @@ internal class HTTPClient {
 			.trackActivity(HTTPClient.activity)
 	}
 	
-	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", checkAuth: Bool = false) -> Observable<[T]> {
-		
+	internal func perform<T: BaseMappable>(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", auth: AuthService.Credentials? = nil) -> Observable<[T]> {
+
 		return Observable
 			.create { (observer: AnyObserver<[T]>) -> Disposable in
-				
+				let headers = self.defaultHeaders(with: auth?.token)
 				let request = self.manager
-					.checkAuth(checkAuth)
-					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method))
+					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method), headers: headers)
 					.airMapResponseArray(keyPath: keyPath) { (response: DataResponse<[T]>) in
 						if let error = response.result.error {
 							if let error = error as? AirMapError, case AirMapError.cancelled = error {
@@ -148,18 +155,18 @@ internal class HTTPClient {
 				return Disposables.create() {
 					request.cancel()
 				}
+
 			}
 			.trackActivity(HTTPClient.activity)
 	}
 	
-	internal func perform(method: HTTPMethod, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", checkAuth: Bool = false) -> Observable<Void> {
+	internal func perform(method: HTTPMethod, customEncoding: URLEncoding? = nil, path: String = "", params: [String: Any] = [:], keyPath: String? = "data", auth: AuthService.Credentials? = nil) -> Observable<Void> {
 
 		return Observable
 			.create { (observer: AnyObserver<Void>) -> Disposable in
-				
+				let headers = self.defaultHeaders(with: auth?.token)
 				let request = self.manager
-					.checkAuth(checkAuth)
-					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method))
+					.request(self.absolute(path), method: method, parameters: params, encoding: customEncoding ?? self.encoding(method), headers: headers)
 					.airMapVoidResponse { (response: DataResponse<Void>) in
 						if let error = response.error {
 							if let error = error as? AirMapError, case AirMapError.cancelled = error {
@@ -182,54 +189,13 @@ internal class HTTPClient {
 	}
 	
 	private func encoding(_ method: HTTPMethod) -> ParameterEncoding {
-		
 		return (method == .get || method == .delete) ? URLEncoding.queryString : JSONEncoding.default
 	}
 	
 	private func absolute(_ path: String) -> String {
-		
 		return self.basePath + path.urlEncoded
 	}
 	
-}
-
-extension SessionManager {
-	
-	func checkAuth(_ checkAuth: Bool) -> Self {
-		
-		if let authAdapter = adapter as? AuthenticationAdapter {
-			authAdapter.checkAuth = checkAuth
-		}
-		return self
-	}
-}
-
-class AuthenticationAdapter: RequestAdapter {
-
-	var checkAuth: Bool = false
-	
-	func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-		
-		let apiKey = AirMap.configuration.airMapApiKey
-		let authToken = AirMap.authSession.authToken
-
-		if checkAuth && !AirMap.hasValidCredentials() {
-			throw AirMapError.unauthorized
-			AirMap.authSession.delegate?.airmapSessionShouldAuthenticate()
-		}
-		
-		var urlRequest = urlRequest
-		
-		let authorization = [AirMap.authSession.tokenType, authToken]
-			.compactMap { $0 }
-			.joined(separator: " ")
-
-		urlRequest.setValue(authorization, forHTTPHeaderField: HTTPClient.Header.authorization.rawValue)
-		urlRequest.setValue(apiKey, forHTTPHeaderField: HTTPClient.Header.apiKey.rawValue)
-		urlRequest.setValue(HTTPClient.MimeType.JSON.rawValue, forHTTPHeaderField: HTTPClient.Header.accept.rawValue)
-
-		return urlRequest
-	}
 }
 
 extension DataRequest {
@@ -396,8 +362,6 @@ extension DataRequest {
 	private static func catchApiError(with response: HTTPURLResponse, from request: URLRequest?, with data: Data) throws {
 		
 		if let error = AirMapError(rawValue: (request, response, data)) {
-			throw error
-		} else if let error = Auth0Error(rawValue: (request, response, data)) {
 			throw error
 		}
 	}

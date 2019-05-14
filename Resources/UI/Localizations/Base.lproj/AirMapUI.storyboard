@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -575,7 +574,7 @@ AirMap will send you a text message when your digital notice has been successful
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-ef-vDS">
-                                            <rect key="frame" x="156" y="2" width="203" height="39"/>
+                                            <rect key="frame" x="156" y="2" width="203" height="39.5"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -614,13 +613,13 @@ AirMap will send you a text message when your digital notice has been successful
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9a-p5-g3m">
-                                            <rect key="frame" x="156" y="2" width="203" height="39"/>
+                                            <rect key="frame" x="156" y="2" width="203" height="39.5"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Email]" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="WqY-Vy-gdV">
-                                            <rect key="frame" x="16" y="12" width="120" height="18"/>
+                                            <rect key="frame" x="16" y="12" width="120" height="17.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="Uwb-K0-KLK"/>
                                             </constraints>
@@ -653,13 +652,13 @@ AirMap will send you a text message when your digital notice has been successful
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kov-zg-437">
-                                            <rect key="frame" x="156" y="2" width="203" height="39"/>
+                                            <rect key="frame" x="156" y="2" width="203" height="39.5"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Phone Number]" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="zoD-a9-8h9">
-                                            <rect key="frame" x="16" y="12" width="120" height="18"/>
+                                            <rect key="frame" x="16" y="12" width="120" height="17.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="Uq7-KC-HEI"/>
                                             </constraints>
@@ -953,287 +952,9 @@ AirMap will send you a text message when your digital notice has been successful
             </objects>
             <point key="canvasLocation" x="6153" y="-476"/>
         </scene>
-        <!--Verify Code-->
-        <scene sceneID="yCl-kz-O48">
-            <objects>
-                <tableViewController id="zt9-dL-NZL" customClass="AirMapLoginWithCodeViewController" customModule="AirMap" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="K3t-5g-C71">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="I5G-P0-ibD">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG7-qM-t5D">
-                                    <rect key="frame" x="153.5" y="61.5" width="68" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                    <attributedString key="userComments">
-                                        <fragment content="SMS_LOGIN_CODE_HEADER|Header text for view where a user can input their SMS verification code">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="oG7-qM-t5D" firstAttribute="centerX" secondItem="I5G-P0-ibD" secondAttribute="centerX" id="IgS-KQ-vvV"/>
-                                <constraint firstItem="oG7-qM-t5D" firstAttribute="centerY" secondItem="I5G-P0-ibD" secondAttribute="centerY" id="h1a-jz-WIL"/>
-                            </constraints>
-                        </view>
-                        <sections>
-                            <tableViewSection id="8ry-pN-mZd">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="43k-yR-dFa">
-                                        <rect key="frame" x="0.0" y="140" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="43k-yR-dFa" id="eZF-ap-f3s">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0X-0f-Pm9">
-                                                    <rect key="frame" x="15" y="2" width="345" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="HKd-ZH-bb2"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="SMS_LOGIN_CODE_PLACEHOLDER|Placeholder label for the textfield where a user can input their SMS verification code">
-                                                            <attributes>
-                                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="L0X-0f-Pm9" firstAttribute="leading" secondItem="eZF-ap-f3s" secondAttribute="leading" constant="15" id="8Fc-sn-p6j"/>
-                                                <constraint firstAttribute="trailing" secondItem="L0X-0f-Pm9" secondAttribute="trailing" constant="15" id="lKN-jg-FDW"/>
-                                                <constraint firstItem="L0X-0f-Pm9" firstAttribute="centerY" secondItem="eZF-ap-f3s" secondAttribute="centerY" id="t5z-ic-MZm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="zt9-dL-NZL" id="L7K-he-3N8"/>
-                            <outlet property="delegate" destination="zt9-dL-NZL" id="PvT-cf-GfK"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Verify Code" id="7C4-bp-tif">
-                        <attributedString key="userComments">
-                            <fragment content="SMS_LOGIN_CODE_TITLE|Title for the view where a user enters their SMS verification code">
-                                <attributes>
-                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="smsCode" destination="L0X-0f-Pm9" id="ZIw-Jz-5Gd"/>
-                        <outlet property="smsTextField" destination="L0X-0f-Pm9" id="syM-EA-mgc"/>
-                        <outlet property="submitButton" destination="ERY-u7-YqH" id="aE8-IJ-cl3"/>
-                        <segue destination="AX7-1m-5qK" kind="unwind" identifier="unwindToPilotProfile" unwindAction="unwindToPilotProfile:" id="17q-hq-SLn"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p2f-Fl-fuu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERY-u7-YqH">
-                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="pw8-EV-zJP"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Submit">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="disabled">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <attributedString key="userComments">
-                        <fragment content="SMS_LOGIN_CODE_SUBMIT_BUTTON|Title for button that allows a user to submit an SMS code for verification">
-                            <attributes>
-                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <connections>
-                        <action selector="submitSMSCode" destination="zt9-dL-NZL" eventType="touchUpInside" id="NKY-uh-hu8"/>
-                    </connections>
-                </button>
-                <exit id="AX7-1m-5qK" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4529" y="-2176"/>
-        </scene>
-        <!--Login-->
-        <scene sceneID="lcI-f0-Dic">
-            <objects>
-                <tableViewController id="CML-0R-Bck" customClass="AirMapSMSLoginViewController" customModule="AirMap" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="y4l-wS-MY6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <sections>
-                            <tableViewSection id="bcG-AM-C7K">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dYJ-lg-GIS">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="dYJ-lg-GIS" id="IUK-uw-fBl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Country Name]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hv6-5M-BNZ">
-                                                    <rect key="frame" x="16" y="12" width="343" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hv6-5M-BNZ" secondAttribute="trailing" id="IWy-Ut-Rs5"/>
-                                                <constraint firstItem="hv6-5M-BNZ" firstAttribute="centerY" secondItem="IUK-uw-fBl" secondAttribute="centerY" id="enT-8s-IWA"/>
-                                                <constraint firstItem="hv6-5M-BNZ" firstAttribute="leading" secondItem="IUK-uw-fBl" secondAttribute="leadingMargin" id="tXx-q3-Q8i"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="R3C-7q-JQF" kind="show" identifier="pushCountrySelector" id="VwN-yj-34g"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="bLv-b4-6js">
-                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="bLv-b4-6js" id="820-fS-sLK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61d-PT-JN7" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
-                                                    <rect key="frame" x="16" y="2" width="344" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="NZ9-Xq-Mbx"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="SMS_LOGIN_PHONE_NUMBER_PLACEHOLDER|Label for field that the user types their phone number into">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="smallSystem"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="CML-0R-Bck" id="ZJE-Gg-YTt"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="61d-PT-JN7" secondAttribute="trailing" constant="15" id="DhG-UM-Xsv"/>
-                                                <constraint firstItem="61d-PT-JN7" firstAttribute="centerY" secondItem="820-fS-sLK" secondAttribute="centerY" id="bSa-81-Ws6"/>
-                                                <constraint firstItem="61d-PT-JN7" firstAttribute="leading" secondItem="820-fS-sLK" secondAttribute="leadingMargin" id="zmE-bU-H0V"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="CML-0R-Bck" id="d91-TO-5x5"/>
-                            <outlet property="delegate" destination="CML-0R-Bck" id="13G-0o-GNG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Login" id="CJG-Jj-2c2">
-                        <barButtonItem key="backBarButtonItem" title=" " id="LoQ-Zv-NiL"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="eyW-Hj-rQV">
-                            <connections>
-                                <action selector="dismiss:" destination="CML-0R-Bck" id="ltt-8e-nh3"/>
-                            </connections>
-                        </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="SMS_LOGIN_TITLE|Title for view that allows a user to login via SMS">
-                                <attributes>
-                                    <font key="NSFont" metaFont="smallSystem"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="country" destination="hv6-5M-BNZ" id="90Y-mt-XsK"/>
-                        <outlet property="phone" destination="61d-PT-JN7" id="ysE-Gv-Uuq"/>
-                        <outlet property="submitButton" destination="cdb-du-WXE" id="v6v-2Q-wFH"/>
-                        <segue destination="zt9-dL-NZL" kind="show" identifier="pushLoginCode" id="0MB-Rg-b9o"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x0i-3b-IAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdb-du-WXE">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="KR9-EP-v0t"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Save">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <state key="disabled">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <attributedString key="userComments">
-                        <fragment content="SMS_LOGIN_SAVE_BUTTON|Label for button that allows the user to submit their phone number for verification">
-                            <attributes>
-                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <connections>
-                        <action selector="submitForm" destination="CML-0R-Bck" eventType="touchUpInside" id="jFe-J1-Uo6"/>
-                    </connections>
-                </button>
-            </objects>
-            <point key="canvasLocation" x="3660" y="-2176"/>
-        </scene>
-        <!--Air MapSMS Login Nav Controller-->
-        <scene sceneID="dbx-AI-AI4">
-            <objects>
-                <navigationController storyboardIdentifier="AirMapSMSLoginNavController" id="GEN-jL-jgD" customClass="AirMapSMSLoginNavController" customModule="AirMap" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fMj-9P-09p" customClass="AirMapNavBar" customModule="AirMap" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="CML-0R-Bck" kind="relationship" relationship="rootViewController" id="IUV-ly-wnf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7tO-tT-qeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2838" y="-2176"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hz7-Iw-idg"/>
-        <segue reference="OiG-zl-Hhu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98823529409999999" green="0.29803921570000003" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

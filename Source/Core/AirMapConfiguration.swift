@@ -24,27 +24,21 @@ import Foundation
 public struct AirMapConfiguration {
 		
 	/// The AirMap API key that was used to initialize the SDK. Required.
-	public let airMapApiKey: String
-	
-	/// An optional Mapbox access token to use with any map UI elements.
-	public let mapboxAccessToken: String?
-	
+	public let apiKey: String
+
 	/// Designated initializer when not providing an airmap.config.json file at the root of the project
 	///
 	/// - SeeAlso: https://developers.airmap.com/docs/getting-started-ios
 	/// - Parameters:
 	///   - apiKey: The AirMap API key to use with the AirMap API
-	///   - auth0ClientId: A client ID used for user/pilot authentication with AirMap
+	///   - clientId: A client ID used for user/pilot authentication with AirMap
 	///   - mapboxAccessToken: An optional access token used to configure any map UI elements
-	public init(apiKey: String, auth0ClientId: String, mapboxAccessToken: String? = nil) {
-		
-		let config = [
-			"airmap": ["api_key": apiKey],
-			"auth0":  ["client_id": auth0ClientId],
-			"mapbox": ["access_token": mapboxAccessToken as Any]
-		]
-		
-		try! self.init(JSON: config)
+	public init(apiKey: String, clientId: String, mapboxAccessToken: String? = nil) {
+
+		try! self.init(JSON: [
+			"airmap": [ "api_key": apiKey, "client_id": clientId],
+			"mapbox": [ "access_token": mapboxAccessToken as Any]
+			])
 	}
 	
 	/// System used for displaying distance values
@@ -53,19 +47,19 @@ public struct AirMapConfiguration {
 	/// Units used for displaying temperature values
 	public var temperatureUnits: TemperatureUnits = .celcius
 
-	public var airMapApiDomain: String {
+	public var apiHost: String {
 		return host(for: "api")
 	}
 
-	public let auth0Host: String
-	public let auth0ClientId: String
-	public let auth0Scope: String
+	public let domain: String
+	let apiOverrides: [String: String]?
+	let environment: String?
+	let pinCertificates: Bool
+	let mapStyle: URL?
+	let clientId: String
 
-	let airMapDomain: String
-	let airMapApiOverrides: [String: String]?
-	let airMapEnvironment: String?
-	let airMapPinCertificates: Bool
-	let airMapMapStyle: URL?
+	/// An optional Mapbox access token to use with any map UI elements.
+	public let mapboxAccessToken: String?
 }
 
 extension AirMapConfiguration {
@@ -99,13 +93,13 @@ extension AirMapConfiguration {
 extension AirMapConfiguration {
 
 	func host(for resource: String) -> String {
-		return [airMapEnvironment, resource, airMapDomain]
+		return [environment, resource, domain]
 			.compactMap({ $0 })
 			.joined(separator: ".")
 	}
 
 	func override(for resource: String) -> String? {
-		return airMapApiOverrides?[resource]
+		return apiOverrides?[resource]
 	}
 }
 
@@ -118,19 +112,19 @@ extension AirMapConfiguration: ImmutableMappable {
 	public init(map: Map) throws {
 
 		do {
-			// Required configuration values
-			airMapApiKey          =  try  map.value("airmap.api_key")
-			auth0ClientId         =  try  map.value("auth0.client_id")
+			// Required AirMap SDK configuration values
+			apiKey   = try map.value("airmap.api_key")
+			clientId = try map.value("airmap.client_id")
 
-			// Optional configuration values
-			mapboxAccessToken     =  try? map.value("mapbox.access_token")
-			auth0Host             = (try? map.value("auth0.host")) ?? "sso.airmap.io"
-			auth0Scope            = (try? map.value("auth0.scope")) ?? "openid offline_access"
-			airMapDomain          = (try? map.value("airmap.domain")) ?? "airmap.com"
-			airMapEnvironment     =  try? map.value("airmap.environment")
-			airMapApiOverrides    =  try? map.value("airmap.api_overrides")
-			airMapMapStyle        =  try? map.value("airmap.map_style", using: URLTransform())
-			airMapPinCertificates = (try? map.value("airmap.pin_certificates")) ?? false
+			// Optional AirMap SDK configuration values
+			domain          = (try? map.value("airmap.domain")) ?? "airmap.com"
+			environment     =  try? map.value("airmap.environment")
+			apiOverrides    =  try? map.value("airmap.api_overrides")
+			mapStyle        =  try? map.value("airmap.map_style", using: URLTransform())
+			pinCertificates = (try? map.value("airmap.pin_certificates")) ?? false
+
+			// Third-party configuration values
+			mapboxAccessToken = try? map.value("mapbox.access_token")
 		}
 
 		catch let error as MapError {

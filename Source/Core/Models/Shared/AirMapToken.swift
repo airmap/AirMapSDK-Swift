@@ -22,5 +22,5 @@ import Foundation
 
 public struct AirMapToken {
 
-	public var authToken: String
+	var idToken: String
 }

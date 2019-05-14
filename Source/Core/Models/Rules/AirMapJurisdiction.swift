@@ -83,12 +83,12 @@ extension AirMapJurisdiction {
 
 extension Sequence where Iterator.Element == AirMapJurisdiction {
 	
-    /// Returns all rulesets within all jurisdictions
-    public var rulesets: [AirMapRuleset] {
-        return flatMap({ $0.rulesets })
-    }
+	/// Returns all rulesets within all jurisdictions
+	public var rulesets: [AirMapRuleset] {
+		return flatMap({ $0.rulesets })
+	}
 
-    /// Returns all rulesets which should be selected by default. This includes any required rulesets,
+	/// Returns all rulesets which should be selected by default. This includes any required rulesets,
 	/// any default pickOnes, and any AirMap recommended rulesets
 	public var defaultRulesets: [AirMapRuleset] {
 		return flatMap({ $0.defaultRulesets })

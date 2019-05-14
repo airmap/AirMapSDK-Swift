@@ -43,7 +43,7 @@ extension Reactive where Base: AirMap {
 	}
 	
 	public static func getCurrentAuthenticatedPilotFlight() -> Observable<AirMapFlight?> {
-		return AirMap.flightClient.list(pilotId: AirMap.authSession.userId, startBeforeNow: true, endAfterNow: true, checkAuth: true ).map { $0.first }
+		return AirMap.flightClient.getCurrentAuthenticatedPilotFlight()
 	}
 
 	public static func getFlight(by id: AirMapFlightId) -> Observable<AirMapFlight> {
@@ -166,25 +166,25 @@ extension Reactive where Base: AirMap {
 /// Documentation found in AirMap+Auth.swift
 extension Reactive where Base: AirMap {
     
-    public static func performAnonymousLogin(userId: String) -> Observable<AirMapToken> {
-        return AirMap.authClient.performAnonymousLogin(userId: userId)
-    }
-	
-	public static func startPasswordlessLogin(with phoneNumber: String) -> Observable<Void> {
-        return AirMap.auth0Client.startPasswordlessLogin(with: phoneNumber)
-    }
-	
-    public static func verifyPasswordlessLogin(with phoneNumber: String, code: String) -> Observable<Auth0Credentials> {
-        return AirMap.auth0Client.verifyPasswordlessLogin(with: phoneNumber, code: code)
-    }
-}
+    public static func performAnonymousLogin(userId: String) -> Observable<Void> {
+		return AirMap.authService.loginAnonymously(withForeign: userId)
+    }	
 
-/// Documentation found in AirMap+Auth0.swift
-extension Reactive where Base: AirMap {
-	
-	public static func refreshAuthToken() -> Observable<AirMapToken> {
-		return AirMap.auth0Client.refreshAccessToken()
+	public static func logout() -> Observable<Void> {
+		return AirMap.authService.logout()
 	}
+
+	#if os(OSX)
+ 	public static func login() -> Observable<AirMapPilot> {
+		return AirMap.authService.login()
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+    }
+	#else
+ 	public static func login(from viewController: UIViewController) -> Observable<AirMapPilot> {
+		return AirMap.authService.login(from: viewController)
+			.flatMap(AirMap.rx.getAuthenticatedPilot)
+    }
+	#endif
 }
 
 /// Documentation found in AirMap+Rules.swift

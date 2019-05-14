@@ -47,4 +47,10 @@ extension AirMap {
 		trafficService.connect()
 	}
 
+	/// Start observing traffic from a flight immediately
+	/// Typically called when a creating a new flight.
+	public static func startObservingTraffic(for flight: AirMapFlight) {
+		trafficService.startObservingTraffic(for: flight)
+	}
+
 }

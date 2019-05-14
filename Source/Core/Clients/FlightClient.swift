@@ -37,15 +37,9 @@ internal class FlightClient: HTTPClient {
 	/// - Parameter flightId: The flight identifier for which to request an encryption key
 	/// - Returns: A comm key Observable
 	func getCommKey(by flightId: AirMapFlightId) -> Observable<CommKey> {
-		return perform(method: .post, path: "/\(flightId.rawValue)/start-comm")
-	}
-
-	/// Called when a device no longer wants to receive push notifications for traffic alerts
-	///
-	/// - Parameter flight: The flight for which to request an encryption key
-	/// - Returns: A Void Observable
-	func clearCommKey(flight: AirMapFlight) -> Observable<Void> {
-		return perform(method: .post, path: "/\(flight.id!)/end-comm")
+		return withCredentials().flatMap { (credentials) -> Observable<CommKey> in
+			return self.perform(method: .post, path: "/\(flightId.rawValue)/start-comm", auth: credentials)
+		}
 	}
 	#endif
 
@@ -63,9 +57,9 @@ internal class FlightClient: HTTPClient {
 	          state: String? = nil,
 	          country: String? = nil,
 	          within geometry: AirMapGeometry? = nil,
-	          enhanced: Bool? = true,
-	          checkAuth: Bool? = false) -> Observable<[AirMapFlight]> {
+	          enhanced: Bool? = true) -> Observable<[AirMapFlight]> {
 		
+
 		var params = [String : Any]()
 
 		params["limit"       ] = limit
@@ -81,7 +75,10 @@ internal class FlightClient: HTTPClient {
 		params["geometry"    ] = geometry?.params()
 
 		AirMap.logger.debug("Get Flights", params)
-        return perform(method: .get, params: params, keyPath: "data.results", checkAuth: checkAuth ?? false)
+
+		return withCredentials().flatMap { (credentials) -> Observable<[AirMapFlight]> in
+			return self.perform(method: .get, params: params, keyPath: "data.results", auth: credentials)
+		}
 	}
 
 	func listPublicFlights(from fromDate: Date? = nil, to toDate: Date? = nil, limit: Int? = nil, within geometry: AirMapGeometry? = nil) -> Observable<[AirMapFlight]> {
@@ -96,45 +93,63 @@ internal class FlightClient: HTTPClient {
 		return list(limit: limit, startBefore: startBefore, startBeforeNow: startBeforeNow, endAfter: endAfter, endAfterNow: endAfterNow, within: geometry)
 	}
 
+	func getCurrentAuthenticatedPilotFlight() -> Observable<AirMapFlight?> {
+		return AirMap.authService.performWithCredentials().flatMap { (credentials) -> Observable<AirMapFlight?> in
+			return self.list(pilotId: credentials.pilot, startBeforeNow: true, endAfterNow: true).map { $0.first }
+		}
+	}
+
 	func get(_ flightId: AirMapFlightId) -> Observable<AirMapFlight> {
-		AirMap.logger.debug("Get flight", flightId)
-		var params = [String : Any]()
-		params["enhance"] = String(true) as AnyObject?
-		return perform(method: .get, path:"/\(flightId)", params: params)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlight> in
+			AirMap.logger.debug("Get flight", flightId)
+			var params = [String : Any]()
+			params["enhance"] = String(true) as AnyObject?
+			return self.perform(method: .get, path:"/\(flightId)", params: params, auth: credentials)
+		}
 	}
 
 	func create(_ flight: AirMapFlight) -> Observable<AirMapFlight> {
-		AirMap.logger.debug("Create flight", flight)
-		let type: AirMapFlightGeometryType = flight.geometry?.type ?? .point
-		return perform(method: .post, path:"/\(type.rawValue)", params: flight.params(), update: flight)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlight> in
+			AirMap.logger.debug("Create flight", flight)
+			let type: AirMapFlightGeometryType = flight.geometry?.type ?? .point
+			return self.perform(method: .post, path:"/\(type.rawValue)", params: flight.params(), update: flight, auth: credentials)
+		}
 	}
 
 	func end(_ flight: AirMapFlight) -> Observable<AirMapFlight> {
-		AirMap.logger.debug("End flight", flight)
-		guard let flightId = flight.id else {
-			AirMap.logger.error(self, FlightClientError.FlightDoesNotExist)
-			return .error(FlightClientError.FlightDoesNotExist)
-		}
-		return perform(method: .post, path:"/\(flightId)/end", update: flight)
+		return withCredentials().flatMap({ (credentials) -> Observable<AirMapFlight> in
+			AirMap.logger.debug("End flight", flight)
+			guard let flightId = flight.id else {
+				AirMap.logger.error(self, FlightClientError.FlightDoesNotExist)
+				return .error(FlightClientError.FlightDoesNotExist)
+			}
+			return self.perform(method: .post, path:"/\(flightId)/end", update: flight, auth: credentials)
+		})
 	}
 	
 	func end(_ flightId: AirMapFlightId) -> Observable<Void> {
-		AirMap.logger.debug("End flight", flightId)
-		return perform(method: .post, path:"/\(flightId)/end")
+		return withCredentials().flatMap({ (credentials) -> Observable<Void> in
+			AirMap.logger.debug("End flight", flightId)
+			return self.perform(method: .post, path:"/\(flightId)/end", auth: credentials)
+		})
 	}
 
 	func delete(_ flight: AirMapFlight) -> Observable<Void> {
-		AirMap.logger.debug("Delete flight", flight)
-		guard let flightId = flight.id else {
-			AirMap.logger.error(self, FlightClientError.FlightDoesNotExist)
-			return .error(FlightClientError.FlightDoesNotExist)
-		}
-		return perform(method: .post, path:"/\(flightId)/delete")
+		return withCredentials().flatMap({ (credentials) -> Observable<Void> in
+			AirMap.logger.debug("Delete flight", flight)
+			guard let flightId = flight.id else {
+				AirMap.logger.error(self, FlightClientError.FlightDoesNotExist)
+				return .error(FlightClientError.FlightDoesNotExist)
+			}
+			return self.perform(method: .post, path:"/\(flightId)/delete", auth: credentials)
+		})
 	}
 	
 	func getFlightPlanByFlightId(_ id: AirMapFlightId) -> Observable<AirMapFlightPlan> {
-		AirMap.logger.debug("Get FlightPlan for Flight id", id)
-		return perform(method: .get, path:"/\(id)/plan")
+		return withCredentials().flatMap({ (credentials) -> Observable<AirMapFlightPlan> in
+			AirMap.logger.debug("Get FlightPlan for Flight id", id)
+			return self.perform(method: .get, path:"/\(id)/plan", auth: credentials)
+		})
 	}
 	
 }

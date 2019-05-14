@@ -28,14 +28,14 @@ extension AirMap {
 	internal static let advisoryClient = AdvisoryClient()
 	internal static let aircraftClient = AircraftClient()
 	internal static let airspaceClient = AirspaceClient()
-	internal static let auth0Client = Auth0Client()
-    internal static let authClient = AuthClient()
+	internal static let authClient = AuthClient()
+	internal static let openIdClient = OpenIdClient()
 	internal static let flightClient = FlightClient()
 	internal static let flightPlanClient = FlightPlanClient()
 	internal static let pilotClient = PilotClient()
 	internal static let ruleClient = RuleClient()
 
-	internal static let authSession = AirMapAuthSession()
+	internal static let authService = AuthService()
 
 	#if AIRMAP_TELEMETRY
 	internal static let archiveClient = ArchiveClient()
@@ -48,9 +48,5 @@ extension AirMap {
 	#endif
 
 	internal static let disposeBag = DisposeBag()
-
-	internal static func hasValidCredentials() -> Bool {
-		return authSession.hasValidCredentials()
-	}
 
 }

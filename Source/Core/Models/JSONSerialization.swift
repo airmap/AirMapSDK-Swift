@@ -256,7 +256,7 @@ extension AirMapAdvisory.SpecialUseProperties: ImmutableMappable {
 extension AirMapAdvisory.TFRProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		url        =  try  map.value("url", using: URLTransform())
+		url        =  try? map.value("url", using: URLTransform())
 		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
 		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
 		type       =  try? map.value("type")
@@ -655,19 +655,7 @@ extension AirMapRule: ImmutableMappable {
 extension AirMapToken: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		authToken = try map.value("id_token")
-	}
-}
-
-// MARK: - Auth0Credentials
-
-extension Auth0Credentials: ImmutableMappable {
-	
-	public init(map: Map) throws {
-		accessToken   =  try map.value("access_token")
-		refreshToken  =  try map.value("refresh_token")
-		tokenType     =  try map.value("token_type")
-		idToken       =  try map.value("id_token")
+		idToken = try map.value("id_token")
 	}
 }
 

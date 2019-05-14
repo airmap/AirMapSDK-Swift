@@ -32,40 +32,51 @@ internal class FlightPlanClient: HTTPClient {
 	}
 	
 	func create(_ flightPlan: AirMapFlightPlan) -> Observable<AirMapFlightPlan> {
-		AirMap.logger.debug("Create Flight Plan", flightPlan)
-		return perform(method: .post, path: "/plan", params: flightPlan.toJSON(), update: flightPlan, checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlightPlan> in
+			AirMap.logger.debug("Create Flight Plan", flightPlan)
+			return self.perform(method: .post, path: "/plan", params: flightPlan.toJSON(), update: flightPlan, auth: credentials)
+		}
 	}
 	
 	func update(_ flightPlan: AirMapFlightPlan) -> Observable<AirMapFlightPlan> {
-		AirMap.logger.debug("Update Flight Plan", flightPlan)
-		guard let flightPlanId = flightPlan.id else {
-			return Observable.error(FlightPlanClientError.flightPlanDoesntExistCreateFirst)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlightPlan> in
+			AirMap.logger.debug("Update Flight Plan", flightPlan)
+			guard let flightPlanId = flightPlan.id else {
+				return Observable.error(FlightPlanClientError.flightPlanDoesntExistCreateFirst)
+			}
+			return self.perform(method: .patch, path: "/plan/\(flightPlanId)", params: flightPlan.toJSON(), update: flightPlan, auth: credentials)
 		}
-		return perform(method: .patch, path: "/plan/\(flightPlanId)", params: flightPlan.toJSON(), update: flightPlan, checkAuth: true)
 	}
 	
 	func get(_ flightPlanId: AirMapFlightPlanId) -> Observable<AirMapFlightPlan> {
-		AirMap.logger.debug("Get Flight Plan", flightPlanId)
-		return perform(method: .get, path: "/plan/\(flightPlanId)", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlightPlan> in
+			AirMap.logger.debug("Get Flight Plan", flightPlanId)
+			return self.perform(method: .get, path: "/plan/\(flightPlanId)", auth: credentials)
+		}
 	}
 		
 	func getBriefing(_ flightPlanId: AirMapFlightPlanId) -> Observable<AirMapFlightBriefing> {
-		AirMap.logger.debug("Get Flight Briefing", flightPlanId)
-		return perform(method: .get, path: "/plan/\(flightPlanId)/briefing", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlightBriefing> in
+			AirMap.logger.debug("Get Flight Briefing", flightPlanId)
+			return self.perform(method: .get, path: "/plan/\(flightPlanId)/briefing", auth: credentials)
+		}
 	}
 	
 	func submitFlightPlan(_ flightPlan: AirMapFlightPlan, makeFlightPublic: Bool = true) -> Observable<AirMapFlightPlan> {
-		guard let flightPlanId = flightPlan.id else {
-			return Observable.error(FlightPlanClientError.flightPlanDoesntExistCreateFirst)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlightPlan> in
+			guard let flightPlanId = flightPlan.id else {
+				return Observable.error(FlightPlanClientError.flightPlanDoesntExistCreateFirst)
+			}
+			AirMap.logger.debug("Submit Flight Plan", flightPlanId)
+			let params = ["public": makeFlightPublic]
+			return self.perform(method: .post, path: "/plan/\(flightPlanId)/submit", params: params, update: flightPlan, auth: credentials)
 		}
-		AirMap.logger.debug("Submit Flight Plan", flightPlanId)
-		let params = ["public": makeFlightPublic]
-		return perform(method: .post, path: "/plan/\(flightPlanId)/submit", params: params, update: flightPlan, checkAuth: true)
 	}
 	
 	func deleteFlightPlan(_ flightPlanId: AirMapFlightPlanId) -> Observable<Void> {
-		AirMap.logger.debug("Delete Flight Plan", flightPlanId)
-		return perform(method: .delete, path: "/plan/\(flightPlanId)", checkAuth: true)
+		return withCredentials().flatMap { (credentials) -> Observable<Void> in
+			AirMap.logger.debug("Delete Flight Plan", flightPlanId)
+			return self.perform(method: .delete, path: "/plan/\(flightPlanId)", auth: credentials)
+		}
 	}
-
 }

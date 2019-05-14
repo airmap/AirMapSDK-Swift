@@ -37,8 +37,8 @@ extension ArchivedTelemetry.Report: ImmutableMappable {
 		let lon = try map.value("longitude_degrees") as Double
 		coordinate = Coordinate2D(latitude: lat, longitude: lon)
 
-		let height    = try map.value("altitude_meters") as Meters
-		altitude  = Altitude(height: height, reference: .unknown)
+		let height = try map.value("altitude_meters") as Meters
+		altitude = Altitude(height: height, reference: .unknown)
 	}
 }
 
@@ -66,3 +66,4 @@ struct TelemetryReportTransform: TransformType {
 		return nil
 	}
 }
+//https://test.api.airmap.com/archive/v1/telemetry/position?

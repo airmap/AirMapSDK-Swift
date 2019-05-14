@@ -23,6 +23,7 @@ import CoreLocation
 import ObjectMapper
 import RxSwift
 import RxSwiftExt
+import RxCocoa
 
 internal class TrafficService: MQTTSessionDelegate {
 
@@ -49,14 +50,14 @@ internal class TrafficService: MQTTSessionDelegate {
 	fileprivate var expirationInterval = Constants.Traffic.expirationInterval
 	fileprivate var client = TrafficClient()
 	fileprivate var connectionState = Variable(ConnectionState.disconnected)
-	fileprivate var currentFlight = Variable(nil as AirMapFlight?)
+	fileprivate var currentFlight = BehaviorRelay<AirMapFlight?>(value: nil)
+	fileprivate var receivedFlight = BehaviorRelay<AirMapFlight?>(value: nil)
 
 	fileprivate let disposeBag = DisposeBag()
 
 	// MARK: - Setup
 
 	init() {
-
 		client.delegate = self
 		setupBindings()
 		connect()
@@ -85,7 +86,7 @@ internal class TrafficService: MQTTSessionDelegate {
 			.throttle(1, scheduler: MainScheduler.instance)
 			.map { flight, state in flight }
 			.unwrap()
-			.filter {[unowned self] _ in AirMap.hasValidCredentials() && self.delegate != nil}
+			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
 			.flatMap(unowned(self, TrafficService.connectWithFlight))
 			.catchError({ _ in return Observable.just( .disconnected) })
 			.bind(to: connectionState)
@@ -94,11 +95,11 @@ internal class TrafficService: MQTTSessionDelegate {
 		whenConnected
 			.retry()
 			.throttle(1, scheduler: MainScheduler.instance)
-			.filter {[unowned self] _ in AirMap.hasValidCredentials() && self.delegate != nil}
+			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
 			.map { flight, state in flight }
 			.unwrap()
 			.flatMap(unowned(self, TrafficService.subscribeToTraffic))
-			.catchError({ _ in return Observable.empty() })
+			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected;  return Observable.empty() })
 			.subscribe()
 			.disposed(by: disposeBag)
 
@@ -118,12 +119,17 @@ internal class TrafficService: MQTTSessionDelegate {
 			})
 			.disposed(by: disposeBag)
 
-		let refreshCurrentFlight = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance).mapToVoid()
+		let refreshCurrentFlightTimer = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance).mapToVoid()
 
-		refreshCurrentFlight
-			.filter {[unowned self] _ in AirMap.hasValidCredentials() && self.delegate != nil}
-			.skipWhile({[unowned self] _ in !AirMap.hasValidCredentials() || self.delegate == nil})
+		let refreshCurrentFlight = refreshCurrentFlightTimer
+			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
+			.skipWhile({[unowned self] _ in !AirMap.authService.isAuthorized || self.delegate == nil})
 			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
+			.retry(2)
+			.catchErrorJustReturn(nil)
+
+		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
+			.unwrap()
 			.bind(to: currentFlight)
 			.disposed(by: disposeBag)
 
@@ -146,12 +152,10 @@ internal class TrafficService: MQTTSessionDelegate {
 
 	func connect() {
 
-		if AirMap.hasValidCredentials() && delegate != nil {
-
+		if AirMap.authService.isAuthorized && delegate != nil {
 			if connectionState.value != .disconnected {
 				disconnect()
 			}
-
 			AirMap.rx.getCurrentAuthenticatedPilotFlight().bind(to: currentFlight).disposed(by: disposeBag)
 		}
 	}
@@ -161,35 +165,43 @@ internal class TrafficService: MQTTSessionDelegate {
 		unsubscribeFromAllChannels()
 			.do(onDispose: { [unowned self] in
 				self.client.disconnect()
-				self.currentFlight.value = nil
+				self.connectionState.value = .disconnected
+				self.currentFlight.accept(nil)
 				self.removeAllTraffic()
 			})
 			.subscribe()
 			.disposed(by: disposeBag)
 	}
 
+	func startObservingTraffic(for flight: AirMapFlight) {
+		receivedFlight.accept(flight)
+	}
+
 	// MARK: - Observable Methods
 
 	func connectWithFlight(_ flight: AirMapFlight) -> Observable<ConnectionState> {
 
-		return Observable.create { (observer: AnyObserver<ConnectionState>) -> Disposable in
+		return AirMap.authService.performWithCredentials()
+			.flatMap { (creds) -> Observable<ConnectionState> in
+				return Observable.create { (observer: AnyObserver<ConnectionState>) -> Disposable in
 
-			observer.onNext(.connecting)
+					observer.onNext(.connecting)
 
-			self.client.username = flight.id?.rawValue
-			self.client.password = AirMap.authSession.authToken
+					self.client.username = flight.id?.rawValue
+					self.client.password = creds.token
 
-			self.client.connect { error in
-				if error == .none {
-					observer.onNext(.connected)
-				} else {
-					AirMap.logger.error(error.description)
-					observer.onError(TrafficServiceError.connectionFailed)
-					observer.onNext(.disconnected)
+					self.client.connect { error in
+						if error == .none {
+							observer.onNext(.connected)
+						} else {
+							AirMap.logger.error(error.description)
+							observer.onError(TrafficServiceError.connectionFailed)
+							observer.onNext(.disconnected)
+						}
+					}
+
+					return Disposables.create()
 				}
-			}
-
-			return Disposables.create()
 		}
 	}
 
