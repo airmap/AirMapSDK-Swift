@@ -251,6 +251,23 @@ extension Reactive where Base: AirMap {
 #if AIRMAP_TELEMETRY
 extension Reactive where Base: AirMap {
 
+	enum SampleRate {
+		case miliseconds(Int)
+		case seconds(Int)
+		case minutes(Int)
+		
+		var param: String {
+			switch self {
+			case .miliseconds(let val):
+				return "\(val)ms"
+			case .seconds(let val):
+				return "\(val)s"
+			case .minutes(let val):
+				return "\(val)min"
+			}
+		}
+	}
+
 	public static func queryFlightTelemetry(for flightId: AirMapFlightId, from start: Date? = nil, to end: Date? = nil, sampleRate: String? = nil) -> Observable<ArchivedTelemetry> {
 		return AirMap.archiveClient.queryFlightTelemetry(for: flightId, from: start, to: end, sampleRate: sampleRate)
 	}
