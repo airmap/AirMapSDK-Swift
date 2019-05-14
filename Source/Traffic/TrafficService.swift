@@ -76,7 +76,6 @@ internal class TrafficService: MQTTSessionDelegate {
 				self.connectionState.value = .disconnected
 				self.removeAllTraffic()
 			})
-			.debug("traffic1 current flight post distinct until changed")
 
 		let flightState = Observable.combineLatest(flight, state) { ($0, $1) }
 			.share()
