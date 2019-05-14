@@ -72,8 +72,14 @@ internal class TrafficService: MQTTSessionDelegate {
 
 		let flight = currentFlight.asObservable()
 			.distinctUntilChanged { flight in flight?.id ?? "" }
+			.do(onNext: { [unowned self] (_) in
+				self.connectionState.value = .disconnected
+				self.removeAllTraffic()
+			})
+			.debug("traffic1 current flight post distinct until changed")
 
 		let flightState = Observable.combineLatest(flight, state) { ($0, $1) }
+			.share()
 
 		let whenConnected = flightState.filter { $1 == .connected }
 		let whenDisconnected = flightState.filter { $1 == .disconnected }
