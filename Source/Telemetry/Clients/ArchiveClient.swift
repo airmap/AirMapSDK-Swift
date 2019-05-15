@@ -37,7 +37,9 @@ internal class ArchiveClient: HTTPClient {
 		params["end"] = to?.iso8601String()
 		params["rate"] = sampleRate
 
-		return perform(method: .get, path:"/telemetry/position", params: params)
+		return withCredentials().flatMap { (credentials) -> Observable<ArchivedTelemetry> in
+			return self.perform(method: .get, path:"/telemetry/position", params: params, auth: credentials)
+		}
 	}
 }
 
