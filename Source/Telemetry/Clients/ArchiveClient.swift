@@ -27,7 +27,7 @@ internal class ArchiveClient: HTTPClient {
 		super.init(basePath: Constants.Api.archiveUrl)
 	}
 
-	func queryFlightTelemetry(for flightId: AirMapFlightId, from: Date?, to: Date?, sampleRate: String?) -> Observable<ArchivedTelemetry> {
+	func queryFlightTelemetry(for flightId: AirMapFlightId, from: Date?, to: Date?, sampleRate: SampleRate?) -> Observable<ArchivedTelemetry> {
 
 		AirMap.logger.debug("Query Flight Telemetry", flightId as Any, from as Any, to as Any, sampleRate as Any)
 
@@ -35,7 +35,7 @@ internal class ArchiveClient: HTTPClient {
 		params["flight_id"] = flightId.rawValue
 		params["start"] = from?.iso8601String()
 		params["end"] = to?.iso8601String()
-		params["rate"] = sampleRate
+		params["rate"] = sampleRate?.param
 
 		return withCredentials().flatMap { (credentials) -> Observable<ArchivedTelemetry> in
 			return self.perform(method: .get, path:"/telemetry/position", params: params, auth: credentials)
