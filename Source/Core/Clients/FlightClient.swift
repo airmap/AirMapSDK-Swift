@@ -94,7 +94,7 @@ internal class FlightClient: HTTPClient {
 	}
 
 	func getCurrentAuthenticatedPilotFlight() -> Observable<AirMapFlight?> {
-		return AirMap.authService.performWithCredentials().flatMap { (credentials) -> Observable<AirMapFlight?> in
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapFlight?> in
 			return self.list(pilotId: credentials.pilot, startBeforeNow: true, endAfterNow: true).map { $0.first }
 		}
 	}
