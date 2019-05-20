@@ -101,21 +101,22 @@ extension Reactive where Base: AirMapMapView {
 		return delegate.methodInvoked(#selector(MGLMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
 			.map { $0[0] as! Base }
 	}
-	
+
 	public var jurisdictions: Observable<[AirMapJurisdiction]> {
 		return mapDidFinishLoadingStyle
-			.flatMapLatest({ (style) -> Observable<[AirMapJurisdiction]> in
+			.flatMapLatest({ [weak base] (style) -> Observable<[AirMapJurisdiction]> in
+				guard let base = base else { return Observable.of([]) }
 				return Observable
 					.merge(
-						self.regionIsChanging
+						base.rx.regionIsChanging
 							.throttle(3, latest: true, scheduler: MainScheduler.instance),
-						self.regionDidChangeAnimated.map({$0.mapView})
+						base.rx.regionDidChangeAnimated.map({$0.mapView})
 							.throttle(1, latest: true, scheduler: MainScheduler.instance),
-						self.mapDidFinishRenderingMap.map({$0.mapView})
+						base.rx.mapDidFinishRenderingMap.map({$0.mapView})
 					)
 					.map({ $0.jurisdictions })
 					.distinctUntilChanged(==)
 			})
 	}
-	
+
 }

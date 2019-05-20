@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 	s.name              = 'AirMapSDK'
 	s.module_name       = 'AirMap'
 	s.author            = 'AirMap, Inc.'
-	s.version           = '3.0.0.beta.1'
+	s.version           = '3.0.0.beta.3'
 	s.summary           = 'AirMap SDK for iOS & macOS'
 	s.description       = 'Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.'
 	s.license           = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 	s.swift_version = '4.1'
 	
 	s.ios.deployment_target = '9.0'
-	s.osx.deployment_target = '10.10'
+	s.osx.deployment_target = '10.11'
 	
 	s.default_subspecs = 'Core', 'Traffic', 'Telemetry', 'UI'
 
@@ -29,12 +29,13 @@ Pod::Spec.new do |s|
 		core.osx.frameworks = 'AppKit'
 		core.source_files = ['Source/Core/**/*.{h,m,swift}', 'Source/Rx/*']
 		core.dependency 'Alamofire'
+		core.dependency 'AppAuth'
 		core.dependency 'ObjectMapper'
 		core.dependency 'SwiftTurf'
 		core.dependency 'KeychainAccess'
-		core.dependency 'RxSwift'
-		core.dependency 'RxSwiftExt'
-		core.dependency 'RxCocoa'
+		core.dependency 'RxSwift', '~> 4.0'
+		core.dependency 'RxSwiftExt', '~> 3.4'
+		core.dependency 'RxCocoa', '~> 4.0'
 		core.dependency 'Log'
 		core.resources = ['Resources/Core/*.{cer,pdf,xcassets}', 'Resources/Core/Localizations/**/*']
 	end
@@ -55,7 +56,7 @@ Pod::Spec.new do |s|
 	s.subspec 'Traffic' do |traffic|
 		traffic.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_TRAFFIC' }
 		traffic.dependency 'AirMapSDK/Core'
-		traffic.dependency 'SwiftMQTT', '~> 3.0'
+		traffic.dependency 'SwiftMQTT', '>3.0.0', '~> 3.0'
 		traffic.source_files = 'Source/Traffic/*'
 	end
 	

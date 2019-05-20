@@ -37,7 +37,7 @@ open class AirMapFlightAnnotation: NSObject {
 		return self.flight == object.flight
 	}
 	
-	override open var hashValue: Int {
+    override open var hash: Int {
 		return flight.hashValue
 	}
 	

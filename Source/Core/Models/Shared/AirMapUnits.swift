@@ -35,37 +35,37 @@ public typealias Hectares = Double
 
 public extension Feet {
 	
-	public static let metersPerFoot: Meters = 1/3.28084
+	static let metersPerFoot: Meters = 1/3.28084
 
-	public var meters: Meters {
+	var meters: Meters {
 		return self * Feet.metersPerFoot
 	}
 }
 
 public extension Meters {
 	
-	public static let metersPerNauticalMile: Meters = 1852.0
-	public static let metersPerStatuteMile: Meters = 1609.34
+	static let metersPerNauticalMile: Meters = 1852.0
+	static let metersPerStatuteMile: Meters = 1609.34
 
-	public var nauticalMiles: NauticalMiles {
+	var nauticalMiles: NauticalMiles {
 		return self / Meters.metersPerNauticalMile
 	}
 	
-	public var feet: Feet {
+	var feet: Feet {
 		return self / Feet.metersPerFoot
 	}
 }
 
 public extension Kilometers {
 	
-	public var statuteMiles: StatuteMiles {
+	var statuteMiles: StatuteMiles {
 		return self * 1000 / Meters.metersPerStatuteMile
 	}
 }
 
 public extension Hectares {
 	
-	public var acres: Acres {
+	var acres: Acres {
 		return self / 0.404686
 	}
 }
@@ -77,20 +77,20 @@ public typealias KilometersPerHour = Double
 
 public extension Knots {
 	
-	public static let metersPerSecondPerKnot = 0.514444
+	static let metersPerSecondPerKnot = 0.514444
 }
 
 public extension KilometersPerHour {
 	
-	public var metersPerSecond: MetersPerSecond {
+	var metersPerSecond: MetersPerSecond {
 		return self / 3.6
 	}
 	
-	public var milesPerHour: MilesPerHour {
+	var milesPerHour: MilesPerHour {
 		return self * 0.621371
 	}
 	
-	public var knots: Knots {
+	var knots: Knots {
 		return self * 0.539957
 	}
 }
@@ -105,14 +105,14 @@ public typealias Fahrenheit = Double
 
 public extension Celcius {
 	
-	public var fahrenheit: Fahrenheit {
+	var fahrenheit: Fahrenheit {
 		return (self * 9.0/5.0) + 32.0
 	}
 }
 
 public extension Fahrenheit {
 	
-	public var celcius: Celcius {
+	var celcius: Celcius {
 		return (self - 32.0) * (5.0/9.0)
 	}
 }
@@ -122,7 +122,7 @@ public typealias InHg = Double
 
 public extension HPa {
 	
-	public var inHg: InHg {
+	var inHg: InHg {
 		return self * 0.02953
 	}
 }
