@@ -39,7 +39,7 @@ public struct LocalizedStrings {
 		
 		public static let accepted = NSLocalizedString("AUTHORIZATION_ACCEPTED", bundle: bundle, value: "Approved", comment: "The request with the authority has been accepted")
 		
-		public static let authorizedUponSubmission = NSLocalizedString("AUTHORIZATION_UPON_SUBMISSION", bundle: bundle, value: "Authorization Upon Submission", comment: "The request with the authority will be accepted once the flight plan is submitted")
+		public static let authorizedUponSubmission = NSLocalizedString("AUTHORIZATION_UPON_SUBMISSION", bundle: bundle, value: "Authorization Pending Submission", comment: "The request with the authority will be accepted once the flight plan is submitted")
 		
 		public static let notRequested = NSLocalizedString("AUTHORIZATION_NOT_REQUESTED", bundle: bundle, value: "Authorization Not Requested", comment: "The request with the authority has not been requested")
 		

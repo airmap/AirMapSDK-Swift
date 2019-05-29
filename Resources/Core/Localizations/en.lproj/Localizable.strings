@@ -176,7 +176,7 @@
 "AUTHORIZATION_REJECTED_UPON_SUBMISSION" = "Rejected Upon Submission";
 
 /* The request with the authority will be accepted once the flight plan is submitted */
-"AUTHORIZATION_UPON_SUBMISSION" = "Authorization Upon Submission";
+"AUTHORIZATION_UPON_SUBMISSION" = "Authorization Pending Submission";
 
 /* Login message when a user's account has been blacklisted. */
 "AUTH_ERROR_ACCOUNT_BLACKLISTED" = "Your account has been blacklisted. Please contact security@airmap.com";
