@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 		core.dependency 'AppAuth'
 		core.dependency 'ObjectMapper'
 		core.dependency 'SwiftTurf'
-		core.dependency 'KeychainAccess'
+		core.dependency 'KeychainAccess', '< 3.2'
 		core.dependency 'RxSwift', '~> 4.0'
 		core.dependency 'RxSwiftExt', '~> 3.4'
 		core.dependency 'RxCocoa', '~> 4.0'
