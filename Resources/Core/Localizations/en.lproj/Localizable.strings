@@ -160,8 +160,8 @@
 /* The request with the authority has been accepted */
 "AUTHORIZATION_ACCEPTED" = "Approved";
 
-/* The request with the authority has been cancelled */
-"AUTHORIZATION_CANCELLED_SUBMISSION" = "Authorization Cancelled";
+/* The request with the authority has been invalidated */
+"AUTHORIZATION_CANCELLED_SUBMISSION" = "Authorization Invalidated";
 
 /* The request with the authority has not been requested */
 "AUTHORIZATION_NOT_REQUESTED" = "Authorization Not Requested";
