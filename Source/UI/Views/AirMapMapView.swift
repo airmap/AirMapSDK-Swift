@@ -38,7 +38,7 @@ open class AirMapMapView: MGLMapView {
 		case light
 		case satellite
 	}
-	
+
 	/// The current map theme
 	public var theme: Theme = .standard {
 		didSet { themeSubject.onNext(theme) }
@@ -92,18 +92,18 @@ open class AirMapMapView: MGLMapView {
 	public var jurisdictions: [AirMapJurisdiction] {
 		return jurisdictions(intersecting: bounds)
 	}
-	
+
 	/// The rulesets that the map is currently displaying
 	public var activeRulesets: [AirMapRuleset] {
 		return AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetConfiguration)
 	}
-	
+
 	/// The AirMap logo in the lower left corner.
 	/// If you wish to remove the AirMap wordmark, please contact our sales team to discuss an Enterprise plan
 	public var airMapLogoView: UIImageView!
-	
+
 	// MARK: - Init
-	
+
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		setup()
@@ -132,27 +132,27 @@ extension AirMapMapView {
 	private var airMapMapViewDelegate: AirMapMapViewDelegate? {
 		return rx.delegate.forwardToDelegate() as? AirMapMapViewDelegate
 	}
-	
+
 	// MARK: - Setup
-	
+
 	private func setup() {
-		
+
 		setupAccessToken()
 		setupBindings()
 		setupAppearance()
 	}
 
 	private func setupAccessToken() {
-		
+
 		guard MGLAccountManager.accessToken == nil else { return }
-		
+
 		guard let token = AirMap.configuration.mapboxAccessToken else {
 			fatalError("A Mapbox access token is required to use the AirMap SDK UI map component. " +
 				"https://www.mapbox.com/help/define-access-token/")
 		}
 		MGLAccountManager.accessToken = token
 	}
-	
+
 	private func setupBindings() {
 
 		// Configure the map with the latest theme
@@ -187,79 +187,66 @@ extension AirMapMapView {
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
-		Observable.combineLatest(style, jurisdictions)
-			.flatMapLatest({ [weak self] (style, jurisdictions) -> Observable<Void> in
-				guard let `self` = self else { return Observable.of(Void()) }
-
-				let range = self.temporalRangeSubject
+		Observable.combineLatest(jurisdictions, style, rulesetConfig)
+			.subscribe(onNext: { [unowned self] (jurisdictions, style, rulesetConfig) in
 
 				// Configure the map with the active rulesets
 				// Notify the delegate of available jurisdictions and activated rulesets
-				let configureRulesets = rulesetConfig
-					.observeOn(MainScheduler.asyncInstance)
-					.do(onNext: { [weak self] rulesetsConfig in
-						guard let `self` = self else { return }
+				let activeRulesets = AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetConfig)
+				AirMapMapView.configure(mapView: self, style: style, with: activeRulesets)
+				// Notify the delegate of available jurisdictions and activated rulesets
+				self.airMapMapViewDelegate?.airMapMapViewJurisdictionsDidChange(mapView: self, jurisdictions: jurisdictions)
+				self.airMapMapViewDelegate?.airMapMapViewRegionDidChange(mapView: self, jurisdictions: jurisdictions, activeRulesets: activeRulesets)
+			})
+			.disposed(by: disposeBag)
 
-						let activeRulesets = AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetsConfig)
-						AirMapMapView.configure(mapView: self, style: style, with: activeRulesets)
-						// Notify the delegate of available jurisdictions and activated rulesets
-						self.airMapMapViewDelegate?.airMapMapViewJurisdictionsDidChange(mapView: self, jurisdictions: jurisdictions)
-						self.airMapMapViewDelegate?.airMapMapViewRegionDidChange(mapView: self, jurisdictions: jurisdictions, activeRulesets: activeRulesets)
-					})
-					.mapToVoid()
+		let range = self.temporalRangeSubject
+		let refresh = Observable<Int>
+			.timer(0, period: Constants.Maps.temporalLayerRefreshInterval, scheduler: MainScheduler.instance)
 
-				// Update temporal filters with either a sliding window or a fixed range
-				let configureTemporalLayers = range
-					.flatMapLatest({ range -> Observable<(MGLStyle, start: Date, end: Date)> in
-						switch range {
-						case .fixed(let start, let end):
-							return Observable.of((style, start, end))
-						case .sliding(let window):
-							return Observable<Int>
-								.timer(0, period: Constants.Maps.temporalLayerRefreshInterval, scheduler: MainScheduler.instance)
-								.map({ _ in (style, Date(), Date().addingTimeInterval(window)) })
-						}
-					})
-					.do(onNext: { (style, start, end) in
-						style.updateTemporalFilters(from: start, to: end)
-					})
-					.mapToVoid()
+		// Update temporal filters
+		Observable.combineLatest(style, range, refresh)
+			.subscribe(onNext: { (style, range, _) in
+				switch range {
+				case .fixed(let start, let end):
+					style.updateTemporalFilters(from: start, to: end)
+				case .sliding(let window):
+					style.updateTemporalFilters(from: Date(), to: Date().addingTimeInterval(window))
+				}
+			})
+			.disposed(by: disposeBag)
 
-				// Localize the map labels when the style is updated
+		// Localize and transition style
+		style
+			.subscribe(onNext: { (style) in
 				style.localizeLabels()
 				style.transition = MGLTransitionMake(1, 0)
-
-				return Observable.merge(
-					configureRulesets,
-					configureTemporalLayers
-				)
 			})
-			.subscribe()
 			.disposed(by: disposeBag)
 	}
 
 	private func setupAppearance() {
-		
+
 		let image = UIImage(named: "info_icon", in: AirMapBundle.ui, compatibleWith: nil)!
 		attributionButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
-		
+
 		let airMapLogo = UIImage(named: "map_logo", in: AirMapBundle.ui, compatibleWith: nil)
 		airMapLogoView = UIImageView(image: airMapLogo)
 
 		logoView.contentMode = .right
 		logoView.addSubview(airMapLogoView)
-		
+
 		NSLayoutConstraint.activate([
 			logoView.rightAnchor.constraint(equalTo: attributionButton.leftAnchor, constant: -6),
 			logoView.heightAnchor.constraint(equalToConstant: 23)
 			])
-		
+
 		isPitchEnabled = false
 		allowsRotating = false
 	}
 
 	// MARK: - Configuration
-	
+
 	private func configure(for theme: Theme) {
 
 		styleURL = Constants.Maps.styleUrl.appendingPathComponent(theme.rawValue+".json")
@@ -268,17 +255,17 @@ extension AirMapMapView {
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset]) {
 
 		let rulesetSourceIds = rulesets
-            .filter { $0.airspaceTypes.count > 0 }
+			.filter { $0.airspaceTypes.count > 0 }
 			.map { $0.tileSourceIdentifier }
-		
+
 		let existingSourceIds = style.sources
 			.compactMap { $0 as? MGLVectorTileSource }
 			.compactMap { $0.identifier }
 			.filter { $0.hasPrefix(Constants.Maps.rulesetSourcePrefix) }
-		
+
 		let orphanedSourceIds = Set(existingSourceIds).subtracting(rulesetSourceIds)
 		let newSourceIds = Set(rulesetSourceIds).subtracting(existingSourceIds)
-		
+
 		// Remove orphaned ruleset sources
 		orphanedSourceIds
 			.forEach({ id in
@@ -294,9 +281,9 @@ extension AirMapMapView {
 	}
 
 	// MARK: - Getters
-	
+
 	private func jurisdictions(intersecting rect: CGRect) -> [AirMapJurisdiction] {
-		
+
 		return visibleFeatures(in: rect, styleLayerIdentifiers: [Constants.Maps.jurisdictionsStyleLayerId])
 			.compactMap { $0.attributes[Constants.Maps.jurisdictionFeatureAttributesKey] as? String }
 			.compactMap { AirMapJurisdiction.tileServiceMapper.map(JSONString: $0) }
@@ -310,9 +297,9 @@ extension AirMapMapView {
 	// MARK: - Static
 
 	private static func addRuleset(_ ruleset: AirMapRuleset, to style: MGLStyle, in mapView: AirMapMapView) {
-		
+
 		guard style.source(withIdentifier: ruleset.tileSourceIdentifier) == nil else { return }
-		
+
 		let rulesetTileSource = MGLVectorTileSource(ruleset: ruleset)
 		style.addSource(rulesetTileSource)
 
@@ -328,9 +315,9 @@ extension AirMapMapView {
 				} else {
 					AirMap.logger.error("Could not add layer for", ruleset.id, baseLayer.airspaceType!)
 				}
-			}
+		}
 	}
-	
+
 	private static func removeRuleset(_ sourceIdentifier: String, from style: MGLStyle, in mapView: AirMapMapView) {
 
 		style.layers
@@ -339,24 +326,24 @@ extension AirMapMapView {
 			.forEach { layer in
 				style.removeLayer(layer)
 				mapView.airMapMapViewDelegate?.airMapMapViewDidRemoveAirspaceType(mapView: mapView, airspaceType: layer.airspaceType!)
-			}
-		
+		}
+
 		if let source = style.source(withIdentifier: sourceIdentifier) {
 			AirMap.logger.debug("Removing", sourceIdentifier)
 			style.removeSource(source)
 		}
-	}	
+	}
 
 	private static func activeRulesets(from jurisdictions: [AirMapJurisdiction], using configuration: RulesetConfiguration) -> [AirMapRuleset] {
-		
+
 		switch configuration {
-			
+
 		case .automatic:
 			return AirMapRulesetResolver.resolvedActiveRulesets(from: jurisdictions)
-			
+
 		case .dynamic(let ids, let recommended):
 			return AirMapRulesetResolver.resolvedActiveRulesets(with: ids, from: jurisdictions, enableRecommendedRulesets: recommended)
-			
+
 		case .manual(let rulesets):
 			return rulesets
 		}
