@@ -51,6 +51,7 @@ public struct AirMapConfiguration {
 		return host(for: "api")
 	}
 
+	public let name: String?
 	public let domain: String
 	let apiOverrides: [String: String]?
 	let environment: String?
@@ -113,6 +114,7 @@ extension AirMapConfiguration: ImmutableMappable {
 
 		do {
 			// Required AirMap SDK configuration values
+			name     = try map.value("name")
 			apiKey   = try map.value("airmap.api_key")
 			clientId = try map.value("airmap.client_id")
 
