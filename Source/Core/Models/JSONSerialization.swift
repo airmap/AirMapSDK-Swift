@@ -133,18 +133,18 @@ public protocol AdvisoryPropertiesType: ImmutableMappable {}
 
 extension AirMapAdvisory.AirportProperties: ImmutableMappable {
 	
-public init(map: Map) throws {
-	identifier    =  try? map.value("faa")
-	phone         =  try? map.value("phone")
-	tower         =  try? map.value("tower")
-	use           =  try? map.value("type")
-	longestRunway =  try? map.value("longest_runway")
-	instrumentProcedure
-				  =  try? map.value("instrument_approach_procedure")
-	url           =  try? map.value("url", using: URLTransform())
-	description   =  try? map.value("description")
-	icao          =  try? map.value("icao")
-}
+	public init(map: Map) throws {
+		identifier    =  try? map.value("faa")
+		phone         =  try? map.value("phone")
+		tower         =  try? map.value("tower")
+		use           =  try? map.value("type")
+		longestRunway =  try? map.value("longest_runway")
+		instrumentProcedure
+		              =  try? map.value("instrument_approach_procedure")
+		url           =  try? map.value("url", using: URLTransform())
+		description   =  try? map.value("description")
+		icao          =  try? map.value("icao")
+	}
 }
 	
 extension AirMapAdvisory.AMAFieldProperties: ImmutableMappable {
