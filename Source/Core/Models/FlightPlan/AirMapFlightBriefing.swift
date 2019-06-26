@@ -105,7 +105,10 @@ public struct AirMapFlightBriefing {
 		
 		/// A textual message describing the current status of the request
 		public let message: String
-		
+
+		/// The number referencing the authorization
+		public let referenceNumber: String?
+
 		/// An enumeration of possible authorization states
 		///
 		/// - pending: The request with the authority has been made and a response is pending
