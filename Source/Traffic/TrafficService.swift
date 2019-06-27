@@ -77,7 +77,12 @@ internal class TrafficService: MQTTSessionDelegate {
 				self.removeAllTraffic()
 			})
 
-		let flightState = Observable.combineLatest(flight, state) { ($0, $1) }
+		let activate = isActive.filter { $0 }
+
+		let flightState = Observable.combineLatest(flight, state, activate) { ($0, $1, $2) }
+			.map({ (flight, state, _) -> (AirMapFlight?, ConnectionState) in
+				return (flight, state)
+			})
 			.share()
 
 		let whenConnected = flightState.filter { $1 == .connected }
@@ -133,7 +138,7 @@ internal class TrafficService: MQTTSessionDelegate {
 				isActive,
 				Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance)
 			)
-			.filter {$0.0}
+			.filter { $0.0 }
 			.mapToVoid()
 
 		let refreshCurrentFlight = refreshCurrentFlightTimer
@@ -166,32 +171,27 @@ internal class TrafficService: MQTTSessionDelegate {
 	}
 
 	private func canConnect() -> Bool {
-		if AirMap.authService.isAuthorized && self.delegate != nil {
+		if AirMap.authService.isAuthorized && self.delegate != nil && isActive.value {
 			return true
 		}
-		self.currentFlight.accept(nil)
+
 		return false
 	}
 
 	func connect() {
 		isActive.accept(true)
-
-		if AirMap.authService.isAuthorized && delegate != nil {
-			if connectionState.value != .disconnected {
-				disconnect()
-			}
-		}
 	}
 
 	func disconnect() {
 		isActive.accept(false)
+		unsubscribe()
+	}
 
+	private func unsubscribe() {
 		unsubscribeFromAllChannels()
 			.do(onDispose: { [unowned self] in
 				self.client.disconnect()
 				self.connectionState.value = .disconnected
-				self.currentFlight.accept(nil)
-				self.removeAllTraffic()
 			})
 			.subscribe()
 			.disposed(by: disposeBag)
@@ -305,20 +305,28 @@ internal class TrafficService: MQTTSessionDelegate {
 					"direction":       added.direction,
 					"altitude":        added.altitude,
 					"groundSpeed":     added.groundSpeed,
-					"trueHeading":     added.trueHeading,
 					"timestamp":       added.timestamp,
-					"recordedTime":    added.recordedTime,
 					"properties":      added.properties,
 					"createdAt":       added.createdAt
 					])
 
-				existing.willChangeValue(forKey: "coordinate")
-				existing.coordinate = added.coordinate
-				existing.didChangeValue(forKey: "coordinate")
+		
+				if existing.initialCoordinate != added.initialCoordinate{
 
-				existing.willChangeValue(forKey: "initialCoordinate")
-				existing.initialCoordinate = added.initialCoordinate
-				existing.didChangeValue(forKey: "initialCoordinate")
+					if let heading = CLLocation(coordinate: existing.initialCoordinate)?.initialBearing(to: CLLocation(coordinate: added.coordinate)) {
+						existing.willChangeValue(forKey: "trueHeading")
+						existing.trueHeading = Int(heading)
+						existing.didChangeValue(forKey: "trueHeading")
+					}
+
+					existing.willChangeValue(forKey: "initialCoordinate")
+					existing.initialCoordinate = added.initialCoordinate
+					existing.didChangeValue(forKey: "initialCoordinate")
+
+					existing.willChangeValue(forKey: "recordedTime")
+					existing.recordedTime = added.recordedTime
+					existing.didChangeValue(forKey: "recordedTime")
+				}
 
 				existing.willChangeValue(forKey: "trafficType")
 
@@ -363,7 +371,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			delegate?.airMapTrafficServiceDidRemove(expiredTraffic)
 		}
 
-		updateTrafficProjections()
 	}
 
 	fileprivate func removeAllTraffic() {
@@ -379,9 +386,19 @@ internal class TrafficService: MQTTSessionDelegate {
 			.filter(isMoving)
 			.map (projectedTraffic)
 
-		if updatedTraffic.count > 0 {
-			addTraffic(updatedTraffic)
+		for updated in updatedTraffic {
+
+			if let index = activeTraffic.index(where: { $0.id == updated.id }) {
+				let existing = activeTraffic[index]
+
+				existing.willChangeValue(forKey: "coordinate")
+				existing.coordinate = updated.coordinate
+				existing.didChangeValue(forKey: "coordinate")
+
+			}
 		}
+
+		delegate?.airMapTrafficServiceDidUpdate(updatedTraffic)
 	}
 
 	func currentFlightLocation() -> CLLocation? {
@@ -484,7 +501,6 @@ internal class TrafficService: MQTTSessionDelegate {
 
 		let receivedTraffic = traffic.map { t -> AirMapTraffic in
 			t.trafficType = self.trafficTypeForTopic(message.topic)
-			t.coordinate = self.projectedCoordinate(t)
 			return t
 		}
 
