@@ -68,21 +68,49 @@ internal class TrafficService: MQTTSessionDelegate {
 
 	func setupBindings() {
 
+		let activate = isActive.filter { $0 }.share()
+		let deactivate = isActive.filter { !$0 }.share()
+
+		let getFlight = activate
+			.mapToVoid()
+
+		let refreshCurrentFlightTimer = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance)
+			.mapToVoid()
+
+		let refreshCurrentFlight = Observable.merge(
+				refreshCurrentFlightTimer,
+				getFlight
+			)
+			.filter {[unowned self] _ in self.canConnect()}
+			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
+			.retry(2)
+			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected; return Observable.of(nil) })
+
+		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
+			.unwrap()
+			.bind(to: currentFlight)
+			.disposed(by: disposeBag)
+
 		let state = connectionState.asObservable()
 
-		let flight = currentFlight.asObservable()
+		let flightWhileConnected = currentFlight.asObservable()
+			.filter {[unowned self] _ in self.connectionState.value == .connected }
 			.distinctUntilChanged { flight in flight?.id ?? "" }
 			.do(onNext: { [unowned self] (_) in
 				self.connectionState.value = .disconnected
 				self.removeAllTraffic()
 			})
 
-		let activate = isActive.filter { $0 }
+		let flightWhileDisconnected = currentFlight.asObservable()
+			.filter {[unowned self] _ in self.connectionState.value == .disconnected }
 
-		let flightState = Observable.combineLatest(flight, state, activate) { ($0, $1, $2) }
-			.map({ (flight, state, _) -> (AirMapFlight?, ConnectionState) in
-				return (flight, state)
-			})
+		let flight = Observable.merge(
+				flightWhileConnected,
+				flightWhileDisconnected
+			)
+			.share()
+
+		let flightState = Observable.combineLatest(flight, state) { ($0, $1) }
 			.share()
 
 		let whenConnected = flightState.filter { $1 == .connected }
@@ -134,23 +162,18 @@ internal class TrafficService: MQTTSessionDelegate {
 			})
 			.disposed(by: disposeBag)
 
-		let refreshCurrentFlightTimer = Observable.combineLatest(
-				isActive,
-				Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance)
-			)
-			.filter { $0.0 }
-			.mapToVoid()
+		let unsubscribe = unsubscribeFromAllChannels()
+			.do(onDispose: { [unowned self] in
+				self.client.disconnect()
+				self.connectionState.value = .disconnected
+			})
+			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected;  return Observable.empty() })
 
-		let refreshCurrentFlight = refreshCurrentFlightTimer
-			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
-			.skipWhile({[unowned self] _ in !AirMap.authService.isAuthorized || self.delegate == nil})
-			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
-			.retry(2)
-			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected; return Observable.of(nil) })
-
-		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
-			.unwrap()
-			.bind(to: currentFlight)
+		deactivate
+			.flatMap { (_) -> Observable<Void> in
+				return unsubscribe
+			}
+			.subscribe()
 			.disposed(by: disposeBag)
 
 		let trafficProjectionTimer = Observable<Int>.interval(0.25, scheduler: MainScheduler.asyncInstance).mapToVoid()
@@ -184,17 +207,6 @@ internal class TrafficService: MQTTSessionDelegate {
 
 	func disconnect() {
 		isActive.accept(false)
-		unsubscribe()
-	}
-
-	private func unsubscribe() {
-		unsubscribeFromAllChannels()
-			.do(onDispose: { [unowned self] in
-				self.client.disconnect()
-				self.connectionState.value = .disconnected
-			})
-			.subscribe()
-			.disposed(by: disposeBag)
 	}
 
 	func startObservingTraffic(for flight: AirMapFlight) {
