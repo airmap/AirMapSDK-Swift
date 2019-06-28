@@ -87,7 +87,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected; return Observable.of(nil) })
 
 		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
-			.unwrap()
 			.bind(to: currentFlight)
 			.disposed(by: disposeBag)
 
