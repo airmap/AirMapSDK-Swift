@@ -115,10 +115,6 @@ internal class TrafficService: MQTTSessionDelegate {
 		let whenConnected = flightState.filter { $1 == .connected }
 		let whenDisconnected = flightState.filter { $1 == .disconnected }
 
-		func printError(_ error: Error) {
-			AirMap.logger.error(error)
-		}
-
 		whenDisconnected
 			.retry()
 			.throttle(1, scheduler: MainScheduler.instance)
@@ -320,7 +316,6 @@ internal class TrafficService: MQTTSessionDelegate {
 					"properties":      added.properties,
 					"createdAt":       added.createdAt
 					])
-
 		
 				if existing.initialCoordinate != added.initialCoordinate{
 
