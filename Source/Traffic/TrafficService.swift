@@ -401,6 +401,9 @@ internal class TrafficService: MQTTSessionDelegate {
 				existing.coordinate = updated.coordinate
 				existing.didChangeValue(forKey: "coordinate")
 
+				if existing.trafficType == .alert {
+					existing.trafficTypeDidChangeToAlert = false
+				} 
 			}
 		}
 
