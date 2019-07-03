@@ -65,7 +65,7 @@ internal class FlightPlanClient: HTTPClient {
 	func getAuthorizationsByFlighPlantIds(_ ids: [AirMapFlightPlanId]) -> Observable<[AirMapFlightPlanAuthorizations]> {
 		return withCredentials().flatMap({ (credentials) -> Observable<[AirMapFlightPlanAuthorizations]> in
 			AirMap.logger.debug("Get Authorization for Flight Plan ids", ids)
-			return self.perform(method: .get, path:"/flight/v2/plan/batch/authorizations?flight_plan_ids=\(ids.csv)", auth: credentials)
+			return self.perform(method: .get, path:"/plan/batch/authorizations?flight_plan_ids=\(ids.csv)", auth: credentials)
 		})
 	}
 	
