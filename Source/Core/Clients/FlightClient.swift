@@ -77,9 +77,7 @@ internal class FlightClient: HTTPClient {
 
 		AirMap.logger.debug("Get Flights", params)
 
-		return withCredentials().flatMap { (credentials) -> Observable<[AirMapFlight]> in
-			return self.perform(method: .get, params: params, keyPath: "data.results", auth: credentials)
-		}
+		return self.perform(method: .get, params: params, keyPath: "data.results", auth: credentials)
 	}
 
 	func listPublicFlights(from fromDate: Date? = nil, to toDate: Date? = nil, limit: Int? = nil, within geometry: AirMapGeometry? = nil) -> Observable<[AirMapFlight]> {
@@ -94,9 +92,15 @@ internal class FlightClient: HTTPClient {
 		return list(limit: limit, startBefore: startBefore, startBeforeNow: startBeforeNow, endAfter: endAfter, endAfterNow: endAfterNow, within: geometry)
 	}
 
+	func listCurrentAuthenticatedPilotFlights(from fromDate: Date? = nil, to toDate: Date? = nil, limit: Int? = nil) -> Observable<[AirMapFlight]> {
+		return AirMap.authService.performWithCredentials().flatMap { (credentials) -> Observable<[AirMapFlight]> in
+			return self.list(credentials: credentials, limit: limit, pilotId: credentials.pilot, startBefore: toDate, endAfter: fromDate)
+		}
+	}
+
 	func getCurrentAuthenticatedPilotFlight() -> Observable<AirMapFlight?> {
 		return AirMap.authService.performWithCredentials().flatMap { (credentials) -> Observable<AirMapFlight?> in
-			return self.list(pilotId: credentials.pilot, startBeforeNow: true, endAfterNow: true).map { $0.first }
+			return self.list(credentials: credentials, pilotId: credentials.pilot, startBeforeNow: true, endAfterNow: true).map { $0.first }
 		}
 	}
 
