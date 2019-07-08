@@ -9,7 +9,7 @@ PODS:
     - AppAuth
     - KeychainAccess
     - Log
-    - ObjectMapper
+    - ObjectMapper (~> 3.4.2)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
     - RxSwiftExt (~> 3.4)
@@ -113,7 +113,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: f5133a80ca6d63cd23f98044375f192f96f859f4
+  AirMapSDK: e0c9d19044b947faf5d6eb1b2d65a490e7f8b6a6
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AppAuth: cd34aac431e5c77c46ec7f03935377faa8c5808b
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
