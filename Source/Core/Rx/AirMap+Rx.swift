@@ -90,8 +90,8 @@ extension Reactive where Base: AirMap {
 		return AirMap.flightPlanClient.getBriefing(flightPlanId)
 	}
 
-	public static func getAuthorizationsByFlighPlantIds(_ ids: [AirMapFlightPlanId]) -> Observable<[AirMapFlightPlanAuthorizations]> {
-		return AirMap.flightPlanClient.getAuthorizationsByFlighPlantIds(ids)
+	public static func getFlighPlantAuthorizationsByFlighPlantIds(_ ids: [AirMapFlightPlanId]) -> Observable<[AirMapFlightPlanAuthorizations]> {
+		return AirMap.flightPlanClient.getFlighPlantAuthorizationsByFlighPlantIds(ids)
 	}
 
 	public static func submitFlightPlan(_ flightPlan: AirMapFlightPlan, makeFlightPublic: Bool = true) -> Observable<AirMapFlightPlan> {
