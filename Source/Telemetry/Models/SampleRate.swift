@@ -20,12 +20,13 @@
 
 import Foundation
 
-public enum SampleRate {
+public enum SampleRate: CustomStringConvertible {
+	
 	case milliseconds(Int)
 	case seconds(Int)
 	case minutes(Int)
 	
-	var description: String {
+	public var description: String {
 		switch self {
 		case .milliseconds(let val):
 			return "\(val)ms"

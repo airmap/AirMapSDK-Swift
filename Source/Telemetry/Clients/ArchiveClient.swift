@@ -35,7 +35,7 @@ internal class ArchiveClient: HTTPClient {
 		params["flight_id"] = flightId.rawValue
 		params["start"] = from?.iso8601String()
 		params["end"] = to?.iso8601String()
-		params["rate"] = sampleRate?.param
+		params["rate"] = sampleRate
 
 		return withCredentials().flatMap { (credentials) -> Observable<ArchivedTelemetry> in
 			return self.perform(method: .get, path:"/telemetry/position", params: params, auth: credentials)
