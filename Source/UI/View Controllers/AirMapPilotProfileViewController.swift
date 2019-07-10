@@ -180,7 +180,7 @@ public class AirMapPilotProfileViewController: UITableViewController, AnalyticsT
 	fileprivate func setupTableView() {
 		
 		tableView.estimatedRowHeight = 50
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		
 		dataSource = RxTableViewSectionedReloadDataSource<Model>(
 			

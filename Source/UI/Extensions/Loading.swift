@@ -68,42 +68,42 @@ extension Loading where Self: UIViewController {
 }
 
 class LoadingWindow: UIWindow {
-    
-    fileprivate class LoadingRootViewController: UIViewController {
-        
-        private let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
 
-        override var shouldAutorotate: Bool {
-            return true
-        }
-        
-        override var preferredStatusBarStyle : UIStatusBarStyle {
-            return .lightContent
-        }
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            indicator.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(indicator)
-            
-            NSLayoutConstraint.activate([
-                indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-                ])
-            
-            indicator.startAnimating()
-        }
-    }
+	fileprivate class LoadingRootViewController: UIViewController {
 
-    static let shared: LoadingWindow = {
+		private let indicator = UIActivityIndicatorView(style: .whiteLarge)
 
-        let window = LoadingWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = LoadingRootViewController()
-        window.backgroundColor = UIColor.primary.withAlphaComponent(0.75)
-        window.windowLevel = UIWindowLevelAlert + 1
-        
-        return window
-    }()
+		override var shouldAutorotate: Bool {
+			return true
+		}
+
+		override var preferredStatusBarStyle : UIStatusBarStyle {
+			return .lightContent
+		}
+
+		override func viewDidLoad() {
+			super.viewDidLoad()
+
+			indicator.translatesAutoresizingMaskIntoConstraints = false
+			view.addSubview(indicator)
+
+			NSLayoutConstraint.activate([
+				indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+				indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+				])
+
+			indicator.startAnimating()
+		}
+	}
+
+	static let shared: LoadingWindow = {
+
+		let window = LoadingWindow(frame: UIScreen.main.bounds)
+		window.rootViewController = LoadingRootViewController()
+		window.backgroundColor = UIColor.primary.withAlphaComponent(0.75)
+		window.windowLevel = UIWindow.Level.alert + 1
+
+		return window
+	}()
 	
 }
