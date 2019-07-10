@@ -565,7 +565,7 @@ extension AirMapFlightBriefing.Authorization: ImmutableMappable {
 			authority       =  try  map.value("authority")
 			status          = (try? map.value("status")) ?? .rejected
 			message         =  try  map.value("message")
-			referenceNumber =  try?  map.value("reference_number")
+			referenceNumber =  try? map.value("reference_number")
 			description     =  try  map.value("description")
 		}
 		catch {
