@@ -31,7 +31,7 @@ extension AirMap {
 	}
 
 	/// Queries archived telemetry for a given flight
-	///	/// - Parameters:
+	///	  - Parameters:
 	///   - flightId: The flight identifier the telemetry is associated with
 	///   - from: Start time of temporal filter
 	///   - to: End time of temporal filter

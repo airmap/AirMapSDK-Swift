@@ -21,18 +21,18 @@
 import Foundation
 
 public enum SampleRate {
-	case miliseconds(Int)
+	case milliseconds(Int)
 	case seconds(Int)
 	case minutes(Int)
 	
-	var param: String {
+	var description: String {
 		switch self {
-		case .miliseconds(let val):
+		case .milliseconds(let val):
 			return "\(val)ms"
 		case .seconds(let val):
 			return "\(val)s"
 		case .minutes(let val):
-			return "\(val)min"
+			return "\(val)m"
 		}
 	}
 }
