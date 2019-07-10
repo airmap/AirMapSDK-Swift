@@ -64,8 +64,8 @@ extension AirMap {
 	///
 	/// - Parameters:
 	///   - ids: The flight plan ids of the authorizations you'd like to get
-	public static func getFlighPlantAuthorizationsByFlighPlantIds(_ ids: [AirMapFlightPlanId], completion: @escaping (Result<[AirMapFlightPlanAuthorizations]>) -> Void) {
-		rx.getFlighPlantAuthorizationsByFlighPlantIds(ids).thenSubscribe(completion)
+	public static func getFlightPlanAuthorizationsByFlightPlanIds(_ ids: [AirMapFlightPlanId], completion: @escaping (Result<[AirMapFlightPlanAuthorizations]>) -> Void) {
+		rx.getFlightPlanAuthorizationsByFlightPlanIds(ids).thenSubscribe(completion)
 	}
 
 	/// Submit a flight plan
