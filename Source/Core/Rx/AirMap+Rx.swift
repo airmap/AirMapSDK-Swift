@@ -38,8 +38,8 @@ extension Reactive where Base: AirMap {
 		return AirMap.flightClient.listPublicFlights(from: fromDate, to: toDate, limit: limit, within: geometry)
 	}
 
-	public static func listFlights(for pilotId: AirMapPilotId, from: Date? = nil, to: Date? = nil, limit: Int? = 100) -> Observable<[AirMapFlight]> {
-		return AirMap.flightClient.list(limit: limit, pilotId: pilotId, startBefore: to, endAfter: from)
+	public static func listCurrentAuthenticatedPilotFlights(from: Date? = nil, to: Date? = nil, limit: Int? = 100) -> Observable<[AirMapFlight]> {
+		return AirMap.flightClient.listCurrentAuthenticatedPilotFlights(from: from, to: to, limit: limit)
 	}
 	
 	public static func getCurrentAuthenticatedPilotFlight() -> Observable<AirMapFlight?> {
@@ -89,7 +89,11 @@ extension Reactive where Base: AirMap {
 	public static func getFlightBriefing(_ flightPlanId: AirMapFlightPlanId) -> Observable<AirMapFlightBriefing> {
 		return AirMap.flightPlanClient.getBriefing(flightPlanId)
 	}
-	
+
+	public static func getFlightPlanAuthorizationsByFlightPlanIds(_ ids: [AirMapFlightPlanId]) -> Observable<[AirMapFlightPlanAuthorizations]> {
+		return AirMap.flightPlanClient.getFlightPlanAuthorizationsByFlightPlanIds(ids)
+	}
+
 	public static func submitFlightPlan(_ flightPlan: AirMapFlightPlan, makeFlightPublic: Bool = true) -> Observable<AirMapFlightPlan> {
 		return AirMap.flightPlanClient.submitFlightPlan(flightPlan, makeFlightPublic: makeFlightPublic)
 	}
