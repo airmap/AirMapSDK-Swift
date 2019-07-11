@@ -157,10 +157,7 @@ extension AirMapMapView {
 
 		// Configure the map with the latest theme
 		themeSubject
-			.do(onNext: { [unowned self] (theme) in
-				self.configure(for: theme)
-			})
-			.subscribe()
+			.bind(to: rx.theme)
 			.disposed(by: disposeBag)
 
 		// Ensure we remain the delegate via Rx and any other delegates are set as the forward delegate
@@ -260,11 +257,6 @@ extension AirMapMapView {
 
 	// MARK: - Configuration
 	
-	private func configure(for theme: Theme) {
-
-		styleURL = Constants.Maps.styleUrl.appendingPathComponent(theme.rawValue+".json")
-	}
-
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset]) {
 
 		let rulesetSourceIds = rulesets

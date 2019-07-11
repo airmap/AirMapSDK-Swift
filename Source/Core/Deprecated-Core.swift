@@ -19,6 +19,7 @@
 //
 
 import Foundation
+import RxSwift
 
 extension AirMapAdvisory {
 	
@@ -35,4 +36,15 @@ extension AirMap {
 
 	@available(*, unavailable, message: "Use Result<Void> instead of Result<AirMapToken>")
 	public static func performAnonymousLogin(userId: String, completion: @escaping (Result<AirMapToken>) -> Void) {}
+
+	@available(*, unavailable, message: "Use listCurrentAuthenticatedPilotFlights instead of listFlights")
+	public static func listFlights(for pilotId: AirMapPilotId, limit: Int? = 100, completion: @escaping (Result<[AirMapFlight]>) -> Void) {}
+
+}
+
+extension Reactive where Base: AirMap {
+
+	@available(*, unavailable, message: "Use listCurrentAuthenticatedPilotFlights instead of listFlights")
+	public static func listFlights(for pilotId: AirMapPilotId, from: Date? = nil, to: Date? = nil, limit: Int? = 100) -> Observable<[AirMapFlight]> { return Observable.of([]) }
+
 }

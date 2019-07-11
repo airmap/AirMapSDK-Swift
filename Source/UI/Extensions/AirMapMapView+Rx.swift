@@ -46,6 +46,10 @@ extension Reactive where Base: AirMapMapView {
 	public var delegate: DelegateProxy<AirMapMapView, MGLMapViewDelegate> {
 		return RxMGLMapViewDelegateProxy.proxy(for: base)
 	}
+
+	public func setDelegate(_ delegate: MGLMapViewDelegate) -> Disposable {
+		return RxMGLMapViewDelegateProxy.installForwardDelegate(delegate, retainDelegate: true, onProxyForObject: self.base)
+	}
 	
 	public var regionWillChangeAnimated: Observable<(mapView: Base, animated: Bool)> {		
 		return delegate.methodInvoked(#selector(MGLMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
@@ -119,4 +123,10 @@ extension Reactive where Base: AirMapMapView {
 			})
 	}
 
+	public var theme: Binder<Base.Theme> {
+		return Binder(self.base) { map, theme in
+			map.styleURL = Constants.Maps.styleUrl.appendingPathComponent(theme.rawValue+".json")
+		}
+	}
+	
 }

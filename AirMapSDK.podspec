@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 		core.source_files = ['Source/Core/**/*.{h,m,swift}', 'Source/Rx/*']
 		core.dependency 'Alamofire'
 		core.dependency 'AppAuth'
-		core.dependency 'ObjectMapper'
+		core.dependency 'ObjectMapper', '< 3.5.0'
 		core.dependency 'SwiftTurf'
 		core.dependency 'KeychainAccess'
 		core.dependency 'RxSwift', '~> 4.0'
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
 		telemetry.dependency 'CocoaAsyncSocket'
 		telemetry.dependency 'CryptoSwift', '~> 0.10.0'
 		telemetry.dependency 'ProtocolBuffers-Swift', '~> 4.0.6'
-		telemetry.source_files = 'Source/Telemetry/*'
+		telemetry.source_files = 'Source/Telemetry/**/*'
 	end
 	
 end
