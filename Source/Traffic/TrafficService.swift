@@ -52,6 +52,7 @@ internal class TrafficService: MQTTSessionDelegate {
 	fileprivate var connectionState = Variable(ConnectionState.disconnected)
 	fileprivate var currentFlight = BehaviorRelay<AirMapFlight?>(value: nil)
 	fileprivate var receivedFlight = BehaviorRelay<AirMapFlight?>(value: nil)
+	fileprivate var isActive = BehaviorRelay<Bool>(value: false)
 
 	fileprivate let disposeBag = DisposeBag()
 
@@ -67,39 +68,76 @@ internal class TrafficService: MQTTSessionDelegate {
 
 	func setupBindings() {
 
+		let activate = isActive.filter { $0 }.share()
+		let deactivate = isActive.filter { !$0 }.share()
+
+		let getFlight = activate
+			.mapToVoid()
+
+		let refreshCurrentFlightTimer = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance)
+			.mapToVoid()
+
+		let refreshCurrentFlight = Observable.merge(
+				refreshCurrentFlightTimer,
+				getFlight
+			)
+			.filter {[unowned self] _ in self.canConnect()}
+			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
+			.retry(2)
+			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected; return Observable.of(nil) })
+
+		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
+			.bind(to: currentFlight)
+			.disposed(by: disposeBag)
+
 		let state = connectionState.asObservable()
 
-		let flight = currentFlight.asObservable()
+		let flightWhileConnected = currentFlight.asObservable()
+			.filter {[unowned self] _ in self.connectionState.value == .connected }
 			.distinctUntilChanged { flight in flight?.id ?? "" }
+			.do(onNext: { [unowned self] (_) in
+				self.connectionState.value = .disconnected
+				self.removeAllTraffic()
+			})
+
+		let flightWhileDisconnected = currentFlight.asObservable()
+			.filter {[unowned self] _ in self.connectionState.value == .disconnected }
+
+		let flight = Observable.merge(
+				flightWhileConnected,
+				flightWhileDisconnected
+			)
+			.share()
 
 		let flightState = Observable.combineLatest(flight, state) { ($0, $1) }
+			.share()
 
 		let whenConnected = flightState.filter { $1 == .connected }
 		let whenDisconnected = flightState.filter { $1 == .disconnected }
-
-		func printError(_ error: Error) {
-			AirMap.logger.error(error)
-		}
 
 		whenDisconnected
 			.retry()
 			.throttle(1, scheduler: MainScheduler.instance)
 			.map { flight, state in flight }
 			.unwrap()
-			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
-			.flatMap(unowned(self, TrafficService.connectWithFlight))
-			.catchError({ _ in return Observable.just( .disconnected) })
+			.filter {[unowned self] _ in self.canConnect()}
+			.flatMap({ [unowned self] flight -> Observable<ConnectionState> in
+				return self.connectWithFlight(flight)
+					.catchError({ _ in return Observable.just( .disconnected) })
+			})
 			.bind(to: connectionState)
 			.disposed(by: disposeBag)
 
 		whenConnected
 			.retry()
 			.throttle(1, scheduler: MainScheduler.instance)
-			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
+			.filter {[unowned self] _ in self.canConnect()}
 			.map { flight, state in flight }
 			.unwrap()
-			.flatMap(unowned(self, TrafficService.subscribeToTraffic))
-			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected;  return Observable.empty() })
+			.flatMap({ [unowned self] flight -> Observable<Void> in
+				return self.subscribeToTraffic(flight)
+					.catchError({ [unowned self] _ in self.connectionState.value = .disconnected;  return Observable.empty() })
+			})
 			.subscribe()
 			.disposed(by: disposeBag)
 
@@ -119,18 +157,18 @@ internal class TrafficService: MQTTSessionDelegate {
 			})
 			.disposed(by: disposeBag)
 
-		let refreshCurrentFlightTimer = Observable<Int>.timer(0, period: 15, scheduler: MainScheduler.instance).mapToVoid()
+		let unsubscribe = unsubscribeFromAllChannels()
+			.do(onDispose: { [unowned self] in
+				self.client.disconnect()
+				self.connectionState.value = .disconnected
+			})
+			.catchError({ [unowned self] _ in self.connectionState.value = .disconnected;  return Observable.empty() })
 
-		let refreshCurrentFlight = refreshCurrentFlightTimer
-			.filter {[unowned self] _ in AirMap.authService.isAuthorized && self.delegate != nil}
-			.skipWhile({[unowned self] _ in !AirMap.authService.isAuthorized || self.delegate == nil})
-			.flatMap(AirMap.rx.getCurrentAuthenticatedPilotFlight)
-			.retry(2)
-			.catchErrorJustReturn(nil)
-
-		Observable.merge(refreshCurrentFlight, receivedFlight.asObservable())
-			.unwrap()
-			.bind(to: currentFlight)
+		deactivate
+			.flatMap { (_) -> Observable<Void> in
+				return unsubscribe
+			}
+			.subscribe()
 			.disposed(by: disposeBag)
 
 		let trafficProjectionTimer = Observable<Int>.interval(0.25, scheduler: MainScheduler.asyncInstance).mapToVoid()
@@ -150,27 +188,20 @@ internal class TrafficService: MQTTSessionDelegate {
 			.disposed(by: disposeBag)
 	}
 
-	func connect() {
-
-		if AirMap.authService.isAuthorized && delegate != nil {
-			if connectionState.value != .disconnected {
-				disconnect()
-			}
-			AirMap.rx.getCurrentAuthenticatedPilotFlight().bind(to: currentFlight).disposed(by: disposeBag)
+	private func canConnect() -> Bool {
+		if AirMap.authService.isAuthorized && self.delegate != nil && isActive.value {
+			return true
 		}
+
+		return false
+	}
+
+	func connect() {
+		isActive.accept(true)
 	}
 
 	func disconnect() {
-		
-		unsubscribeFromAllChannels()
-			.do(onDispose: { [unowned self] in
-				self.client.disconnect()
-				self.connectionState.value = .disconnected
-				self.currentFlight.accept(nil)
-				self.removeAllTraffic()
-			})
-			.subscribe()
-			.disposed(by: disposeBag)
+		isActive.accept(false)
 	}
 
 	func startObservingTraffic(for flight: AirMapFlight) {
@@ -281,20 +312,27 @@ internal class TrafficService: MQTTSessionDelegate {
 					"direction":       added.direction,
 					"altitude":        added.altitude,
 					"groundSpeed":     added.groundSpeed,
-					"trueHeading":     added.trueHeading,
 					"timestamp":       added.timestamp,
-					"recordedTime":    added.recordedTime,
 					"properties":      added.properties,
 					"createdAt":       added.createdAt
 					])
+		
+				if existing.initialCoordinate != added.initialCoordinate{
 
-				existing.willChangeValue(forKey: "coordinate")
-				existing.coordinate = added.coordinate
-				existing.didChangeValue(forKey: "coordinate")
+					if let heading = CLLocation(coordinate: existing.initialCoordinate)?.initialBearing(to: CLLocation(coordinate: added.coordinate)) {
+						existing.willChangeValue(forKey: "trueHeading")
+						existing.trueHeading = Int(heading)
+						existing.didChangeValue(forKey: "trueHeading")
+					}
 
-				existing.willChangeValue(forKey: "initialCoordinate")
-				existing.initialCoordinate = added.initialCoordinate
-				existing.didChangeValue(forKey: "initialCoordinate")
+					existing.willChangeValue(forKey: "initialCoordinate")
+					existing.initialCoordinate = added.initialCoordinate
+					existing.didChangeValue(forKey: "initialCoordinate")
+
+					existing.willChangeValue(forKey: "recordedTime")
+					existing.recordedTime = added.recordedTime
+					existing.didChangeValue(forKey: "recordedTime")
+				}
 
 				existing.willChangeValue(forKey: "trafficType")
 
@@ -339,7 +377,6 @@ internal class TrafficService: MQTTSessionDelegate {
 			delegate?.airMapTrafficServiceDidRemove(expiredTraffic)
 		}
 
-		updateTrafficProjections()
 	}
 
 	fileprivate func removeAllTraffic() {
@@ -355,9 +392,22 @@ internal class TrafficService: MQTTSessionDelegate {
 			.filter(isMoving)
 			.map (projectedTraffic)
 
-		if updatedTraffic.count > 0 {
-			addTraffic(updatedTraffic)
+		for updated in updatedTraffic {
+
+			if let index = activeTraffic.index(where: { $0.id == updated.id }) {
+				let existing = activeTraffic[index]
+
+				existing.willChangeValue(forKey: "coordinate")
+				existing.coordinate = updated.coordinate
+				existing.didChangeValue(forKey: "coordinate")
+
+				if existing.trafficType == .alert {
+					existing.trafficTypeDidChangeToAlert = false
+				} 
+			}
 		}
+
+		delegate?.airMapTrafficServiceDidUpdate(updatedTraffic)
 	}
 
 	func currentFlightLocation() -> CLLocation? {
@@ -460,7 +510,6 @@ internal class TrafficService: MQTTSessionDelegate {
 
 		let receivedTraffic = traffic.map { t -> AirMapTraffic in
 			t.trafficType = self.trafficTypeForTopic(message.topic)
-			t.coordinate = self.projectedCoordinate(t)
 			return t
 		}
 

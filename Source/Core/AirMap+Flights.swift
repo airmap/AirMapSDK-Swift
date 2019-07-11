@@ -38,11 +38,10 @@ extension AirMap {
 	/// List all flights belonging only to the currently authenticated pilot
 	///
 	/// - Parameters:
-	///   - pilotId: The pilot identifier for which to return flights
 	///   - limit: The maximum number of flights to return. Optional
 	///   - completion: A completion handler to call with the Result
-	public static func listFlights(for pilotId: AirMapPilotId, limit: Int? = 100, completion: @escaping (Result<[AirMapFlight]>) -> Void) {
-		rx.listFlights(for: pilotId, limit: limit).thenSubscribe(completion)
+	public static func listCurrentAuthenticatedPilotFlights(limit: Int? = 100, completion: @escaping (Result<[AirMapFlight]>) -> Void) {
+		rx.listCurrentAuthenticatedPilotFlights(limit: limit).thenSubscribe(completion)
 	}
 	
 	/// Get the current flight belonging to the currently authenticated pilot
