@@ -38,20 +38,23 @@ struct Constants {
 		static var airspaceUrl: String {
 			return url(for: "airspace", v: 2)
 		}
+		static var archiveUrl: String {
+			return url(for: "archive", v: 1)
+		}
 		static var authUrl: String {
 			return url(for: "auth", v: 1)
 		}
 		static var flightUrl: String {
 			return url(for: "flight", v: 2)
 		}
-		static var tileDataUrl: String {
-			return url(for: "tiledata", v: 1)
-		}
 		static var pilotUrl: String {
 			return url(for: "pilot", v: 2)
 		}
 		static var rulesUrl: String {
 			return url(for: "rules", v: 1)
+		}
+		static var tileDataUrl: String {
+			return url(for: "tiledata", v: 1)
 		}
 
 		static func url(for resource: String, v version: Int) -> String {
@@ -96,9 +99,9 @@ struct Constants {
 		}
 		
 		struct SampleRate {
-			static let position: TimeInterval = 1/5
-			static let attitude: TimeInterval = 1/5
-			static let speed: TimeInterval = 1/5
+			static let position:  TimeInterval = 1/5
+			static let attitude:  TimeInterval = 1/5
+			static let speed:     TimeInterval = 1/5
 			static let barometer: TimeInterval = 20
 		}
 	}

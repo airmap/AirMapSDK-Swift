@@ -29,7 +29,19 @@ extension AirMap {
 		case invalidCredentials
 		case invalidFlight
 	}
-	
+
+	/// Queries archived telemetry for a given flight
+	///	  - Parameters:
+	///   - flightId: The flight identifier the telemetry is associated with
+	///   - from: Start time of temporal filter
+	///   - to: End time of temporal filter
+	///   - sampleRate: Temporal resolution of telemetry data. Default: 1 second.
+	/// - Returns: A collection of telemetry reports for the given inputs
+	public static func queryFlightTelemetry(for flightId: AirMapFlightId, from start: Date? = nil, to end: Date? = nil, sampleRate: SampleRate? = nil, completion: @escaping (Result<ArchivedTelemetry>) -> Void) {
+
+		return rx.queryFlightTelemetry(for: flightId, from: start, to: end, sampleRate: sampleRate).thenSubscribe(completion)
+	}
+
 	/**
 	
 	Send aircraft position telemetry data to AirMap
