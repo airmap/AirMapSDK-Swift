@@ -43,7 +43,9 @@ public class AirMapImage {
 		case .past :
 			return image(named: "past_flight_marker_icon")
 		case .active:
-			return image(named: "current_flight_marker_icon")
+			let flightIconImage = image(named: "current_flight_marker_icon")
+			let annotatedImage = AirMapFlightAnnotation.annotateFlightIcon(flightIconImage)
+			return annotatedImage
 		case .future:
 			return image(named: "future_flight_marker_icon")
 		}

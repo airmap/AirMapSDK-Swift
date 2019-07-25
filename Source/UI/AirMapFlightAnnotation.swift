@@ -60,6 +60,46 @@ extension AirMapFlightAnnotation: MGLAnnotation {
 		dateFormatter.timeStyle = .long
 		return dateFormatter.string(from: startTime)
 	}
+
+	public static func annotateFlightIcon(_ image: Image?) -> Image? {
+		guard let image = image else { return nil }
+		if #available(iOS 10.0, *) {
+			// Create glowBackgroundView
+			let widthInPixels = image.size.width// * image.scale
+			let heightInPixels = image.size.height// * image.scale
+			let viewSize = CGRect(x: 0, y: 0, width: widthInPixels + 20, height: heightInPixels + 20) // watch out for messing up the aspect ratio here
+
+			let glowBackgroundView = UIView(frame: viewSize)
+			glowBackgroundView.backgroundColor = .clear // Change to clear? Do I need this?
+
+			glowBackgroundView.layer.cornerRadius = widthInPixels / 2
+			glowBackgroundView.layer.masksToBounds = true
+			glowBackgroundView.layer.shadowOffset = .zero
+			glowBackgroundView.layer.shadowColor = UIColor.highlight.cgColor
+			glowBackgroundView.layer.shadowRadius = 20
+			glowBackgroundView.layer.shadowOpacity = 1
+			glowBackgroundView.layer.shadowPath = UIBezierPath(rect: glowBackgroundView.bounds).cgPath
+
+			// Render glowBackgroundView to glowBackgroundImage
+			let renderer = UIGraphicsImageRenderer(size: glowBackgroundView.bounds.size)
+			let glowBackgroundImage = renderer.image { ctx in
+				glowBackgroundView.drawHierarchy(in: glowBackgroundView.bounds, afterScreenUpdates: true)
+				ctx.cgContext.addEllipse(in: glowBackgroundView.bounds)
+			}
+
+			// Merge glowBackgroundImage with flightIcon
+			UIGraphicsBeginImageContext(viewSize.size)
+			glowBackgroundImage.draw(in: viewSize)
+			image.draw(in: viewSize, blendMode: .normal, alpha: 0.8) // Change alpha
+			let combinedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+			UIGraphicsEndImageContext()
+
+			return combinedImage
+		} else {
+			return image
+		}
+	}
+
 }
 
 extension AirMapFlightAnnotation: AnnotationRepresentable {
