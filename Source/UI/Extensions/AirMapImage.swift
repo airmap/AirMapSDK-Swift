@@ -36,20 +36,6 @@ public class AirMapImage {
 			return UIImage(named: name, in: AirMapBundle.core, compatibleWith: nil)
 		#endif
 	}
-
-	public static func flightIcon(_ type: AirMapFlight.FlightType) -> Image? {
-
-		switch type {
-		case .past :
-			return image(named: "past_flight_marker_icon")
-		case .active:
-			let flightIconImage = UIImage(named: "map_fly_icon")
-			let annotatedImage = AirMapFlightAnnotation.annotateFlightIcon(flightIconImage)
-			return annotatedImage
-		case .future:
-			return image(named: "future_flight_marker_icon")
-		}
-	}
 	
 	#if AIRMAP_TRAFFIC
 	public static func trafficIcon(type: AirMapTraffic.TrafficType, heading: Int) -> Image? {

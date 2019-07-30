@@ -61,32 +61,6 @@ extension AirMapFlightAnnotation: MGLAnnotation {
 		return dateFormatter.string(from: startTime)
 	}
 
-	public static func annotateFlightIcon(_ image: Image?) -> Image? {
-		guard let image = image else { return nil }
-		guard #available(iOS 10.0, *) else { return image }
-
-		let stroke: CGFloat = 1.5
-		let rect = CGRect(x: 0, y: 0, width: image.size.width+stroke*2, height: image.size.height+stroke*2)
-
-		// Add halo to image
-		UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
-		defer {
-			UIGraphicsEndImageContext()
-		}
-
-		guard let context = UIGraphicsGetCurrentContext() else {
-			return nil
-		}
-
-		context.setFillColor(UIColor.highlight.cgColor)
-		context.setAlpha(0.8)
-		context.fillEllipse(in: rect)
-		context.setAlpha(1.0)
-		context.draw(image.cgImage!, in: CGRect(origin: .zero, size: image.size).offsetBy(dx: stroke, dy: stroke))
-
-		return UIGraphicsGetImageFromCurrentImageContext()
-	}
-
 }
 
 extension AirMapFlightAnnotation: AnnotationRepresentable {
