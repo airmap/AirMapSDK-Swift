@@ -60,6 +60,7 @@ extension AirMapFlightAnnotation: MGLAnnotation {
 		dateFormatter.timeStyle = .long
 		return dateFormatter.string(from: startTime)
 	}
+
 }
 
 extension AirMapFlightAnnotation: AnnotationRepresentable {
