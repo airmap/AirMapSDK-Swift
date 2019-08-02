@@ -138,7 +138,7 @@ struct Constants {
 		
 		static var styleUrl: URL {
 			return AirMap.configuration.mapStyle ??
-				URL(string: "https://cdn.airmap.com/static/map-styles/0.10.0-alpha1/")!
+				URL(string: "https://cdn.airmap.com/static/map-styles/0.10.0/")!
 		}
 	}
 }
