@@ -114,7 +114,7 @@ extension AirMapConfiguration: ImmutableMappable {
 
 		do {
 			// Required AirMap SDK configuration values
-			name     = try map.value("name")
+			name     = try? map.value("name")
 			apiKey   = try map.value("airmap.api_key")
 			clientId = try map.value("airmap.client_id")
 
