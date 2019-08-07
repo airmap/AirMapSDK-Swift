@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 		core.dependency 'AppAuth'
 		core.dependency 'ObjectMapper', '< 3.5.0'
 		core.dependency 'SwiftTurf'
-		core.dependency 'KeychainAccess', '<3.2'
+		core.dependency 'KeychainAccess', '< 3.2'
 		core.dependency 'RxSwift', '~> 4.0'
 		core.dependency 'RxSwiftExt', '~> 3.4'
 		core.dependency 'RxCocoa', '~> 4.0'
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
 		ui.platform = :ios
 		ui.frameworks = 'UIKit'
 		ui.dependency 'AirMapSDK/Core'
-		ui.dependency 'PhoneNumberKit'
+		ui.dependency 'PhoneNumberKit', '< 3.0.0'
 		ui.dependency 'RxDataSources'
 		ui.dependency 'Mapbox-iOS-SDK', '~> 5.1'
 		ui.dependency 'AppAuth'
