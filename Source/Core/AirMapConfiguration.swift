@@ -51,13 +51,15 @@ public struct AirMapConfiguration {
 		return host(for: "api")
 	}
 
-	public let name: String?
 	public let domain: String
 	let apiOverrides: [String: String]?
 	let environment: String?
 	let pinCertificates: Bool
 	let mapStyle: URL?
 	let clientId: String
+
+	/// An optional string for identifying the configuration used.
+	public let name: String?
 
 	/// An optional Mapbox access token to use with any map UI elements.
 	public let mapboxAccessToken: String?
