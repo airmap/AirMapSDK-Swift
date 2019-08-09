@@ -84,6 +84,8 @@ extension AirMapAdvisory: ImmutableMappable {
 				properties = EmergencyProperties(JSON: props)
 			case .heliport:
 				properties = HeliportProperties(JSON: props)
+			case .notam:
+				properties = NOTAMProperties(JSON: props)
 			case .park:
 				properties = ParkProperties(JSON: props)
 			case .powerPlant:
@@ -250,6 +252,16 @@ extension AirMapAdvisory.SpecialUseProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		description =  try? map.value("description")
+	}
+}
+
+extension AirMapAdvisory.NOTAMProperties: ImmutableMappable {
+	
+	public init(map: Map) throws {
+		body       =  try? map.value("type")
+		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
+		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
+		type       =  try? map.value("type")
 	}
 }
 
