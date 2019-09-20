@@ -26,6 +26,7 @@ import RxSwift
 class AuthService: NSObject {
 
 	weak var delegate: AirMapAuthSessionDelegate?
+	internal let stateChanged = BehaviorSubject(value: Void())
 
 	var isAuthorized: Bool {
 		switch authState {
@@ -185,6 +186,7 @@ class AuthService: NSObject {
 				observer.onCompleted()
 
 			case .authenticated(let auth):
+				let initialToken = self.authToken
 				auth.performAction { (accessToken, idToken, error) in
 					if let error = error {
 						return observer.onError(error)
@@ -197,6 +199,10 @@ class AuthService: NSObject {
 					}
 					let pilot = AirMapPilotId(rawValue: id.subject)
 					let creds = Credentials(token: accessToken, pilot: pilot)
+					if accessToken != initialToken ?? "" {
+						self.stateChanged.onNext(())
+					}
+
 					observer.onNext(creds)
 					observer.onCompleted()
 				}
@@ -215,6 +221,7 @@ class AuthService: NSObject {
 
 	private var authState: AuthState = .loggedOut {
 		didSet {
+			stateChanged.onNext(())
 			if case let .authenticated(state) = authState {
 				state.stateChangeDelegate = self
 				state.errorDelegate = self

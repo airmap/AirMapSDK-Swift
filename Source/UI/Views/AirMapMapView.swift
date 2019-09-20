@@ -184,6 +184,13 @@ extension AirMapMapView {
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
+		Observable.combineLatest(style, AirMap.authService.stateChanged)
+			.map { $0.0 }
+			.subscribe(onNext: { (style) in
+				AirMapMapView.addJurisdictions(to: style)
+			})
+			.disposed(by: disposeBag)
+
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)
 			.subscribe(onNext: { [unowned self] (jurisdictions, style, rulesetConfig) in
 
@@ -286,6 +293,35 @@ extension AirMapMapView {
 	}
 
 	// MARK: - Static
+
+	private static func addJurisdictions(to style: MGLStyle) {
+		
+		if let source = style.source(withIdentifier: "jurisdictions") as? MGLVectorTileSource, let layer = style.layer(withIdentifier: "jurisdictions") {
+			style.removeLayer(layer)
+			style.removeSource(source)
+		}
+
+		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
+
+		let access = "?access_token=\(AirMap.authToken ?? "")"
+
+		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl + "\(access)"], options: [
+			.minimumZoomLevel: 6,
+			.maximumZoomLevel: 12,
+		])
+
+		let layer = MGLFillStyleLayer(identifier: "jurisdictions", source: source)
+		layer.sourceLayerIdentifier = "jurisdictions"
+
+		layer.fillColor = NSExpression(forConstantValue: UIColor.clear)
+		layer.fillOpacity = NSExpression(forConstantValue: 1)
+
+		layer.minimumZoomLevel = 6
+		layer.maximumZoomLevel = 22
+
+		style.addSource(source)
+		style.insertLayer(layer, at: 0)
+	}
 
 	private static func addRuleset(_ ruleset: AirMapRuleset, to style: MGLStyle, in mapView: AirMapMapView) {
 
