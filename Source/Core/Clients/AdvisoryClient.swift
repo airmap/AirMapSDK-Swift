@@ -66,9 +66,11 @@ internal class AdvisoryClient: HTTPClient {
 		params["start"] = start?.iso8601String()
 		params["end"] = end?.iso8601String()
 		
-		return perform(method: .post, path: "/airspace", params: params)
+		return withCredentials().flatMap { (credentials) -> Observable<AirMapAirspaceStatus> in
+			return self.perform(method: .post, path: "/airspace", params: params, auth: credentials)
+		}
 	}
-	
+
 	// MARK: - Weather
 	
 	func getWeatherForecast(at coordinate: Coordinate2D, from: Date?, to: Date?) -> Observable<AirMapWeather> {
