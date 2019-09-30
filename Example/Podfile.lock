@@ -29,11 +29,11 @@ PODS:
     - PhoneNumberKit
     - RxDataSources
   - Alamofire (4.8.2)
-  - AppAuth (1.1.0):
-    - AppAuth/Core (= 1.1.0)
-    - AppAuth/ExternalUserAgent (= 1.1.0)
-  - AppAuth/Core (1.1.0)
-  - AppAuth/ExternalUserAgent (1.1.0)
+  - AppAuth (1.2.0):
+    - AppAuth/Core (= 1.2.0)
+    - AppAuth/ExternalUserAgent (= 1.2.0)
+  - AppAuth/Core (1.2.0)
+  - AppAuth/ExternalUserAgent (1.2.0)
   - CocoaAsyncSocket (7.6.3)
   - CryptoSwift (1.0.0)
   - Differentiator (4.0.1)
@@ -124,7 +124,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AirMapSDK: ef3430b5ad90466b490a6a0a8e788f27cd9a09e9
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AppAuth: a08c77b389d259e1dd343010352dde2c0c5df689
+  AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
