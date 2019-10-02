@@ -216,7 +216,7 @@ extension AirMapMapView {
 		// Localize and transition style
 		style
 			.subscribe(onNext: { (style) in
-				style.localizeLabels()
+				style.localizeLabels(into: Locale.current)
 				style.transition = MGLTransitionMake(1, 0)
 			})
 			.disposed(by: disposeBag)

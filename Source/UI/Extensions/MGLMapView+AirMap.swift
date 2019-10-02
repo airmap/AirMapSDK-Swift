@@ -164,24 +164,6 @@ extension MGLStyle {
 		
 		return airMapBaseLayers
 	}
-	    
-    /// Updates the map labels to one of the supported languages
-    func localizeLabels() {
-		
-        let currentLanguage = Locale.current.languageCode ?? "en"
-		let mapboxSupportedLanguages = ["en", "es", "fr", "de", "ru", "zh", "pt", "ar", "ja", "ko"]
-        let supportsCurrentLanguage = mapboxSupportedLanguages.contains(currentLanguage)
-		
-		let labelLayers = layers.compactMap { $0 as? MGLSymbolStyleLayer }
-		
-        for layer in labelLayers {
-			// Check if mapbox supports current locale
-			let localeString = supportsCurrentLanguage ? currentLanguage : "en"
-			let locale = Locale(identifier: localeString)
-			layer.text = layer.text.mgl_expressionLocalized(into: locale)
-        }
-		
-    }
         
     /// Update the predicates for temporal layers such as .tfr and .notam with a near future time window
 	func updateTemporalFilters(from start: Date, to end: Date) {
