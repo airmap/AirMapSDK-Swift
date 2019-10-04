@@ -164,7 +164,7 @@ extension MGLStyle {
 		
 		return airMapBaseLayers
 	}
-        
+
     /// Update the predicates for temporal layers such as .tfr and .notam with a near future time window
 	func updateTemporalFilters(from start: Date, to end: Date) {
         
@@ -176,13 +176,13 @@ extension MGLStyle {
             .forEach({ (layer) in
                 let startInt = Int(start.timeIntervalSince1970)
                 let endInt = Int(end.timeIntervalSince1970)
-                let overlapsWithStart = NSPredicate(format: "start <= %i && %i <= end", startInt, startInt)
-                let overlapsWithEnd = NSPredicate(format: "start <= %i && %i <= end", endInt, endInt)
-                let isPermanent = NSPredicate(format: "permanent == YES")
-                let hasNoEnd = NSPredicate(format: "end == NULL")
-                let isNotBase = NSPredicate(format: "base == NULL")
-                let timePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [overlapsWithStart, overlapsWithEnd, isPermanent, hasNoEnd])
-                layer.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, isNotBase])
+
+				layer.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+					NSPredicate(format: "permanent != NULL && permanent == YES"),
+					NSPredicate(format: "end == NULL && start <= %i", startInt),
+					NSPredicate(format: "start <= %i && end >= %i", startInt, startInt),
+					NSPredicate(format: "start <= %i && end >= %i", endInt, endInt)
+				])
             })
     }
 }
