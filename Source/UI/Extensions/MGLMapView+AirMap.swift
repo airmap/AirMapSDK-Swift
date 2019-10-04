@@ -179,7 +179,7 @@ extension MGLStyle {
 
 				layer.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
 					NSPredicate(format: "permanent != NULL && permanent == YES"),
-					NSPredicate(format: "start <= %i && ( end == NULL || end >= %i)", endInt, startInt)
+					NSPredicate(format: "start <= %i && (end == NULL || end >= %i)", endInt, startInt)
 				])
 			})
     }
