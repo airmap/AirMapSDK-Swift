@@ -223,28 +223,33 @@ extension AirMapMapView {
 	}
 
 	private func setupAppearance() {
-
+		
 		let image = UIImage(named: "info_icon", in: AirMapBundle.ui, compatibleWith: nil)!
 		attributionButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
-
+		attributionButtonMargins = CGPoint(x: 0, y: 10)
+		
+		logoViewMargins = CGPoint(x: 30, y: 10)
+		logoViewPosition = .bottomRight
+		
 		let airMapLogo = UIImage(named: "map_logo", in: AirMapBundle.ui, compatibleWith: nil)
 		airMapLogoView = UIImageView(image: airMapLogo)
-
-		logoView.contentMode = .right
-		logoView.addSubview(airMapLogoView)
-
+		
+		addSubview(airMapLogoView)
+		airMapLogoView.translatesAutoresizingMaskIntoConstraints = false
+		
 		NSLayoutConstraint.activate([
-			logoView.rightAnchor.constraint(equalTo: attributionButton.leftAnchor, constant: -6),
-			logoView.heightAnchor.constraint(equalToConstant: 23)
-			])
-
+			airMapLogoView.heightAnchor.constraint(equalTo: logoView.heightAnchor),
+			airMapLogoView.centerYAnchor.constraint(equalTo: logoView.centerYAnchor),
+			airMapLogoView.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: 2)
+		])
+		
 		isPitchEnabled = false
 		allowsRotating = false
 	}
-
+	
 	// MARK: - Configuration
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset]) {
-
+		
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
 			.map { $0.tileSourceIdentifier }
