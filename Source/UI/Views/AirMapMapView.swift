@@ -184,11 +184,8 @@ extension AirMapMapView {
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
-		Observable.combineLatest(style, AirMap.authService.stateChanged)
-			.map { $0.0 }
-			.subscribe(onNext: { (style) in
-				AirMapMapView.addJurisdictions(to: style)
-			})
+		AirMap.authService.stateChanged.withLatestFrom(style)
+			.subscribe(onNext: AirMapMapView.addJurisdictions)
 			.disposed(by: disposeBag)
 
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)

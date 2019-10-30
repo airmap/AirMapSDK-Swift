@@ -234,8 +234,12 @@ extension MGLVectorTileSource {
 			units = "si"
 		}
 
-		let sourcePath = Constants.Api.tileDataUrl + "/\(ruleset.id.rawValue)/\(layerNames)/{z}/{x}/{y}?apikey=\(AirMap.configuration.apiKey)&units=\(units)&\(Constants.Api.tileQueryAuth)"
-		
+		var query = ["apikey=\(AirMap.configuration.apiKey)", "units=\(units)"]
+		if let token = AirMap.authToken {
+			query.append("access_token=\(token)")
+		}
+
+		let sourcePath = Constants.Api.tileDataUrl + "/\(ruleset.id.rawValue)/\(layerNames)/{z}/{x}/{y}?\(query.joined(separator: "&"))"
 		self.init(identifier: ruleset.tileSourceIdentifier, tileURLTemplates: [sourcePath], options: options)
 	}
 }
