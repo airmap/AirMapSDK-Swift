@@ -51,10 +51,10 @@ struct Constants {
 		static var jurisdictionsUrl: String {
 			var access = ""
 			if let token = AirMap.authToken {
-				access = "access_token=\(token)"
+				access = "?access_token=\(token)"
 			}
 
-			return Constants.Api.tileDataUrl + "base-jurisdiction/{z}/{x}/{y}?\(access)"
+			return Constants.Api.tileDataUrl + "base-jurisdiction/{z}/{x}/{y}\(access)"
 		}
 		static var pilotUrl: String {
 			return url(for: "pilot", v: 2)

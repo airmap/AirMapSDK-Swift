@@ -301,8 +301,8 @@ extension AirMapMapView {
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
 		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl], options: [
-			.minimumZoomLevel: 6,
-			.maximumZoomLevel: 22,
+			.minimumZoomLevel: Constants.Maps.tileMinimumZoomLevel,
+			.maximumZoomLevel: Constants.Maps.tileMaximumZoomLevel,
 		])
 
 		let layer = MGLFillStyleLayer(identifier: "jurisdictions", source: source)
