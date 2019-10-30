@@ -305,7 +305,7 @@ extension AirMapMapView {
 
 		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl], options: [
 			.minimumZoomLevel: 6,
-			.maximumZoomLevel: 12,
+			.maximumZoomLevel: 22,
 		])
 
 		let layer = MGLFillStyleLayer(identifier: "jurisdictions", source: source)
@@ -313,9 +313,6 @@ extension AirMapMapView {
 
 		layer.fillColor = NSExpression(forConstantValue: UIColor.clear)
 		layer.fillOpacity = NSExpression(forConstantValue: 1)
-
-		layer.minimumZoomLevel = 6
-		layer.maximumZoomLevel = 22
 
 		style.addSource(source)
 		style.insertLayer(layer, at: 0)
