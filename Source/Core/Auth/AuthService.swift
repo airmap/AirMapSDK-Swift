@@ -211,6 +211,10 @@ class AuthService: NSObject {
 		}
 	}
 
+	func performWithOptionalCredentials() -> Observable<Credentials?> {
+		return performWithCredentials().asOptional().catchErrorJustReturn(nil)
+	}
+
 	// MARK: - Private
 
 	enum AuthState {

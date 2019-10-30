@@ -34,20 +34,20 @@ internal class RuleClient: HTTPClient {
 	func getJurisdictions(intersecting geometry: AirMapGeometry) -> Observable<[AirMapJurisdiction]> {
 		AirMap.logger.debug("Getting jurisdictions intersecting geometry")
 		let params = ["geometry": geometry.params()]
-		return withCredentials().flatMap { (credentials) -> Observable<[AirMapJurisdiction]> in
+		return withOptionalCredentials().flatMap { (credentials) -> Observable<[AirMapJurisdiction]> in
 			return self.perform(method: .post, path: "/", params: params, auth: credentials).map { $0.jurisdictions }
 		}
 	}
 	
 	func getRuleset(by identifier: AirMapRulesetId) -> Observable<AirMapRuleset> {
-		return withCredentials().flatMap { (credentials) -> Observable<AirMapRuleset> in
+		return withOptionalCredentials().flatMap { (credentials) -> Observable<AirMapRuleset> in
 			return self.perform(method: .get, path: "/" + identifier.rawValue, auth: credentials)
 		}
 	}
 	
 	func getRulesets(intersecting geometry: AirMapGeometry) -> Observable<[AirMapRuleset]> {
 		let params = ["geometry": geometry.params()]
-		return withCredentials().flatMap { (credentials) -> Observable<[AirMapRuleset]> in
+		return withOptionalCredentials().flatMap { (credentials) -> Observable<[AirMapRuleset]> in
 			return self.perform(method: .post, path: "/", params: params, auth: credentials)
 		}
 	}
@@ -60,7 +60,7 @@ internal class RuleClient: HTTPClient {
 	func getRulesets(by rulesetIds: [AirMapRulesetId]) -> Observable<[AirMapRuleset]> {
 		AirMap.logger.debug("Getting rules", metadata: ["rulesets": .stringConvertible(rulesetIds)])
 		let params = ["rulesets": rulesetIds.map { $0.rawValue }.joined(separator: ",")]
-		return withCredentials().flatMap { (credentials) -> Observable<[AirMapRuleset]> in
+		return withOptionalCredentials().flatMap { (credentials) -> Observable<[AirMapRuleset]> in
 			return self.perform(method: .get, path: "/rule", params: params, auth: credentials)
 		}
 	}
@@ -73,7 +73,7 @@ internal class RuleClient: HTTPClient {
 			"flight_features": flightFeatureValues ?? [:]
 		]
 
-		return withCredentials().flatMap { (credentials) -> Observable<[AirMapFlightBriefing.Ruleset]> in
+		return withOptionalCredentials().flatMap { (credentials) -> Observable<[AirMapFlightBriefing.Ruleset]> in
 			return self.perform(method: .post, path: "/evaluation", params: params, keyPath: "data.rulesets", auth: credentials)
 		}
 	}

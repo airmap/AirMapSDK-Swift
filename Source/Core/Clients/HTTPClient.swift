@@ -63,6 +63,10 @@ internal class HTTPClient {
 		return AirMap.authService.performWithCredentials()
 	}
 
+	func withOptionalCredentials() -> Observable<AuthService.Credentials?> {
+		return AirMap.authService.performWithOptionalCredentials()
+	}
+
 	private func defaultHeaders(with accessToken: String?) -> HTTPHeaders {
 		var headers = [String: String]()
 		headers[Header.accept.rawValue] = MimeType.JSON.rawValue
