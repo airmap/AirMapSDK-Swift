@@ -303,9 +303,7 @@ extension AirMapMapView {
 
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
-		let access = "?access_token=\(AirMap.authToken ?? "")"
-
-		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl + "\(access)"], options: [
+		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl], options: [
 			.minimumZoomLevel: 6,
 			.maximumZoomLevel: 12,
 		])

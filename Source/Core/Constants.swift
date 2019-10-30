@@ -49,7 +49,7 @@ struct Constants {
 			return url(for: "flight", v: 2)
 		}
 		static var jurisdictionsUrl: String {
-			return Constants.Api.tileDataUrl + "base-jurisdiction/{z}/{x}/{y}"
+			return Constants.Api.tileDataUrl + "base-jurisdiction/{z}/{x}/{y}?\(Constants.Api.tileQueryAuth)"
 		}
 		static var pilotUrl: String {
 			return url(for: "pilot", v: 2)
@@ -59,6 +59,9 @@ struct Constants {
 		}
 		static var tileDataUrl: String {
 			return url(for: "tiledata", v: 1)
+		}
+		static var tileQueryAuth: String {
+			return AirMap.authToken == nil ? "" : "access_token=\(AirMap.authToken!)"
 		}
 
 		static func url(for resource: String, v version: Int) -> String {
