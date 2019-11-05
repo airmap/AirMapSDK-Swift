@@ -306,19 +306,16 @@ extension AuthService: OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
 	}
 }
 
-extension AuthService.AuthState: Equatable {
+extension AuthService.AuthState {
 
-	static func ==(lhs: AuthService.AuthState, rhs: AuthService.AuthState) -> Bool {
-		switch (lhs, rhs) {
-		case (.loggedOut, .loggedOut):
-			return true
-		case (.anonymous(let lhsToken), .anonymous(let rhsToken)):
-			return lhsToken.idToken == rhsToken.idToken
-		case (.authenticated(let lhsState), .authenticated(let rhsState)):
-			return lhsState.lastTokenResponse?.accessToken == rhsState.lastTokenResponse?.accessToken
-		default:
-			return false
+	var accessToken: String? {
+		switch self {
+			case .loggedOut:
+				return nil
+			case .anonymous(let token):
+				return token.idToken
+			case .authenticated(let state):
+				return state.lastTokenResponse?.accessToken
 		}
 	}
-
 }

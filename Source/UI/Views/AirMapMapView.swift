@@ -185,9 +185,10 @@ extension AirMapMapView {
 			.distinctUntilChanged(==)
 
 		AirMap.authService.authState.asObservable()
+			.map { $0.accessToken }
 			.distinctUntilChanged(==)
-			.withLatestFrom(style)
-			.subscribe(onNext: AirMapMapView.addJurisdictions)
+			.withLatestFrom(style) { ($1, $0) }
+			.subscribe(onNext: AirMapMapView.configureJurisdictions)
 			.disposed(by: disposeBag)
 
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)
@@ -293,7 +294,7 @@ extension AirMapMapView {
 
 	// MARK: - Static
 
-	private static func addJurisdictions(to style: MGLStyle) {
+	private static func configureJurisdictions(in style: MGLStyle, with authToken: String?) {
 		
 		if let source = style.source(withIdentifier: "jurisdictions") as? MGLVectorTileSource, let layer = style.layer(withIdentifier: "jurisdictions") {
 			style.removeLayer(layer)
@@ -303,7 +304,7 @@ extension AirMapMapView {
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
 		var access = ""
-		if let token = AirMap.authToken {
+		if let token = authToken {
 			access = "?access_token=\(token)"
 		}
 
