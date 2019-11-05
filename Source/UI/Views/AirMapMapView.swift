@@ -302,7 +302,13 @@ extension AirMapMapView {
 
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
-		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [Constants.Api.jurisdictionsUrl], options: [
+		var access = ""
+		if let token = AirMap.authToken {
+			access = "?access_token=\(token)"
+		}
+
+		let jurisdictionsUrl = Constants.Api.jurisdictionsUrl + access
+		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [jurisdictionsUrl], options: [
 			.minimumZoomLevel: Constants.Maps.tileMinimumZoomLevel,
 			.maximumZoomLevel: Constants.Maps.tileMaximumZoomLevel,
 		])
@@ -321,7 +327,10 @@ extension AirMapMapView {
 
 		guard style.source(withIdentifier: ruleset.tileSourceIdentifier) == nil else { return }
 
-		let rulesetTileSource = MGLVectorTileSource(ruleset: ruleset)
+		guard let rulesetTileSource = MGLVectorTileSource(ruleset: ruleset) else {
+			AirMap.logger.error("Failed to create tile source", metadata: ["Ruleset": .string(ruleset.tileSourceIdentifier)])
+			return
+		}
 		style.addSource(rulesetTileSource)
 
 		style.airMapBaseStyleLayers(for: ruleset.airspaceTypes)
