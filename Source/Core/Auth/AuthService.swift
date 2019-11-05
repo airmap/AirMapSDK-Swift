@@ -166,6 +166,7 @@ class AuthService: NSObject {
 	func performWithCredentials() -> Observable<Credentials> {
 
 		return authState.asObservable()
+			.take(1) // Prevent multiple executions when authState updates
 			.flatMap { (state) -> Observable<Credentials> in
 				switch state {
 
@@ -212,6 +213,7 @@ class AuthService: NSObject {
 
 	func performWithOptionalCredentials() -> Observable<Credentials?> {
 		return authState.asObservable()
+			.take(1) // Prevent multiple executions when authState updates
 			.flatMap { (state) -> Observable<Credentials?> in
 				switch state {
 				case .loggedOut:
