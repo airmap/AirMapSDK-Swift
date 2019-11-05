@@ -184,7 +184,9 @@ extension AirMapMapView {
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
-		AirMap.authService.stateChanged.withLatestFrom(style)
+		AirMap.authService.authState.asObservable()
+			.distinctUntilChanged(==)
+			.withLatestFrom(style)
 			.subscribe(onNext: AirMapMapView.addJurisdictions)
 			.disposed(by: disposeBag)
 

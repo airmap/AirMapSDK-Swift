@@ -22,14 +22,14 @@ import Foundation
 import AppAuth
 import KeychainAccess
 import RxSwift
+import RxCocoa
 
 class AuthService: NSObject {
 
 	weak var delegate: AirMapAuthSessionDelegate?
-	internal let stateChanged = BehaviorSubject(value: Void())
 
 	var isAuthorized: Bool {
-		switch authState {
+		switch authState.value {
 		case .loggedOut:
 			return false
 		case .anonymous(let token):
@@ -40,7 +40,7 @@ class AuthService: NSObject {
 	}
 
 	var authToken: String? {
-		switch authState {
+		switch authState.value {
 		case .loggedOut:
 			return nil
 		case .anonymous(let token):
@@ -51,7 +51,7 @@ class AuthService: NSObject {
 	}
 	
 	var refreshToken: String? {
-		switch authState {
+		switch authState.value {
 		case .loggedOut:
 			return nil
 		case .anonymous:
@@ -61,9 +61,11 @@ class AuthService: NSObject {
 		}
 	}
 
+	let authState = BehaviorRelay<AuthState>(value: .loggedOut)
+
 	override init() {
 		super.init()
-		authState = AuthService.persistedState()
+		authState.accept(AuthService.persistedState())
 	}
 
 	static let keychain = Keychain()
@@ -120,7 +122,7 @@ class AuthService: NSObject {
 							return observer.onError(AirMapError.unknown(underlying: error))
 						}
 						if let state = state {
-							self.authState = .authenticated(state)
+							self.authState.accept(.authenticated(state))
 							self.activeFlow = nil
 							observer.onNext(())
 							observer.onCompleted()
@@ -143,7 +145,7 @@ class AuthService: NSObject {
 	func loginAnonymously(withForeign id: String) -> Observable<Void> {
 		return AirMap.authClient.performAnonymousLogin(withForeign: id)
 			.do(onNext: { [unowned self] (token) in
-				self.authState = .anonymous(token)
+				self.authState.accept(.anonymous(token))
 			})
 			.mapToVoid()
 	}
@@ -152,7 +154,7 @@ class AuthService: NSObject {
 		return AirMap.openIdClient.performLogout()
 			.do(onNext: { [weak self] (_) in
 				AuthService.keychain[Constants.Auth.keychainAuthState] = nil
-				self?.authState = .loggedOut
+				self?.authState.accept(.loggedOut)
 			})
 	}
 
@@ -163,56 +165,61 @@ class AuthService: NSObject {
 
 	func performWithCredentials() -> Observable<Credentials> {
 
-		return .create { [unowned self] (observer) -> Disposable in
+		return authState.asObservable()
+			.flatMap { (state) -> Observable<Credentials> in
+				switch state {
 
-			switch self.authState {
+				case .loggedOut:
+					AirMap.logger.error("Failed to get credentials", metadata: ["error": .stringConvertible(AirMapError.unauthorized)])
+					throw AirMapError.unauthorized
 
-			case .loggedOut:
-				AirMap.logger.error("Failed to get credentials", metadata: ["error": .stringConvertible(AirMapError.unauthorized)])
-				observer.onError(AirMapError.unauthorized)
-
-			case .anonymous(let token):
-				guard let idToken = OIDIDToken(idTokenString: token.idToken) else {
-					observer.onError(AirMapError.unauthorized)
-					break
-				}
-				guard idToken.expiresAt > Date() else {
-					observer.onError(AirMapError.unauthorized)
-					break
-				}
-				let pilot = AirMapPilotId(rawValue: idToken.subject)
-				let creds = Credentials(token: token.idToken, pilot: pilot)
-				observer.onNext(creds)
-				observer.onCompleted()
-
-			case .authenticated(let auth):
-				let initialToken = self.authToken
-				auth.performAction { (accessToken, idToken, error) in
-					if let error = error {
-						return observer.onError(error)
+				case .anonymous(let token):
+					guard let idToken = OIDIDToken(idTokenString: token.idToken) else {
+						throw AirMapError.unauthorized
 					}
-					guard let accessToken = accessToken else {
-						return observer.onError(AirMapError.unauthorized)
+					guard idToken.expiresAt > Date() else {
+						throw AirMapError.unauthorized
 					}
-					guard let idToken = idToken, let id = OIDIDToken(idTokenString: idToken) else {
-						return observer.onError(AirMapError.unauthorized)
-					}
-					let pilot = AirMapPilotId(rawValue: id.subject)
-					let creds = Credentials(token: accessToken, pilot: pilot)
-					if accessToken != initialToken ?? "" {
-						self.stateChanged.onNext(())
-					}
+					let pilot = AirMapPilotId(rawValue: idToken.subject)
+					let creds = Credentials(token: token.idToken, pilot: pilot)
+					return Observable.of(creds)
 
-					observer.onNext(creds)
-					observer.onCompleted()
+				case .authenticated(let auth):
+					return .create { (observer) -> Disposable in
+
+						auth.performAction { (accessToken, idToken, error) in
+							if let error = error {
+								return observer.onError(error)
+							}
+							guard let accessToken = accessToken else {
+								return observer.onError(AirMapError.unauthorized)
+							}
+							guard let idToken = idToken, let id = OIDIDToken(idTokenString: idToken) else {
+								return observer.onError(AirMapError.unauthorized)
+							}
+							let pilot = AirMapPilotId(rawValue: id.subject)
+							let creds = Credentials(token: accessToken, pilot: pilot)
+
+							observer.onNext(creds)
+							observer.onCompleted()
+						}
+
+						return Disposables.create()
+					}
 				}
 			}
-			return Disposables.create()
-		}
 	}
 
 	func performWithOptionalCredentials() -> Observable<Credentials?> {
-		return performWithCredentials().asOptional().catchErrorJustReturn(nil)
+		return authState.asObservable()
+			.flatMap { (state) -> Observable<Credentials?> in
+				switch state {
+				case .loggedOut:
+					return Observable.of(nil)
+				default:
+					return self.performWithCredentials().asOptional()
+				}
+			}
 	}
 
 	// MARK: - Private
@@ -222,18 +229,7 @@ class AuthService: NSObject {
 		case anonymous(AirMapToken)
 		case authenticated(OIDAuthState)
 	}
-
-	private var authState: AuthState = .loggedOut {
-		didSet {
-			stateChanged.onNext(())
-			if case let .authenticated(state) = authState {
-				state.stateChangeDelegate = self
-				state.errorDelegate = self
-			}
-			AuthService.persist(authState)
-		}
-	}
-
+	
 	private var activeFlow: OIDExternalUserAgentSession?
 
 	private func assertValidConfiguration() {
@@ -296,14 +292,31 @@ extension AuthService: OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
 	}
 
 	func didChange(_ state: OIDAuthState) {
-		if case let .authenticated(currentState) = authState, state == currentState  {
+		if case let .authenticated(currentState) = authState.value, state == currentState  {
 			return
 		}
 		if state.isAuthorized {
-			authState = .authenticated(state)
+			authState.accept(AuthState.authenticated(state))
 		} else {
-			authState = .loggedOut
+			authState.accept(.loggedOut)
 			AirMap.authSessionDelegate?.airmapSessionShouldAuthenticate()
 		}
 	}
+}
+
+extension AuthService.AuthState: Equatable {
+
+	static func ==(lhs: AuthService.AuthState, rhs: AuthService.AuthState) -> Bool {
+		switch (lhs, rhs) {
+		case (.loggedOut, .loggedOut):
+			return true
+		case (.anonymous(let lhsToken), .anonymous(let rhsToken)):
+			return lhsToken.idToken == rhsToken.idToken
+		case (.authenticated(let lhsState), .authenticated(let rhsState)):
+			return lhsState.lastTokenResponse?.accessToken == rhsState.lastTokenResponse?.accessToken
+		default:
+			return false
+		}
+	}
+
 }
