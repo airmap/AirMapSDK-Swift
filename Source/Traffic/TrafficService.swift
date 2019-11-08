@@ -97,8 +97,8 @@ internal class TrafficService: MQTTSessionDelegate {
 		let state = connectionState.asObservable()
 
 		let flightWhileConnected = currentFlight.asObservable()
-			.filter {[unowned self] _ in self.connectionState.value == .connected }
 			.distinctUntilChanged { flight in flight?.id ?? "" }
+			.filter {[unowned self] _ in self.connectionState.value == .connected }
 			.do(onNext: { [unowned self] (_) in
 				self.connectionState.accept(.disconnected)
 				self.removeAllTraffic()
