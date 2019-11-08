@@ -127,7 +127,7 @@ internal class TrafficService: MQTTSessionDelegate {
 			.filter {[unowned self] _ in self.canConnect()}
 			.flatMap({ [unowned self] flight -> Observable<ConnectionState> in
 				return self.connectWithFlight(flight)
-					.catchError({ _ in return Observable.just( .disconnected) })
+					.catchError({ _ in return Observable.just(.disconnected) })
 			})
 			.bind(to: connectionState)
 			.disposed(by: disposeBag)
