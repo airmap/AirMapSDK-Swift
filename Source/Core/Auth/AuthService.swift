@@ -66,6 +66,8 @@ class AuthService: NSObject {
 	override init() {
 		super.init()
 		authState.accept(AuthService.persistedState())
+
+		setupBindings()
 	}
 
 	static let keychain = Keychain()
@@ -233,6 +235,14 @@ class AuthService: NSObject {
 	}
 	
 	private var activeFlow: OIDExternalUserAgentSession?
+
+	private let disposeBag = DisposeBag()
+
+	private func setupBindings() {
+		authState.asObservable()
+			.subscribe(onNext: AuthService.persist)
+			.disposed(by: disposeBag)
+	}
 
 	private func assertValidConfiguration() {
 
