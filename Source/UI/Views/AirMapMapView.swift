@@ -184,11 +184,11 @@ extension AirMapMapView {
 		let rulesetConfig = self.rulesetConfigurationSubject
 			.distinctUntilChanged(==)
 
-		let accessTokenStart = style
+		let accessTokenStyleLoad = style
 			.take(1)
-			.mapTo(AirMap.authService.authState.value)
+			.withLatestFrom(AirMap.authService.authState)
 
-		Observable.merge(accessTokenStart, AirMap.authService.authState.asObservable())
+		Observable.merge(accessTokenStyleLoad, AirMap.authService.authState.asObservable())
 			.map { $0.accessToken }
 			.withLatestFrom(style) { ($1, $0) }
 			.distinctUntilChanged(==)
