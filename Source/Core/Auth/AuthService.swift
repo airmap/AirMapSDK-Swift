@@ -61,12 +61,12 @@ class AuthService: NSObject {
 		}
 	}
 
-	let authState = BehaviorRelay<AuthState>(value: .loggedOut)
+	let authState: BehaviorRelay<AuthState>
 
 	override init() {
-		super.init()
-		authState.accept(AuthService.persistedState())
+		authState = BehaviorRelay<AuthState>(value: AuthService.persistedState())
 
+		super.init()
 		setupBindings()
 	}
 
