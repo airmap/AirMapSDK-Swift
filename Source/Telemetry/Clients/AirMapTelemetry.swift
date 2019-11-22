@@ -132,7 +132,7 @@ struct AirMapTelemetry {
 				let iv = AirMapTelemetry.generateIV()
 				let key = commKey.bytes()
 				
-				let encryptedPayload = try! AES(key: key, blockMode: CBC(iv: iv)).encrypt(payload)
+				let encryptedPayload = try! AES(key: key, blockMode: CBC(iv: iv), padding: .pkcs7).encrypt(payload)
 
 				packet = Packet(
 					serial: serial, flightId: flightId, payload: encryptedPayload,
