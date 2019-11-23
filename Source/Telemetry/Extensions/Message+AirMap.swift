@@ -1,5 +1,5 @@
 //
-//  GeneratedMessage+AirMap.swift
+//  Message+AirMap.swift
 //  AirMapSDK
 //
 //  Created by Adolfo Martinelli on 12/5/16.
