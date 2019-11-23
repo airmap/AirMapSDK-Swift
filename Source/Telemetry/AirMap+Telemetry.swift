@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-import ProtocolBuffers
+import SwiftProtobuf
 import CoreLocation
 
 extension AirMap {
@@ -56,22 +56,21 @@ extension AirMap {
 	public static func sendTelemetryData(_ flightId: AirMapFlightId, coordinate: Coordinate2D, altitudeAgl: Float?, altitudeMsl: Float?, horizontalAccuracy: Float? = nil) throws {
 		
 		try canSendTelemetry()
-		
-		let position = Airmap.Telemetry.Position.Builder()
-		position.setTimestamp(Date().timeIntervalSince1970.milliseconds)
-		position.setLatitude(coordinate.latitude)
-		position.setLongitude(coordinate.longitude)
-		if let agl = altitudeAgl {
-			position.setAltitudeAgl(agl)
-		}
-		if let msl = altitudeMsl {
-			position.setAltitudeMsl(msl)
-		}
-		if let accuracy = horizontalAccuracy {
-			position.setHorizontalAccuracy(accuracy)
-		}
-		let positionMessage = try position.build()
-		telemetryClient.sendTelemetry(flightId, message: positionMessage)
+
+		telemetryClient.sendTelemetry(flightId, message: Telemetry_Position.with { (position) in
+			position.timestamp = Date().timeIntervalSince1970.milliseconds
+			position.latitude = coordinate.latitude
+			position.longitude = coordinate.longitude
+			if let agl = altitudeAgl {
+				position.altitudeAgl = agl
+			}
+			if let msl = altitudeMsl {
+				position.altitudeMsl = msl
+			}
+			if let accuracy = horizontalAccuracy {
+				position.horizontalAccuracy = accuracy
+			}
+		})
 	}
 	
 	/**
@@ -85,15 +84,13 @@ extension AirMap {
 	public static func sendTelemetryData(_ flightId: AirMapFlightId, velocity: (x: Float, y: Float, z: Float)) throws {
 		
 		try canSendTelemetry()
-		
-		let speed = Airmap.Telemetry.Speed.Builder()
-		speed.setTimestamp(Date().timeIntervalSince1970.milliseconds)
-		speed.setVelocityX(velocity.x)
-		speed.setVelocityY(velocity.y)
-		speed.setVelocityZ(velocity.z)
-		
-		let speedMessage = try speed.build()
-		telemetryClient.sendTelemetry(flightId, message: speedMessage)
+
+		telemetryClient.sendTelemetry(flightId, message: Telemetry_Speed.with { speed in
+			speed.timestamp = Date().timeIntervalSince1970.milliseconds
+			speed.velocityX = velocity.x
+			speed.velocityY = velocity.y
+			speed.velocityZ = velocity.z
+		})
 	}
 	
 	/**
@@ -109,15 +106,13 @@ extension AirMap {
 	public static func sendTelemetryData(_ flightId: AirMapFlightId, yaw: Float, pitch: Float, roll: Float) throws {
 		
 		try canSendTelemetry()
-		
-		let attitude = Airmap.Telemetry.Attitude.Builder()
-		attitude.setTimestamp(Date().timeIntervalSince1970.milliseconds)
-		attitude.setYaw(yaw)
-		attitude.setPitch(pitch)
-		attitude.setRoll(roll)
-		
-		let attitudeMessage = try attitude.build()
-		telemetryClient.sendTelemetry(flightId, message: attitudeMessage)
+
+		telemetryClient.sendTelemetry(flightId, message: Telemetry_Attitude.with { attitude in
+			attitude.timestamp = Date().timeIntervalSince1970.milliseconds
+			attitude.yaw = yaw
+			attitude.pitch = pitch
+			attitude.roll = roll
+		})
 	}
 	
 	/**
@@ -131,13 +126,11 @@ extension AirMap {
 	public static func sendTelemetryData(_ flightId: AirMapFlightId, baro: Float) throws {
 		
 		try canSendTelemetry()
-		
-		let barometer = Airmap.Telemetry.Barometer.Builder()
-		barometer.setTimestamp(Date().timeIntervalSince1970.milliseconds)
-		barometer.setPressure(baro)
 
-		let barometerMessage = try barometer.build()
-		telemetryClient.sendTelemetry(flightId, message: barometerMessage)
+		telemetryClient.sendTelemetry(flightId, message: Telemetry_Barometer.with { barometer in
+			barometer.timestamp = Date().timeIntervalSince1970.milliseconds
+			barometer.pressure = baro
+		})
 	}
 	
 	/**

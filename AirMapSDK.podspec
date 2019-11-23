@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
 		telemetry.dependency 'AirMapSDK/Core'
 		telemetry.dependency 'CocoaAsyncSocket'
 		telemetry.dependency 'CryptoSwift', '~> 1.0'
-		telemetry.dependency 'ProtocolBuffers-Swift', '~> 4.0.6'
+		telemetry.dependency 'SwiftProtobuf', '~> 1.0'
 		telemetry.source_files = 'Source/Telemetry/**/*'
 	end
 	

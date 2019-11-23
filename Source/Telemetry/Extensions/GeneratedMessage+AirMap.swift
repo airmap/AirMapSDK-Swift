@@ -18,41 +18,40 @@
 //  limitations under the License.
 //
 
-import ProtocolBuffers
+import SwiftProtobuf
 
-typealias ProtoBufMessage = GeneratedMessage
+enum MessageType: UInt16 {
+	case position  = 1
+	case speed     = 2
+	case attitude  = 3
+	case barometer = 4
+}
 
-extension ProtoBufMessage {
-	
-	enum MessageType: UInt16 {
-		case position  = 1
-		case speed     = 2
-		case attitude  = 3
-		case barometer = 4
-	}
-	
+extension Message {
+
 	var messageType: MessageType {
 		switch self {
-		case is Airmap.Telemetry.Position:
+		case is Telemetry_Position:
 			return .position
-		case is Airmap.Telemetry.Attitude:
+		case is Telemetry_Attitude:
 			return .attitude
-		case is Airmap.Telemetry.Speed:
+		case is Telemetry_Speed:
 			return .speed
-		case is Airmap.Telemetry.Barometer:
+		case is Telemetry_Barometer:
 			return .barometer
 		default:
 			fatalError("Unsupported Message Type")
 		}
 	}
 	
-	func telemetryBytes() -> [UInt8] {
-		
+	func telemetryBytes() throws -> [UInt8] {
+
+		var data = try serializedData()
+
 		var bytes = [UInt8]()
-		
 		bytes += messageType.rawValue.bigEndian.bytes
-		bytes += UInt16(serializedSize()).bigEndian.bytes
-		bytes += data().bytes
+		bytes += UInt16(data.count).bigEndian.bytes
+		bytes += data.bytes
 		
 		return bytes
 	}
