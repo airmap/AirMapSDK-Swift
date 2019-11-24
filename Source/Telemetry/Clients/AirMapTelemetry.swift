@@ -103,7 +103,7 @@ struct AirMapTelemetry {
 			do {
 				try session.send(messages)
 			} catch {
-				AirMap.logger.log(level: .error, "failed to send message", metadata: ["error": .string(error.localizedDescription)])
+				AirMap.logger.error("failed to send message", metadata: ["error": .string(error.localizedDescription)])
 			}
 		}
 	}
