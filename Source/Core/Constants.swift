@@ -49,7 +49,7 @@ struct Constants {
 			return url(for: "flight", v: 2)
 		}
 		static var jurisdictionsUrl: String {
-			return Constants.Api.tileDataUrl + "base-jurisdiction/{z}/{x}/{y}"
+			return Constants.Api.tileDataUrl + "/base-jurisdiction/{z}/{x}/{y}"
 		}
 		static var pilotUrl: String {
 			return url(for: "pilot", v: 2)
