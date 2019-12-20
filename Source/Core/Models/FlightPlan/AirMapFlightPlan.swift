@@ -29,7 +29,7 @@ public class AirMapFlightPlan: Mappable {
 	// Participants
 	public var pilotId: AirMapPilotId?
 	public var aircraftId: AirMapAircraftId?
-	
+
 	// Temporal constraints
 	public var startTime: Date
 	public var duration: TimeInterval
@@ -48,7 +48,8 @@ public class AirMapFlightPlan: Mappable {
 	// Rulesets
 	public var rulesetIds = [AirMapRulesetId]()
 
-	// Flight Features
+	// Context
+	public var flightDescription: String?
 	public var flightFeaturesValue = [AirMapFlightFeatureId: Any]()
 
 	// Assigned once a flight plan is submitted and a flight is created
@@ -98,6 +99,7 @@ public class AirMapFlightPlan: Mappable {
 		startTime           <-  (map["start_time"], dateTransform)
 		rulesetIds          <-   map["rulesets"]
 		flightId            <-  (map["flight_id"], AirMapIdTransform())
+		flightDescription   <-   map["flight_description"]
 		flightFeaturesValue <-  (map["flight_features"], AirMapIdDictionaryTransform())
 		
 		switch map.mappingType {

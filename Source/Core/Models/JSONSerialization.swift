@@ -66,39 +66,43 @@ extension AirMapAdvisory: ImmutableMappable {
 			
 			let airspaceType: AirMapAirspaceType = (try? map.value("type")) ?? .unclassified
 			name = (try? map.value("name") as String) ?? airspaceType.title
-			
-			let props: [String: Any] = try map.value("properties")
 
-			switch airspaceType {
-			case .airport:
-				properties = AirportProperties(JSON: props)
-			case .amaField:
-				properties = AMAFieldProperties(JSON: props)
-			case .controlledAirspace:
-				properties = ControlledAirspaceProperties(JSON: props)
-			case .city:
-				properties = CityProperties(JSON: props)
-			case .custom:
-				properties = CustomProperties(JSON: props)
-			case .emergency:
-				properties = EmergencyProperties(JSON: props)
-			case .heliport:
-				properties = HeliportProperties(JSON: props)
-			case .park:
-				properties = ParkProperties(JSON: props)
-			case .powerPlant:
-				properties = PowerPlantProperties(JSON: props)
-			case .school:
-				properties = SchoolProperties(JSON: props)
-			case .specialUse:
-				properties = SpecialUseProperties(JSON: props)
-			case .tfr:
-				properties = TFRProperties(JSON: props)
-			case .university:
-				properties = UniversityProperties(JSON: props)
-			case .wildfire:
-				properties = WildfireProperties(JSON: props)
-			default:
+			if let props: [String: Any] = try? map.value("properties") {
+				switch airspaceType {
+				case .airport:
+					properties = AirportProperties(JSON: props)
+				case .amaField:
+					properties = AMAFieldProperties(JSON: props)
+				case .controlledAirspace:
+					properties = ControlledAirspaceProperties(JSON: props)
+				case .city:
+					properties = CityProperties(JSON: props)
+				case .custom:
+					properties = CustomProperties(JSON: props)
+				case .emergency:
+					properties = EmergencyProperties(JSON: props)
+				case .heliport:
+					properties = HeliportProperties(JSON: props)
+				case .notam:
+					properties = NOTAMProperties(JSON: props)
+				case .park:
+					properties = ParkProperties(JSON: props)
+				case .powerPlant:
+					properties = PowerPlantProperties(JSON: props)
+				case .school:
+					properties = SchoolProperties(JSON: props)
+				case .specialUse:
+					properties = SpecialUseProperties(JSON: props)
+				case .tfr:
+					properties = TFRProperties(JSON: props)
+				case .university:
+					properties = UniversityProperties(JSON: props)
+				case .wildfire:
+					properties = WildfireProperties(JSON: props)
+				default:
+					properties = nil
+				}
+			} else {
 				properties = nil
 			}
 		}
@@ -182,7 +186,12 @@ extension AirMapAdvisory.ControlledAirspaceProperties: ImmutableMappable {
 		isLaancProvider        =  try? map.value("laanc")
 		supportsAuthorization  =  try? map.value("authorization")
 		url                    =  try? map.value("url", using: URLTransform())
-	}
+		icao                   =  try? map.value("icao")
+		airportID              =  try? map.value("airport_id")
+		airportName            =  try? map.value("airport_name")
+		ceiling                =  try? map.value("ceiling")
+		floor                  =  try? map.value("floor")
+  }
 }
 
 extension AirMapAdvisory.CustomProperties: ImmutableMappable {
@@ -504,9 +513,9 @@ extension AirMapFlightBriefing: ImmutableMappable {
 		do {
 			createdAt      =  try  map.value("created_at", using: dateTransform)
 			rulesets       =  try  map.value("rulesets")
+			flightFeatures = (try? map.value("flight_features")) ?? []
 			status         =  try  map.value("airspace")
 			authorizations = (try? map.value("authorizations")) ?? []
-			validations    = (try? map.value("validations")) ?? []
 		}
 		catch {
 			AirMap.logger.error(error)
