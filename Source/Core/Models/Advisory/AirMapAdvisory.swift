@@ -208,6 +208,7 @@ public protocol HasAuthorization {
 	var isLaancProvider: Bool?  { get }
 	var supportsAuthorization: Bool?  { get }
 	var floor: Double? { get }
+	var ceiling: Double? { get }
 }
 
 
