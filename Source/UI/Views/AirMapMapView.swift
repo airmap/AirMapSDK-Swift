@@ -193,7 +193,8 @@ extension AirMapMapView {
 			.disposed(by: disposeBag)
 
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)
-			.subscribe(onNext: { [unowned self] (jurisdictions, style, rulesetConfig) in
+			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig) in
+				guard let `self` = self else { return }
 
 				// Configure the map with the active rulesets
 				// Notify the delegate of available jurisdictions and activated rulesets
