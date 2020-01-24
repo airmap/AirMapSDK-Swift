@@ -150,7 +150,8 @@ extension AirMapMapView {
 			fatalError("A Mapbox access token is required to use the AirMap SDK UI map component. " +
 				"https://www.mapbox.com/help/define-access-token/")
 		}
-		MGLAccountManager.accessToken = token
+
+		MGLAccountManager.accessToken = NSString(utf8String: token)
 	}
 
 	private func setupBindings() {
@@ -232,30 +233,28 @@ extension AirMapMapView {
 	}
 
 	private func setupAppearance() {
-		
+
 		let image = UIImage(named: "info_icon", in: AirMapBundle.ui, compatibleWith: nil)!
 		attributionButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
-		attributionButtonMargins = CGPoint(x: 0, y: 10)
-		
-		logoViewMargins = CGPoint(x: 30, y: 10)
-		logoViewPosition = .bottomRight
-		
+
 		let airMapLogo = UIImage(named: "map_logo", in: AirMapBundle.ui, compatibleWith: nil)
 		airMapLogoView = UIImageView(image: airMapLogo)
-		
-		addSubview(airMapLogoView)
+
+		attributionButtonMargins = CGPoint(x: 0, y: 10)
+		logoViewMargins = CGPoint(x: 30, y: 10)
+		logoViewPosition = .bottomRight
+
+		insertSubview(airMapLogoView, aboveSubview: logoView)
 		airMapLogoView.translatesAutoresizingMaskIntoConstraints = false
-		
 		NSLayoutConstraint.activate([
-			airMapLogoView.heightAnchor.constraint(equalTo: logoView.heightAnchor),
-			airMapLogoView.centerYAnchor.constraint(equalTo: logoView.centerYAnchor),
-			airMapLogoView.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: 2)
-		])
-		
+			airMapLogoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 2),
+			airMapLogoView.centerYAnchor.constraint(equalTo: logoView.centerYAnchor)
+			])
+
 		isPitchEnabled = false
 		allowsRotating = false
 	}
-	
+
 	// MARK: - Configuration
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset]) {
 		
