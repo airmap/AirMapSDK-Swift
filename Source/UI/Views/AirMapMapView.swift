@@ -240,14 +240,14 @@ extension AirMapMapView {
 		let airMapLogo = UIImage(named: "map_logo", in: AirMapBundle.ui, compatibleWith: nil)
 		airMapLogoView = UIImageView(image: airMapLogo)
 
-		attributionButtonMargins = CGPoint(x: 0, y: 10)
+		attributionButtonMargins = CGPoint(x: 6, y: 10)
 		logoViewMargins = CGPoint(x: 30, y: 10)
 		logoViewPosition = .bottomRight
 
 		insertSubview(airMapLogoView, aboveSubview: logoView)
 		airMapLogoView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			airMapLogoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 2),
+			airMapLogoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
 			airMapLogoView.centerYAnchor.constraint(equalTo: logoView.centerYAnchor)
 			])
 
