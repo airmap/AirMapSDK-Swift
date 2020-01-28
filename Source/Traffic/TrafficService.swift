@@ -42,7 +42,7 @@ internal class TrafficService: MQTTSessionDelegate {
 	internal weak var delegate: AirMapTrafficObserver?
 
 	internal var authToken: String? {
-		set { client.password = authToken }
+		set { client.password = newValue }
 		get { return client.password }
 	}
 
