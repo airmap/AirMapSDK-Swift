@@ -38,6 +38,7 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		submitButton.isHidden = true
 		setupBindings()
 		setupBranding()
 	}
@@ -45,20 +46,21 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
+		submitButton.isHidden = false
 		smsCode.becomeFirstResponder()
 		trackView()
 	}
-	
-	override var canBecomeFirstResponder : Bool {
-		
-		return true
-	}
-	
+
 	override var inputAccessoryView: UIView? {
 		
 		return submitButton
 	}
-	
+
+	override var canBecomeFirstResponder : Bool {
+
+		return true
+	}
+
 	fileprivate func setupBindings() {
 		
 		smsTextField.rx.text.asObservable()
