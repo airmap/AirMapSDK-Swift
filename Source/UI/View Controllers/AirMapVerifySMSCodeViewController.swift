@@ -40,12 +40,12 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 		
 		setupBindings()
 		setupBranding()
-		smsCode.becomeFirstResponder()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
+		smsCode.becomeFirstResponder()
 		trackView()
 	}
 	
