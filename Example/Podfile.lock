@@ -1,6 +1,7 @@
 PODS:
   - AirMapSDK (4.0.0.alpha.1):
     - AirMapSDK/Core (= 4.0.0.alpha.1)
+    - AirMapSDK/SystemStatus (= 4.0.0.alpha.1)
     - AirMapSDK/Telemetry (= 4.0.0.alpha.1)
     - AirMapSDK/Traffic (= 4.0.0.alpha.1)
     - AirMapSDK/UI (= 4.0.0.alpha.1)
@@ -14,6 +15,8 @@ PODS:
     - RxSwift (~> 5.0)
     - RxSwiftExt (~> 5.0)
     - SwiftTurf
+  - AirMapSDK/SystemStatus (4.0.0.alpha.1):
+    - AirMapSDK/Core
   - AirMapSDK/Telemetry (4.0.0.alpha.1):
     - AirMapSDK/Core
     - CocoaAsyncSocket
@@ -126,7 +129,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: bb25dbb97dc30728e0f2bbcf676ae2f686786add
+  AirMapSDK: 5e2611b59db8cac1c9307954e900446115184dbf
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987

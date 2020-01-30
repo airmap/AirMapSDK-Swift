@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target = '10.0'
 	s.osx.deployment_target = '10.12'
 	
-	s.default_subspecs = 'Core', 'Traffic', 'Telemetry', 'UI'
+	s.default_subspecs = 'Core', 'SystemStatus', 'Traffic', 'Telemetry', 'UI'
 
 	s.subspec 'Core' do |core|
 		core.ios.frameworks = 'UIKit'
@@ -52,7 +52,13 @@ Pod::Spec.new do |s|
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/Localizations/**/*']
 	end
-	
+
+	s.subspec 'SystemStatus' do |status|
+		status.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_SYSTEMSTATUS' }
+		status.dependency 'AirMapSDK/Core'
+		status.source_files = 'Source/SystemStatus/*'
+	end
+
 	s.subspec 'Traffic' do |traffic|
 		traffic.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_TRAFFIC' }
 		traffic.dependency 'AirMapSDK/Core'

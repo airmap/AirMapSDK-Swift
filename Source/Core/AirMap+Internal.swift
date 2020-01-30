@@ -47,6 +47,10 @@ extension AirMap {
 	internal static let trafficService = TrafficService()
 	#endif
 
+	#if AIRMAP_SYSTEMSTATUS
+	internal static let systemStatusService = AirMapSystemStatusService()
+	#endif
+
 	internal static let disposeBag = DisposeBag()
 
 }
