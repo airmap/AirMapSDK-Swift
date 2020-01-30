@@ -74,7 +74,12 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 		
 		phone.becomeFirstResponder()
 	}
-	
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		phone.resignFirstResponder()
+	}
+
 	override var inputAccessoryView: UIView? {
 		return submitButton
 	}
@@ -136,6 +141,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	
 	fileprivate func setupPhoneNumberField() {
 		
+		phone.inputAccessoryView = submitButton
 		phone?.defaultRegion = regionCode
 	}
 	
