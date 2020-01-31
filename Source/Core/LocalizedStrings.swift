@@ -106,6 +106,8 @@ public struct LocalizedStrings {
 		
 		public static let notam = NSLocalizedString("AIRSPACE_TYPE_NOTAM", bundle: bundle, value: "NOTAM", comment: "Name for airspace type NOTAM")
 		
+		public static let notification = NSLocalizedString("AIRSPACE_TYPE_NOTIFICATION", bundle: bundle, value: "Notification", comment: "Name for airspace type Notification")
+
 		public static let obstacle = NSLocalizedString("AIRSPACE_TYPE_OBSTACLE", bundle: bundle, value: "Obstacle", comment: "Name for airspace type Obstacle")
 
 		public static let park = NSLocalizedString("AIRSPACE_TYPE_NATIONAL_PARK", bundle: bundle, value: "National Park", comment: "Name for airspace type National Park")

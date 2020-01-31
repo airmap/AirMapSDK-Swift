@@ -145,7 +145,13 @@ public struct AirMapAdvisory {
 		public let endTime: Date?
 		public let type: String?
 	}
-	
+
+	/// Notification advisory properties
+	public struct NotificationProperties: AdvisoryProperties, HasOptionalURL {
+		public let body: String?
+		public let url: URL?
+	}
+
 	/// Park advisory properties
 	public struct ParkProperties: AdvisoryProperties, HasOptionalURL {
 		public let type: String?
