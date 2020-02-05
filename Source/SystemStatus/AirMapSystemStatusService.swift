@@ -20,23 +20,84 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Starscream
 
 public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
 
 	public var delegate: AirMapSystemStatusDelegate?
 
 	private let disposeBag = DisposeBag()
-	private let client = AirMapSystemStatusClient()
+	private var client: AirMapSystemStatusClient?
+
 	public init() {
 		setupbindings()
 	}
 
 	private func setupbindings() {
 
+		AirMap.authService.authState
+			.catchErrorJustReturn(.loggedOut)
+			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
+			.disposed(by: disposeBag)
+
+
 		delegate = self
 
 		rx.airMapSystemStatusUpdate
 			.subscribe()
 			.disposed(by: disposeBag)
+	}
+
+	private func handle(state: AuthService.AuthState) {
+		disconnect()
+		switch state {
+		case .loggedOut:
+			break
+		case .anonymous(let token):
+			connect(with: token.idToken)
+		case .authenticated(let state):
+			connect(with: state.lastTokenResponse?.accessToken)
+
+		}
+	}
+
+	private func connect(with accessToken: String?) {
+		guard let accessToken = accessToken else { return }
+		client = AirMapSystemStatusClient(accessToken: accessToken)
+		client?.advancedDelegate = self
+		client?.connect()
+	}
+
+	private func disconnect() {
+		self.client?.disconnect()
+	}
+}
+
+extension AirMapSystemStatusService: WebSocketAdvancedDelegate {
+	public func websocketDidConnect(socket: WebSocket) {
+		print("Did connect")
+	}
+
+	public func websocketDidDisconnect(socket: WebSocket, error: Error?) {
+		print("Did disconnect err \(error)")
+	}
+
+	public func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
+		print("did receive text \(text)")
+		if let data = response.buffer as Data? {
+			print("did receive text with data \(String(data: data, encoding: .utf8))")
+		}
+	}
+
+	public func websocketDidReceiveData(socket: WebSocket, data: Data, response: WebSocket.WSResponse) {
+		print("did receive data \(String(data: data, encoding: .utf8))")
+	}
+
+	public func websocketHttpUpgrade(socket: WebSocket, request: String) {
+		print("upgrade req \(request)")
+	}
+
+	public func websocketHttpUpgrade(socket: WebSocket, response: String) {
+		print("upgrade resp \(response)")
 	}
 }
