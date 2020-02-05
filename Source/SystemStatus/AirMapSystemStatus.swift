@@ -4,13 +4,25 @@
 //
 //  Created by Michael Odere on 1/27/20.
 //
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
 
 import ObjectMapper
 
-public struct AirMapSystemStatus {
-	public let level: AirMapSystemStatus.Level
-	public let message: String
-
+@objc public class AirMapSystemStatus: NSObject {
+	public var level: AirMapSystemStatus.Level!
+	public var message: String!
+	
 	public enum Level: String, CaseIterable {
 		case unkown
 		case normal
@@ -18,39 +30,35 @@ public struct AirMapSystemStatus {
 		case degraded
 		case failed
 	}
-
+	
 	init(level: AirMapSystemStatus.Level, message: String) {
 		self.level = level
 		self.message = message
 	}
-
+	
+	public required init?(map: Map) {}
 }
 
-extension AirMapSystemStatus: ImmutableMappable {
-	public init(map: Map) throws {
-		do {
-			level       = try map.value("level", using: AirMapSystemStatusLevelTransform())
-			message     = try map.value("message")
-		}
-		catch {
-			AirMap.logger.error("Failed to parse SystemStatus", metadata: ["error": .string(error.localizedDescription)])
-			throw error
-		}
+extension AirMapSystemStatus: Mappable {
+	
+	public func mapping(map: Map) {
+		level       <- (map["level"], AirMapSystemStatusLevelTransform())
+		message     <- map["message"]
 	}
 }
 
 class AirMapSystemStatusLevelTransform: TransformType {
-
+	
 	typealias Object = AirMapSystemStatus.Level
 	typealias JSON = String
-
+	
 	func transformFromJSON(_ value: Any?) -> AirMapSystemStatus.Level? {
 		if let string = value as? String {
 			return AirMapSystemStatus.Level(rawValue: string)
 		}
 		return nil
 	}
-
+	
 	func transformToJSON(_ value: AirMapSystemStatus.Level?) -> String? {
 		if let level = value {
 			return level.rawValue

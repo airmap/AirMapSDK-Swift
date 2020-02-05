@@ -17,6 +17,7 @@ PODS:
     - SwiftTurf
   - AirMapSDK/SystemStatus (4.0.0.alpha.1):
     - AirMapSDK/Core
+    - Starscream (~> 3.1.1)
   - AirMapSDK/Telemetry (4.0.0.alpha.1):
     - AirMapSDK/Core
     - CocoaAsyncSocket
@@ -45,22 +46,22 @@ PODS:
   - Mapbox-iOS-SDK (5.6.1):
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
-  - Nimble (8.0.2)
+  - Nimble (8.0.5)
   - ObjectMapper (3.5.1)
-  - OHHTTPStubs (8.0.0):
-    - OHHTTPStubs/Default (= 8.0.0)
-  - OHHTTPStubs/Core (8.0.0)
-  - OHHTTPStubs/Default (8.0.0):
+  - OHHTTPStubs (9.0.0):
+    - OHHTTPStubs/Default (= 9.0.0)
+  - OHHTTPStubs/Core (9.0.0)
+  - OHHTTPStubs/Default (9.0.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (8.0.0):
+  - OHHTTPStubs/JSON (9.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (8.0.0):
+  - OHHTTPStubs/NSURLSession (9.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (8.0.0)
-  - OHHTTPStubs/Swift (8.0.0):
+  - OHHTTPStubs/OHPathHelpers (9.0.0)
+  - OHHTTPStubs/Swift (9.0.0):
     - OHHTTPStubs/Default
   - PhoneNumberKit (3.2.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.2.0)
@@ -68,7 +69,7 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.2.0)
   - PhoneNumberKit/UIKit (3.2.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - Quick (2.1.0)
+  - Quick (2.2.0)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -87,8 +88,9 @@ PODS:
   - RxSwiftExt/RxCocoa (5.2.0):
     - RxCocoa (~> 5.0)
     - RxSwiftExt/Core
+  - Starscream (3.1.1)
   - SwiftMQTT (3.0.1)
-  - SwiftProtobuf (1.7.0)
+  - SwiftProtobuf (1.8.0)
   - SwiftTurf (0.3.3)
 
 DEPENDENCIES:
@@ -99,10 +101,6 @@ DEPENDENCIES:
   - Quick
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Nimble
-    - OHHTTPStubs
-    - Quick
   trunk:
     - Alamofire
     - AppAuth
@@ -113,13 +111,17 @@ SPEC REPOS:
     - Logging
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
+    - Nimble
     - ObjectMapper
+    - OHHTTPStubs
     - PhoneNumberKit
+    - Quick
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
     - RxSwiftExt
+    - Starscream
     - SwiftMQTT
     - SwiftProtobuf
     - SwiftTurf
@@ -129,7 +131,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: 5e2611b59db8cac1c9307954e900446115184dbf
+  AirMapSDK: addc24e19b2ca6294f968369e543914e3ec954d4
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -139,18 +141,19 @@ SPEC CHECKSUMS:
   Logging: 7838d379d234d7e5ae1265fa02804a9084caf04c
   Mapbox-iOS-SDK: b31bd62a5dd5b7e688eab787acd3d093a122f4d6
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
-  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
+  Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
+  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
-  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftMQTT: 983eeb29e8c8173ed953e0238d2f99b79ff3ccd2
-  SwiftProtobuf: 4fd9645e69b72cbae6ec8da5be0cdd20ca6565dd
+  SwiftProtobuf: 2cbd9409689b7df170d82a92a33443c8e3e14a70
   SwiftTurf: 340da9dbf60fe7ded0cac158657ec463269d581c
 
 PODFILE CHECKSUM: 49598a7476ee36a4c507bb3b31b4ae89b2632a65

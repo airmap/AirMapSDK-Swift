@@ -57,16 +57,19 @@ struct Constants {
 		static var rulesUrl: String {
 			return url(for: "rules", v: 1)
 		}
+		static var systemUrl: String {
+			return url(for: "system", v: 1, scheme: "wss")
+		}
 		static var tileDataUrl: String {
 			return url(for: "tiledata", v: 1)
 		}
 
-		static func url(for resource: String, v version: Int) -> String {
+		static func url(for resource: String, v version: Int, scheme: String = "https") -> String {
 			if let override = AirMap.configuration.override(for: resource) {
 				return override
 			}
 			var comps = URLComponents()
-			comps.scheme = "https"
+			comps.scheme = scheme
 			comps.host = AirMap.configuration.host(for: "api")
 			comps.path = "/" + [resource, "v\(version)"].joined(separator: "/")
 			return comps.string!
