@@ -21,7 +21,7 @@ import ObjectMapper
 
 @objc public class AirMapSystemStatus: NSObject {
 	public var level: AirMapSystemStatus.Level!
-	public var message: String!
+	public var message: String?
 	
 	public enum Level: String, CaseIterable {
 		case unkown

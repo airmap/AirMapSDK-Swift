@@ -31,13 +31,13 @@ extension AirMap {
 	/// Suspend all active status alerts
 	/// Typically called when the app enters the background.
 	public static func suspendSystemStatus() {
-//		systemStatusService.disconnect()
+		systemStatusService.disconnect()
 	}
 
 	/// Resume all active status alerts
 	/// Typically called when the app enters the foreground.
-	public static func resumeSystemStatus() {
-//		systemStatusService.connect()
+	public static func resumeSystemStatus(with accessToken: String) {
+		systemStatusService.connect(with: accessToken)
 	}
 }
 

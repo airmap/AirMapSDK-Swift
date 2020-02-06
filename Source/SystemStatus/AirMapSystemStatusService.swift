@@ -33,19 +33,23 @@ public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
 		setupbindings()
 	}
 
-	private func setupbindings() {
+	func connect(with accessToken: String) {
+		client = AirMapSystemStatusClient(accessToken: accessToken)
+		client?.delegate = self
+		client?.connect()
+	}
 
+	func disconnect() {
+		self.client?.disconnect()
+	}
+
+	private func setupbindings() {
 		AirMap.authService.authState
 			.catchErrorJustReturn(.loggedOut)
 			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
 			.disposed(by: disposeBag)
 
-
 		delegate = self
-
-		rx.airMapSystemStatusUpdate
-			.subscribe()
-			.disposed(by: disposeBag)
 	}
 
 	private func handle(state: AuthService.AuthState) {
@@ -56,48 +60,21 @@ public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
 		case .anonymous(let token):
 			connect(with: token.idToken)
 		case .authenticated(let state):
-			connect(with: state.lastTokenResponse?.accessToken)
-
+			guard let accessToken = state.lastTokenResponse?.accessToken else { return }
+			connect(with: accessToken)
 		}
-	}
-
-	private func connect(with accessToken: String?) {
-		guard let accessToken = accessToken else { return }
-		client = AirMapSystemStatusClient(accessToken: accessToken)
-		client?.advancedDelegate = self
-		client?.connect()
-	}
-
-	private func disconnect() {
-		self.client?.disconnect()
 	}
 }
 
-extension AirMapSystemStatusService: WebSocketAdvancedDelegate {
-	public func websocketDidConnect(socket: WebSocket) {
-		print("Did connect")
-	}
+extension AirMapSystemStatusService: WebSocketDelegate {
+    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+		if let status = AirMapSystemStatus(JSONString: text) {
 
-	public func websocketDidDisconnect(socket: WebSocket, error: Error?) {
-		print("Did disconnect err \(error)")
-	}
-
-	public func websocketDidReceiveMessage(socket: WebSocket, text: String, response: WebSocket.WSResponse) {
-		print("did receive text \(text)")
-		if let data = response.buffer as Data? {
-			print("did receive text with data \(String(data: data, encoding: .utf8))")
+			delegate?.airMapSystemStatusUpdate?(status)
 		}
 	}
 
-	public func websocketDidReceiveData(socket: WebSocket, data: Data, response: WebSocket.WSResponse) {
-		print("did receive data \(String(data: data, encoding: .utf8))")
-	}
-
-	public func websocketHttpUpgrade(socket: WebSocket, request: String) {
-		print("upgrade req \(request)")
-	}
-
-	public func websocketHttpUpgrade(socket: WebSocket, response: String) {
-		print("upgrade resp \(response)")
-	}
+    public func websocketDidConnect(socket: WebSocketClient) {}
+    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {}
+    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {}
 }
