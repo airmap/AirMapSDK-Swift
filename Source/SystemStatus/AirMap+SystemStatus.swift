@@ -19,8 +19,10 @@
 
 import Foundation
 
-@objc public protocol AirMapSystemStatusDelegate {
-	@objc optional func airMapSystemStatusUpdate(_ status: AirMapSystemStatus)
+public protocol AirMapSystemStatusDelegate {
+	func airMapSystemStatusUpdate(_ status: AirMapSystemStatus)
+	func airMapSystemStatusDidConnect()
+	func airMapSystemStatusDidDisconnect(error: Error?)
 }
 
 extension AirMap {
@@ -38,42 +40,5 @@ extension AirMap {
 	/// Typically called when the app enters the foreground.
 	public static func resumeSystemStatus(with accessToken: String) {
 		systemStatusService.connect(with: accessToken)
-	}
-}
-
-import RxSwift
-import RxCocoa
-import RxSwiftExt
-
-extension AirMapSystemStatusService: HasDelegate {
-	public typealias Delegate = AirMapSystemStatusDelegate
-}
-
-public class RxAirMapSystemStatusDelegateProxy: DelegateProxy<AirMapSystemStatusService, AirMapSystemStatusDelegate>, DelegateProxyType, AirMapSystemStatusDelegate {
-
-	public init(service: AirMapSystemStatusService) {
-		super.init(parentObject: service, delegateProxy: RxAirMapSystemStatusDelegateProxy.self)
-	}
-
-	public static func registerKnownImplementations() {
-		register(make: RxAirMapSystemStatusDelegateProxy.init)
-	}
-}
-
-extension AirMapSystemStatusService: ReactiveCompatible {}
-
-extension Reactive where Base: AirMapSystemStatusService {
-
-	public var delegate: DelegateProxy<AirMapSystemStatusService, AirMapSystemStatusDelegate> {
-		return RxAirMapSystemStatusDelegateProxy.proxy(for: base)
-	}
-
-	public func setDelegate(_ delegate: AirMapSystemStatusDelegate) -> Disposable {
-		return RxAirMapSystemStatusDelegateProxy.installForwardDelegate(delegate, retainDelegate: true, onProxyForObject: self.base)
-	}
-
-	public var airMapSystemStatusUpdate: Observable<AirMapSystemStatus> {
-		return delegate.methodInvoked(#selector(AirMapSystemStatusDelegate.airMapSystemStatusUpdate(_:)))
-			.map { $0[0] as! AirMapSystemStatus}
 	}
 }

@@ -22,7 +22,7 @@ import RxCocoa
 import RxSwift
 import Starscream
 
-public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
+public class AirMapSystemStatusService {
 
 	public var delegate: AirMapSystemStatusDelegate?
 
@@ -30,7 +30,7 @@ public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
 	private var client: AirMapSystemStatusClient?
 
 	public init() {
-		setupbindings()
+		setupBindings()
 	}
 
 	func connect(with accessToken: String) {
@@ -43,13 +43,12 @@ public class AirMapSystemStatusService: AirMapSystemStatusDelegate {
 		self.client?.disconnect()
 	}
 
-	private func setupbindings() {
+	private func setupBindings() {
 		AirMap.authService.authState
 			.catchErrorJustReturn(.loggedOut)
 			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
 			.disposed(by: disposeBag)
 
-		delegate = self
 	}
 
 	private func handle(state: AuthService.AuthState) {
@@ -70,11 +69,17 @@ extension AirMapSystemStatusService: WebSocketDelegate {
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
 		if let status = AirMapSystemStatus(JSONString: text) {
 
-			delegate?.airMapSystemStatusUpdate?(status)
+			delegate?.airMapSystemStatusUpdate(status)
 		}
 	}
 
-    public func websocketDidConnect(socket: WebSocketClient) {}
-    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {}
+    public func websocketDidConnect(socket: WebSocketClient) {
+		delegate?.airMapSystemStatusDidConnect()
+	}
+
+    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+		delegate?.airMapSystemStatusDidDisconnect(error: error)
+	}
+
     public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {}
 }
