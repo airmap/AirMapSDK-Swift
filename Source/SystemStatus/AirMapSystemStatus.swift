@@ -40,7 +40,6 @@ import ObjectMapper
 }
 
 extension AirMapSystemStatus: Mappable {
-	
 	public func mapping(map: Map) {
 		level       <- (map["level"], AirMapSystemStatusLevelTransform())
 		message     <- map["message"]

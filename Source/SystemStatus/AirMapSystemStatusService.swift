@@ -22,14 +22,14 @@ import RxCocoa
 import RxSwift
 import Starscream
 
-public class AirMapSystemStatusService {
+class AirMapSystemStatusService {
 
-	public var delegate: AirMapSystemStatusDelegate?
+	var delegate: AirMapSystemStatusDelegate?
 
 	private let disposeBag = DisposeBag()
 	private var client: AirMapSystemStatusClient?
 
-	public init() {
+	init() {
 		setupBindings()
 	}
 
@@ -40,6 +40,7 @@ public class AirMapSystemStatusService {
 	}
 
 	func disconnect() {
+		self.client = nil
 		self.client?.disconnect()
 	}
 
@@ -48,7 +49,6 @@ public class AirMapSystemStatusService {
 			.catchErrorJustReturn(.loggedOut)
 			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
 			.disposed(by: disposeBag)
-
 	}
 
 	private func handle(state: AuthService.AuthState) {
@@ -68,8 +68,7 @@ public class AirMapSystemStatusService {
 extension AirMapSystemStatusService: WebSocketDelegate {
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
 		if let status = AirMapSystemStatus(JSONString: text) {
-
-			delegate?.airMapSystemStatusUpdate(status)
+			delegate?.airMapSystemStatusDidUpdate(status)
 		}
 	}
 

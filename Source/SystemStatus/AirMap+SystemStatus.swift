@@ -20,7 +20,7 @@
 import Foundation
 
 public protocol AirMapSystemStatusDelegate {
-	func airMapSystemStatusUpdate(_ status: AirMapSystemStatus)
+	func airMapSystemStatusDidUpdate(_ status: AirMapSystemStatus)
 	func airMapSystemStatusDidConnect()
 	func airMapSystemStatusDidDisconnect(error: Error?)
 }
@@ -31,13 +31,13 @@ extension AirMap {
 	}
 
 	/// Suspend all active status alerts
-	/// Typically called when the app enters the background.
+	/// Typically called when the app enters the background or the user logs out.
 	public static func suspendSystemStatus() {
 		systemStatusService.disconnect()
 	}
 
 	/// Resume all active status alerts
-	/// Typically called when the app enters the foreground.
+	/// Typically called when the app enters the foreground or the user logs in.
 	public static func resumeSystemStatus(with accessToken: String) {
 		systemStatusService.connect(with: accessToken)
 	}
