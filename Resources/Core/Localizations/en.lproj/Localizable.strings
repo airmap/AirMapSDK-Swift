@@ -100,6 +100,9 @@
 /* Name for airspace type NOTAM */
 "AIRSPACE_TYPE_NOTAM" = "NOTAM";
 
+/* Name for airspace type Notification */
+"AIRSPACE_TYPE_NOTIFICATION" = "Notification";
+
 /* Name for airspace type Police Station */
 "AIRSPACE_TYPE_POLICE_STATION" = "Police Station";
 
