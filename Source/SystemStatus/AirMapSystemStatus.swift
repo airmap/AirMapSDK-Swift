@@ -24,7 +24,7 @@ import ObjectMapper
 	public var message: String?
 	
 	public enum Level: String, CaseIterable {
-		case unkown
+		case unknown
 		case normal
 		case maintenance
 		case degraded
