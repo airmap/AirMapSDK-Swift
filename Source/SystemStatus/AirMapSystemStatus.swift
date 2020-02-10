@@ -23,6 +23,7 @@ public struct AirMapSystemStatus {
 	public let level: AirMapSystemStatus.Level
 	public let message: String?
 
+	public enum Level: String {
 		case degraded
 		case failed
 		case maintenance
