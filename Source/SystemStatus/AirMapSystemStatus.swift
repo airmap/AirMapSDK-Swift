@@ -19,30 +19,43 @@
 
 import ObjectMapper
 
-@objc public class AirMapSystemStatus: NSObject {
-	public var level: AirMapSystemStatus.Level!
-	public var message: String?
+public struct AirMapSystemStatus {
+	public let level: AirMapSystemStatus.Level
+	public let message: String?
 
-	public enum Level: String {
-		case unknown
-		case normal
-		case maintenance
 		case degraded
 		case failed
+		case maintenance
+		case normal
+		case unknown
+
+		public var description: String {
+			let localized = LocalizedStrings.SystemStatus.self
+			switch self {
+			case .degraded:
+				return localized.degradedLevel
+			case .failed:
+				return localized.failedLevel
+			case .maintenance:
+				return localized.maintenanceLevel
+			case .normal:
+				return localized.normalLevel
+			case .unknown:
+				return localized.unkownLevel
+			}
+		}
 	}
 	
 	init(level: AirMapSystemStatus.Level, message: String) {
 		self.level = level
 		self.message = message
 	}
-	
-	public required init?(map: Map) {}
 }
 
-extension AirMapSystemStatus: Mappable {
-	public func mapping(map: Map) {
-		level       <- (map["level"], AirMapSystemStatusLevelTransform())
-		message     <- map["message"]
+extension AirMapSystemStatus: ImmutableMappable {
+	public init(map: Map) throws {
+		level       = (try? map.value("level", using: AirMapSystemStatusLevelTransform())) ?? .unknown
+		message     = try? map.value("message")
 	}
 }
 

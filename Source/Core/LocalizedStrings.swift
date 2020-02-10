@@ -366,7 +366,20 @@ public struct LocalizedStrings {
 		
 		public static let temperatureFormatFahrenheit = NSLocalizedString("UNITS_TEMPERATURE_FAHRENHEIT_FORMAT", bundle: bundle, value: "%1$@°F", comment: "Unit and format for displaying temperature in Fahrenheit")
 	}
-	
+
+	public struct SystemStatus {
+
+		public static let degradedLevel = NSLocalizedString("SYSTEM_STATUS_DEGRADED_LEVEL", bundle: bundle, value: "Degraded", comment: "System status value when the staus is degraded")
+
+		public static let failedLevel = NSLocalizedString("SYSTEM_STATUS_FAILED_LEVEL", bundle: bundle, value: "Failed", comment: "System status value when the staus is failed")
+
+		public static let maintenanceLevel = NSLocalizedString("SYSTEM_STATUS_MAINTENANCE_LEVEL", bundle: bundle, value: "Maintenance", comment: "System status value when the staus is maintenance")
+
+		public static let normalLevel = NSLocalizedString("SYSTEM_STATUS_NORMAL_LEVEL", bundle: bundle, value: "Normal", comment: "System status value when the staus is normal")
+
+		public static let unkownLevel = NSLocalizedString("SYSTEM_STATUS_UNKOWN_LEVEL", bundle: bundle, value: "Unkown", comment: "System status value when the staus is unkown")
+	}
+
 	public struct Traffic {
 		
 		public static let alertWithAircraftIdFormat = NSLocalizedString("TRAFFIC_ALERT_WITH_AIRCRAFT_ID_FORMAT", bundle: bundle, value: "Traffic %1$@\nAltitude %2$@\n%3$@", comment: "Format for traffic alerts. 1) aircraft id, 2) altitude, 3) ground speed")
