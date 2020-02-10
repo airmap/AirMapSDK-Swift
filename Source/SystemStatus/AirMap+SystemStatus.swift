@@ -38,7 +38,7 @@ extension AirMap {
 
 	/// Resume all active status alerts
 	/// Typically called when the app enters the foreground or the user logs in.
-	public static func resumeSystemStatus(with accessToken: String) {
-		systemStatusService.connect(with: accessToken)
+	public static func resumeSystemStatus() {
+		systemStatusService.connect()
 	}
 }

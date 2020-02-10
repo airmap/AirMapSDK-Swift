@@ -26,6 +26,7 @@ class AirMapSystemStatusService {
 
 	var delegate: AirMapSystemStatusDelegate?
 
+	private let connectSubject = PublishSubject<Void>()
 	private let disposeBag = DisposeBag()
 	private var client: AirMapSystemStatusClient?
 
@@ -33,7 +34,11 @@ class AirMapSystemStatusService {
 		setupBindings()
 	}
 
-	func connect(with accessToken: String) {
+	func connect() {
+		connectSubject.onNext(())
+	}
+
+	private func connect(with accessToken: String) {
 		client = AirMapSystemStatusClient(accessToken: accessToken)
 		client?.delegate = self
 		client?.connect()
@@ -45,7 +50,11 @@ class AirMapSystemStatusService {
 	}
 
 	private func setupBindings() {
-		AirMap.authService.authState
+		let connect = connectSubject
+			.withLatestFrom(AirMap.authService.authState)
+
+		Observable.merge(connect, AirMap.authService.authState.asObservable())
+			.debounce(.seconds(1), scheduler: MainScheduler.instance)
 			.catchErrorJustReturn(.loggedOut)
 			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
 			.disposed(by: disposeBag)
@@ -69,6 +78,8 @@ extension AirMapSystemStatusService: WebSocketDelegate {
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
 		if let status = AirMapSystemStatus(JSONString: text) {
 			delegate?.airMapSystemStatusDidUpdate(status)
+		} else {
+			AirMap.logger.error("Failed to parse AirMapSystemStatus", metadata: ["raw text": .stringConvertible(text)])
 		}
 	}
 
