@@ -114,7 +114,7 @@ struct Constants {
 	}
 
 	struct SystemStatus {
-		static let timeout: Double = 5.0
+		static let timeout: TimeInterval = 5.0
 	}
 
 	struct Traffic {
