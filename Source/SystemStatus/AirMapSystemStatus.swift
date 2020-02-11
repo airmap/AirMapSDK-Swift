@@ -55,7 +55,7 @@ public struct AirMapSystemStatus {
 
 extension AirMapSystemStatus: ImmutableMappable {
 	public init(map: Map) throws {
-		level       = (try? map.value("level", using: EnumTransform())) ?? .unknown
+		level       = (try? map.value("level")) ?? .unknown
 		message     = try? map.value("message")
 	}
 }

@@ -28,7 +28,7 @@ class SystemStatusService {
 
 	private let connectSubject = PublishSubject<Void>()
 	private let disposeBag = DisposeBag()
-	private var client: AirMapSystemStatusClient?
+	private var client: SystemStatusClient?
 
 	init() {
 		setupBindings()
@@ -38,7 +38,7 @@ class SystemStatusService {
 		connectSubject.onNext(())
 	}
 
-	private func connect(with accessToken: String) {
+	private func connect(with accessToken: String?) {
 		client = SystemStatusClient(accessToken: accessToken)
 		client?.delegate = self
 		client?.connect()
@@ -63,10 +63,8 @@ class SystemStatusService {
 	private func handle(state: AuthService.AuthState) {
 		disconnect()
 		switch state {
-		case .loggedOut:
-			break
-		case .anonymous(let token):
-			connect(with: token.idToken)
+		case .loggedOut, .anonymous:
+			connect(with: nil)
 		case .authenticated(let state):
 			guard let accessToken = state.lastTokenResponse?.accessToken else { return }
 			connect(with: accessToken)
