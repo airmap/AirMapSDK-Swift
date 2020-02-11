@@ -56,7 +56,7 @@ Pod::Spec.new do |s|
 	s.subspec 'SystemStatus' do |status|
 		status.xcconfig = { 'OTHER_SWIFT_FLAGS' => '$(inherited) -DAIRMAP_SYSTEMSTATUS' }
 		status.dependency 'AirMapSDK/Core'
-		status.dependency 'Starscream', '~> 3.1.1'
+		status.dependency 'Starscream', '~> 3.1'
 		status.source_files = 'Source/SystemStatus/*'
 	end
 

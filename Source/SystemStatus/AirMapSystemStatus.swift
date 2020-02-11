@@ -55,27 +55,7 @@ public struct AirMapSystemStatus {
 
 extension AirMapSystemStatus: ImmutableMappable {
 	public init(map: Map) throws {
-		level       = (try? map.value("level", using: AirMapSystemStatusLevelTransform())) ?? .unknown
+		level       = (try? map.value("level", using: EnumTransform())) ?? .unknown
 		message     = try? map.value("message")
-	}
-}
-
-class AirMapSystemStatusLevelTransform: TransformType {
-	
-	typealias Object = AirMapSystemStatus.Level
-	typealias JSON = String
-	
-	func transformFromJSON(_ value: Any?) -> AirMapSystemStatus.Level? {
-		if let string = value as? String {
-			return AirMapSystemStatus.Level(rawValue: string)
-		}
-		return nil
-	}
-	
-	func transformToJSON(_ value: AirMapSystemStatus.Level?) -> String? {
-		if let level = value {
-			return level.rawValue
-		}
-		return nil
 	}
 }

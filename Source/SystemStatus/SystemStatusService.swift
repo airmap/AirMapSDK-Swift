@@ -1,5 +1,5 @@
 //
-//  AirMapSystemStatusService.swift
+//  SystemStatusService.swift
 //  AirMapSDK
 //
 //  Created by Michael Odere on 1/30/20.
@@ -22,7 +22,7 @@ import RxCocoa
 import RxSwift
 import Starscream
 
-class AirMapSystemStatusService {
+class SystemStatusService {
 
 	var delegate: AirMapSystemStatusDelegate?
 
@@ -39,7 +39,7 @@ class AirMapSystemStatusService {
 	}
 
 	private func connect(with accessToken: String) {
-		client = AirMapSystemStatusClient(accessToken: accessToken)
+		client = SystemStatusClient(accessToken: accessToken)
 		client?.delegate = self
 		client?.connect()
 	}
@@ -56,7 +56,7 @@ class AirMapSystemStatusService {
 		Observable.merge(connect, AirMap.authService.authState.asObservable())
 			.debounce(.seconds(1), scheduler: MainScheduler.instance)
 			.catchErrorJustReturn(.loggedOut)
-			.subscribeNext(weak: self, AirMapSystemStatusService.handle)
+			.subscribeNext(weak: self, SystemStatusService.handle)
 			.disposed(by: disposeBag)
 	}
 
@@ -74,7 +74,7 @@ class AirMapSystemStatusService {
 	}
 }
 
-extension AirMapSystemStatusService: WebSocketDelegate {
+extension SystemStatusService: WebSocketDelegate {
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
 		if let status = AirMapSystemStatus(JSONString: text) {
 			delegate?.airMapSystemStatusDidUpdate(status)

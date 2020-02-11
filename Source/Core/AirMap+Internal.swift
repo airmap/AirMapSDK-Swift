@@ -48,7 +48,7 @@ extension AirMap {
 	#endif
 
 	#if AIRMAP_SYSTEMSTATUS
-	internal static let systemStatusService = AirMapSystemStatusService()
+	internal static let systemStatusService = SystemStatusService()
 	#endif
 
 	internal static let disposeBag = DisposeBag()
