@@ -26,7 +26,7 @@ internal class SystemStatusClient: WebSocket {
 		var request = URLRequest(url: URL(string: Constants.Api.systemUrl + "/status/monitor")!)
 		request.setValue(AirMap.configuration.apiKey, forHTTPHeaderField: HTTPClient.Header.apiKey.rawValue)
 		request.setValue(Locale.preferredLanguages.first, forHTTPHeaderField: "Accept-Language")
-		request.timeoutInterval = 5 // Sets the timeout for the connection
+		request.timeoutInterval = Constants.SystemStatus.timeout
 
 		if let accessToken = accessToken {
 			request.setValue("Bearer \(accessToken)", forHTTPHeaderField: HTTPClient.Header.authorization.rawValue)

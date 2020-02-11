@@ -113,6 +113,10 @@ struct Constants {
 		}
 	}
 
+	struct SystemStatus {
+		static let timeout: Double = 5.0
+	}
+
 	struct Traffic {
 		static var host: String {
 			if let override = AirMap.configuration.override(for: "traffic_host") {

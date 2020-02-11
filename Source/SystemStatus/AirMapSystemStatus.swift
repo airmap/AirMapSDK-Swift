@@ -24,10 +24,10 @@ public struct AirMapSystemStatus {
 	public let message: String?
 
 	public enum Level: String {
+		case normal
+		case maintenance
 		case degraded
 		case failed
-		case maintenance
-		case normal
 		case unknown
 
 		public var description: String {
@@ -42,14 +42,9 @@ public struct AirMapSystemStatus {
 			case .normal:
 				return localized.normalLevel
 			case .unknown:
-				return localized.unkownLevel
+				return localized.unknownLevel
 			}
 		}
-	}
-	
-	init(level: AirMapSystemStatus.Level, message: String) {
-		self.level = level
-		self.message = message
 	}
 }
 

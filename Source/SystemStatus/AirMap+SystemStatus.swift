@@ -19,7 +19,7 @@
 
 import Foundation
 
-public protocol AirMapSystemStatusDelegate {
+public protocol AirMapSystemStatusDelegate: class {
 	func airMapSystemStatusDidUpdate(_ status: AirMapSystemStatus)
 	func airMapSystemStatusDidConnect()
 	func airMapSystemStatusDidDisconnect(error: Error?)
@@ -27,7 +27,8 @@ public protocol AirMapSystemStatusDelegate {
 
 extension AirMap {
 	public static var systemStatusDelegate: AirMapSystemStatusDelegate? {
-		didSet { systemStatusService.delegate = systemStatusDelegate }
+		get { return systemStatusService.delegate }
+		set { systemStatusService.delegate = newValue }
 	}
 
 	/// Suspend all active status alerts

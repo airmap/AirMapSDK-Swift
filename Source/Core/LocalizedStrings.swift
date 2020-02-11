@@ -369,15 +369,15 @@ public struct LocalizedStrings {
 
 	public struct SystemStatus {
 
-		public static let degradedLevel = NSLocalizedString("SYSTEM_STATUS_DEGRADED_LEVEL", bundle: bundle, value: "Degraded", comment: "System status value when the staus is degraded")
+		public static let degradedLevel = NSLocalizedString("SYSTEM_STATUS_DEGRADED_LEVEL", bundle: bundle, value: "Degraded", comment: "System status value when the status is degraded")
 
-		public static let failedLevel = NSLocalizedString("SYSTEM_STATUS_FAILED_LEVEL", bundle: bundle, value: "Failed", comment: "System status value when the staus is failed")
+		public static let failedLevel = NSLocalizedString("SYSTEM_STATUS_FAILED_LEVEL", bundle: bundle, value: "Failed", comment: "System status value when the status is failed")
 
-		public static let maintenanceLevel = NSLocalizedString("SYSTEM_STATUS_MAINTENANCE_LEVEL", bundle: bundle, value: "Maintenance", comment: "System status value when the staus is maintenance")
+		public static let maintenanceLevel = NSLocalizedString("SYSTEM_STATUS_MAINTENANCE_LEVEL", bundle: bundle, value: "Maintenance", comment: "System status value when the status is maintenance")
 
-		public static let normalLevel = NSLocalizedString("SYSTEM_STATUS_NORMAL_LEVEL", bundle: bundle, value: "Normal", comment: "System status value when the staus is normal")
+		public static let normalLevel = NSLocalizedString("SYSTEM_STATUS_NORMAL_LEVEL", bundle: bundle, value: "Normal", comment: "System status value when the status is normal")
 
-		public static let unkownLevel = NSLocalizedString("SYSTEM_STATUS_UNKOWN_LEVEL", bundle: bundle, value: "Unkown", comment: "System status value when the staus is unkown")
+		public static let unknownLevel = NSLocalizedString("SYSTEM_STATUS_UNKNOWN_LEVEL", bundle: bundle, value: "Unknown", comment: "System status value when the status is unknown")
 	}
 
 	public struct Traffic {

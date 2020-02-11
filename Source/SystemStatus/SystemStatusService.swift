@@ -24,50 +24,49 @@ import Starscream
 
 class SystemStatusService {
 
-	var delegate: AirMapSystemStatusDelegate?
+	weak var delegate: AirMapSystemStatusDelegate?
 
-	private let connectSubject = PublishSubject<Void>()
+	private let connectionState = BehaviorSubject(value: ConnectionState.disconnected)
 	private let disposeBag = DisposeBag()
 	private var client: SystemStatusClient?
+
+	enum ConnectionState {
+		case connected
+		case disconnected
+	}
 
 	init() {
 		setupBindings()
 	}
 
 	func connect() {
-		connectSubject.onNext(())
-	}
-
-	private func connect(with accessToken: String?) {
-		client = SystemStatusClient(accessToken: accessToken)
-		client?.delegate = self
-		client?.connect()
+		connectionState.onNext(.connected)
 	}
 
 	func disconnect() {
-		self.client = nil
-		self.client?.disconnect()
+		connectionState.onNext(.disconnected)
 	}
 
 	private func setupBindings() {
-		let connect = connectSubject
-			.withLatestFrom(AirMap.authService.authState)
-
-		Observable.merge(connect, AirMap.authService.authState.asObservable())
-			.debounce(.seconds(1), scheduler: MainScheduler.instance)
+		let authState = AirMap.authService.authState
 			.catchErrorJustReturn(.loggedOut)
+
+		Observable.combineLatest(connectionState, authState)
+			.debounce(.seconds(1), scheduler: MainScheduler.instance)
 			.subscribeNext(weak: self, SystemStatusService.handle)
 			.disposed(by: disposeBag)
 	}
 
-	private func handle(state: AuthService.AuthState) {
-		disconnect()
-		switch state {
-		case .loggedOut, .anonymous:
-			connect(with: nil)
-		case .authenticated(let state):
-			guard let accessToken = state.lastTokenResponse?.accessToken else { return }
-			connect(with: accessToken)
+	private func handle(data: (connection: ConnectionState, auth: AuthService.AuthState)) {
+		switch data.connection {
+		case .connected:
+			client = SystemStatusClient(accessToken: data.auth.accessToken)
+			client?.delegate = self
+			client?.connect()
+		case .disconnected:
+			client?.disconnect()
+			client = nil
+
 		}
 	}
 }
