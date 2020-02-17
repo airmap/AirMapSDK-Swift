@@ -91,6 +91,9 @@
 /* Name for airspace type Japan Base Admin (Smallest unit of Japanse administrative units) */
 "AIRSPACE_TYPE_JAPAN_BASE" = "Japan Base Admin";
 
+/* Name for airspace type Landing Site */
+"AIRSPACE_TYPE_LANDING_SITE" = "Landing Site";
+
 /* Name for airspace type Military Property */
 "AIRSPACE_TYPE_MILITARY_PROPERTY" = "Military Property";
 
