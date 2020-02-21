@@ -178,6 +178,7 @@ public struct AirMapAdvisory {
 	/// TFR advisory properties
 	public struct TFRProperties: AdvisoryProperties, HasOptionalURL {
 		public let url: URL?
+		public let body: String?
 		public let startTime: Date?
 		public let endTime: Date?
 		public let type: String?
