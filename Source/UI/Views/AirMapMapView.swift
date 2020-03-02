@@ -309,12 +309,17 @@ extension AirMapMapView {
 
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
-		var access = ""
-		if let token = authToken {
-			access = "?access_token=\(token)"
+		let query = [
+			"apikey": AirMap.configuration.apiKey,
+			"access_token": AirMap.authToken,
+		]
+		.compactMap { key, value in
+			guard let value = value else { return nil }
+			return key + "=" + value
 		}
+		.joined(separator: "&")
 
-		let jurisdictionsUrl = Constants.Api.jurisdictionsUrl + access
+		let jurisdictionsUrl = Constants.Api.jurisdictionsUrl + "?" + query
 		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [jurisdictionsUrl], options: [
 			.minimumZoomLevel: Constants.Maps.tileMinimumZoomLevel,
 			.maximumZoomLevel: Constants.Maps.tileMaximumZoomLevel,
