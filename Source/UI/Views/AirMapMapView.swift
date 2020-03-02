@@ -309,10 +309,11 @@ extension AirMapMapView {
 
 		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
-		var access = ""
+		var access = "?"
 		if let token = authToken {
-			access = "?access_token=\(token)"
+			access += "access_token=\(token)"
 		}
+		access += "&apikey=\(AirMap.configuration.apiKey)"
 
 		let jurisdictionsUrl = Constants.Api.jurisdictionsUrl + access
 		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [jurisdictionsUrl], options: [
