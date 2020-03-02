@@ -151,7 +151,7 @@ extension AirMapMapView {
 				"https://www.mapbox.com/help/define-access-token/")
 		}
 
-		MGLAccountManager.accessToken = NSString(utf8String: token)
+		MGLAccountManager.accessToken = token
 	}
 
 	private func setupBindings() {

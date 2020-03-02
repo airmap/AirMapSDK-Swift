@@ -17,7 +17,7 @@ PODS:
     - SwiftTurf
   - AirMapSDK/SystemStatus (4.0.0.alpha.1):
     - AirMapSDK/Core
-    - Starscream (~> 3.1.1)
+    - Starscream (~> 3.1)
   - AirMapSDK/Telemetry (4.0.0.alpha.1):
     - AirMapSDK/Core
     - CocoaAsyncSocket
@@ -43,7 +43,7 @@ PODS:
   - Differentiator (4.0.1)
   - KeychainAccess (3.2.1)
   - Logging (1.2.0)
-  - Mapbox-iOS-SDK (5.6.1):
+  - Mapbox-iOS-SDK (5.7.0):
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
   - Nimble (8.0.5)
@@ -131,7 +131,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: addc24e19b2ca6294f968369e543914e3ec954d4
+  AirMapSDK: 13df82bfa14c5c715014f979d87a60a23915fc3a
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -139,7 +139,7 @@ SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   KeychainAccess: d5470352939ced6d6f7fb51cb2e67aae51fc294f
   Logging: 7838d379d234d7e5ae1265fa02804a9084caf04c
-  Mapbox-iOS-SDK: b31bd62a5dd5b7e688eab787acd3d093a122f4d6
+  Mapbox-iOS-SDK: 1b7cb0e739247d20ef75f5f14aa6ce34e1f0660f
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
