@@ -53,7 +53,9 @@ class SystemStatusService {
 
 		Observable.combineLatest(connectionState, authState)
 			.debounce(.seconds(1), scheduler: MainScheduler.instance)
-			.subscribeNext(weak: self, SystemStatusService.handle)
+			.subscribe(onNext: { [weak self] (data) in
+				self?.handle(data: data)
+			})
 			.disposed(by: disposeBag)
 	}
 

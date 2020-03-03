@@ -46,7 +46,7 @@ extension Message {
 	
 	func telemetryBytes() throws -> [UInt8] {
 
-		var data = try serializedData()
+		let data = try serializedData()
 
 		var bytes = [UInt8]()
 		bytes += messageType.rawValue.bigEndian.bytes

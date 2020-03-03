@@ -84,7 +84,7 @@ open class AirMapMapView: MGLMapView {
 	/// The time range for which temporal layers are displayed on the map.
 	public var activeTemporalRange: TemporalRange {
 		get { return try! temporalRangeSubject.value() }
-		set { temporalRangeSubject.onNext(activeTemporalRange) }
+		set { temporalRangeSubject.onNext(newValue) }
 	}
 
 	/// All jurisidictions intersecting the map's bounds/viewport. Each jurisdiction also provides the rulesets
@@ -194,6 +194,7 @@ extension AirMapMapView {
 			.disposed(by: disposeBag)
 
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)
+			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig) in
 				guard let `self` = self else { return }
 

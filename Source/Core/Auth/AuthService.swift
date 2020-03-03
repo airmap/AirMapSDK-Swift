@@ -90,7 +90,7 @@ class AuthService: NSObject {
 							return observer.onError(AirMapError.unknown(underlying: error))
 						}
 						if let state = state {
-							self.authState = .authenticated(state)
+							self.authState.accept(.authenticated(state))
 							self.activeFlow = nil
 							observer.onNext(())
 							observer.onCompleted()

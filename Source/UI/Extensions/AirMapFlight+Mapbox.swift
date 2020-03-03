@@ -82,7 +82,7 @@ extension AnnotationRepresentable {
 		case .polygon:
 			
 			guard
-				var polygons = (geometry as? AirMapPolygon)?.coordinates,
+				let polygons = (geometry as? AirMapPolygon)?.coordinates,
 				polygons.count > 0 &&
 					polygons.first!.count >= 3
 				else {

@@ -51,7 +51,6 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setupDefaultCountryCode()
 		setupPhoneNumberField()
 		setupBindings()
 		setupBranding()
@@ -132,17 +131,10 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	fileprivate func setupBranding() {
 		submitButton.backgroundColor = .primary
 	}
-
-	fileprivate func setupDefaultCountryCode() {
-		regionCode = Locale.current.regionCode ?? "US"
-		country.text = Locale.current.localizedString(forRegionCode: regionCode) ?? "United States"
-		phone?.defaultRegion = regionCode
-	}
 	
 	fileprivate func setupPhoneNumberField() {
 		
 		phone.inputAccessoryView = submitButton
-		phone?.defaultRegion = regionCode
 	}
 	
 	// MARK: - Instance Methods
