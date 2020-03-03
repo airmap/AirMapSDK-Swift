@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 		core.ios.frameworks = 'UIKit'
 		core.osx.frameworks = 'AppKit'
 		core.source_files = ['Source/Core/**/*.{h,m,swift}', 'Source/Rx/*']
-		core.dependency 'Alamofire'
+		core.dependency 'Alamofire', '~> 4.9.0'
 		core.dependency 'AppAuth'
 		core.dependency 'ObjectMapper', '~> 3.5.0'
 		core.dependency 'SwiftTurf'
