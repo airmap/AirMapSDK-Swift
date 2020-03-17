@@ -148,6 +148,9 @@
 /* Name for airspace type FAA Temporary Flight Restriction */
 "AIRSPACE_TYPE_TFR_FAA" = "Temporary Flight Restriction";
 
+/* Name for airspace type Terminal Maneuvering Area */
+"AIRSPACE_TYPE_TMA" = "Terminal Maneuvering Area";
+
 /* Name for airspace type Ultralight Field */
 "AIRSPACE_TYPE_ULM_FIELD" = "Ultralight Field";
 

@@ -65,6 +65,8 @@ public enum AirMapAirspaceType: String, CustomStringConvertible {
 	case supercity           = "supercity"
 	/// Temporary Flight Restriction
 	case tfr                 = "tfr"
+	/// Terminal Maneuvering Area
+	case tma                 = "tma"
 	case ultralightField     = "ulm_field"
 	case university          = "university"
 	case waterway            = "waterway"
@@ -119,6 +121,7 @@ public enum AirMapAirspaceType: String, CustomStringConvertible {
 		case .subprefecture:        return localized.subprefecture
 		case .supercity:            return localized.supercity
 		case .tfr:                  return localized.tfr
+		case .tma:                  return localized.tma
 		case .ultralightField:      return localized.ultralightField
 		case .unclassified:         return localized.unclassified
 		case .university:           return localized.university

@@ -144,6 +144,8 @@ public struct LocalizedStrings {
 		
 		public static let tfr = NSLocalizedString("AIRSPACE_TYPE_TFR_FAA", bundle: bundle, value: "Temporary Flight Restriction", comment: "Name for airspace type FAA Temporary Flight Restriction")
 		
+		public static let tma = NSLocalizedString("AIRSPACE_TYPE_TMA", bundle: bundle, value: "Terminal Maneuvering Area", comment: "Name for airspace type Terminal Maneuvering Area")
+
 		public static let ultralightField = NSLocalizedString("AIRSPACE_TYPE_ULM_FIELD", bundle: bundle, value: "Ultralight Field", comment: "Name for airspace type Ultralight Field")
 		
 		public static let unclassified = NSLocalizedString("AIRSPACE_TYPE_UNCLASSIFIED", bundle: bundle, value: "Unclassified", comment: "Generic catchall placeholder/name for airspace type is new and unknown at time of development but present via the advisories or map sources")
