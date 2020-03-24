@@ -56,6 +56,9 @@ public struct AirMapAdvisory {
 	/// Additional metadata specific to the advisory type
 	public let properties: AdvisoryProperties?
 
+	/// Additional metadata specific to the advisory type
+	public let schedule: Schedule?
+
 	/// Any requirements necessary to operate within the advisory
 	public let requirements: AirMapAdvisoryRequirements?
 
@@ -201,6 +204,13 @@ public struct AirMapAdvisory {
 	public struct WildfireProperties: AdvisoryProperties {
 		public let effective: Date?
 		public let size: Hectares?
+	}
+
+
+	/// Schedule of the airspace
+	// TODO: Add data model when it is finalized
+	public struct Schedule {
+		public let active: Bool
 	}
 }
 

@@ -58,7 +58,8 @@ extension AirMapAdvisory: ImmutableMappable {
 			ruleId        =  try  map.value("rule_id")
 			rulesetId     =  try  map.value("ruleset_id")
 			requirements  =  try? map.value("requirements")
-			
+			schedule      =  try? map.value("schedule")
+
 			let latitude  = try map.value("latitude") as Double
 			let longitude = try map.value("longitude") as Double
 			coordinate = Coordinate2D(latitude: latitude, longitude: longitude)
@@ -308,6 +309,13 @@ extension AirMapAdvisory.UniversityProperties: ImmutableMappable {
 	public init(map: Map) throws {
 		url           =  try? map.value("url", using: URLTransform())
 		description   =  try? map.value("description")
+	}
+}
+
+extension AirMapAdvisory.Schedule: ImmutableMappable {
+
+	public init(map: Map) throws {
+		active    =  try map.value("active")
 	}
 }
 
