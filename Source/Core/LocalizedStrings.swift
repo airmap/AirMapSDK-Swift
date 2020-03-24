@@ -174,9 +174,7 @@ public struct LocalizedStrings {
 	}
 	
 	public struct Advisory {
-		
-		public static let phoneNumberNotProvided = NSLocalizedString("ADVISORY_PHONE_NOT_PROVIDED", bundle: bundle, value: "No Phone Number Provided", comment: "Displayed when an advisory has not provided a contact phone")
-		
+				
 		public static let tfrStartsFormat = NSLocalizedString("ADVISORY_TFR_STARTS_FORMAT", bundle: bundle, value: "Starts: %1$@", comment: "Label and format for displaying the start time of temporary flight restriction")
 		
 		public static let tfrEndsFormat = NSLocalizedString("ADVISORY_TFR_ENDS_FORMAT", bundle: bundle, value: "Ends: %1$@", comment: "Label and format for displaying the end time of temporary flight restriction")
