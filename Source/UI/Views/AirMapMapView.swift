@@ -186,6 +186,7 @@ extension AirMapMapView {
 			.distinctUntilChanged(==)
 
 		let accessToken = AirMap.authService.authState.asObservable()
+			.debug("debug11: latest access token!")
 			.map { $0.accessToken }
 			.distinctUntilChanged(==)
 		

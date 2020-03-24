@@ -241,6 +241,12 @@ class AuthService: NSObject {
 
 	private func setupBindings() {
 		authState.asObservable()
+			.do(onNext: { [weak self] (state) in
+				if case let .authenticated(oidState) = state {
+					oidState.errorDelegate = self
+					oidState.stateChangeDelegate = self
+				}
+			})
 			.subscribe(onNext: AuthService.persist)
 			.disposed(by: disposeBag)
 	}
@@ -305,9 +311,6 @@ extension AuthService: OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
 	}
 
 	func didChange(_ state: OIDAuthState) {
-		if case let .authenticated(currentState) = authState.value, state == currentState  {
-			return
-		}
 		if state.isAuthorized {
 			authState.accept(AuthState.authenticated(state))
 		} else {
