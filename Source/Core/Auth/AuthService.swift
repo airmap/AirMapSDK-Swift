@@ -46,6 +46,9 @@ class AuthService: NSObject {
 		case .anonymous(let token):
 			return token.idToken
 		case .authenticated(let state):
+			guard
+				state.lastTokenResponse?.accessTokenExpirationDate ?? .distantPast > Date()
+				else { return nil }
 			return state.lastTokenResponse?.accessToken
 		}
 	}
