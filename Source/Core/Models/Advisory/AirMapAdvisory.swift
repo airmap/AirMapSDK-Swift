@@ -78,7 +78,7 @@ public struct AirMapAdvisory {
 	}	
 	
 	/// Airport advisory properties
-	public struct AirportProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription {
+	public struct AirportProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription, HasOptionalPhoneNumber {
 		public let identifier: String?
 		public let phone: String?
 		public let tower: Bool?
@@ -100,7 +100,7 @@ public struct AirMapAdvisory {
 	}
 	
 	/// Heliport advisory properties
-	public struct HeliportProperties: AdvisoryProperties {
+	public struct HeliportProperties: AdvisoryProperties, HasOptionalPhoneNumber {
 		public let identifier: String?
 		public let paved: Bool?
 		public let phone: String?
@@ -218,6 +218,10 @@ public protocol AdvisoryProperties {}
 
 public protocol HasOptionalURL {
 	var url: URL? { get }
+}
+
+public protocol HasOptionalPhoneNumber {
+	var phone: String? { get }
 }
 
 public protocol HasOptionalDescription {
