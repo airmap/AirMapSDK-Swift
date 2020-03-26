@@ -48,7 +48,7 @@ class AuthService: NSObject {
 		case .authenticated(let state):
 			guard
 				state.isFresh
-				else { return nil }
+			else { return nil }
 			return state.lastTokenResponse?.accessToken
 		}
 	}
