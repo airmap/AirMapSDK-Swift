@@ -35,7 +35,7 @@ class AuthService: NSObject {
 		case .anonymous(let token):
 			return OIDIDToken(idTokenString: token.idToken)?.expiresAt ?? .distantPast > Date()
 		case .authenticated(let state):
-			return state.isAuthorized
+			return state.isFresh && state.isAuthorized
 		}
 	}
 
@@ -47,7 +47,7 @@ class AuthService: NSObject {
 			return token.idToken
 		case .authenticated(let state):
 			guard
-				state.lastTokenResponse?.accessTokenExpirationDate ?? .distantPast > Date()
+				state.isFresh
 				else { return nil }
 			return state.lastTokenResponse?.accessToken
 		}
