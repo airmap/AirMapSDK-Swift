@@ -32,16 +32,14 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	var pilot: AirMapPilot!
 	
 	@IBOutlet weak var submitButton: UIButton!
-	@IBOutlet weak var country: UILabel!
 	@IBOutlet weak var phone: PhoneNumberTextField!
 	
 	fileprivate let phoneNumberKit = PhoneNumberKit()
-	fileprivate var regionCode: String!
 	fileprivate let activityIndicator = ActivityTracker()
 
 	fileprivate var phoneNumber: PhoneNumber? {
-		guard let phone = phone.text, let region = regionCode else { return nil }
-		return try? phoneNumberKit.parse(phone, withRegion: region, ignoreType: false)
+		guard let phoneNumber = phone.text else { return nil }
+		return try? phoneNumberKit.parse(phoneNumber, withRegion: phone.currentRegion, ignoreType: false)
 	}
 	
 	fileprivate let disposeBag = DisposeBag()
@@ -88,7 +86,6 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	}
 	
 	fileprivate enum Segue: String {
-		case pushSelectCountry
 		case pushVerifySMS
 	}
 	
@@ -97,12 +94,6 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 		
 		switch Segue(rawValue: identifier)! {
 
-		case .pushSelectCountry:
-			trackEvent(.tap, label: "Select Country")
-			let countryVC = segue.destination as! AirMapPhoneCountryViewController
-			countryVC.selectionDelegate = self
-			countryVC.selectedCountryIdentifier = regionCode
-		
 		case .pushVerifySMS:
 			let smsVC = segue.destination as! AirMapVerifySMSCodeViewController
 			smsVC.phoneNumber = pilot.phone
@@ -113,7 +104,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	// MARK: - Setup
 
 	fileprivate func setupBindings() {
-		
+
 		phone.rx.text.asObservable()
 			.map { [unowned self] _ in
 				self.phone.isValidNumber
@@ -133,7 +124,12 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	}
 	
 	fileprivate func setupPhoneNumberField() {
-		
+		phone.withFlag = true
+		phone.withPrefix = true
+		phone.withExamplePlaceholder = true
+		if #available(iOS 11.0, *) {
+			phone.withDefaultPickerUI = true
+		}
 		phone.inputAccessoryView = submitButton
 	}
 	
@@ -178,25 +174,6 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 		
 	@IBAction func dismiss(_ sender: AnyObject) {
 		self.dismiss(animated: true, completion: nil)
-	}
-	
-}
-
-// MARK: - Extensions
-
-extension AirMapPhoneVerificationViewController: AirMapPhoneCountrySelectorDelegate {
-	
-	func phoneCountrySelectorDidSelect(country name: String, country code: String) {
-		if regionCode != code { phone.text = PartialFormatter().formatPartial(phone.text ?? "") }
-		
-		regionCode = code
-		country.text = name
-		setupPhoneNumberField()
-		_ = navigationController?.popViewController(animated: true)
-	}
-	
-	func phoneCountrySelectorDidCancel() {
-		_ = navigationController?.popViewController(animated: true)
 	}
 	
 }

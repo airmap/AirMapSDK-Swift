@@ -35,7 +35,7 @@ class AuthService: NSObject {
 		case .anonymous(let token):
 			return OIDIDToken(idTokenString: token.idToken)?.expiresAt ?? .distantPast > Date()
 		case .authenticated(let state):
-			return state.isAuthorized
+			return state.isFresh && state.isAuthorized
 		}
 	}
 
@@ -46,6 +46,9 @@ class AuthService: NSObject {
 		case .anonymous(let token):
 			return token.idToken
 		case .authenticated(let state):
+			guard
+				state.isFresh
+			else { return nil }
 			return state.lastTokenResponse?.accessToken
 		}
 	}
@@ -238,6 +241,12 @@ class AuthService: NSObject {
 
 	private func setupBindings() {
 		authState.asObservable()
+			.do(onNext: { [weak self] (state) in
+				if case let .authenticated(oidState) = state {
+					oidState.errorDelegate = self
+					oidState.stateChangeDelegate = self
+				}
+			})
 			.subscribe(onNext: AuthService.persist)
 			.disposed(by: disposeBag)
 	}
@@ -302,9 +311,6 @@ extension AuthService: OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate {
 	}
 
 	func didChange(_ state: OIDAuthState) {
-		if case let .authenticated(currentState) = authState.value, state == currentState  {
-			return
-		}
 		if state.isAuthorized {
 			authState.accept(AuthState.authenticated(state))
 		} else {

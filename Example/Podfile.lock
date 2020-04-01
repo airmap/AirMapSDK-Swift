@@ -1,11 +1,11 @@
 PODS:
-  - AirMapSDK (4.0.0.alpha.1):
-    - AirMapSDK/Core (= 4.0.0.alpha.1)
-    - AirMapSDK/SystemStatus (= 4.0.0.alpha.1)
-    - AirMapSDK/Telemetry (= 4.0.0.alpha.1)
-    - AirMapSDK/Traffic (= 4.0.0.alpha.1)
-    - AirMapSDK/UI (= 4.0.0.alpha.1)
-  - AirMapSDK/Core (4.0.0.alpha.1):
+  - AirMapSDK (4.0.0):
+    - AirMapSDK/Core (= 4.0.0)
+    - AirMapSDK/SystemStatus (= 4.0.0)
+    - AirMapSDK/Telemetry (= 4.0.0)
+    - AirMapSDK/Traffic (= 4.0.0)
+    - AirMapSDK/UI (= 4.0.0)
+  - AirMapSDK/Core (4.0.0):
     - Alamofire (~> 4.9.0)
     - AppAuth
     - KeychainAccess (~> 3.2.0)
@@ -15,22 +15,22 @@ PODS:
     - RxSwift (~> 5.0)
     - RxSwiftExt (~> 5.0)
     - SwiftTurf
-  - AirMapSDK/SystemStatus (4.0.0.alpha.1):
+  - AirMapSDK/SystemStatus (4.0.0):
     - AirMapSDK/Core
     - Starscream (~> 3.1)
-  - AirMapSDK/Telemetry (4.0.0.alpha.1):
+  - AirMapSDK/Telemetry (4.0.0):
     - AirMapSDK/Core
     - CocoaAsyncSocket
     - CryptoSwift (~> 1.0)
     - SwiftProtobuf (~> 1.0)
-  - AirMapSDK/Traffic (4.0.0.alpha.1):
+  - AirMapSDK/Traffic (4.0.0):
     - AirMapSDK/Core
     - SwiftMQTT (> 3.0.0, ~> 3.0)
-  - AirMapSDK/UI (4.0.0.alpha.1):
+  - AirMapSDK/UI (4.0.0):
     - AirMapSDK/Core
     - AppAuth
     - Mapbox-iOS-SDK (~> 5.1)
-    - PhoneNumberKit
+    - PhoneNumberKit (~> 3.0)
     - RxDataSources
   - Alamofire (4.9.1)
   - AppAuth (1.3.0):
@@ -47,7 +47,7 @@ PODS:
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
   - Nimble (8.0.5)
-  - ObjectMapper (3.5.1)
+  - ObjectMapper (3.5.0)
   - OHHTTPStubs (9.0.0):
     - OHHTTPStubs/Default (= 9.0.0)
   - OHHTTPStubs/Core (9.0.0)
@@ -131,7 +131,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AirMapSDK: 840e7e1278c2d4810fc9eb44f326ec6f43716a7e
+  AirMapSDK: 5348b1e2718a792e021dbb7946a758df3015aee5
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -142,7 +142,7 @@ SPEC CHECKSUMS:
   Mapbox-iOS-SDK: 1b7cb0e739247d20ef75f5f14aa6ce34e1f0660f
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
-  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e

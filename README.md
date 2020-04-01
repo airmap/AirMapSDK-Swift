@@ -18,10 +18,6 @@ Create Flights, Send Telemetry Data, Get Realtime Traffic Alerts.
 ### Read Getting Started Guide
 [https://developers.airmap.com/v2.1/docs/getting-started-ios](https://developers.airmap.com/v2.1/docs/getting-started-ios/)
 
-## Contextual Airspace Preview
-
-Contextual Airspace (Rules API, Advisory API, and Flight Plan API) is currently in developer PREVIEW for testing and is subject to change. Contact us for more information.
-
 ## Installation
 
 ### CocoaPods
