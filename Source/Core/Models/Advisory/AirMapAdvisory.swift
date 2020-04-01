@@ -57,7 +57,7 @@ public struct AirMapAdvisory {
 	public let properties: AdvisoryProperties?
 
 	/// Additional metadata specific to the advisory type
-	public let schedule: Schedule?
+	public let schedule: [Timesheet]?
 
 	/// Any requirements necessary to operate within the advisory
 	public let requirements: AirMapAdvisoryRequirements?
@@ -208,9 +208,75 @@ public struct AirMapAdvisory {
 
 
 	/// Schedule of the airspace
-	// TODO: Add data model when it is finalized
-	public struct Schedule {
+	public struct Timesheet {
 		public let active: Bool
+		public let timesheetData: Data
+
+		public struct Data {
+			public let offsetUTC: Int
+			public let excluded: Bool
+			public let daylightSavingAdjust: Bool
+			public let day: DayDescriptor
+			public let dayTill: DayDescriptor
+			public let start: DataMarker
+			public let end: DataMarker
+		}
+
+		public struct DayDescriptor {
+			public let name: String
+			public let day: Day
+		}
+
+		public struct EventDescriptor {
+			public let name: String
+			public let event: Event
+		}
+
+		public struct DataMarker {
+			public let event: EventDescriptor
+			public let eventInterpretation: EventInterpretationDescriptor
+			public let eventOffset: Int
+			public let time: Timesheet.Time
+			public let date: Timesheet.Date
+		}
+
+		public struct Time {
+			public let hour: Int
+			public let minute: Int
+		}
+
+		public struct Date {
+			public let month: Int
+			public let day: Int
+		}
+
+		public enum Day: String {
+			case monday = "day_monday"
+			case tuesday = "day_tuesday"
+			case wednesday = "day_wednesday"
+			case thursday = "day_thursday"
+			case friday = "day_friday"
+			case saturday = "day_saturday"
+			case sunday = "day_sunday"
+			case workDay = "day_work_day"
+			case beforeWorkDay = "day_before_work_day"
+			case afterWorkDay = "day_after_work_day"
+			case holiday = "day_holiday"
+			case beforeHoliday = "day_before_holiday"
+			case afterHoliday = "day_after_holiday"
+			case busyFriday = "day_busy_friday"
+			case any = "day_any"
+		}
+
+		public enum Event: String {
+			case sunrise = "event_sunrise"
+			case sunset = "event_sunset"
+		}
+
+		public enum EventInterpretationDescriptor: String {
+			case earliest = "event_interpretation_earliest"
+			case latest = "event_interpretation_latest"
+		}
 	}
 }
 
