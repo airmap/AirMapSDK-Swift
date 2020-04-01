@@ -117,6 +117,64 @@ extension AirMapAdvisory: ImmutableMappable {
 	}
 }
 
+extension AirMapAdvisory.Timesheet: ImmutableMappable {
+	public init(map: Map) throws {
+		active         =  (try? map.value("active")) ?? false
+		timesheetData  =  try? map.value("data")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.Data: ImmutableMappable {
+	public init(map: Map) throws {
+		offsetUTC             =  try map.value("active")
+		excluded              =  try map.value("excluded")
+		daylightSavingAdjust  =  try map.value("daylight_saving_adjust")
+		day                   =  try map.value("day")
+		dayTill               =  try map.value("day_til")
+		start                 =  try map.value("start")
+		end                   =  try map.value("end")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.DayDescriptor: ImmutableMappable {
+	public init(map: Map) throws {
+		name  =  try map.value("name")
+		day   =  try map.value("id")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.EventDescriptor: ImmutableMappable {
+	public init(map: Map) throws {
+		name  =  try map.value("name")
+		event   =  try map.value("id")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.DataMarker: ImmutableMappable {
+	public init(map: Map) throws {
+		event                 =  try? map.value("event")
+		eventInterpretation   =  try? map.value("event_interpretation")
+		eventOffset           =  try? map.value("event_offset")
+		time                  =  try? map.value("time")
+		date                  =  try? map.value("date")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.Time: ImmutableMappable {
+	public init(map: Map) throws {
+		hour     =  try map.value("hour")
+		minute   =  try map.value("minute")
+	}
+}
+
+extension AirMapAdvisory.Timesheet.Date: ImmutableMappable {
+	public init(map: Map) throws {
+		month     =  try map.value("month")
+		day   =  try map.value("day")
+	}
+}
+
+
 // MARK: - AirMapAdvisoryRequirements
 
 extension AirMapAdvisoryRequirements: ImmutableMappable {
@@ -309,13 +367,6 @@ extension AirMapAdvisory.UniversityProperties: ImmutableMappable {
 	public init(map: Map) throws {
 		url           =  try? map.value("url", using: URLTransform())
 		description   =  try? map.value("description")
-	}
-}
-
-extension AirMapAdvisory.Schedule: ImmutableMappable {
-
-	public init(map: Map) throws {
-		active    =  try map.value("active")
 	}
 }
 

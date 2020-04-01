@@ -210,7 +210,7 @@ public struct AirMapAdvisory {
 	/// Schedule of the airspace
 	public struct Timesheet {
 		public let active: Bool
-		public let timesheetData: Data
+		public let timesheetData: Data?
 
 		public struct Data {
 			public let offsetUTC: Int
@@ -233,11 +233,11 @@ public struct AirMapAdvisory {
 		}
 
 		public struct DataMarker {
-			public let event: EventDescriptor
-			public let eventInterpretation: EventInterpretationDescriptor
-			public let eventOffset: Int
-			public let time: Timesheet.Time
-			public let date: Timesheet.Date
+			public let event: EventDescriptor?
+			public let eventInterpretation: EventInterpretationDescriptor?
+			public let eventOffset: Int?
+			public let time: Timesheet.Time?
+			public let date: Timesheet.Date?
 		}
 
 		public struct Time {
