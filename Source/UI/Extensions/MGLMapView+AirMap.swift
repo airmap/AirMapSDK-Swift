@@ -199,7 +199,7 @@ extension MGLStyleLayer {
 
 extension MGLVectorTileSource {
 	
-	convenience init?(ruleset: AirMapRuleset) {
+	convenience init?(ruleset: AirMapRuleset, range: AirMapMapView.TemporalRange) {
 		
 		let layerNames = ruleset.airspaceTypes.map { $0.rawValue }.joined(separator: ",")
 		let options = [
@@ -217,7 +217,9 @@ extension MGLVectorTileSource {
 		let query = [
 			"apikey": AirMap.configuration.apiKey,
 			"access_token": AirMap.authToken,
-			"units": units
+			"units": units,
+			"start": range.startDate.iso8601String(),
+			"end": range.endDate.iso8601String()
 		]
 		.compactMap { key, value in
 			guard let value = value else { return nil }

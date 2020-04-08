@@ -79,6 +79,24 @@ open class AirMapMapView: MGLMapView {
 	public enum TemporalRange {
 		case sliding(window: TimeInterval)
 		case fixed(start: Date, end: Date)
+
+		var startDate: Date {
+			switch self {
+			case .sliding(let window):
+				return Date().addingTimeInterval(window)
+			case .fixed(let start, _):
+				return start
+			}
+		}
+
+		var endDate: Date {
+			switch self {
+			case .sliding:
+				return Date()
+			case .fixed(_, let end):
+				return end
+			}
+		}
 	}
 
 	/// The time range for which temporal layers are displayed on the map.
@@ -193,24 +211,26 @@ extension AirMapMapView {
 			.subscribe(onNext: AirMapMapView.configureJurisdictions)
 			.disposed(by: disposeBag)
 
-		Observable.combineLatest(jurisdictions, style, rulesetConfig)
+		let refresh = Observable<Int>
+			.timer(.seconds(0), period: Constants.Maps.temporalLayerRefreshInterval, scheduler: MainScheduler.instance)
+
+		let range = Observable.combineLatest(temporalRangeSubject, refresh)
+			.withLatestFrom(temporalRangeSubject)
+
+		Observable.combineLatest(jurisdictions, style, rulesetConfig, range)
 			.observeOn(MainScheduler.asyncInstance)
-			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig) in
+			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
 
 				// Configure the map with the active rulesets
 				// Notify the delegate of available jurisdictions and activated rulesets
 				let activeRulesets = AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetConfig)
-				AirMapMapView.configure(mapView: self, style: style, with: activeRulesets)
+				AirMapMapView.configure(mapView: self, style: style, with: activeRulesets, range: range)
 				// Notify the delegate of available jurisdictions and activated rulesets
 				self.airMapMapViewDelegate?.airMapMapViewJurisdictionsDidChange(mapView: self, jurisdictions: jurisdictions)
 				self.airMapMapViewDelegate?.airMapMapViewRegionDidChange(mapView: self, jurisdictions: jurisdictions, activeRulesets: activeRulesets)
 			})
 			.disposed(by: disposeBag)
-
-		let range = self.temporalRangeSubject
-		let refresh = Observable<Int>
-			.timer(.seconds(0), period: Constants.Maps.temporalLayerRefreshInterval, scheduler: MainScheduler.instance)
 
 		// Update temporal filters
 		Observable.combineLatest(style, range, refresh)
@@ -257,7 +277,7 @@ extension AirMapMapView {
 	}
 
 	// MARK: - Configuration
-	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset]) {
+	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
 		
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
@@ -281,7 +301,7 @@ extension AirMapMapView {
 		rulesets
 			.filter({ newSourceIds.contains($0.tileSourceIdentifier) })
 			.forEach({ (ruleset) in
-				addRuleset(ruleset, to: style, in: mapView)
+				addRuleset(ruleset, to: style, in: mapView, for: range)
 			})
 	}
 
@@ -336,11 +356,11 @@ extension AirMapMapView {
 		style.insertLayer(layer, at: 0)
 	}
 
-	private static func addRuleset(_ ruleset: AirMapRuleset, to style: MGLStyle, in mapView: AirMapMapView) {
+	private static func addRuleset(_ ruleset: AirMapRuleset, to style: MGLStyle, in mapView: AirMapMapView, for range: TemporalRange) {
 
 		guard style.source(withIdentifier: ruleset.tileSourceIdentifier) == nil else { return }
 
-		guard let rulesetTileSource = MGLVectorTileSource(ruleset: ruleset) else {
+		guard let rulesetTileSource = MGLVectorTileSource(ruleset: ruleset, range: range) else {
 			AirMap.logger.error("Failed to create tile source", metadata: ["Ruleset": .string(ruleset.tileSourceIdentifier)])
 			return
 		}
