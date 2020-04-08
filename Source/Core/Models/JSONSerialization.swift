@@ -58,7 +58,7 @@ extension AirMapAdvisory: ImmutableMappable {
 			ruleId        =  try  map.value("rule_id")
 			rulesetId     =  try  map.value("ruleset_id")
 			requirements  =  try? map.value("requirements")
-			schedule      =  try? map.value("schedule")
+			timeSheets    =  try? map.value("schedule")
 
 			let latitude  = try map.value("latitude") as Double
 			let longitude = try map.value("longitude") as Double
@@ -66,6 +66,8 @@ extension AirMapAdvisory: ImmutableMappable {
 			
 			let airspaceType: AirMapAirspaceType = (try? map.value("type")) ?? .unclassified
 			type = airspaceType
+//			let temp = airspaceType == .airport ? AirMapAdvisory.Timesheet.init(active:  [true, false].randomElement()!) : nil
+//			schedule      = temp
 			name = (try? map.value("name") as String) ?? airspaceType.title
 
 			if let props: [String: Any] = try? map.value("properties") {
@@ -126,13 +128,13 @@ extension AirMapAdvisory.Timesheet: ImmutableMappable {
 
 extension AirMapAdvisory.Timesheet.Data: ImmutableMappable {
 	public init(map: Map) throws {
-		offsetUTC             =  try map.value("active")
-		excluded              =  try map.value("excluded")
-		daylightSavingAdjust  =  try map.value("daylight_saving_adjust")
-		day                   =  try map.value("day")
-		dayTill               =  try map.value("day_til")
-		start                 =  try map.value("start")
-		end                   =  try map.value("end")
+		offsetUTC             =  try? map.value("utc_offset")
+		excluded              =  try? map.value("excluded")
+		daylightSavingAdjust  =  try? map.value("daylight_saving_adjust")
+		day                   =  try? map.value("day")
+		dayTill               =  try? map.value("day_til")
+		start                 =  try? map.value("start")
+		end                   =  try? map.value("end")
 	}
 }
 
