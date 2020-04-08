@@ -106,6 +106,9 @@
 /* Name for airspace type Notification */
 "AIRSPACE_TYPE_NOTIFICATION" = "Notification";
 
+/* Name for airspace type National Security UAS Flight Restriction */
+"AIRSPACE_TYPE_NSUFR" = "National Security UAS Flight Restriction";
+
 /* Name for airspace type Police Station */
 "AIRSPACE_TYPE_POLICE_STATION" = "Police Station";
 

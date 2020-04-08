@@ -47,6 +47,8 @@ public enum AirMapAirspaceType: String, CustomStringConvertible {
 	/// Notice To Airmen
 	case notam               = "notam"
 	case notification        = "notification"
+	/// National Security UAS Flight Restriction
+	case nsufr               = "nsufr"
 	case obstacle            = "obstacle"
 	case park                = "park"
 	case policeStation       = "police_station"
@@ -104,6 +106,7 @@ public enum AirMapAirspaceType: String, CustomStringConvertible {
 		case .militaryProperty:     return localized.militaryProperty
 		case .notam:                return localized.notam
 		case .notification:         return localized.notification
+		case .nsufr:                return localized.nsufr
 		case .obstacle:             return localized.obstacle
 		case .park:                 return localized.park
 		case .policeStation:        return localized.policeStation
