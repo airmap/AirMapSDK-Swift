@@ -57,7 +57,7 @@ public struct AirMapAdvisory {
 	public let properties: AdvisoryProperties?
 
 	/// Additional metadata specific to the advisory type
-	public let schedule: [Timesheet]?
+	public let timeSheets: [Timesheet]?
 
 	/// Any requirements necessary to operate within the advisory
 	public let requirements: AirMapAdvisoryRequirements?
@@ -213,13 +213,13 @@ public struct AirMapAdvisory {
 		public let timesheetData: Data?
 
 		public struct Data {
-			public let offsetUTC: Int
-			public let excluded: Bool
-			public let daylightSavingAdjust: Bool
-			public let day: DayDescriptor
-			public let dayTill: DayDescriptor
-			public let start: DataMarker
-			public let end: DataMarker
+			public let offsetUTC: Int?
+			public let excluded: Bool?
+			public let daylightSavingAdjust: Bool?
+			public let day: DayDescriptor?
+			public let dayTill: DayDescriptor?
+			public let start: DataMarker?
+			public let end: DataMarker?
 		}
 
 		public struct DayDescriptor {
@@ -250,7 +250,7 @@ public struct AirMapAdvisory {
 			public let day: Int
 		}
 
-		public enum Day: String {
+		public enum Day: String, CaseIterable {
 			case monday = "day_monday"
 			case tuesday = "day_tuesday"
 			case wednesday = "day_wednesday"
@@ -268,7 +268,7 @@ public struct AirMapAdvisory {
 			case any = "day_any"
 		}
 
-		public enum Event: String {
+		public enum Event: String, CaseIterable {
 			case sunrise = "event_sunrise"
 			case sunset = "event_sunset"
 		}
