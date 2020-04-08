@@ -209,7 +209,7 @@ public struct AirMapAdvisory {
 
 	/// Schedule of the airspace
 	public struct Timesheet {
-		public let active: Bool
+		public let active: Bool?
 		public let timesheetData: Data?
 
 		public struct Data {

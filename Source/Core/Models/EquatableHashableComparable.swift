@@ -168,6 +168,7 @@ extension AirMapFlightFeature.Status: Comparable {
 }
 
 extension AirMapAdvisory.Timesheet.DayDescriptor: Equatable, Hashable, Comparable {
+
 	public static func ==(lhs: AirMapAdvisory.Timesheet.DayDescriptor, rhs: AirMapAdvisory.Timesheet.DayDescriptor) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -181,64 +182,8 @@ extension AirMapAdvisory.Timesheet.DayDescriptor: Equatable, Hashable, Comparabl
 	}
 }
 
-extension AirMapAdvisory.Timesheet.Day: Comparable {
-	var order: Int {
-		return AirMapAdvisory.Timesheet.Day.allCases.firstIndex(of: self)!
-	}
-
-	public static func <(lhs: AirMapAdvisory.Timesheet.Day, rhs: AirMapAdvisory.Timesheet.Day) -> Bool {
-		return lhs.order < rhs.order
-	}
-}
-
-extension AirMapAdvisory.Timesheet.DataMarker: Equatable, Hashable, Comparable {
-
-	public static func ==(lhs: AirMapAdvisory.Timesheet.DataMarker, rhs: AirMapAdvisory.Timesheet.DataMarker) -> Bool {
-		return lhs.hashValue == rhs.hashValue
-	}
-
-	public func hash(into hasher: inout Hasher) {
-		hasher.combine(date.hashValue)
-		hasher.combine(time.hashValue)
-	}
-
-	public static func <(lhs: AirMapAdvisory.Timesheet.DataMarker, rhs: AirMapAdvisory.Timesheet.DataMarker) -> Bool {
-
-		guard let lhsDate = lhs.date else { return true }
-		guard let rhsDate = rhs.date else { return false }
-
-		if lhsDate == rhsDate {
-			guard let lhsTime = lhs.time else { return true }
-			guard let rhsTime = rhs.time else { return false }
-
-			return lhsTime < rhsTime
-		}
-
-		return lhsDate < rhsDate
-	}
-}
-
-extension AirMapAdvisory.Timesheet.Date: Equatable, Hashable, Comparable {
-	public static func ==(lhs: AirMapAdvisory.Timesheet.Date, rhs: AirMapAdvisory.Timesheet.Date) -> Bool {
-		return lhs.hashValue == rhs.hashValue
-	}
-
-	public func hash(into hasher: inout Hasher) {
-		hasher.combine(month.hashValue)
-		hasher.combine(day.hashValue)
-	}
-
-	public static func <(lhs: AirMapAdvisory.Timesheet.Date, rhs: AirMapAdvisory.Timesheet.Date) -> Bool {
-
-		if lhs.month == rhs.month {
-			return lhs.day < rhs.day
-		}
-
-		return lhs.month < rhs.month
-	}
-}
-
 extension AirMapAdvisory.Timesheet.Time: Equatable, Hashable, Comparable {
+
 	public static func ==(lhs: AirMapAdvisory.Timesheet.Time, rhs: AirMapAdvisory.Timesheet.Time) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -258,7 +203,40 @@ extension AirMapAdvisory.Timesheet.Time: Equatable, Hashable, Comparable {
 	}
 }
 
+extension AirMapAdvisory.Timesheet.Date: Equatable, Hashable, Comparable {
+
+	public static func ==(lhs: AirMapAdvisory.Timesheet.Date, rhs: AirMapAdvisory.Timesheet.Date) -> Bool {
+		return lhs.hashValue == rhs.hashValue
+	}
+
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(month.hashValue)
+		hasher.combine(day.hashValue)
+	}
+
+	public static func <(lhs: AirMapAdvisory.Timesheet.Date, rhs: AirMapAdvisory.Timesheet.Date) -> Bool {
+
+		if lhs.month == rhs.month {
+			return lhs.day < rhs.day
+		}
+
+		return lhs.month < rhs.month
+	}
+}
+
+extension AirMapAdvisory.Timesheet.Day: Comparable {
+
+	var order: Int {
+		return AirMapAdvisory.Timesheet.Day.allCases.firstIndex(of: self)!
+	}
+
+	public static func <(lhs: AirMapAdvisory.Timesheet.Day, rhs: AirMapAdvisory.Timesheet.Day) -> Bool {
+		return lhs.order < rhs.order
+	}
+}
+
 extension AirMapAdvisory.Timesheet.EventDescriptor: Equatable, Hashable, Comparable {
+
 	public static func ==(lhs: AirMapAdvisory.Timesheet.EventDescriptor, rhs: AirMapAdvisory.Timesheet.EventDescriptor) -> Bool {
 		return lhs.hashValue == rhs.hashValue
 	}
@@ -275,6 +253,7 @@ extension AirMapAdvisory.Timesheet.EventDescriptor: Equatable, Hashable, Compara
 }
 
 extension AirMapAdvisory.Timesheet.Event: Comparable {
+
 	var order: Int {
 		return AirMapAdvisory.Timesheet.Event.allCases.firstIndex(of: self)!
 	}

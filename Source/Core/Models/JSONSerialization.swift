@@ -66,8 +66,6 @@ extension AirMapAdvisory: ImmutableMappable {
 			
 			let airspaceType: AirMapAirspaceType = (try? map.value("type")) ?? .unclassified
 			type = airspaceType
-//			let temp = airspaceType == .airport ? AirMapAdvisory.Timesheet.init(active:  [true, false].randomElement()!) : nil
-//			schedule      = temp
 			name = (try? map.value("name") as String) ?? airspaceType.title
 
 			if let props: [String: Any] = try? map.value("properties") {
@@ -121,7 +119,7 @@ extension AirMapAdvisory: ImmutableMappable {
 
 extension AirMapAdvisory.Timesheet: ImmutableMappable {
 	public init(map: Map) throws {
-		active         =  (try? map.value("active")) ?? false
+		active         =  try? map.value("active")
 		timesheetData  =  try? map.value("data")
 	}
 }
@@ -148,7 +146,7 @@ extension AirMapAdvisory.Timesheet.DayDescriptor: ImmutableMappable {
 extension AirMapAdvisory.Timesheet.EventDescriptor: ImmutableMappable {
 	public init(map: Map) throws {
 		name  =  try map.value("name")
-		event   =  try map.value("id")
+		event =  try map.value("id")
 	}
 }
 
@@ -171,7 +169,7 @@ extension AirMapAdvisory.Timesheet.Time: ImmutableMappable {
 
 extension AirMapAdvisory.Timesheet.Date: ImmutableMappable {
 	public init(map: Map) throws {
-		month     =  try map.value("month")
+		month =  try map.value("month")
 		day   =  try map.value("day")
 	}
 }
