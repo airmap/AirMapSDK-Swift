@@ -218,8 +218,8 @@ extension MGLVectorTileSource {
 			"apikey": AirMap.configuration.apiKey,
 			"access_token": AirMap.authToken,
 			"units": units,
-			"start": range.startDate.iso8601String(),
-			"end": range.endDate.iso8601String()
+			"start": range.startDate.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters),
+			"end": range.endDate.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters)
 		]
 		.compactMap { key, value in
 			guard let value = value else { return nil }
