@@ -23,13 +23,10 @@ import Foundation
 public extension Date {
 	
     func iso8601String() -> String {
-		let dateFormatter = ISO8601DateFormatter()
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 		dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-		if #available(iOS 11.0, *) {
-			dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-		} else {
-			dateFormatter.formatOptions = [.withInternetDateTime]
-		}
+		dateFormatter.dateFormat = Constants.Api.dateFormat
 		return dateFormatter.string(from: self)
 	}
 	
