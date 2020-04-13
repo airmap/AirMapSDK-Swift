@@ -3,6 +3,7 @@
 //  AirMapSDK
 //
 //  Created by Michael Odere on 4/9/20.
+//  Authored by Adolfo Martinelli
 //
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +24,9 @@ import Foundation
 extension CharacterSet {
 	internal static var urlSafeCharacters: CharacterSet {
 		let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-        let subDelimitersToEncode = "!$&'()*+,;="
-        var characterSet = CharacterSet.urlQueryAllowed
-        characterSet.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-        return characterSet
+		let subDelimitersToEncode = "!$&'()*+,;="
+		var characterSet = CharacterSet.urlQueryAllowed
+		characterSet.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+		return characterSet
 	}
 }

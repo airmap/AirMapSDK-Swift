@@ -56,7 +56,7 @@ public struct AirMapAdvisory {
 	/// Additional metadata specific to the advisory type
 	public let properties: AdvisoryProperties?
 
-	/// Additional metadata specific to the advisory type
+	/// Describes the list of intervals the advisory is active
 	public let timeSheets: [Timesheet]?
 
 	/// Any requirements necessary to operate within the advisory
@@ -207,7 +207,7 @@ public struct AirMapAdvisory {
 	}
 
 
-	/// Schedule of the airspace
+	/// A time sheet to describe when the airspace is active
 	public struct Timesheet {
 		public let active: Bool?
 		public let timesheetData: Data?
