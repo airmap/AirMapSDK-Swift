@@ -174,7 +174,6 @@ extension AirMapAdvisory.Timesheet.Date: ImmutableMappable {
 	}
 }
 
-
 // MARK: - AirMapAdvisoryRequirements
 
 extension AirMapAdvisoryRequirements: ImmutableMappable {
