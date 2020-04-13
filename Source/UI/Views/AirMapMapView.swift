@@ -89,7 +89,7 @@ open class AirMapMapView: MGLMapView {
 			}
 		}
 
-		var endDate: Date {
+		var effectiveEnd: Date {
 			switch self {
 			case .sliding(let window):
 				return Date().addingTimeInterval(window)

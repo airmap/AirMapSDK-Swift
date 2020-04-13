@@ -219,7 +219,7 @@ extension MGLVectorTileSource {
 			"access_token": AirMap.authToken,
 			"units": units,
 			"start": range.effectiveStart.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters),
-			"end": range.endDate.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters)
+			"end": range.effectiveEnd.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters)
 		]
 		.compactMap { key, value in
 			guard let value = value else { return nil }

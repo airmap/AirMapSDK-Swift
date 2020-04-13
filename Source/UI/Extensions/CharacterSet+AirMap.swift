@@ -3,7 +3,6 @@
 //  AirMapSDK
 //
 //  Created by Michael Odere on 4/9/20.
-//  Authored by Adolfo Martinelli
 //
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
