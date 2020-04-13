@@ -130,7 +130,7 @@ extension AirMapAdvisory.Timesheet.Data: ImmutableMappable {
 		excluded              =  try? map.value("excluded")
 		daylightSavingAdjust  =  try? map.value("daylight_saving_adjust")
 		day                   =  try? map.value("day")
-		dayTill               =  try? map.value("day_til")
+		dayTil                =  try? map.value("day_til")
 		start                 =  try? map.value("start")
 		end                   =  try? map.value("end")
 	}

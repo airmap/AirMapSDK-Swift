@@ -217,7 +217,7 @@ public struct AirMapAdvisory {
 			public let excluded: Bool?
 			public let daylightSavingAdjust: Bool?
 			public let day: DayDescriptor?
-			public let dayTill: DayDescriptor?
+			public let dayTil: DayDescriptor?
 			public let start: DataMarker?
 			public let end: DataMarker?
 		}
