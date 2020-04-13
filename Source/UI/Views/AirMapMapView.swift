@@ -80,7 +80,7 @@ open class AirMapMapView: MGLMapView {
 		case sliding(window: TimeInterval)
 		case fixed(start: Date, end: Date)
 
-		var startDate: Date {
+		var effectiveStart: Date {
 			switch self {
 			case .sliding:
 				return Date()

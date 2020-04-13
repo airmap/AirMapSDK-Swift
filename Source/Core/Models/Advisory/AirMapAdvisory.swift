@@ -57,7 +57,7 @@ public struct AirMapAdvisory {
 	public let properties: AdvisoryProperties?
 
 	/// Describes the list of intervals the advisory is active
-	public let timeSheets: [Timesheet]?
+	public let timesheets: [Timesheet]?
 
 	/// Any requirements necessary to operate within the advisory
 	public let requirements: AirMapAdvisoryRequirements?
@@ -209,10 +209,13 @@ public struct AirMapAdvisory {
 
 	/// A time sheet to describe when the airspace is active
 	public struct Timesheet {
+		/// nil if the active state is unkown
 		public let active: Bool?
 		public let timesheetData: Data?
 
+		/// Models raw timesheet data
 		public struct Data {
+			/// UTC offset in hours
 			public let offsetUTC: Int?
 			public let excluded: Bool?
 			public let daylightSavingAdjust: Bool?
@@ -222,16 +225,19 @@ public struct AirMapAdvisory {
 			public let end: DataMarker?
 		}
 
+		/// DayDescriptor bundles up the localized name and enum of Day
 		public struct DayDescriptor {
 			public let name: String
 			public let day: Day
 		}
 
+		/// EventDescriptor bundles up the localized name and enum of Event
 		public struct EventDescriptor {
 			public let name: String
 			public let event: Event
 		}
 
+		/// DataMarker models a relative marker in time
 		public struct DataMarker {
 			public let event: EventDescriptor?
 			public let eventInterpretation: EventInterpretationDescriptor?
@@ -240,11 +246,13 @@ public struct AirMapAdvisory {
 			public let date: Timesheet.Date?
 		}
 
+		/// Time models the relative time of a timesheet
 		public struct Time {
 			public let hour: Int
 			public let minute: Int
 		}
 
+		/// Date models the relative date of a timesheet
 		public struct Date {
 			public let month: Int
 			public let day: Int

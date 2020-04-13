@@ -58,7 +58,7 @@ extension AirMapAdvisory: ImmutableMappable {
 			ruleId        =  try  map.value("rule_id")
 			rulesetId     =  try  map.value("ruleset_id")
 			requirements  =  try? map.value("requirements")
-			timeSheets    =  try? map.value("schedule")
+			timesheets    =  try? map.value("schedule")
 
 			let latitude  = try map.value("latitude") as Double
 			let longitude = try map.value("longitude") as Double

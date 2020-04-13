@@ -174,7 +174,7 @@ extension AirMapAdvisory.Timesheet.DayDescriptor: Equatable, Hashable, Comparabl
 	}
 
 	public func hash(into hasher: inout Hasher) {
-		hasher.combine(name.hashValue)
+		hasher.combine(day.hashValue)
 	}
 
 	public static func <(lhs: AirMapAdvisory.Timesheet.DayDescriptor, rhs: AirMapAdvisory.Timesheet.DayDescriptor) -> Bool {
