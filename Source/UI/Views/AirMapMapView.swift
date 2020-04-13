@@ -82,8 +82,8 @@ open class AirMapMapView: MGLMapView {
 
 		var startDate: Date {
 			switch self {
-			case .sliding(let window):
-				return Date().addingTimeInterval(window)
+			case .sliding:
+				return Date()
 			case .fixed(let start, _):
 				return start
 			}
@@ -91,8 +91,8 @@ open class AirMapMapView: MGLMapView {
 
 		var endDate: Date {
 			switch self {
-			case .sliding:
-				return Date()
+			case .sliding(let window):
+				return Date().addingTimeInterval(window)
 			case .fixed(_, let end):
 				return end
 			}
