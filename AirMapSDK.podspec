@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 		core.source_files = ['Source/Core/**/*.{h,m,swift}', 'Source/Rx/*']
 		core.dependency 'Alamofire', '~> 4.9.0'
 		core.dependency 'AppAuth'
-		core.dependency 'ObjectMapper', '~> 3.5.2'
+		core.dependency 'ObjectMapper', '>= 3.5.2', '~> 3.5'
 		core.dependency 'SwiftTurf'
 		core.dependency 'KeychainAccess', '~> 3.2.0'
 		core.dependency 'RxSwift', '~> 5.0'
