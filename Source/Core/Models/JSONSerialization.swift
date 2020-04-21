@@ -71,37 +71,37 @@ extension AirMapAdvisory: ImmutableMappable {
 			if let props: [String: Any] = try? map.value("properties") {
 				switch airspaceType {
 				case .airport:
-					properties = AirportProperties(JSON: props)
+					properties = try? AirportProperties(JSON: props)
 				case .amaField:
-					properties = AMAFieldProperties(JSON: props)
+					properties = try? AMAFieldProperties(JSON: props)
 				case .controlledAirspace:
-					properties = ControlledAirspaceProperties(JSON: props)
+					properties = try? ControlledAirspaceProperties(JSON: props)
 				case .city:
-					properties = CityProperties(JSON: props)
+					properties = try? CityProperties(JSON: props)
 				case .custom:
-					properties = CustomProperties(JSON: props)
+					properties = try? CustomProperties(JSON: props)
 				case .emergency:
-					properties = EmergencyProperties(JSON: props)
+					properties = try? EmergencyProperties(JSON: props)
 				case .heliport:
-					properties = HeliportProperties(JSON: props)
+					properties = try? HeliportProperties(JSON: props)
 				case .notam:
-					properties = NOTAMProperties(JSON: props)
+					properties = try? NOTAMProperties(JSON: props)
 				case .notification:
-					properties = NotificationProperties(JSON: props)
+					properties = try? NotificationProperties(JSON: props)
 				case .park:
-					properties = ParkProperties(JSON: props)
+					properties = try? ParkProperties(JSON: props)
 				case .powerPlant:
-					properties = PowerPlantProperties(JSON: props)
+					properties = try? PowerPlantProperties(JSON: props)
 				case .school:
-					properties = SchoolProperties(JSON: props)
+					properties = try? SchoolProperties(JSON: props)
 				case .specialUse:
-					properties = SpecialUseProperties(JSON: props)
+					properties = try? SpecialUseProperties(JSON: props)
 				case .tfr:
-					properties = TFRProperties(JSON: props)
+					properties = try? TFRProperties(JSON: props)
 				case .university:
-					properties = UniversityProperties(JSON: props)
+					properties = try? UniversityProperties(JSON: props)
 				case .wildfire:
-					properties = WildfireProperties(JSON: props)
+					properties = try? WildfireProperties(JSON: props)
 				default:
 					properties = nil
 				}

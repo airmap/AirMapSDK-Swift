@@ -75,7 +75,7 @@ class SystemStatusService {
 
 extension SystemStatusService: WebSocketDelegate {
     public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-		if let status = AirMapSystemStatus(JSONString: text) {
+		if let status = try? AirMapSystemStatus(JSONString: text) {
 			delegate?.airMapSystemStatusDidUpdate(status)
 		} else {
 			AirMap.logger.error("Failed to parse AirMapSystemStatus", metadata: ["raw text": .stringConvertible(text)])
