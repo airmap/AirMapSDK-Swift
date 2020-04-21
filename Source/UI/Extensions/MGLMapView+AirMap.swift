@@ -214,12 +214,15 @@ extension MGLVectorTileSource {
 			units = "si"
 		}
 
+		let formatter = ISO8601DateFormatter()
+		formatter.formatOptions = [.withInternetDateTime]
+
 		let query = [
 			"apikey": AirMap.configuration.apiKey,
 			"access_token": AirMap.authToken,
 			"units": units,
-			"start": range.effectiveStart.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters),
-			"end": range.effectiveEnd.iso8601String().addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters)
+			"start": formatter.string(from: range.effectiveStart).addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters),
+			"end": formatter.string(from: range.effectiveEnd).addingPercentEncoding(withAllowedCharacters: .urlSafeCharacters)
 		]
 		.compactMap { key, value in
 			guard let value = value else { return nil }
