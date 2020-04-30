@@ -134,7 +134,7 @@ extension AirMapConfiguration: ImmutableMappable {
 		catch let error as MapError {
 			fatalError(
 				"Configuration is missing the required \(error.key!) key and value. If you have recently updated " +
-				"this SDK, you may need to visit the AirMap developer portal at https://dashboard.airmap.io/developer/ " +
+				"this SDK, you may need to visit the AirMap developer portal at https://dashboard.airmap.com/developer/ " +
 				"for an updated airmap.config.json file."
 			)
 		}

@@ -138,7 +138,10 @@ struct Constants {
 
 	struct Maps {
 		static let jurisdictionsTileSourceId = "jurisdictions"
+		static let jurisdictionsSourceLayerId = "jurisdictions"
 		static let jurisdictionsStyleLayerId = "jurisdictions"
+		static let backgroundStyleLayerId = "background"
+		static let disabledJurisdictionsStyleLayerId = "disabled_jurisdictions"
 		static let jurisdictionFeatureAttributesKey = "jurisdiction"
 		static let airmapLayerPrefix = "airmap"
 		static let rulesetSourcePrefix = "airmap_ruleset_"

@@ -67,6 +67,13 @@ open class AirMapMapView: MGLMapView {
 		didSet { rulesetConfigurationSubject.onNext(rulesetConfiguration) }
 	}
 
+	/// A list of allowed Jurisdictions. If set, the map will only display rulesets and airspace for the jurisdiction ids
+	/// provided. All areas falling outside of the of the provided jurisdiction boundaries will be shaded as unavailable.
+	public var allowedJurisdictions: [AirMapJurisdictionId]? {
+		get { return try? allowedJurisdictionsSubject.value() ?? [] }
+		set { allowedJurisdictionsSubject.onNext(newValue) }
+	}
+
 	/// The filter used to limit the number of temporal features displayed on the map (e.g. TFRs, NOTAMs, etc.)
 	/// Only features that occur during the sliding window or fixed range of time will be displayed. The default is a
 	/// sliding window of 4 hours into the future.
@@ -137,6 +144,7 @@ open class AirMapMapView: MGLMapView {
 	private let themeSubject = BehaviorSubject(value: Theme.standard)
 	private let temporalRangeSubject = BehaviorSubject(value: TemporalRange.sliding(window: Constants.Maps.futureTemporalWindow))
 	private let rulesetConfigurationSubject = BehaviorSubject(value: RulesetConfiguration.automatic)
+	let allowedJurisdictionsSubject = BehaviorSubject(value: nil as [AirMapJurisdictionId]?)
 
 	private let disposeBag = DisposeBag()
 }
@@ -207,7 +215,7 @@ extension AirMapMapView {
 			.map { $0.accessToken }
 			.distinctUntilChanged(==)
 		
-		Observable.combineLatest(style, accessToken)
+		Observable.combineLatest(style, allowedJurisdictionsSubject, accessToken)
 			.subscribe(onNext: AirMapMapView.configureJurisdictions)
 			.disposed(by: disposeBag)
 
@@ -270,7 +278,7 @@ extension AirMapMapView {
 		NSLayoutConstraint.activate([
 			airMapLogoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
 			airMapLogoView.centerYAnchor.constraint(equalTo: logoView.centerYAnchor)
-			])
+		])
 
 		isPitchEnabled = false
 		allowsRotating = false
@@ -321,14 +329,19 @@ extension AirMapMapView {
 
 	// MARK: - Static
 
-	private static func configureJurisdictions(in style: MGLStyle, with authToken: String?) {
-		
-		if let source = style.source(withIdentifier: "jurisdictions") as? MGLVectorTileSource, let layer = style.layer(withIdentifier: "jurisdictions") {
-			style.removeLayer(layer)
+	private static func configureJurisdictions(in style: MGLStyle, with allowedJurisdictions: [AirMapJurisdictionId]?, with authToken: String?) {
+
+		let disabledLayerPrefix = "airmap|disabled_jurisdictions|"
+
+		if let source = style.source(withIdentifier: Constants.Maps.jurisdictionsTileSourceId) {
+			if let layer = style.layer(withIdentifier: Constants.Maps.jurisdictionsStyleLayerId) {
+				style.removeLayer(layer)
+			}
+			for layer in style.layers.filter({ $0.identifier.hasPrefix(disabledLayerPrefix) }) {
+				style.removeLayer(layer)
+			}
 			style.removeSource(source)
 		}
-
-		guard style.source(withIdentifier: "jurisdictions") == nil else { return }
 
 		let query = [
 			"apikey": AirMap.configuration.apiKey,
@@ -341,19 +354,50 @@ extension AirMapMapView {
 		.joined(separator: "&")
 
 		let jurisdictionsUrl = Constants.Api.jurisdictionsUrl + "?" + query
-		let source = MGLVectorTileSource(identifier: "jurisdictions", tileURLTemplates: [jurisdictionsUrl], options: [
+		let source = MGLVectorTileSource(identifier: Constants.Maps.jurisdictionsTileSourceId, tileURLTemplates: [jurisdictionsUrl], options: [
 			.minimumZoomLevel: Constants.Maps.tileMinimumZoomLevel,
 			.maximumZoomLevel: Constants.Maps.tileMaximumZoomLevel,
 		])
-
-		let layer = MGLFillStyleLayer(identifier: "jurisdictions", source: source)
-		layer.sourceLayerIdentifier = "jurisdictions"
-
-		layer.fillColor = NSExpression(forConstantValue: UIColor.clear)
-		layer.fillOpacity = NSExpression(forConstantValue: 1)
-
 		style.addSource(source)
-		style.insertLayer(layer, at: 0)
+
+		let jurisdictionsLayer = MGLFillStyleLayer(identifier: Constants.Maps.jurisdictionsStyleLayerId, source: source)
+		jurisdictionsLayer.sourceLayerIdentifier = Constants.Maps.jurisdictionsSourceLayerId
+		jurisdictionsLayer.fillColor = NSExpression(forConstantValue: UIColor.clear)
+		jurisdictionsLayer.fillOpacity = NSExpression(forConstantValue: 1)
+		style.insertLayer(jurisdictionsLayer, at: 0)
+
+		// ids for allow jurisdictions
+		if let allowedJurisdictions = allowedJurisdictions {
+			let jurisdictionIds = allowedJurisdictions.map({ $0.rawValue })
+
+			// get a reference to the syle's background layer
+			let bg = style.layer(withIdentifier: Constants.Maps.backgroundStyleLayerId) as! MGLBackgroundStyleLayer
+
+			let federal = AirMapJurisdiction.Region.federal.rawValue
+
+			// create a fill that will dim the out of bounds areas with the bg color
+			let boundsFill1 = MGLFillStyleLayer(identifier: disabledLayerPrefix + "fill|0", source: source)
+			boundsFill1.sourceLayerIdentifier = Constants.Maps.jurisdictionsSourceLayerId
+			boundsFill1.fillColor = bg.backgroundColor
+			boundsFill1.fillOpacity = NSExpression(forConstantValue: 0.8) // 80%
+			boundsFill1.predicate = NSPredicate(format: "(region == %@) && NOT (id IN %@)", federal, jurisdictionIds)
+			style.addLayer(boundsFill1)
+
+			// create a new fill layer with the hash pattern
+			let boundsFill2 = MGLFillStyleLayer(identifier: disabledLayerPrefix + "fill|1", source: source)
+			boundsFill2.sourceLayerIdentifier = Constants.Maps.jurisdictionsSourceLayerId
+			boundsFill2.fillPattern = NSExpression(forConstantValue: "heliports_lines_pattern")
+			boundsFill2.predicate = NSPredicate(format: "(region == %@) && NOT (id IN %@)", federal, jurisdictionIds)
+			style.addLayer(boundsFill2)
+
+			// create a new line layer for the supported geo bounds
+			let boundsLine = MGLLineStyleLayer(identifier: disabledLayerPrefix + "line|0", source: source)
+			boundsLine.sourceLayerIdentifier = Constants.Maps.jurisdictionsSourceLayerId
+			boundsLine.lineWidth = NSExpression(forConstantValue: 2)
+			boundsLine.lineColor = NSExpression(forConstantValue: UIColor.airMapDarkGray)
+			boundsLine.predicate = NSPredicate(format: "id IN %@", jurisdictionIds)
+			style.addLayer(boundsLine)
+		}
 	}
 
 	private static func addRuleset(_ ruleset: AirMapRuleset, to style: MGLStyle, in mapView: AirMapMapView, for range: TemporalRange) {
