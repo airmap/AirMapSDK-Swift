@@ -366,7 +366,7 @@ extension AirMapMapView {
 		jurisdictionsLayer.fillOpacity = NSExpression(forConstantValue: 1)
 		style.insertLayer(jurisdictionsLayer, at: 0)
 
-		// ids for allow jurisdictions
+		// ids for allowed jurisdictions
 		if let allowedJurisdictions = allowedJurisdictions {
 			let jurisdictionIds = allowedJurisdictions.map({ $0.rawValue })
 
