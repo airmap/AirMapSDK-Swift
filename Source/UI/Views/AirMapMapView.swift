@@ -144,7 +144,7 @@ open class AirMapMapView: MGLMapView {
 	private let themeSubject = BehaviorSubject(value: Theme.standard)
 	private let temporalRangeSubject = BehaviorSubject(value: TemporalRange.sliding(window: Constants.Maps.futureTemporalWindow))
 	private let rulesetConfigurationSubject = BehaviorSubject(value: RulesetConfiguration.automatic)
-	let allowedJurisdictionsSubject = BehaviorSubject(value: nil as [AirMapJurisdictionId]?)
+	private let allowedJurisdictionsSubject = BehaviorSubject(value: nil as [AirMapJurisdictionId]?)
 
 	private let disposeBag = DisposeBag()
 }
