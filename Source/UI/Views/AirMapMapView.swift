@@ -68,7 +68,7 @@ open class AirMapMapView: MGLMapView {
 	}
 
 	/// A list of allowed Jurisdictions. If set, the map will only display rulesets and airspace for the jurisdiction ids
-	/// provided. All areas falling outside of the of the provided jurisdiction boundaries will be shaded as unavailable.
+	/// provided. All areas falling outside of the provided jurisdiction boundaries will be shaded as unavailable.
 	public var allowedJurisdictions: [AirMapJurisdictionId]? {
 		get { return try? allowedJurisdictionsSubject.value() ?? [] }
 		set { allowedJurisdictionsSubject.onNext(newValue) }
