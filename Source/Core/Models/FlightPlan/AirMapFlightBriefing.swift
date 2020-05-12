@@ -63,6 +63,9 @@ public struct AirMapFlightBriefing {
 		/// A textual message describing the current status of the request
 		public let message: String
 
+		/// Relevante notices about the authorization
+		public let notices: [String]
+
 		/// The number referencing the authorization
 		public let referenceNumber: String?
 
