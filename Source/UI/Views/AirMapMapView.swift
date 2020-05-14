@@ -247,10 +247,19 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// Update inactive airspace filters
-		Observable.combineLatest(style, showInactiveAirspaceSubject)
-			.subscribe(onNext: { (style, showInactiveAirspace) in
-				style.updateActiveAirspaceFilters(showInactiveAirspace: showInactiveAirspace)
+		// Reload base style when toggling inactive airspace filter
+		showInactiveAirspaceSubject
+			.distinctUntilChanged()
+			.subscribe(onNext: { [weak self] (_) in
+				self?.reloadStyle(nil)
+			})
+			.disposed(by: disposeBag)
+
+		// Filter inactive airspace
+		style
+			.pausable(showInactiveAirspaceSubject.map { !$0 } )
+			.subscribe(onNext: { (style) in
+				style.filterInactiveAirspace()
 			})
 			.disposed(by: disposeBag)
 
@@ -288,7 +297,7 @@ extension AirMapMapView {
 
 	// MARK: - Configuration
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
-		
+
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
 			.map { $0.tileSourceIdentifier }

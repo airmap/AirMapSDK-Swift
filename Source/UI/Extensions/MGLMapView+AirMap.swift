@@ -165,20 +165,23 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
-    /// Update the predicates to filter active airspace layers
-	func updateActiveAirspaceFilters(showInactiveAirspace: Bool) {
+	/// Update the predicates to filter active airspace layers
+	func filterInactiveAirspace() {
 
-        layers
-            .filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
+		layers
+			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
 			.compactMap { $0 as? MGLVectorStyleLayer }
-            .forEach({ (layer) in
-				if showInactiveAirspace {
-					layer.predicate = nil
+			.forEach({ (layer) in
+				if let existing = layer.predicate {
+					layer.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+						existing,
+						NSPredicate(format: "active != NULL && active == YES")
+					])
 				} else {
-					layer.predicate = NSPredicate(format: "active == YES")
+					layer.predicate = NSPredicate(format: "active != NULL && active == YES")
 				}
 			})
-    }
+	}
 }
 
 extension MGLStyleLayer {
