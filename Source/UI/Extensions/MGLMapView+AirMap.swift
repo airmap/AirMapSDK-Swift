@@ -165,6 +165,7 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
+	// TODO: Do we still want this filter if we will be getting updates from platform?
     /// Update the predicates for temporal layers such as .tfr and .notam with a near future time window
 	func updateTemporalFilters(from start: Date, to end: Date) {
         
@@ -181,6 +182,21 @@ extension MGLStyle {
 					NSPredicate(format: "permanent != NULL && permanent == YES"),
 					NSPredicate(format: "start <= %i && (end == NULL || end >= %i)", endInt, startInt)
 				])
+			})
+    }
+
+    /// Update the predicates to filter active airspace layers
+	func updateActiveAirspaceFilters(showInactiveAirspace: Bool) {
+
+        layers
+            .filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
+			.compactMap { $0 as? MGLVectorStyleLayer }
+            .forEach({ (layer) in
+				if showInactiveAirspace {
+					layer.predicate = nil
+				} else {
+					layer.predicate = NSPredicate(format: "active == YES")
+				}
 			})
     }
 }
@@ -200,7 +216,7 @@ extension MGLStyleLayer {
 extension MGLVectorTileSource {
 	
 	convenience init?(ruleset: AirMapRuleset, range: AirMapMapView.TemporalRange) {
-		
+
 		let layerNames = ruleset.airspaceTypes.map { $0.rawValue }.joined(separator: ",")
 		let options = [
 			MGLTileSourceOption.minimumZoomLevel: NSNumber(value: Constants.Maps.tileMinimumZoomLevel),
