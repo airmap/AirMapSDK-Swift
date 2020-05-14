@@ -173,9 +173,13 @@ extension MGLStyle {
 			.compactMap { $0 as? MGLVectorStyleLayer }
 			.forEach({ (layer) in
 				if let existing = layer.predicate {
+					let activePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+						NSPredicate(format: "active == NULL"),
+						NSPredicate(format: "active != NULL && active == YES")
+					])
 					layer.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
 						existing,
-						NSPredicate(format: "active != NULL && active == YES")
+						activePredicate
 					])
 				} else {
 					layer.predicate = NSPredicate(format: "active != NULL && active == YES")

@@ -257,9 +257,11 @@ extension AirMapMapView {
 
 		// Filter inactive airspace
 		style
-			.pausable(showInactiveAirspaceSubject.map { !$0 } )
-			.subscribe(onNext: { (style) in
-				style.filterInactiveAirspace()
+			.withLatestFrom(showInactiveAirspaceSubject) { ($0, $1) }
+			.subscribe(onNext: { (style, showInactiveAirspace) in
+				if showInactiveAirspace {
+					style.filterInactiveAirspace()
+				}
 			})
 			.disposed(by: disposeBag)
 
