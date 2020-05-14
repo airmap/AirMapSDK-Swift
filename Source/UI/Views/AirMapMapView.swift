@@ -247,19 +247,6 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// TODO: combine with other predicates?
-		// Update temporal filters
-		Observable.combineLatest(style, range, refresh)
-			.subscribe(onNext: { (style, range, _) in
-				switch range {
-				case .fixed(let start, let end):
-					style.updateTemporalFilters(from: start, to: end)
-				case .sliding(let window):
-					style.updateTemporalFilters(from: Date(), to: Date().addingTimeInterval(window))
-				}
-			})
-			.disposed(by: disposeBag)
-
 		// Update inactive airspace filters
 		Observable.combineLatest(style, showInactiveAirspaceSubject)
 			.subscribe(onNext: { (style, showInactiveAirspace) in
