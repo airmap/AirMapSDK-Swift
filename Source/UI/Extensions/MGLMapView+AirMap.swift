@@ -165,8 +165,8 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
-	/// Update the predicates to filter active airspace layers
-	func filterInactiveAirspace() {
+	/// Update the predicates to hide inactive airspace layers
+	func hideInactiveAirspace() {
 
 		layers
 			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
@@ -182,7 +182,7 @@ extension MGLStyle {
 						activePredicate
 					])
 				} else {
-					layer.predicate = NSPredicate(format: "active != NULL && active == YES")
+					layer.predicate = activePredicate
 				}
 			})
 	}

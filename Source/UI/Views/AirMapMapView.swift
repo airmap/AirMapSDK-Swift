@@ -255,12 +255,12 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// Filter inactive airspace
+		// Hide inactive airspace when `showInactiveAirspace` is toggled
 		style
 			.withLatestFrom(showInactiveAirspaceSubject) { ($0, $1) }
 			.subscribe(onNext: { (style, showInactiveAirspace) in
-				if showInactiveAirspace {
-					style.filterInactiveAirspace()
+				if !showInactiveAirspace {
+					style.hideInactiveAirspace()
 				}
 			})
 			.disposed(by: disposeBag)
