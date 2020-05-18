@@ -172,11 +172,11 @@ extension MGLStyle {
 			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
 			.compactMap { $0 as? MGLVectorStyleLayer }
 			.forEach({ (layer) in
+				let activePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+					NSPredicate(format: "active == NULL"),
+					NSPredicate(format: "active != NULL && active == YES")
+				])
 				if let existing = layer.predicate {
-					let activePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-						NSPredicate(format: "active == NULL"),
-						NSPredicate(format: "active != NULL && active == YES")
-					])
 					layer.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
 						existing,
 						activePredicate
