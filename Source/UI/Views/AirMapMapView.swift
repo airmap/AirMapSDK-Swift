@@ -44,6 +44,12 @@ open class AirMapMapView: MGLMapView {
 		didSet { themeSubject.onNext(theme) }
 	}
 
+	/// Show airspace that is inactive
+	/// Default: true
+	public var showInactiveAirspace: Bool = true {
+		didSet { showInactiveAirspaceSubject.onNext(showInactiveAirspace) }
+	}
+
 	/// The configuration the map uses to determine the behavior by which the map configures itself
 	///
 	/// - automatic: The map will be configured automatically. All `.required` rulesets will be enabled, and the default
@@ -142,6 +148,7 @@ open class AirMapMapView: MGLMapView {
 	// MARK: - Private
 
 	private let themeSubject = BehaviorSubject(value: Theme.standard)
+	private let showInactiveAirspaceSubject = BehaviorSubject(value: true)
 	private let temporalRangeSubject = BehaviorSubject(value: TemporalRange.sliding(window: Constants.Maps.futureTemporalWindow))
 	private let rulesetConfigurationSubject = BehaviorSubject(value: RulesetConfiguration.automatic)
 	private let allowedJurisdictionsSubject = BehaviorSubject(value: nil as [AirMapJurisdictionId]?)
@@ -240,14 +247,20 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// Update temporal filters
-		Observable.combineLatest(style, range, refresh)
-			.subscribe(onNext: { (style, range, _) in
-				switch range {
-				case .fixed(let start, let end):
-					style.updateTemporalFilters(from: start, to: end)
-				case .sliding(let window):
-					style.updateTemporalFilters(from: Date(), to: Date().addingTimeInterval(window))
+		// Reload base style when toggling inactive airspace filter
+		showInactiveAirspaceSubject
+			.distinctUntilChanged()
+			.subscribe(onNext: { [weak self] (_) in
+				self?.reloadStyle(nil)
+			})
+			.disposed(by: disposeBag)
+
+		// Hide inactive airspace when `showInactiveAirspace` is toggled
+		style
+			.withLatestFrom(showInactiveAirspaceSubject) { ($0, $1) }
+			.subscribe(onNext: { (style, showInactiveAirspace) in
+				if !showInactiveAirspace {
+					style.hideInactiveAirspace()
 				}
 			})
 			.disposed(by: disposeBag)
@@ -286,7 +299,7 @@ extension AirMapMapView {
 
 	// MARK: - Configuration
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
-		
+
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
 			.map { $0.tileSourceIdentifier }

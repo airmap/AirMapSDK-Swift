@@ -165,24 +165,27 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
-    /// Update the predicates for temporal layers such as .tfr and .notam with a near future time window
-	func updateTemporalFilters(from start: Date, to end: Date) {
-        
-        let temporalAirspaces: [AirMapAirspaceType] = [.tfr, .notam]
+	/// Update the predicates to hide inactive airspace layers
+	func hideInactiveAirspace() {
 
-        layers
-            .filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix) && temporalAirspaces.contains($0.airspaceType!) }
+		layers
+			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
 			.compactMap { $0 as? MGLVectorStyleLayer }
-            .forEach({ (layer) in
-                let startInt = Int(start.timeIntervalSince1970)
-                let endInt = Int(end.timeIntervalSince1970)
-
-				layer.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-					NSPredicate(format: "permanent != NULL && permanent == YES"),
-					NSPredicate(format: "start <= %i && (end == NULL || end >= %i)", endInt, startInt)
+			.forEach({ (layer) in
+				let activePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+					NSPredicate(format: "active == NULL"),
+					NSPredicate(format: "active != NULL && active == YES")
 				])
+				if let existing = layer.predicate {
+					layer.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+						existing,
+						activePredicate
+					])
+				} else {
+					layer.predicate = activePredicate
+				}
 			})
-    }
+	}
 }
 
 extension MGLStyleLayer {
@@ -200,7 +203,7 @@ extension MGLStyleLayer {
 extension MGLVectorTileSource {
 	
 	convenience init?(ruleset: AirMapRuleset, range: AirMapMapView.TemporalRange) {
-		
+
 		let layerNames = ruleset.airspaceTypes.map { $0.rawValue }.joined(separator: ",")
 		let options = [
 			MGLTileSourceOption.minimumZoomLevel: NSNumber(value: Constants.Maps.tileMinimumZoomLevel),
