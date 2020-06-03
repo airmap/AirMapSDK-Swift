@@ -64,10 +64,13 @@ public struct AirMapFlightBriefing {
 		public let message: String
 
 		/// Relevante notices about the authorization
-		public let notices: [String]
+		public let notices: [Notice]
 
 		/// The number referencing the authorization
 		public let referenceNumber: String?
+
+		/// The number airspace category of the authorization
+		public let airspaceCategory: AirMapAirspaceType?
 
 		/// An enumeration of possible authorization states
 		///
@@ -85,10 +88,10 @@ public struct AirMapFlightBriefing {
 			case pending
 			case manualAuthorization = "manual_authorization"
 			case cancelled
+			case notRequested = "not_requested"
 			case rejected
 			case rejectedUponSubmission = "rejected_upon_submission"
-			case notRequested = "not_requested"
-			
+
 			public var description: String {
 				let localized = LocalizedStrings.Authorization.self
 				switch self {
@@ -113,6 +116,11 @@ public struct AirMapFlightBriefing {
 		}
 	}
 	
+	/// A notice from an authority
+	public struct Notice {
+		/// The message of the notice
+		public let message: String
+	}
 }
 
 /// A representation of an authoritative entity
@@ -123,4 +131,7 @@ public struct AirMapAuthority {
 	
 	/// The name of the authority
 	public let name: String
+
+	/// The facility of the authority
+	public let facility: String
 }
