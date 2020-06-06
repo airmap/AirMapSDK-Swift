@@ -221,7 +221,7 @@ extension AirMapMapView {
 		let accessToken = AirMap.authService.authState.asObservable()
 			.map { $0.accessToken }
 			.distinctUntilChanged(==)
-		
+
 		Observable.combineLatest(style, allowedJurisdictionsSubject, accessToken)
 			.subscribe(onNext: AirMapMapView.configureJurisdictions)
 			.disposed(by: disposeBag)
@@ -232,7 +232,8 @@ extension AirMapMapView {
 		let range = Observable.combineLatest(temporalRangeSubject, refresh)
 			.withLatestFrom(temporalRangeSubject)
 
-		Observable.combineLatest(jurisdictions, style, rulesetConfig, range)
+		Observable.combineLatest(jurisdictions, style, rulesetConfig)
+			.withLatestFrom(range) { (jurisdictinos: $0.0, style: $0.1, rulesetConfig: $0.2, range: $1) }
 			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
@@ -247,9 +248,9 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// Reload base style when toggling inactive airspace filter
-		showInactiveAirspaceSubject
-			.distinctUntilChanged()
+		// Reload base style when updating the temporal range or toggling inactive airspace filter
+		Observable.combineLatest(range, showInactiveAirspaceSubject.distinctUntilChanged())
+			.debounce(.milliseconds(100), scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] (_) in
 				self?.reloadStyle(nil)
 			})
