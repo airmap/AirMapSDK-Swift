@@ -233,7 +233,7 @@ extension AirMapMapView {
 			.withLatestFrom(temporalRangeSubject)
 
 		Observable.combineLatest(jurisdictions, style, rulesetConfig)
-			.withLatestFrom(range) { (jurisdictinos: $0.0, style: $0.1, rulesetConfig: $0.2, range: $1) }
+			.withLatestFrom(range) { (jurisdictions: $0.0, style: $0.1, rulesetConfig: $0.2, range: $1) }
 			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
