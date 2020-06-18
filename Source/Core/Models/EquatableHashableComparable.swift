@@ -262,3 +262,15 @@ extension AirMapAdvisory.Timesheet.Event: Comparable {
 		return lhs.order < rhs.order
 	}
 }
+
+extension AirMapMapView.TemporalRange: Equatable, Hashable {
+
+	public static func ==(lhs: AirMapMapView.TemporalRange, rhs: AirMapMapView.TemporalRange) -> Bool {
+		return lhs.hashValue == rhs.hashValue
+	}
+
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(effectiveStart)
+		hasher.combine(effectiveEnd)
+	}
+}

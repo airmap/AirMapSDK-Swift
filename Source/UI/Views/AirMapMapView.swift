@@ -154,6 +154,10 @@ open class AirMapMapView: MGLMapView {
 	private let allowedJurisdictionsSubject = BehaviorSubject(value: nil as [AirMapJurisdictionId]?)
 
 	private let disposeBag = DisposeBag()
+
+	// MARK: - Internal
+
+	internal var defaultPredicates = [String: NSPredicate]()
 }
 
 // MARK: - Private
@@ -213,6 +217,15 @@ extension AirMapMapView {
 			.flatMapLatest({ [unowned self] (_) -> Observable<MGLStyle> in
 				return self.rx.mapDidFinishLoadingStyle.map({$1})
 			})
+			.do(onNext: { [weak self] (style) in
+				// Populate predicates with default values from style
+				style.layers
+					.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
+					.compactMap { $0 as? MGLVectorStyleLayer }
+					.forEach({ (layer) in
+						self?.defaultPredicates[layer.identifier] = layer.predicate
+					})
+			})
 
 		// The latest unique rulesets
 		let rulesetConfig = self.rulesetConfigurationSubject
@@ -231,9 +244,9 @@ extension AirMapMapView {
 
 		let range = Observable.combineLatest(temporalRangeSubject, refresh)
 			.withLatestFrom(temporalRangeSubject)
+			.distinctUntilChanged()
 
-		Observable.combineLatest(jurisdictions, style, rulesetConfig)
-			.withLatestFrom(range) { (jurisdictions: $0.0, style: $0.1, rulesetConfig: $0.2, range: $1) }
+		Observable.combineLatest(jurisdictions, style, rulesetConfig, range)
 			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
@@ -248,19 +261,12 @@ extension AirMapMapView {
 			})
 			.disposed(by: disposeBag)
 
-		// Reload base style when updating the temporal range or toggling inactive airspace filter
-		Observable.combineLatest(range, showInactiveAirspaceSubject.distinctUntilChanged())
-			.debounce(.milliseconds(100), scheduler: MainScheduler.instance)
-			.subscribe(onNext: { [weak self] (_) in
-				self?.reloadStyle(nil)
-			})
-			.disposed(by: disposeBag)
-
 		// Hide inactive airspace when `showInactiveAirspace` is toggled
-		style
-			.withLatestFrom(showInactiveAirspaceSubject) { ($0, $1) }
-			.subscribe(onNext: { (style, showInactiveAirspace) in
-				if !showInactiveAirspace {
+		Observable.combineLatest(style, showInactiveAirspaceSubject.distinctUntilChanged())
+			.subscribe(onNext: { [weak self] (style, showInactiveAirspace) in
+				if showInactiveAirspace {
+					style.showInactiveAirspace(mapView: self)
+				} else {
 					style.hideInactiveAirspace()
 				}
 			})
@@ -301,6 +307,9 @@ extension AirMapMapView {
 	// MARK: - Configuration
 	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
 
+		let temporalRangeIds = [AirMapAirspaceType.controlledAirspace, AirMapAirspaceType.specialUse, AirMapAirspaceType.tfr,  AirMapAirspaceType.notam]
+			.map { $0.rawValue }
+
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
 			.map { $0.tileSourceIdentifier }
@@ -309,6 +318,9 @@ extension AirMapMapView {
 			.compactMap { $0 as? MGLVectorTileSource }
 			.compactMap { $0.identifier }
 			.filter { $0.hasPrefix(Constants.Maps.rulesetSourcePrefix) }
+			.filter { (id) -> Bool in
+				return temporalRangeIds.filter { id.contains($0) }.count > 0
+			}
 
 		let orphanedSourceIds = Set(existingSourceIds).subtracting(rulesetSourceIds)
 		let newSourceIds = Set(rulesetSourceIds).subtracting(existingSourceIds)
