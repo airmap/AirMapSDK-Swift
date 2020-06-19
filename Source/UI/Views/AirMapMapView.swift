@@ -246,7 +246,11 @@ extension AirMapMapView {
 			.withLatestFrom(temporalRangeSubject)
 			.distinctUntilChanged()
 
-		Observable.combineLatest(jurisdictions, style, rulesetConfig, range)
+		let mapConfigurables = Observable.combineLatest(jurisdictions, style, rulesetConfig)
+			.share()
+
+		mapConfigurables
+			.withLatestFrom(range) { ($0.0, $0.1, $0.2, $1) }
 			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
@@ -260,6 +264,18 @@ extension AirMapMapView {
 				self.airMapMapViewDelegate?.airMapMapViewRegionDidChange(mapView: self, jurisdictions: jurisdictions, activeRulesets: activeRulesets)
 			})
 			.disposed(by: disposeBag)
+
+		range
+			.withLatestFrom(mapConfigurables) { ($1.0, $1.1, $1.2, $0) }
+			.observeOn(MainScheduler.asyncInstance)
+			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
+				guard let `self` = self else { return }
+
+				let activeRulesets = AirMapMapView.activeRulesets(from: jurisdictions, using: rulesetConfig)
+				AirMapMapView.update(range: range, in: self, for: style, with: activeRulesets)
+			})
+			.disposed(by: disposeBag)
+
 
 		// Hide inactive airspace when `showInactiveAirspace` is toggled
 		Observable.combineLatest(style, showInactiveAirspaceSubject.distinctUntilChanged())
@@ -305,10 +321,8 @@ extension AirMapMapView {
 	}
 
 	// MARK: - Configuration
-	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
 
-		let temporalRangeIds = [AirMapAirspaceType.controlledAirspace, AirMapAirspaceType.specialUse, AirMapAirspaceType.tfr,  AirMapAirspaceType.notam]
-			.map { $0.rawValue }
+	private static func configure(mapView: AirMapMapView, style: MGLStyle, with rulesets: [AirMapRuleset], range: TemporalRange) {
 
 		let rulesetSourceIds = rulesets
 			.filter { $0.airspaceTypes.count > 0 }
@@ -318,9 +332,6 @@ extension AirMapMapView {
 			.compactMap { $0 as? MGLVectorTileSource }
 			.compactMap { $0.identifier }
 			.filter { $0.hasPrefix(Constants.Maps.rulesetSourcePrefix) }
-			.filter { (id) -> Bool in
-				return temporalRangeIds.filter { id.contains($0) }.count > 0
-			}
 
 		let orphanedSourceIds = Set(existingSourceIds).subtracting(rulesetSourceIds)
 		let newSourceIds = Set(rulesetSourceIds).subtracting(existingSourceIds)
@@ -334,6 +345,31 @@ extension AirMapMapView {
 		// Add new ruleset sources
 		rulesets
 			.filter({ newSourceIds.contains($0.tileSourceIdentifier) })
+			.forEach({ (ruleset) in
+				addRuleset(ruleset, to: style, in: mapView, for: range)
+			})
+	}
+
+	// MARK: - Update
+
+	private static func update(range: TemporalRange, in mapView: AirMapMapView, for style: MGLStyle, with rulesets: [AirMapRuleset]) {
+
+		let temporalSourceIds = rulesets
+			.filter { $0.airspaceTypes.count > 0 }
+			.filter { (ruleset) -> Bool in
+				return Set(Constants.Maps.temporalAirspaceTypes).intersection(ruleset.airspaceTypes).count > 0
+			}
+			.map { $0.tileSourceIdentifier }
+
+		// Refresh all temporal ruleset ids
+		temporalSourceIds
+			.forEach({ id in
+				removeRuleset(id, from: style, in: mapView)
+			})
+
+		// Add new ruleset sources
+		rulesets
+			.filter({ temporalSourceIds.contains($0.tileSourceIdentifier) })
 			.forEach({ (ruleset) in
 				addRuleset(ruleset, to: style, in: mapView, for: range)
 			})

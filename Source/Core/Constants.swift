@@ -148,7 +148,14 @@ struct Constants {
 		static let tileMaximumZoomLevel = 12
 		static let temporalLayerRefreshInterval: RxTimeInterval = .seconds(60*5) // 5 minutes
 		static let futureTemporalWindow: TimeInterval = 4*60*60 // 4 hours
-		
+
+		static let temporalAirspaceTypes = [
+			AirMapAirspaceType.controlledAirspace,
+			AirMapAirspaceType.specialUse,
+			AirMapAirspaceType.tfr,
+			AirMapAirspaceType.notam
+		]
+
 		static var styleUrl: URL {
 			return AirMap.configuration.mapStyle ??
 				URL(string: "https://cdn.airmap.com/static/map-styles/0.11.7/")!
