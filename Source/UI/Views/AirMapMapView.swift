@@ -218,7 +218,7 @@ extension AirMapMapView {
 				return self.rx.mapDidFinishLoadingStyle.map({$1})
 			})
 			.do(onNext: { [weak self] (style) in
-				// Populate predicates with default values from style
+				self?.defaultPredicates = [String: NSPredicate]()
 				style.layers
 					.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
 					.compactMap { $0 as? MGLVectorStyleLayer }
