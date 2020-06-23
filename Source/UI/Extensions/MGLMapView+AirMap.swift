@@ -165,7 +165,7 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
-	/// Revert layer predicates to their default values to show inative airspace layers
+	/// Revert layer predicates to their default values to show inactive airspace layers
 	func showInactiveAirspace(mapView: AirMapMapView?) {
 		layers
 			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
