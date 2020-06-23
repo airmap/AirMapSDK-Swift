@@ -267,7 +267,6 @@ extension AirMapMapView {
 
 		range
 			.withLatestFrom(mapConfigurables) { ($1.0, $1.1, $1.2, $0) }
-			.observeOn(MainScheduler.asyncInstance)
 			.subscribe(onNext: { [weak self] (jurisdictions, style, rulesetConfig, range) in
 				guard let `self` = self else { return }
 
@@ -281,7 +280,7 @@ extension AirMapMapView {
 		Observable.combineLatest(style, showInactiveAirspaceSubject.distinctUntilChanged())
 			.subscribe(onNext: { [weak self] (style, showInactiveAirspace) in
 				if showInactiveAirspace {
-					style.showInactiveAirspace(mapView: self)
+					style.showInactiveAirspace(defaultPredicates: self?.defaultPredicates ?? [:])
 				} else {
 					style.hideInactiveAirspace()
 				}

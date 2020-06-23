@@ -166,19 +166,19 @@ extension MGLStyle {
 	}
 
 	/// Revert layer predicates to their default values to show inactive airspace layers
-	func showInactiveAirspace(mapView: AirMapMapView?) {
+	func showInactiveAirspace(defaultPredicates: [String: NSPredicate]) {
 		layers
 			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
 			.compactMap { $0 as? MGLVectorStyleLayer }
 			.forEach({ (layer) in
-				let defaultPredicate = mapView?.defaultPredicates[layer.identifier]
+				let defaultPredicate = defaultPredicates[layer.identifier]
 				if defaultPredicate == nil {
 					/// Handle the case were a layer is cloned by `newLayerClone` and has an added UUID
 					/// Ex: airmap|controlled_airspace|overlay|fill|0|{{UUID}}
 					var split = layer.identifier.split(separator: "|")
 					split.removeLast()
 					let baseIdentifier = split.joined(separator: "|")
-					layer.predicate = mapView?.defaultPredicates[baseIdentifier]
+					layer.predicate = defaultPredicates[baseIdentifier]
 				} else {
 					layer.predicate = defaultPredicate
 				}
