@@ -52,7 +52,10 @@ public struct AirMapAdvisory {
 
 	/// The identifier of the ruleset from which the rule originated
 	public let rulesetId: String
-	
+
+	/// URL associated with the advisory pulled out of the properties
+	public let url: URL?
+
 	/// Additional metadata specific to the advisory type
 	public let properties: AdvisoryProperties?
 
@@ -78,21 +81,19 @@ public struct AirMapAdvisory {
 	}	
 	
 	/// Airport advisory properties
-	public struct AirportProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription, HasOptionalPhoneNumber {
+	public struct AirportProperties: AdvisoryProperties, HasOptionalDescription, HasOptionalPhoneNumber {
 		public let identifier: String?
 		public let phone: String?
 		public let tower: Bool?
 		public let use: String?
 		public let longestRunway: Meters?
 		public let instrumentProcedure: Bool?
-		public let url: URL?
 		public let description: String?
 		public let icao: String?
 	}
 	
 	/// AMA field properties
-	public struct AMAFieldProperties: AdvisoryProperties, HasOptionalURL {
-		public let url: URL?
+	public struct AMAFieldProperties: AdvisoryProperties {
 		public let siteLocation: String?
 		public let contactName: String?
 		public let contactPhone: String?
@@ -111,11 +112,10 @@ public struct AirMapAdvisory {
 	}
 	
 	/// Controlled Airspace advisory properties
-	public struct ControlledAirspaceProperties: AdvisoryProperties, HasOptionalURL, HasAuthorization {
+	public struct ControlledAirspaceProperties: AdvisoryProperties, HasAuthorization {
 		public let type: String?
 		public let isLaancProvider: Bool?
 		public let supportsAuthorization: Bool?
-		public let url: URL?
 		public let icao: String?
 		public let airportID: String?
 		public let airportName: String?
@@ -124,14 +124,12 @@ public struct AirMapAdvisory {
 	}
 	
 	/// City properties
-	public struct CityProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription {
-		public let url: URL?
+	public struct CityProperties: AdvisoryProperties, HasOptionalDescription {
 		public let description: String?
 	}
 	
 	/// Custom airspace properties
-	public struct CustomProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription {
-		public let url: URL?
+	public struct CustomProperties: AdvisoryProperties, HasOptionalDescription {
 		public let description: String?
 	}
 	
@@ -155,15 +153,13 @@ public struct AirMapAdvisory {
 	}
 
 	/// Notification advisory properties
-	public struct NotificationProperties: AdvisoryProperties, HasOptionalURL {
+	public struct NotificationProperties: AdvisoryProperties {
 		public let body: String?
-		public let url: URL?
 	}
 
 	/// Park advisory properties
-	public struct ParkProperties: AdvisoryProperties, HasOptionalURL {
+	public struct ParkProperties: AdvisoryProperties {
 		public let type: String?
-		public let url: URL?
 	}
 	
 	/// Power Plant advisory properties
@@ -184,8 +180,7 @@ public struct AirMapAdvisory {
 	}
 	
 	/// TFR advisory properties
-	public struct TFRProperties: AdvisoryProperties, HasOptionalURL {
-		public let url: URL?
+	public struct TFRProperties: AdvisoryProperties {
 		public let body: String?
 		public let startTime: Date?
 		public let endTime: Date?
@@ -195,8 +190,7 @@ public struct AirMapAdvisory {
 	}
 	
 	/// University properties
-	public struct UniversityProperties: AdvisoryProperties, HasOptionalURL, HasOptionalDescription {
-		public let url: URL?
+	public struct UniversityProperties: AdvisoryProperties, HasOptionalDescription {
 		public let description: String?
 	}
 	
@@ -289,10 +283,6 @@ public struct AirMapAdvisory {
 }
 
 public protocol AdvisoryProperties {}
-
-public protocol HasOptionalURL {
-	var url: URL? { get }
-}
 
 public protocol HasOptionalPhoneNumber {
 	var phone: String? { get }
