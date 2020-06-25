@@ -92,11 +92,11 @@ public struct AirMapAdvisory {
 	
 	/// AMA field properties
 	public struct AMAFieldProperties: AdvisoryProperties {
+		public let url: URL?
 		public let siteLocation: String?
 		public let contactName: String?
 		public let contactPhone: String?
 		public let contactEmail: String?
-		public let url: URL?
 	}
 	
 	/// Heliport advisory properties
@@ -116,24 +116,24 @@ public struct AirMapAdvisory {
 		public let type: String?
 		public let isLaancProvider: Bool?
 		public let supportsAuthorization: Bool?
+		public let url: URL?
 		public let icao: String?
 		public let airportID: String?
 		public let airportName: String?
 		public let ceiling: Double?
 		public let floor: Double?
-		public let url: URL?
 	}
 	
 	/// City properties
 	public struct CityProperties: AdvisoryProperties, HasOptionalDescription {
-		public let description: String?
 		public let url: URL?
+		public let description: String?
 	}
 	
 	/// Custom airspace properties
 	public struct CustomProperties: AdvisoryProperties, HasOptionalDescription {
-		public let description: String?
 		public let url: URL?
+		public let description: String?
 	}
 	
 	/// Emergency advisory properties
@@ -192,19 +192,19 @@ public struct AirMapAdvisory {
 	
 	/// TFR advisory properties
 	public struct TFRProperties: AdvisoryProperties {
+		public let url: URL?
 		public let body: String?
 		public let startTime: Date?
 		public let endTime: Date?
 		public let type: String?
 		public let sport: String?
 		public let venue: String?
-		public let url: URL?
 	}
 	
 	/// University properties
 	public struct UniversityProperties: AdvisoryProperties, HasOptionalDescription {
-		public let description: String?
 		public let url: URL?
+		public let description: String?
 	}
 	
 	/// Wildfire advisory properties
@@ -297,6 +297,10 @@ public struct AirMapAdvisory {
 
 public protocol AdvisoryProperties: HasOptionalURL {}
 
+public protocol HasOptionalURL {
+	var url: URL? { get }
+}
+
 public protocol HasOptionalPhoneNumber {
 	var phone: String? { get }
 }
@@ -308,10 +312,6 @@ public protocol HasOptionalDescription {
 public protocol HasOptionalTimeRange {
 	var startTime: Date? { get }
 	var endTime: Date? { get }
-}
-
-public protocol HasOptionalURL {
-	var url: URL? { get }
 }
 
 public protocol HasAuthorization {
