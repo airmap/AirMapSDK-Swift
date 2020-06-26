@@ -267,7 +267,7 @@ extension AirMapAdvisory.EmergencyProperties: ImmutableMappable {
 	public init(map: Map) throws {
 		effective   =  try? map.value("date_effective", using: Constants.Api.dateTransform)
 		type        =  try? map.value("type")
-		url           =  try? map.value("url", using: URLTransform())
+		url         =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -275,7 +275,7 @@ extension AirMapAdvisory.FireProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		effective  =  try? map.value("date_effective", using: Constants.Api.dateTransform)
-		url           =  try? map.value("url", using: URLTransform())
+		url        =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -365,7 +365,7 @@ extension AirMapAdvisory.WildfireProperties: ImmutableMappable {
 	public init(map: Map) throws {
 		effective   =  try? map.value("date_effective", using: Constants.Api.dateTransform)
 		size        =  try? map.value("size")
-		url           =  try? map.value("url", using: URLTransform())
+		url         =  try? map.value("url", using: URLTransform())
 	}
 }
 
