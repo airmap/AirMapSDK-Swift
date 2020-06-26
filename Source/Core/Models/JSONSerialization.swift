@@ -205,9 +205,9 @@ extension AirMapAdvisory.AirportProperties: ImmutableMappable {
 		longestRunway =  try? map.value("longest_runway")
 		instrumentProcedure
 		              =  try? map.value("instrument_approach_procedure")
+		url           =  try? map.value("url", using: URLTransform())
 		description   =  try? map.value("description")
 		icao          =  try? map.value("icao")
-		url           =  try? map.value("url", using: URLTransform())
 	}
 }
 	
@@ -234,8 +234,8 @@ extension AirMapAdvisory.AMAFieldProperties: ImmutableMappable {
 extension AirMapAdvisory.CityProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		description   =  try? map.value("description")
 		url           =  try? map.value("url", using: URLTransform())
+		description   =  try? map.value("description")
 	}
 }
 
@@ -245,20 +245,20 @@ extension AirMapAdvisory.ControlledAirspaceProperties: ImmutableMappable {
 		type                   =  try  map.value("type")
 		isLaancProvider        =  try? map.value("laanc")
 		supportsAuthorization  =  try? map.value("authorization")
+		url                    =  try? map.value("url", using: URLTransform())
 		icao                   =  try? map.value("icao")
  		airportID              =  try? map.value("airport_id")
  		airportName            =  try? map.value("airport_name")
  		ceiling                =  try? map.value("ceiling")
  		floor                  =  try? map.value("floor")
-		url           =  try? map.value("url", using: URLTransform())
 	}
 }
 
 extension AirMapAdvisory.CustomProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		description   =  try? map.value("description")
 		url           =  try? map.value("url", using: URLTransform())
+		description   =  try? map.value("description")
 	}
 }
 
@@ -298,7 +298,7 @@ extension AirMapAdvisory.ParkProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		type  =  try? map.value("type")
-		url           =  try? map.value("url", using: URLTransform())
+		url   =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -308,7 +308,7 @@ extension AirMapAdvisory.PowerPlantProperties: ImmutableMappable {
 		technology      =  try? map.value("tech")
 		generatorType   =  try? map.value("generator_type")
 		output          =  try? map.value("output")
-		url           =  try? map.value("url", using: URLTransform())
+		url             =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -316,7 +316,7 @@ extension AirMapAdvisory.SchoolProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		numberOfStudents  =  try? map.value("students")
-		url           =  try? map.value("url", using: URLTransform())
+		url               =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -324,7 +324,7 @@ extension AirMapAdvisory.SpecialUseProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
 		description =  try? map.value("description")
-		url           =  try? map.value("url", using: URLTransform())
+		url         =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -335,7 +335,7 @@ extension AirMapAdvisory.NOTAMProperties: ImmutableMappable {
 		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
 		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
 		type       =  try? map.value("type")
-		url           =  try? map.value("url", using: URLTransform())
+		url        =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -343,20 +343,20 @@ extension AirMapAdvisory.NotificationProperties: ImmutableMappable {
 
 	public init(map: Map) throws {
 		body    =  try? map.value("body")
-		url           =  try? map.value("url", using: URLTransform())
+		url     =  try? map.value("url", using: URLTransform())
 	}
 }
 
 extension AirMapAdvisory.TFRProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
+		url        =  try? map.value("url", using: URLTransform())
 		body       =  try? map.value("body")
 		startTime  =  try? map.value("effective_start", using: Constants.Api.dateTransform)
 		endTime    =  try? map.value("effective_end", using: Constants.Api.dateTransform)
 		type       =  try? map.value("type")
 		sport      =  try? map.value("sport")
 		venue      =  try? map.value("venue")
-		url           =  try? map.value("url", using: URLTransform())
 	}
 }
 
@@ -372,8 +372,8 @@ extension AirMapAdvisory.WildfireProperties: ImmutableMappable {
 extension AirMapAdvisory.UniversityProperties: ImmutableMappable {
 	
 	public init(map: Map) throws {
-		description   =  try? map.value("description")
 		url           =  try? map.value("url", using: URLTransform())
+		description   =  try? map.value("description")
 	}
 }
 

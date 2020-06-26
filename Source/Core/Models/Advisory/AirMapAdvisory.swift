@@ -85,9 +85,9 @@ public struct AirMapAdvisory {
 		public let use: String?
 		public let longestRunway: Meters?
 		public let instrumentProcedure: Bool?
+		public let url: URL?
 		public let description: String?
 		public let icao: String?
-		public let url: URL?
 	}
 	
 	/// AMA field properties
