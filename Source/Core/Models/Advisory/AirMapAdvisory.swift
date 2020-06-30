@@ -78,7 +78,7 @@ public struct AirMapAdvisory {
 	}	
 	
 	/// Airport advisory properties
-	public struct AirportProperties: AdvisoryProperties, HasOptionalDescription, HasOptionalPhoneNumber {
+	public struct AirportProperties: AdvisoryProperties, HasOptionalDescription {
 		public let identifier: String?
 		public let phone: String?
 		public let tower: Bool?
@@ -97,10 +97,11 @@ public struct AirMapAdvisory {
 		public let contactName: String?
 		public let contactPhone: String?
 		public let contactEmail: String?
+		public let phone: String?
 	}
 	
 	/// Heliport advisory properties
-	public struct HeliportProperties: AdvisoryProperties, HasOptionalPhoneNumber {
+	public struct HeliportProperties: AdvisoryProperties {
 		public let identifier: String?
 		public let paved: Bool?
 		public let phone: String?
@@ -122,18 +123,21 @@ public struct AirMapAdvisory {
 		public let airportName: String?
 		public let ceiling: Double?
 		public let floor: Double?
+		public let phone: String?
 	}
 	
 	/// City properties
 	public struct CityProperties: AdvisoryProperties, HasOptionalDescription {
 		public let url: URL?
 		public let description: String?
+		public let phone: String?
 	}
 	
 	/// Custom airspace properties
 	public struct CustomProperties: AdvisoryProperties, HasOptionalDescription {
 		public let url: URL?
 		public let description: String?
+		public let phone: String?
 	}
 	
 	/// Emergency advisory properties
@@ -141,12 +145,14 @@ public struct AirMapAdvisory {
 		public let effective: Date?
 		public let type: String?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// Fire advisory properties
 	public struct FireProperties: AdvisoryProperties {
 		public let effective: Date?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// NOTAM advisory properties
@@ -156,18 +162,21 @@ public struct AirMapAdvisory {
 		public let endTime: Date?
 		public let type: String?
 		public let url: URL?
+		public let phone: String?
 	}
 
 	/// Notification advisory properties
 	public struct NotificationProperties: AdvisoryProperties {
 		public let body: String?
 		public let url: URL?
+		public let phone: String?
 	}
 
 	/// Park advisory properties
 	public struct ParkProperties: AdvisoryProperties {
 		public let type: String?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// Power Plant advisory properties
@@ -176,18 +185,21 @@ public struct AirMapAdvisory {
 		public let generatorType: String?
 		public let output: Int?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// School advisory properties
 	public struct SchoolProperties: AdvisoryProperties {
 		public let numberOfStudents: Int?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// Special Use advisory properties
 	public struct SpecialUseProperties: AdvisoryProperties {
 		public let description: String?
 		public let url: URL?
+		public let phone: String?
 	}
 	
 	/// TFR advisory properties
@@ -199,12 +211,14 @@ public struct AirMapAdvisory {
 		public let type: String?
 		public let sport: String?
 		public let venue: String?
+		public let phone: String?
 	}
 	
 	/// University properties
 	public struct UniversityProperties: AdvisoryProperties, HasOptionalDescription {
 		public let url: URL?
 		public let description: String?
+		public let phone: String?
 	}
 	
 	/// Wildfire advisory properties
@@ -212,6 +226,7 @@ public struct AirMapAdvisory {
 		public let effective: Date?
 		public let size: Hectares?
 		public let url: URL?
+		public let phone: String?
 	}
 
 	/// A time sheet to describe when the airspace is active
@@ -295,7 +310,7 @@ public struct AirMapAdvisory {
 	}
 }
 
-public protocol AdvisoryProperties: HasOptionalURL {}
+public protocol AdvisoryProperties: HasOptionalURL, HasOptionalPhoneNumber {}
 
 public protocol HasOptionalURL {
 	var url: URL? { get }
