@@ -165,6 +165,26 @@ extension MGLStyle {
 		return airMapBaseLayers
 	}
 
+	/// Revert layer predicates to their default values to show inactive airspace layers
+	func showInactiveAirspace(defaultPredicates: [String: NSPredicate]) {
+		layers
+			.filter { $0.identifier.hasPrefix(Constants.Maps.airmapLayerPrefix)}
+			.compactMap { $0 as? MGLVectorStyleLayer }
+			.forEach({ (layer) in
+				let defaultPredicate = defaultPredicates[layer.identifier]
+				if defaultPredicate == nil {
+					/// Handle the case were a layer is cloned by `newLayerClone` and has an added UUID
+					/// Ex: airmap|controlled_airspace|overlay|fill|0|{{UUID}}
+					var split = layer.identifier.split(separator: "|")
+					split.removeLast()
+					let baseIdentifier = split.joined(separator: "|")
+					layer.predicate = defaultPredicates[baseIdentifier]
+				} else {
+					layer.predicate = defaultPredicate
+				}
+			})
+	}
+
 	/// Update the predicates to hide inactive airspace layers
 	func hideInactiveAirspace() {
 
@@ -241,7 +261,7 @@ extension MGLVectorTileSource {
 
 extension MGLCoordinateBounds {
 	
-	// Convert the bounding box into a polygon; remembering to close the polygon by passing the first point again
+	/// Convert the bounding box into a polygon; remembering to close the polygon by passing the first point again
 	public var geometry: AirMapPolygon {
 		let nw = CLLocationCoordinate2D(latitude: ne.latitude, longitude: sw.longitude)
 		let se = CLLocationCoordinate2D(latitude: sw.latitude, longitude: ne.longitude)
