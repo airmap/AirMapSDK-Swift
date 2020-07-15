@@ -72,6 +72,9 @@ public struct AirMapFlightBriefing {
 		/// The number airspace category of the authorization
 		public let airspaceCategory: AirMapAirspaceType?
 
+		/// The geometry of the authorization
+		public let geometry: AirMapGeometry?
+
 		/// An enumeration of possible authorization states
 		///
 		/// - accepted: The request with the authority has been accepted

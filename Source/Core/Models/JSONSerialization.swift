@@ -662,6 +662,7 @@ extension AirMapFlightBriefing.Authorization: ImmutableMappable {
 			status           = (try? map.value("status")) ?? .rejected
 			message          =  try  map.value("message")
 			airspaceCategory =  try? map.value("airspace_category")
+			geometry         =  try?  map.value("geometry", using: GeoJSONToAirMapGeometryTransform())
 			notices          = (try? map.value("notices")) ?? []
 			referenceNumber  =  try? map.value("reference_number")
 			description      =  try  map.value("description")
