@@ -8,7 +8,7 @@
 import AppAuth
 
 extension OIDAuthState {
-	var isFresh: Bool {
+	var isAccessTokenFresh: Bool {
 		return lastTokenResponse?.accessTokenExpirationDate ?? .distantPast > Date()
 	}
 }
