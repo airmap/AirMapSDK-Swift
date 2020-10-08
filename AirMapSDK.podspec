@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
 		ui.dependency 'AirMapSDK/Core'
 		ui.dependency 'PhoneNumberKit', '~> 3.0'
 		ui.dependency 'RxDataSources'
-		ui.dependency 'Mapbox-iOS-SDK', '~> 5.1'
+		ui.dependency 'Mapbox-iOS-SDK', '~> 6.0'
 		ui.dependency 'AppAuth'
 		ui.source_files = 'Source/UI/**/{*.swift}'
 		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/Localizations/**/*']
