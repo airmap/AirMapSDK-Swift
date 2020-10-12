@@ -264,7 +264,49 @@ internal class HTTPClient {
 			}
 			.trackActivity(HTTPClient.activity)
 	}
-	
+
+	internal func perform(method: HTTPMethod, path: String = "", params: [String: Any] = [:], auth: AuthService.Credentials? = nil) -> Observable<Data> {
+
+		return Observable
+			.create { (observer: AnyObserver<Data>) -> Disposable in
+				AirMap.logger.trace("Enqueueing HTTP Request", metadata: [
+					"method": .string(method.rawValue),
+					"params": .stringConvertible(params),
+					"path": .string(self.absolute(path)),
+					])
+
+				let headers = self.defaultHeaders(with: auth?.token)
+				let request = self.manager
+					.request(self.absolute(path), method: method, parameters: params, encoding: self.encoding(method), headers: headers)
+					.responseData { (response) in
+						if let error = response.error {
+							if let error = error as? AirMapError, case AirMapError.cancelled = error {
+								AirMap.logger.trace("HTTP Request Cancelled", metadata: [
+									"method": .string(method.rawValue),
+									"path": .string(self.absolute(path)),
+									])
+								observer.onCompleted()
+							} else {
+								AirMap.logger.error("HTTP Request Failed", metadata: [
+									"method": .string(method.rawValue),
+									"params": .stringConvertible(params),
+									"path": .string(self.absolute(path)),
+									"error": .string(error.localizedDescription)
+									])
+								observer.onError(error)
+							}
+						} else {
+							observer.on(.next(response.result.value!))
+							observer.on(.completed)
+						}
+				}
+				return Disposables.create() {
+					request.cancel()
+				}
+			}
+			.trackActivity(HTTPClient.activity)
+	}
+
 	private func encoding(_ method: HTTPMethod) -> ParameterEncoding {
 		return (method == .get || method == .delete) ? URLEncoding.queryString : JSONEncoding.default
 	}

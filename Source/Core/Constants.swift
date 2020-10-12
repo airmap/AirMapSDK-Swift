@@ -45,6 +45,9 @@ struct Constants {
 		static var authUrl: String {
 			return url(for: "auth", v: 1)
 		}
+		static var agreementsUrl: String {
+			return url(for: "agreements", v: 2)
+		}
 		static var flightUrl: String {
 			return url(for: "flight", v: 2)
 		}

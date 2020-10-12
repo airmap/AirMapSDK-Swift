@@ -79,6 +79,7 @@ public struct AirMapIntegerIdentifier<Object>: AirMapIntegerIdentifierType {
 
 // Type-safe aliases for string identifiers specific to AirMap objects
 public typealias AirMapAdvisoryId              = AirMapStringIdentifier<AirMapAdvisory>
+public typealias AirMapAgreementId             = AirMapStringIdentifier<AirMapAgreement>
 public typealias AirMapAircraftId              = AirMapStringIdentifier<AirMapAircraft>
 public typealias AirMapAircraftManufacturerId  = AirMapStringIdentifier<AirMapAircraftManufacturer>
 public typealias AirMapAircraftModelId         = AirMapStringIdentifier<AirMapAircraftModel>
