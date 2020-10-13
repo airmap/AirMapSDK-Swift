@@ -219,6 +219,30 @@ extension Reactive where Base: AirMap {
 	}
 }
 
+/// Documentation found in AirMap+Agreements.swift
+extension Reactive where Base: AirMap {
+
+	public static func listAgreements(from authorityId: AirMapAuthorityId) -> Observable<[AirMapAgreement]> {
+		return AirMap.agreementsClient.listAgreements(from: authorityId)
+	}
+
+	public static func getAgreementDocument(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementDocument> {
+		return AirMap.agreementsClient.getAgreementDocument(with: agreementId)
+	}
+
+	public static func getAgreementPDF(with agreementId: AirMapAgreementId) -> Observable<Data> {
+		return AirMap.agreementsClient.getAgreementPDF(with: agreementId)
+	}
+
+	public static func hasAgreedToAgreement(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementStatus> {
+		return AirMap.agreementsClient.hasAgreedToAgreement(with: agreementId)
+	}
+
+	public static func agreeToAgreement(with agreementId: AirMapAgreementId) -> Observable<Void> {
+		return AirMap.agreementsClient.agreeToAgreement(with: agreementId)
+	}
+}
+
 /// Documentation found in AirMap+Advisories.swift
 extension Reactive where Base: AirMap {
 	

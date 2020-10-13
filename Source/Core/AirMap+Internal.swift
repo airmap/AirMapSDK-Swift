@@ -26,6 +26,7 @@ import CocoaAsyncSocket
 extension AirMap {
 
 	internal static let advisoryClient = AdvisoryClient()
+	internal static let agreementsClient = AgreementsClient()
 	internal static let aircraftClient = AircraftClient()
 	internal static let airspaceClient = AirspaceClient()
 	internal static let authClient = AuthClient()

@@ -21,11 +21,11 @@
 import Foundation
 import ObjectMapper
 
-internal final class AirMapAgreementStatus: ImmutableMappable {
+public final class AirMapAgreementStatus: ImmutableMappable {
 
 	let hasAgreed: Bool
 
-	init(map: Map) throws {
+	public init(map: Map) throws {
 		hasAgreed =  try map.value("has_agreed_to_latest_version")
 	}
 }

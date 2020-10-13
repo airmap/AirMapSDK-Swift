@@ -28,7 +28,7 @@ internal class AgreementsClient: HTTPClient {
 
 	// MARK: - Agreements
 
-	func listAgreements(authorityId: AirMapAuthorityId) -> Observable<[AirMapAgreement]> {
+	func listAgreements(from authorityId: AirMapAuthorityId) -> Observable<[AirMapAgreement]> {
 		return withCredentials().flatMap { (credentials) -> Observable<[AirMapAgreement]> in
 			AirMap.logger.debug("List Agreements")
 			return self.perform(method: .get, path: "/authority/\(authorityId.rawValue)", auth: credentials)
@@ -37,28 +37,28 @@ internal class AgreementsClient: HTTPClient {
 		}
 	}
 
-	func getAgreementDocument(agreementId: AirMapAgreementId) -> Observable<AirMapAgreementDocument> {
+	func getAgreementDocument(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementDocument> {
 		return withCredentials().flatMap { (credentials) -> Observable<AirMapAgreementDocument> in
 			AirMap.logger.debug("Get Agreement Document", metadata: ["id": .stringConvertible(agreementId)])
 			return self.perform(method: .get, path: "/agreement/\(agreementId.rawValue)", auth: credentials)
 		}
 	}
 
-	func getAgreementPDF(agreementId: AirMapAgreementId) -> Observable<UIImage?> {
+	func getAgreementPDF(with agreementId: AirMapAgreementId) -> Observable<Data> {
 		return withCredentials().flatMap { (credentials) -> Observable<Data> in
 			AirMap.logger.debug("Get Agreement PDF", metadata: ["id": .stringConvertible(agreementId)])
 			return self.perform(method: .get, path: "/agreement/\(agreementId.rawValue)/pdf", auth: credentials)
-		}.map(UIImage.init)
+		}
 	}
 
-	func hasAgreedToAgreement(agreementId: AirMapAgreementId) -> Observable<AirMapAgreementStatus> {
+	func hasAgreedToAgreement(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementStatus> {
 		return withCredentials().flatMap { (credentials) -> Observable<AirMapAgreementStatus> in
 			AirMap.logger.debug("Has Agreed to Agreement", metadata: ["id": .stringConvertible(agreementId)])
 			return self.perform(method: .get, path: "/agreement/\(agreementId.rawValue)/agreed", auth: credentials)
 		}
 	}
 
-	func agreeToAgreement(agreementId: AirMapAgreementId) -> Observable<Void> {
+	func agreeToAgreement(with agreementId: AirMapAgreementId) -> Observable<Void> {
 		return withCredentials().flatMap { (credentials) -> Observable<Void> in
 			AirMap.logger.debug("Agree to Agreement", metadata: ["id": .stringConvertible(agreementId)])
 			return self.perform(method: .post, path: "/agreement/\(agreementId.rawValue)/agree", auth: credentials)
@@ -66,7 +66,7 @@ internal class AgreementsClient: HTTPClient {
 	}
 
 	private func getAgreement(agreement: AirMapAgreement) -> Observable<AirMapAgreement> {
-		return hasAgreedToAgreement(agreementId: agreement.id)
+		return hasAgreedToAgreement(with: agreement.id)
 			.map { (status) -> AirMapAgreement in
 				agreement.hasAgreed = status.hasAgreed
 				return agreement

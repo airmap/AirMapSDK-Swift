@@ -24,47 +24,49 @@ extension AirMap {
 	
 	// MARK: - Aircraft
 
-	/// List of all aircraft manufacturers
+	/// List of all Agreements from an authority
 	///
-	/// - Parameter completion: A completion handler to call with the Result
-	public static func listManufacturers(_ completion: @escaping (Result<[AirMapAircraftManufacturer]>) -> Void) {
-		rx.listManufacturers().thenSubscribe(completion)
+	/// - Parameters:
+	///  - authorityId: The id of the authority to get the agreements from
+	///	 - completion: A completion handler to call with the Result
+	public static func listAgreements(from authorityId: AirMapAuthorityId, _ completion: @escaping (Result<[AirMapAgreement]>) -> Void) {
+		rx.listAgreements(from: authorityId).thenSubscribe(completion)
 	}
 
-	/// Search all aircraft manufacturers by name
+	/// Get the text of the agreement
 	///
 	/// - Parameters:
-	///   - name: The name of the manufacturer to filter the results with
+	///   - agreementId: The id of the agreement to get
 	///   - completion: A completion handler to call with the Result
-	public static func searchManufacturers(by name: String, _ completion: @escaping (Result<[AirMapAircraftManufacturer]>) -> Void) {
-		rx.searchManufacturers(by: name).thenSubscribe(completion)
+	public static func getAgreementDocument(with agreementId: AirMapAgreementId, _ completion: @escaping (Result<AirMapAgreementDocument>) -> Void) {
+		rx.getAgreementDocument(with: agreementId).thenSubscribe(completion)
 	}
 
-	/// List all aircraft models by manufacturer
+	/// Get the PDF of the agreement
 	///
 	/// - Parameters:
-	///   - manufacturerId: The identifier for the entity that manufactures the model
+	///   - agreementId: The id of the agreement to get
 	///   - completion: A completion handler to call with the Result
-	public static func listModels(by manufacturerId: AirMapAircraftManufacturerId, completion: @escaping (Result<[AirMapAircraftModel]>) -> Void) {
-		rx.listModels(by: manufacturerId).thenSubscribe(completion)
-	}
-	
-	/// Search all models by an aircraft's name
-	///
-	/// - Parameters:
-	///   - name: The string to search models by
-	///   - completion: A completion handler to call with the Result
-	public static func searchModels(by name: String, completion: @escaping (Result<[AirMapAircraftModel]>) -> Void) {
-		rx.searchModels(by: name).thenSubscribe(completion)
+	public static func getAgreementPDF(with agreementId: AirMapAgreementId, _ completion: @escaping (Result<Data>) -> Void) {
+		rx.getAgreementPDF(with: agreementId).thenSubscribe(completion)
 	}
 
-	/// Get a specific aircraft model by identifier
+	/// Check if the current authorized pilot has agreed to an agreement
 	///
 	/// - Parameters:
-	///   - modelId: The unique identifier associated with the aircraft model
-	/// - Parameter completion: A completion handler to call with the Result
-	public static func getModel(by modelId: AirMapAircraftModelId, completion: @escaping (Result<AirMapAircraftModel>) -> Void) {
-		rx.getModel(modelId).thenSubscribe(completion)
+	///   - agreementId: The id of the agreement to get
+	///   - completion: A completion handler to call with the Result
+	public static func hasAgreedToAgreement(with agreementId: AirMapAgreementId, completion: @escaping (Result<AirMapAgreementStatus>) -> Void) {
+		rx.hasAgreedToAgreement(with: agreementId).thenSubscribe(completion)
+	}
+
+	/// Agree to an agreement
+	///
+	/// - Parameters:
+	///   - agreementId: The id of the agreement to agree to
+	///   - completion: A completion handler to call with the Result
+	public static func agreeToAgreement(with agreementId: AirMapAgreementId, completion: @escaping (Result<Void>) -> Void) {
+		rx.agreeToAgreement(with: agreementId).thenSubscribe(completion)
 	}
 
 }
