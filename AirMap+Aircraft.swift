@@ -1,5 +1,5 @@
 //
-//  AirMap+Agreements.swift
+//  AirMap+Aircraft.swift
 //  AirMapSDK
 //
 //  Created by Michael Odere on 10/13/20.

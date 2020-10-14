@@ -1,5 +1,5 @@
 //
-//  AirMap+Aircraft.swift
+//  AirMap+Agreements.swift
 //  AirMapSDK
 //
 //  Created by Adolfo Martinelli on 6/28/16.
@@ -22,7 +22,7 @@ import Foundation
 
 extension AirMap {
 	
-	// MARK: - Aircraft
+	// MARK: - Agreements
 
 	/// List of all Agreements from an authority
 	///
