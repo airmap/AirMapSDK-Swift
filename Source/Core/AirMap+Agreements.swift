@@ -28,12 +28,12 @@ extension AirMap {
 	///
 	/// - Parameters:
 	///  - authorityId: The id of the authority to get the agreements from
-	///	 - completion: A completion handler to call with the Result
+	/// - completion: A completion handler to call with the Result
 	public static func listAgreements(from authorityId: AirMapAuthorityId, _ completion: @escaping (Result<[AirMapAgreement]>) -> Void) {
 		rx.listAgreements(from: authorityId).thenSubscribe(completion)
 	}
 
-	/// Get the text of the agreement
+	/// Get the text document of the agreement
 	///
 	/// - Parameters:
 	///   - agreementId: The id of the agreement to get

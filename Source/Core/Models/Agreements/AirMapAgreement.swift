@@ -24,6 +24,7 @@ import ObjectMapper
 /// An agreement required by an Authority
 final public class AirMapAgreement: ImmutableMappable {
 
+	/// The Agreement Type
 	public enum AirMapAgreementType: String {
 		case termsAndConditions = "TERMS_AND_CONDITIONS"
 	}
