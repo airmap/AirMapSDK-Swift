@@ -2,8 +2,8 @@
 //  AirMap+Aircraft.swift
 //  AirMapSDK
 //
-//  Created by Michael Odere on 10/13/20.
-//  Copyright 2020 AirMap, Inc.
+//  Created by Adolfo Martinelli on 6/28/16.
+//  Copyright 2018 AirMap, Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
