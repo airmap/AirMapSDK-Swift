@@ -27,9 +27,9 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	var screenName = "Phone Verification - SMS Code"
 	
 	@IBOutlet var submitButton: UIButton!
-	@IBOutlet weak var smsCode: UITextField!
-	@IBOutlet weak var smsTextField: UITextField!
-	
+	@IBOutlet var header: UILabel!
+	@IBOutlet weak var smsCodeTextField: UITextField!
+
 	var phoneNumber:String?
 	
 	fileprivate let disposeBag = DisposeBag()
@@ -38,6 +38,7 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		setupText()
 		setupBindings()
 		setupBranding()
 	}
@@ -45,14 +46,14 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		smsCode.inputAccessoryView = submitButton
-		smsCode.becomeFirstResponder()
+		smsCodeTextField.inputAccessoryView = submitButton
+		smsCodeTextField.becomeFirstResponder()
 		trackView()
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		smsCode.resignFirstResponder()
+		smsCodeTextField.resignFirstResponder()
 	}
 
 	override var inputAccessoryView: UIView? {
@@ -63,9 +64,17 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 		return true
 	}
 
+	fileprivate func setupText() {
+		let localized = LocalizedStrings.PhoneVerificationCode.self
+		title = localized.title
+		header.text = localized.header
+		smsCodeTextField.placeholder = localized.placeholder
+		submitButton.setTitle(localized.submit, for: .normal)
+	}
+
 	fileprivate func setupBindings() {
 		
-		smsTextField.rx.text.asObservable()
+		smsCodeTextField.rx.text.asObservable()
 			.map { $0?.count == Constants.Api.smsCodeLength }
 			.bind(to: submitButton.rx.isEnabled)
 			.disposed(by: disposeBag)
@@ -84,9 +93,9 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	@IBAction func submitSMSCode() {
 		
 		trackEvent(.tap, label: "Submit Button")
-		smsCode.resignFirstResponder()
+		smsCodeTextField.resignFirstResponder()
 		
-		AirMap.rx.verifySMS(smsTextField.text!)
+		AirMap.rx.verifySMS(smsCodeTextField.text!)
 			.trackActivity(activityIndicator)
 			.map { $0.verified}
 			.subscribe(

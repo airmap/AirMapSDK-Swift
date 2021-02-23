@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="1264" y="-476"/>
         </scene>
-        <!--Create Aircraft-->
+        <!--[Create Aircraft]-->
         <scene sceneID="gK9-Xh-P7m">
             <objects>
                 <tableViewController id="2ic-Bm-9Ln" customClass="AirMapCreateAircraftViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blN-px-yT6">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="[Nickname]" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blN-px-yT6">
                                                     <rect key="frame" x="16" y="2" width="343" height="40"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -52,14 +52,6 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="CREATE_AIRCRAFT_NICKNAME|Placeholder label for the textfield where a user inputs the nickname for an aircraft">
-                                                            <attributes>
-                                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -76,28 +68,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Make &amp; Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XDN-d5-eoX">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="[Make &amp; Model]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XDN-d5-eoX">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="CREATE_AIRCRAFT_MAKE_AND_MODEL|Label for the row label that displays the Make and Model of an aircraft">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.85899999999999999" green="0.17100000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="14" name="Menlo-Regular"/>
-                                                                <integer key="NSLigature" value="0"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="34.600000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                    <tabStops>
-                                                                        <textTab alignment="left" location="34.599998474121094">
-                                                                            <options/>
-                                                                        </textTab>
-                                                                    </tabStops>
-                                                                </paragraphStyle>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -109,7 +85,7 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Create Aircraft" id="Z9F-I6-niw">
+                    <navigationItem key="navigationItem" title="[Create Aircraft]" id="Z9F-I6-niw">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ElM-SK-Doy">
                             <connections>
                                 <segue destination="Ago-uc-sYJ" kind="unwind" unwindAction="unwindToAircraft:" id="3ZQ-9O-lTb"/>
@@ -127,32 +103,24 @@
                     <connections>
                         <outlet property="makeAndModel" destination="XDN-d5-eoX" id="a6Z-gs-HEr"/>
                         <outlet property="makeAndModelCell" destination="T4Z-O1-0zC" id="63F-0x-jK1"/>
-                        <outlet property="nextButton" destination="K03-vU-4zj" id="QqV-7d-qQ6"/>
-                        <outlet property="nickName" destination="blN-px-yT6" id="3oy-l1-Bxa"/>
+                        <outlet property="nickname" destination="blN-px-yT6" id="vF8-8p-GgV"/>
+                        <outlet property="saveButton" destination="K03-vU-4zj" id="6t3-4K-g86"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vy2-p4-Ao0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K03-vU-4zj">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K03-vU-4zj">
                     <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Tm7-4r-MqN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Save">
+                    <state key="normal" title="[Save]">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <attributedString key="userComments">
-                        <fragment content="CREATE_AIRCRAFT_SAVE_BUTTON|Title for the button that saves a user's changes to a new or existing aircraft">
-                            <attributes>
-                                <font key="NSFont" metaFont="message" size="11"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
                     <connections>
                         <action selector="save" destination="2ic-Bm-9Ln" eventType="touchUpInside" id="TNA-79-egP"/>
                     </connections>
@@ -161,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="3661" y="-476"/>
         </scene>
-        <!--Phone Number Verification-->
+        <!--[Phone Number Verification]-->
         <scene sceneID="rFf-cb-qhK">
             <objects>
                 <tableViewController id="vSg-8e-JzS" customClass="AirMapPhoneVerificationViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -175,21 +143,13 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Na-rR-yZi">
                                     <rect key="frame" x="16" y="30" width="343" height="117"/>
-                                    <string key="text">By providing your number, you agree to receive texts about your flights at this number. Carrier message &amp; data rates may apply.
+                                    <string key="text">[By providing your number, you agree to receive texts about your flights at this number. Carrier message &amp; data rates may apply.
 
-AirMap will send you a text message when your digital notice has been successfully submitted.
+AirMap will send you a text message when your digital notice has been successfully submitted.]
 </string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <attributedString key="userComments">
-                                        <fragment content="PHONE_VERIFICATION_HEADER|Copy describing the process of verifying your phone number">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -209,7 +169,7 @@ AirMap will send you a text message when your digital notice has been successful
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vme-QM-SG8" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="[Phone Number]" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vme-QM-SG8" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
                                                     <rect key="frame" x="16" y="2" width="343" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="YUK-ku-nYM"/>
@@ -217,14 +177,6 @@ AirMap will send you a text message when your digital notice has been successful
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="PHONE_VERIFICATION_PHONE|Placeholder label for the text field where a user types their phone number">
-                                                            <attributes>
-                                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
                                                     <connections>
                                                         <outlet property="delegate" destination="vSg-8e-JzS" id="8xv-DV-B5l"/>
                                                     </connections>
@@ -246,50 +198,35 @@ AirMap will send you a text message when your digital notice has been successful
                             <outlet property="delegate" destination="vSg-8e-JzS" id="4Jt-f6-Mxz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Phone Number Verification" id="4g7-2z-c9g">
+                    <navigationItem key="navigationItem" title="[Phone Number Verification]" id="4g7-2z-c9g">
                         <barButtonItem key="backBarButtonItem" title=" " id="jtQ-hn-R8x"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="KsF-aF-qvA">
                             <connections>
                                 <action selector="dismiss:" destination="vSg-8e-JzS" id="gB5-7p-6oU"/>
                             </connections>
                         </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="PHONE_VERIFICATION_TITLE|Title for view that allows a user to verify their phone number">
-                                <attributes>
-                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
                     </navigationItem>
                     <connections>
+                        <outlet property="header" destination="2Na-rR-yZi" id="fek-ZQ-umH"/>
                         <outlet property="phone" destination="vme-QM-SG8" id="K4W-1I-fdy"/>
-                        <outlet property="submitButton" destination="mhb-zV-IBV" id="gQd-Hq-SIf"/>
+                        <outlet property="saveButton" destination="mhb-zV-IBV" id="6gL-vJ-kaf"/>
                         <segue destination="nyx-Hp-7C7" kind="show" identifier="pushVerifySMS" id="AHo-CW-X1T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6S-v0-HtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-zV-IBV">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-zV-IBV">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3V9-Dy-jfQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Save">
+                    <state key="normal" title="[Save]">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <attributedString key="userComments">
-                        <fragment content="PHONE_VERIFICATION_SAVE_BUTTON|Title for button that saves and submits the users phone number for verification">
-                            <attributes>
-                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
                     <connections>
                         <action selector="submitForm" destination="vSg-8e-JzS" eventType="touchUpInside" id="rYO-wr-KJS"/>
                     </connections>
@@ -297,7 +234,7 @@ AirMap will send you a text message when your digital notice has been successful
             </objects>
             <point key="canvasLocation" x="3661" y="-1369"/>
         </scene>
-        <!--Verify Phone Number-->
+        <!--[Verify Phone Number]-->
         <scene sceneID="OD8-6i-3ls">
             <objects>
                 <tableViewController id="nyx-Hp-7C7" customClass="AirMapVerifySMSCodeViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -309,19 +246,11 @@ AirMap will send you a text message when your digital notice has been successful
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8q-LE-2ew">
-                                    <rect key="frame" x="153.5" y="61.5" width="68" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[SMS Code]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8q-LE-2ew">
+                                    <rect key="frame" x="148.5" y="61.5" width="78.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <attributedString key="userComments">
-                                        <fragment content="PHONE_VERIFICATION_CODE_HEADER|Header text for view where a user can input their SMS verification code">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -340,7 +269,7 @@ AirMap will send you a text message when your digital notice has been successful
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDO-AY-LlB">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="[Code]" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDO-AY-LlB">
                                                     <rect key="frame" x="15" y="2" width="345" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="LD5-3p-rC0"/>
@@ -348,14 +277,6 @@ AirMap will send you a text message when your digital notice has been successful
                                                     <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" textContentType="one-time-code"/>
-                                                    <attributedString key="userComments">
-                                                        <fragment content="PHONE_VERIFICATION_CODE_PLACEHOLDER|Placeholder label for the textfield where a user can input their SMS verification code">
-                                                            <attributes>
-                                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -373,32 +294,23 @@ AirMap will send you a text message when your digital notice has been successful
                             <outlet property="delegate" destination="nyx-Hp-7C7" id="ysK-Kl-AO3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Verify Phone Number" id="MVj-Qg-sch">
-                        <attributedString key="userComments">
-                            <fragment content="PHONE_VERIFICATION_CODE_TITLE|Title for the view where a user can verify an SMS token">
-                                <attributes>
-                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="[Verify Phone Number]" id="MVj-Qg-sch"/>
                     <connections>
-                        <outlet property="smsCode" destination="dDO-AY-LlB" id="K85-pO-i1J"/>
-                        <outlet property="smsTextField" destination="dDO-AY-LlB" id="9nv-aY-B1E"/>
+                        <outlet property="header" destination="p8q-LE-2ew" id="08X-Ne-cpC"/>
+                        <outlet property="smsCodeTextField" destination="dDO-AY-LlB" id="rwU-Sm-Il4"/>
                         <outlet property="submitButton" destination="lre-WH-pt9" id="AWv-JM-dMS"/>
                         <segue destination="imX-ph-QuD" kind="unwind" identifier="unwindToPilotProfile" unwindAction="unwindToPilotProfile:" id="xBk-8U-QEs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U34-V0-nYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lre-WH-pt9">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lre-WH-pt9">
                     <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="98n-6l-EYz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Submit">
+                    <state key="normal" title="[Submit]">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">
@@ -456,7 +368,7 @@ AirMap will send you a text message when your digital notice has been successful
             </objects>
             <point key="canvasLocation" x="2839" y="-476"/>
         </scene>
-        <!--Pilot Profile-->
+        <!--[Pilot Profile]-->
         <scene sceneID="Z3b-El-Vk2">
             <objects>
                 <tableViewController id="JWw-BI-GEg" customClass="AirMapPilotProfileViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -613,28 +525,12 @@ AirMap will send you a text message when your digital notice has been successful
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Pilot Profile" id="q0o-oq-I1W">
+                    <navigationItem key="navigationItem" title="[Pilot Profile]" id="q0o-oq-I1W">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="da9-MM-1jd">
                             <connections>
                                 <action selector="dismiss" destination="JWw-BI-GEg" id="mYC-Nd-O0h"/>
                             </connections>
                         </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="PILOT_PROFILE_TITLE|Title for view where a user can modify their user profile">
-                                <attributes>
-                                    <color key="NSColor" red="0.85899999999999999" green="0.17100000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="14" name="Menlo-Regular"/>
-                                    <integer key="NSLigature" value="0"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="34.600000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                        <tabStops>
-                                            <textTab alignment="left" location="34.599998474121094">
-                                                <options/>
-                                            </textTab>
-                                        </tabStops>
-                                    </paragraphStyle>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
                     </navigationItem>
                     <connections>
                         <outlet property="fullName" destination="LTQ-cw-ceU" id="oRi-oE-U9Z"/>
@@ -643,35 +539,19 @@ AirMap will send you a text message when your digital notice has been successful
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqX-by-Df5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCX-rY-nIt">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCX-rY-nIt">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Ufa-fc-Uif"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <state key="normal" title="Save">
+                    <state key="normal" title="[Save]">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <attributedString key="userComments">
-                        <fragment content="PILOT_PROFILE_SAVE_BUTTON|Title for the button that saves any changes to a user's profile">
-                            <attributes>
-                                <color key="NSColor" red="0.85899999999999999" green="0.17100000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="14" name="Menlo-Regular"/>
-                                <integer key="NSLigature" value="0"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="34.600000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                    <tabStops>
-                                        <textTab alignment="left" location="34.599998474121094">
-                                            <options/>
-                                        </textTab>
-                                    </tabStops>
-                                </paragraphStyle>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
                     <connections>
                         <action selector="savePilot" destination="JWw-BI-GEg" eventType="touchUpInside" id="eVF-wI-ILC"/>
                     </connections>
@@ -697,7 +577,7 @@ AirMap will send you a text message when your digital notice has been successful
             </objects>
             <point key="canvasLocation" x="1264" y="-1368"/>
         </scene>
-        <!--Select Aircraft-->
+        <!--[Select Aircraft]-->
         <scene sceneID="TZk-db-Bia">
             <objects>
                 <tableViewController id="ThX-zr-TwG" customClass="AirMapAircraftViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -714,7 +594,7 @@ AirMap will send you a text message when your digital notice has been successful
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="[My Drone Name]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hoG-X4-5p9">
-                                            <rect key="frame" x="16" y="12" width="141" height="20.5"/>
+                                            <rect key="frame" x="16" y="12" width="140" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.2470588235" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -739,7 +619,7 @@ AirMap will send you a text message when your digital notice has been successful
                             <outlet property="delegate" destination="ThX-zr-TwG" id="5IX-vm-UMV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Aircraft" id="7vR-GS-NPr">
+                    <navigationItem key="navigationItem" title="[Select Aircraft]" id="7vR-GS-NPr">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="463-aE-Gcv">
                             <connections>
                                 <action selector="dismiss" destination="ThX-zr-TwG" id="klF-Xp-x9t"/>
@@ -750,21 +630,13 @@ AirMap will send you a text message when your digital notice has been successful
                                 <segue destination="dFP-db-86e" kind="presentation" identifier="createAircraft" id="hz7-Iw-idg"/>
                             </connections>
                         </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="SELECT_AIRCRAFT_TITLE|Title for the view where you can select an aircraft for a flight">
-                                <attributes>
-                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PE9-RZ-KZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2083" y="-476"/>
         </scene>
-        <!--Manufacturers-->
+        <!--[Manufacturers]-->
         <scene sceneID="HAh-tC-edV">
             <objects>
                 <tableViewController id="GLN-Nc-fFM" customClass="AirMapAircraftManufacturerViewController" customModule="AirMap" sceneMemberID="viewController">
@@ -795,21 +667,13 @@ AirMap will send you a text message when your digital notice has been successful
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Manufacturers" id="a84-JL-ndb">
+                    <navigationItem key="navigationItem" title="[Manufacturers]" id="a84-JL-ndb">
                         <barButtonItem key="backBarButtonItem" title=" " id="p9y-Ny-HbN"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="UfN-uI-ozS">
                             <connections>
                                 <action selector="cancel" destination="GLN-Nc-fFM" id="tsa-cX-DI0"/>
                             </connections>
                         </barButtonItem>
-                        <attributedString key="userComments">
-                            <fragment content="MANUFACTURERS_TITLE|Title for the view that displays a list of all aircraft manufacturers">
-                                <attributes>
-                                    <font key="NSFont" metaFont="message" size="11"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ska-kZ-NDk" userLabel="First Responder" sceneMemberID="firstResponder"/>

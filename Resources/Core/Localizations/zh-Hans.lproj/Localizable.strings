@@ -238,6 +238,15 @@
 /* Abbreviation for West South West */
 "CARDINAL_DIRECTION_WSW" = "西南偏西";
 
+/* Label for the row label that displays the Make and Model of an aircraft */
+"CREATE_AIRCRAFT_MAKE_AND_MODEL" = "品牌&型号";
+
+/* Placeholder label for the textfield where a user inputs the nickname for an aircraft */
+"CREATE_AIRCRAFT_NICKNAME" = "昵称";
+
+/* Title for the button that saves a user's changes to a new or existing aircraft */
+"CREATE_AIRCRAFT_SAVE_BUTTON" = "保存";
+
 /* Request cancelled error */
 "ERROR_CANCELLED" = "请求已在完成之前取消";
 
@@ -331,14 +340,44 @@
 /* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
 "MANUAL_AUTHORIZATION" = "手动授权待提交";
 
+/* Title for the view that displays a list of all aircraft manufacturers */
+"MANUFACTURERS_TITLE" = "制造商";
+
+/* Title for the view that displays a list of all aircraft models */
+"MODELS_TITLE" = "型号";
+
 /* Table section title for other selectable countries */
 "PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "其他";
 
 /* Table section title for the currently selected country */
 "PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "已选国家";
 
+/* Header text for view where a user can input their SMS verification code */
+"PHONE_VERIFICATION_CODE_HEADER" = "短信代码";
+
+/* Placeholder label for the textfield where a user can input their SMS verification code */
+"PHONE_VERIFICATION_CODE_PLACEHOLDER" = "代码";
+
+/* Title for the view where a user can verify an SMS token */
+"PHONE_VERIFICATION_CODE_TITLE" = "验证电话号码";
+
+/* Copy describing the process of verifying your phone number */
+"PHONE_VERIFICATION_HEADER" = "提供编号即表示您同意接收该编号对应的有关您飞行的文本。运营商信息和数据费率可能适用。\n\n当您的数字通知成功提交后，AirMap会向您发送一条短信。\n";
+
+/* Placeholder label for the text field where a user types their phone number */
+"PHONE_VERIFICATION_PHONE" = "电话号码";
+
 /* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
 "PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "请求新的短信代码";
+
+/* Title for button that saves and submits the users phone number for verification */
+"PHONE_VERIFICATION_SAVE_BUTTON" = "保存";
+
+/* Title for button that allows the user to submit the SMS code for verification */
+"PHONE_VERIFICATION_SUBMIT_BUTTON" = "提交";
+
+/* Title for view that allows a user to verify their phone number */
+"PHONE_VERIFICATION_TITLE" = "电话号码验证";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to try again */
 "PHONE_VERIFICATION_TRY_AGAIN" = "再试一次";
@@ -367,6 +406,9 @@
 /* Label for the pilot profile username */
 "PILOT_PROFILE_LABEL_USERNAME" = "用户名";
 
+/* Title for the button that saves any changes to a user's profile */
+"PILOT_PROFILE_SAVE_BUTTON" = "保存";
+
 /* Section header for the pilot profile additional info section */
 "PILOT_PROFILE_SECTION_ADDITIONAL" = "附加信息";
 
@@ -375,6 +417,9 @@
 
 /* Format for displaying a user's number of aircraft and flights */
 "PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ 飞机， %2$@ 飞行";
+
+/* Title for view where a user can modify their user profile */
+"PILOT_PROFILE_TITLE" = "飞行员简介";
 
 /* Displayed for authorities that are setup to receive digital notice */
 "REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "接受数字通知";

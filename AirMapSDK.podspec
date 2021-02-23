@@ -50,7 +50,7 @@ Pod::Spec.new do |s|
 		ui.dependency 'Mapbox-iOS-SDK', '~> 6.0'
 		ui.dependency 'AppAuth'
 		ui.source_files = 'Source/UI/**/{*.swift}'
-		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/Localizations/**/*']
+		ui.resources = ['Resources/UI/*.{xcassets}', 'Resources/UI/AirMapUI.storyboard']
 	end
 
 	s.subspec 'SystemStatus' do |status|

@@ -26,8 +26,8 @@ class AirMapCreateAircraftViewController: UITableViewController {
 	
 	var aircraft: AirMapAircraft!
 	
-	@IBOutlet var nextButton: UIButton!
-	@IBOutlet weak var nickName: UITextField!
+	@IBOutlet var saveButton: UIButton!
+	@IBOutlet weak var nickname: UITextField!
 	@IBOutlet weak var makeAndModel: UILabel!
 	@IBOutlet weak var makeAndModelCell: UITableViewCell!
 	
@@ -54,20 +54,25 @@ class AirMapCreateAircraftViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		let localized = LocalizedStrings.Aircraft.self
 		switch mode {
 		case .create:
-			navigationItem.title = LocalizedStrings.Aircraft.titleCreate
+			navigationItem.title = localized.titleCreate
 			
 		case .update:
-			navigationItem.title = LocalizedStrings.Aircraft.titleUpdate
+			navigationItem.title = localized.titleUpdate
 
 			tableView.allowsSelection = false
-			nickName.text = aircraft.nickname
+			nickname.text = aircraft.nickname
 			model.accept(aircraft.model)
 			makeAndModelCell.accessoryType = .none
 			makeAndModelCell.textLabel?.alpha = 0.5
 		}
-		
+
+		nickname.text = localized.nickname
+		makeAndModel.text = localized.makeAndModel
+		saveButton.setTitle(localized.save, for: .normal)
+
 		setupBindings()
 		setupBranding()
 	}
@@ -77,8 +82,8 @@ class AirMapCreateAircraftViewController: UITableViewController {
 		
 		trackView()
 		
-		if ((nickName.text ?? "").isEmpty) || (mode == .update) {
-			nickName.becomeFirstResponder()
+		if ((nickname.text ?? "").isEmpty) || (mode == .update) {
+			nickname.becomeFirstResponder()
 		} else {
 			self.becomeFirstResponder()
 		}
@@ -89,19 +94,18 @@ class AirMapCreateAircraftViewController: UITableViewController {
 	}
 	
 	override var inputAccessoryView: UIView? {
-		return nextButton
+		return saveButton
 	}
 	
 	// MARK: - Setup
-	
+
 	fileprivate func setupBindings() {
 
-		let nickNameObs = nickName.rx.text.asObservable()
+		let nickNameObs = nickname.rx.text.asObservable()
 		let modelObs = model.asObservable()
 		
 		Observable.combineLatest(nickNameObs, modelObs) { ($0, $1) }
 			.subscribe(onNext: { [unowned self] nickname, model in
-				
 				switch self.mode {
 				case .create:
 					guard let nickname = nickname, let model = model else { return }
@@ -122,7 +126,7 @@ class AirMapCreateAircraftViewController: UITableViewController {
 		Observable
 			.combineLatest(modelObs, nickNameObs) { (model: $0, nickName: $1) }
 			.map { $0.model != nil && !($0.nickName ?? "").isEmpty }
-			.bind(to: nextButton.rx.isEnabled)
+			.bind(to: saveButton.rx.isEnabled)
 			.disposed(by: disposeBag)
 		
 		activityIndicator.asObservable()
@@ -133,7 +137,7 @@ class AirMapCreateAircraftViewController: UITableViewController {
 	}
 	
 	fileprivate func setupBranding() {
-		nextButton.backgroundColor = .primary
+		saveButton.backgroundColor = .primary
 	}
 
 	// MARK: - Navigation
@@ -144,6 +148,10 @@ class AirMapCreateAircraftViewController: UITableViewController {
 			trackEvent(.tap, label: "Make & Model")
 			let nav = segue.destination as! AirMapAircraftModelNavController
 			nav.aircraftModelSelectionDelegate = self
+		}
+
+		if let indexPath = tableView.indexPathForSelectedRow {
+			tableView.deselectRow(at: indexPath, animated: true)
 		}
 	}
 	

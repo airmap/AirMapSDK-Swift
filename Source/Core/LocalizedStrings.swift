@@ -279,16 +279,38 @@ public struct LocalizedStrings {
 		public static let sectionHeaderAdditional = NSLocalizedString("PILOT_PROFILE_SECTION_ADDITIONAL", bundle: bundle, value: "Additional Info", comment: "Section header for the pilot profile additional info section")
 		
 		public static let statisticsFormat = NSLocalizedString("PILOT_PROFILE_STATISTICS_FORMAT", bundle: bundle, value: "%@ Aircraft, %@ Flights", comment: "Format for displaying a user's number of aircraft and flights")
+
+		public static let save = NSLocalizedString("PILOT_PROFILE_SAVE_BUTTON", bundle: bundle, value: "Save", comment: "Title for the button that saves any changes to a user's profile")
+
+		public static let title = NSLocalizedString("PILOT_PROFILE_TITLE", bundle: bundle, value: "Pilot Profile", comment: "Title for view where a user can modify their user profile")
 	}
-	
+
 	public struct PhoneVerification {
-		
+
+		public static let header = NSLocalizedString("PHONE_VERIFICATION_HEADER", bundle: bundle, value: "By providing your number, you agree to receive texts about your flights at this number. Carrier message & data rates may apply.\n\nAirMap will send you a text message when your digital notice has been successfully submitted.\n", comment: "Copy describing the process of verifying your phone number")
+
+		public static let placeholder = NSLocalizedString("PHONE_VERIFICATION_PHONE", bundle: bundle, value: "Phone Number", comment: "Placeholder label for the text field where a user types their phone number")
+
 		public static let verificationFailed = NSLocalizedString("PHONE_VERIFICATION_VERIFICATION_FAILED", bundle: bundle, value: "Phone Number Verification Failed", comment: "Message presented to a user when the SMS code they input is incorrect and verification of that code has failed")
-		
+
 		public static let tryAgain = NSLocalizedString("PHONE_VERIFICATION_TRY_AGAIN", bundle: bundle, value: "Try Again", comment: "Message that is presented after a phone verification has failed, encouraging the user to try again")
-		
+
 		public static let requestNewSMSCode = NSLocalizedString("PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE", bundle: bundle, value: "Request New SMS Code", comment: "Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided")
-		
+
+		public static let save = NSLocalizedString("PHONE_VERIFICATION_SAVE_BUTTON", bundle: bundle, value: "Save", comment: "Title for button that saves and submits the users phone number for verification")
+
+		public static let title = NSLocalizedString("PHONE_VERIFICATION_TITLE", bundle: bundle, value: "Phone Number Verification", comment: "Title for view that allows a user to verify their phone number")
+	}
+
+	public struct PhoneVerificationCode {
+
+		public static let header = NSLocalizedString("PHONE_VERIFICATION_CODE_HEADER", bundle: bundle, value: "SMS Code", comment: "Header text for view where a user can input their SMS verification code")
+
+		public static let placeholder = NSLocalizedString("PHONE_VERIFICATION_CODE_PLACEHOLDER", bundle: bundle, value: "Code", comment: "Placeholder label for the textfield where a user can input their SMS verification code")
+
+		public static let submit = NSLocalizedString("PHONE_VERIFICATION_SUBMIT_BUTTON", bundle: bundle, value: "Submit", comment: "Title for button that allows the user to submit the SMS code for verification")
+
+		public static let title = NSLocalizedString("PHONE_VERIFICATION_CODE_TITLE", bundle: bundle, value: "Verify Phone Number", comment: "Title for the view where a user can verify an SMS token")
 	}
 	
 	public struct PhoneCountry {
@@ -303,8 +325,14 @@ public struct LocalizedStrings {
 		public static let titleCreate = NSLocalizedString("AIRCRAFT_TITLE_CREATE_NEW", bundle: bundle, value: "Create Aircraft", comment: "Title to display for the view creating a new aircraft")
 		
 		public static let titleUpdate = NSLocalizedString("AIRCRAFT_TITLE_UPDATE_EXISTING", bundle: bundle, value: "Update Aircraft", comment: "Title to display for the view when updating an existing aircraft")
-		
+
 		public static let selectAircraft = NSLocalizedString("AIRCRAFT_SELECT_AIRCRAFT", bundle: bundle, value: "Select Aircraft", comment: "Call to action when a user has not selected an aircraft")
+
+		public static let makeAndModel = NSLocalizedString("CREATE_AIRCRAFT_MAKE_AND_MODEL", bundle: bundle, value: "Make & Model", comment: "Label for the row label that displays the Make and Model of an aircraft")
+
+		public static let nickname = NSLocalizedString("CREATE_AIRCRAFT_NICKNAME", bundle: bundle, value: "Nickname", comment: "Placeholder label for the textfield where a user inputs the nickname for an aircraft")
+
+		public static let save = NSLocalizedString("CREATE_AIRCRAFT_SAVE_BUTTON", bundle: bundle, value: "Save", comment: "Title for the button that saves a user's changes to a new or existing aircraft")
 	}
 	
 	public struct CardinalDirection {
@@ -341,7 +369,32 @@ public struct LocalizedStrings {
 		
 		public static let NNW = NSLocalizedString("CARDINAL_DIRECTION_NNW",  bundle: bundle, value: "NNW", comment: "Abbreviation for North North West")
 	}
-	
+
+	public struct Error {
+
+		public static let cancelled = NSLocalizedString("ERROR_CANCELLED", bundle: bundle, value: "Request cancelled before it could be completed", comment: "Request cancelled error")
+
+		public static let unauthorized = NSLocalizedString("ERROR_UNAUTHORIZED", bundle: bundle, value: "Unauthorized. Please check login credentials.", comment: "Authorization failure error")
+
+		public static let conflict = NSLocalizedString("ERROR_CONFLICT", bundle: bundle, value: "A conflict exists", comment: "A conflict exists with the attempted request")
+
+		public static let server = NSLocalizedString("ERROR_SERVER", bundle: bundle, value: "The server could not complete your request.", comment: "Server failure error")
+
+		public static let serialization = NSLocalizedString("ERROR_SERIALIZATION", bundle: bundle, value: "The server returned an unprocessable response.", comment: "Response serialization failure error")
+
+		public static let genericFormat = NSLocalizedString("ERROR_GENERIC_FORMAT", bundle: bundle, value: "The server returned an error. (%@)", comment: "A generic server error message with an associated error code")
+	}
+
+	public struct Manufacturer {
+
+		public static let title = NSLocalizedString("MANUFACTURERS_TITLE", bundle: bundle, value: "Manufacturers", comment: "Title for the view that displays a list of all aircraft manufacturers")
+	}
+
+	public struct Model {
+
+		public static let title = NSLocalizedString("MODELS_TITLE", bundle: bundle, value: "Models", comment: "Title for the view that displays a list of all aircraft models")
+	}
+
 	public struct Units {
 		
 		public static let metric = NSLocalizedString("UNITS_METRIC", bundle: bundle, value: "Metric", comment: "Name for the metric system of measurement")
@@ -384,20 +437,4 @@ public struct LocalizedStrings {
 		
 		public static let alertWithAircraftIdAndDistanceFormat = NSLocalizedString("TRAFFIC_ALERT_WITH_AIRCRAFT_ID_AND_DISTANCE_FORMAT", bundle: bundle, value: "Traffic %1$@\nAltitude %2$@\n%3$@ %4$@ %5$@", comment: "Format for traffic alerts. 1) aircraft id, 2) altitude, 3) distance, 4) direction, 5) time")
 	}
-	
-	public struct Error {
-		
-		public static let cancelled = NSLocalizedString("ERROR_CANCELLED", bundle: bundle, value: "Request cancelled before it could be completed", comment: "Request cancelled error")
-
-		public static let unauthorized = NSLocalizedString("ERROR_UNAUTHORIZED", bundle: bundle, value: "Unauthorized. Please check login credentials.", comment: "Authorization failure error")
-		
-		public static let conflict = NSLocalizedString("ERROR_CONFLICT", bundle: bundle, value: "A conflict exists", comment: "A conflict exists with the attempted request")
-
-		public static let server = NSLocalizedString("ERROR_SERVER", bundle: bundle, value: "The server could not complete your request.", comment: "Server failure error")
-		
-		public static let serialization = NSLocalizedString("ERROR_SERIALIZATION", bundle: bundle, value: "The server returned an unprocessable response.", comment: "Response serialization failure error")
-		
-		public static let genericFormat = NSLocalizedString("ERROR_GENERIC_FORMAT", bundle: bundle, value: "The server returned an error. (%@)", comment: "A generic server error message with an associated error code")
-	}
-	
 }

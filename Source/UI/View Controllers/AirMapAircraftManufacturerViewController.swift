@@ -31,6 +31,7 @@ class AirMapAircraftManufacturerViewController: UITableViewController, Analytics
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		title = LocalizedStrings.Manufacturer.title
 		tableView.dataSource = nil
 		
 		AirMap

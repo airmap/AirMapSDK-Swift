@@ -34,7 +34,7 @@ public class AirMapAircraftViewController: UITableViewController, AnalyticsTrack
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		title = LocalizedStrings.Aircraft.selectAircraft
 		setupBindings()
 	}
 	

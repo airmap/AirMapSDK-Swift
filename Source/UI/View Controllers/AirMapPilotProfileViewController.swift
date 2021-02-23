@@ -90,7 +90,10 @@ public class AirMapPilotProfileViewController: UITableViewController, AnalyticsT
 		
 		tableView.dataSource = nil
 		tableView.delegate = nil
-		
+
+		saveButton.setTitle(LocalizedStrings.PilotProfile.save, for: .normal)
+		title = LocalizedStrings.PilotProfile.title
+
 		setupTableView()
 		setupBindings()
 		setupBranding()

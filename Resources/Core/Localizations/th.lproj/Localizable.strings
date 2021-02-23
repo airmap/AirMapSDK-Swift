@@ -238,6 +238,15 @@
 /* Abbreviation for West South West */
 "CARDINAL_DIRECTION_WSW" = "WSW";
 
+/* Label for the row label that displays the Make and Model of an aircraft */
+"CREATE_AIRCRAFT_MAKE_AND_MODEL" = "แบบและรุ่น";
+
+/* Placeholder label for the textfield where a user inputs the nickname for an aircraft */
+"CREATE_AIRCRAFT_NICKNAME" = "ชื่อเล่น";
+
+/* Title for the button that saves a user's changes to a new or existing aircraft */
+"CREATE_AIRCRAFT_SAVE_BUTTON" = "บันทึก";
+
 /* Request cancelled error */
 "ERROR_CANCELLED" = "คำขอถูกยกเลิกก่อนที่จะดำเนินการเสร็จสิ้น";
 
@@ -331,14 +340,44 @@
 /* The request with the authority will be reviewed manually sometime after the flight plan is submitted */
 "MANUAL_AUTHORIZATION" = "การส่งคำขออนุญาตด้วยตนเองกำลังรอดำเนินการ";
 
+/* Title for the view that displays a list of all aircraft manufacturers */
+"MANUFACTURERS_TITLE" = "ผู้ผลิต";
+
+/* Title for the view that displays a list of all aircraft models */
+"MODELS_TITLE" = "รุ่นอากาศยาน";
+
 /* Table section title for other selectable countries */
 "PHONE_COUNTRY_SECTION_OTHER_COUNTRY" = "อื่นๆ";
 
 /* Table section title for the currently selected country */
 "PHONE_COUNTRY_SECTION_SELECTED_COUNTRY" = "ประเทศที่เลือก";
 
+/* Header text for view where a user can input their SMS verification code */
+"PHONE_VERIFICATION_CODE_HEADER" = "รหัส SMS";
+
+/* Placeholder label for the textfield where a user can input their SMS verification code */
+"PHONE_VERIFICATION_CODE_PLACEHOLDER" = "รหัส";
+
+/* Title for the view where a user can verify an SMS token */
+"PHONE_VERIFICATION_CODE_TITLE" = "ยืนยันหมายเลขโทรศัพท์";
+
+/* Copy describing the process of verifying your phone number */
+"PHONE_VERIFICATION_HEADER" = "การระบุหมายเลขของคุณแสดงว่าคุณยินยอมที่จะรับข้อความเกี่ยวกับการบินของคุณตามหมายเลขนี้ ซึ่งอาจมีอัตราค่าบริการในการรับข้อความและข้อมูลของผู้ให้บริการ\n\nAirMap จะส่งข้อความถึงคุณเมื่อการแจ้งเตือนแบบดิจิทัลถูกส่งเรียบร้อยแล้ว\n";
+
+/* Placeholder label for the text field where a user types their phone number */
+"PHONE_VERIFICATION_PHONE" = "หมายเลขโทรศัพท์";
+
 /* Message that is presented after a phone verification has failed, encouraging the user to send a new code to the phone number provided */
 "PHONE_VERIFICATION_REQUEST_NEW_SMS_CODE" = "ขอรหัส SMS ใหม่";
+
+/* Title for button that saves and submits the users phone number for verification */
+"PHONE_VERIFICATION_SAVE_BUTTON" = "บันทึก";
+
+/* Title for button that allows the user to submit the SMS code for verification */
+"PHONE_VERIFICATION_SUBMIT_BUTTON" = "ส่ง";
+
+/* Title for view that allows a user to verify their phone number */
+"PHONE_VERIFICATION_TITLE" = "การยืนยันหมายเลขโทรศัพท์";
 
 /* Message that is presented after a phone verification has failed, encouraging the user to try again */
 "PHONE_VERIFICATION_TRY_AGAIN" = "ลองใหม่อีกครั้ง";
@@ -367,6 +406,9 @@
 /* Label for the pilot profile username */
 "PILOT_PROFILE_LABEL_USERNAME" = "ชื่อผู้ใช้";
 
+/* Title for the button that saves any changes to a user's profile */
+"PILOT_PROFILE_SAVE_BUTTON" = "บันทึก";
+
 /* Section header for the pilot profile additional info section */
 "PILOT_PROFILE_SECTION_ADDITIONAL" = "ข้อมูลเพิ่มเติม";
 
@@ -375,6 +417,9 @@
 
 /* Format for displaying a user's number of aircraft and flights */
 "PILOT_PROFILE_STATISTICS_FORMAT" = "%1$@ อากาศยาน, %2$@ เที่ยวบิน";
+
+/* Title for view where a user can modify their user profile */
+"PILOT_PROFILE_TITLE" = "โปรไฟล์นักบิน";
 
 /* Displayed for authorities that are setup to receive digital notice */
 "REVIEW_FLIGHT_PLAN_NOTICES_TAB_ACCEPTS_NOTICE" = "ยอมรับการแจ้งเตือนแบบดิจิทัล";

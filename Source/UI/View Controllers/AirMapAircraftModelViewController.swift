@@ -32,7 +32,8 @@ class AirMapAircraftModelViewController: UITableViewController, AnalyticsTrackab
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
+		title = LocalizedStrings.Model.title		
 		tableView.dataSource = nil
 		
 		AirMap

@@ -31,7 +31,8 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	
 	var pilot: AirMapPilot!
 	
-	@IBOutlet weak var submitButton: UIButton!
+	@IBOutlet weak var saveButton: UIButton!
+	@IBOutlet weak var header: UILabel!
 	@IBOutlet weak var phone: PhoneNumberTextField!
 	
 	fileprivate let phoneNumberKit = PhoneNumberKit()
@@ -48,6 +49,12 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		let localized = LocalizedStrings.PhoneVerification.self
+		header.text = localized.header
+		phone.placeholder = localized.placeholder
+		saveButton.setTitle(localized.save, for: .normal)
+		title = localized.title
 
 		setupPhoneNumberField()
 		setupBindings()
@@ -78,7 +85,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	}
 
 	override var inputAccessoryView: UIView? {
-		return submitButton
+		return saveButton
 	}
 	
 	override var canBecomeFirstResponder : Bool {
@@ -109,7 +116,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 			.map { [unowned self] _ in
 				self.phone.isValidNumber
 			}
-			.bind(to: submitButton.rx.isEnabled)
+			.bind(to: saveButton.rx.isEnabled)
 			.disposed(by: disposeBag)
 		
 		activityIndicator.asObservable()
@@ -120,7 +127,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	}
 	
 	fileprivate func setupBranding() {
-		submitButton.backgroundColor = .primary
+		saveButton.backgroundColor = .primary
 	}
 	
 	fileprivate func setupPhoneNumberField() {
@@ -130,7 +137,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 		if #available(iOS 11.0, *) {
 			phone.withDefaultPickerUI = true
 		}
-		phone.inputAccessoryView = submitButton
+		phone.inputAccessoryView = saveButton
 	}
 	
 	// MARK: - Instance Methods
@@ -165,7 +172,7 @@ class AirMapPhoneVerificationViewController: UITableViewController, AnalyticsTra
 	}
 	
 	fileprivate func validateForm() {
-		submitButton?.isEnabled = phone.isValidNumber
+		saveButton?.isEnabled = phone.isValidNumber
 	}
 	
 	fileprivate func verifySMSToken() {
