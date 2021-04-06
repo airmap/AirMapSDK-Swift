@@ -210,8 +210,8 @@ extension Reactive where Base: AirMap {
 		return AirMap.ruleClient.getRulesetsEvaluated(by: flightPlanId)
 	}
 
-	public static func getRulesetsEvaluated(from geometry: AirMapPolygon, rulesetIds: [AirMapRulesetId], flightFeatureValues: [String: Any]?) -> Observable<[AirMapFlightBriefing.Ruleset]> {
-		return AirMap.ruleClient.getRulesetsEvaluated(from: geometry, rulesetIds: rulesetIds, flightFeatureValues: flightFeatureValues)
+	public static func getRulesetsEvaluated(from geometry: AirMapPolygon, rulesetIds: [AirMapRulesetId], flightFeatureValues: [String: Any]?, withMarkdown: Bool = false) -> Observable<[AirMapFlightBriefing.Ruleset]> {
+		return AirMap.ruleClient.getRulesetsEvaluated(from: geometry, rulesetIds: rulesetIds, flightFeatureValues: flightFeatureValues, withMarkdown: withMarkdown)
 	}
 
 	public static func getRulesets(intersecting geometry: AirMapGeometry) -> Observable<[AirMapRuleset]> {
@@ -230,8 +230,8 @@ extension Reactive where Base: AirMap {
 		return AirMap.agreementsClient.listAgreements(from: authorityId)
 	}
 
-	public static func getAgreementDocument(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementDocument> {
-		return AirMap.agreementsClient.getAgreementDocument(with: agreementId)
+	public static func getAgreementDocument(with agreementId: AirMapAgreementId, withMarkdown: Bool = false) -> Observable<AirMapAgreementDocument> {
+		return AirMap.agreementsClient.getAgreementDocument(with: agreementId, withMarkdown: withMarkdown)
 	}
 
 	public static func getAgreementPDF(with agreementId: AirMapAgreementId) -> Observable<Data> {

@@ -65,12 +65,13 @@ internal class RuleClient: HTTPClient {
 		}
 	}
 	
-	func getRulesetsEvaluated(from geometry: AirMapPolygon, rulesetIds: [AirMapRulesetId], flightFeatureValues: [String: Any]?) -> Observable<[AirMapFlightBriefing.Ruleset]> {
+	func getRulesetsEvaluated(from geometry: AirMapPolygon, rulesetIds: [AirMapRulesetId], flightFeatureValues: [String: Any]?, withMarkdown: Bool) -> Observable<[AirMapFlightBriefing.Ruleset]> {
 		AirMap.logger.debug("Getting airspace evaluation", metadata: ["rulesets": .stringConvertible(rulesetIds)])
 		let params: [String: Any] = [
 			"rulesets": rulesetIds.csv,
 			"geometry": geometry.params(),
-			"flight_features": flightFeatureValues ?? [:]
+			"flight_features": flightFeatureValues ?? [:],
+			"with_markdown": withMarkdown
 		]
 
 		return withOptionalCredentials().flatMap { (credentials) -> Observable<[AirMapFlightBriefing.Ruleset]> in

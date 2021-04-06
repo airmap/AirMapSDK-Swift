@@ -41,8 +41,9 @@ internal class AgreementsClient: HTTPClient {
 		}
 	}
 
-	func getAgreementDocument(with agreementId: AirMapAgreementId) -> Observable<AirMapAgreementDocument> {
-		return self.perform(method: .get, path: "/agreement/\(agreementId.rawValue)")
+	func getAgreementDocument(with agreementId: AirMapAgreementId, withMarkdown: Bool) -> Observable<AirMapAgreementDocument> {
+		let params = ["with_markdown": withMarkdown]
+		return self.perform(method: .get, path: "/agreement/\(agreementId.rawValue)", params: params)
 	}
 
 	func getAgreementPDF(with agreementId: AirMapAgreementId) -> Observable<Data> {

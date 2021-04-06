@@ -46,9 +46,10 @@ extension AirMap {
 	///
 	/// - Parameters:
 	///   - agreementId: The id of the agreement to get
+	///   - withMarkdown: Get markdown formatted agreement text 
 	///   - completion: A completion handler to call with the Result
-	public static func getAgreementDocument(with agreementId: AirMapAgreementId, _ completion: @escaping (Result<AirMapAgreementDocument>) -> Void) {
-		rx.getAgreementDocument(with: agreementId).thenSubscribe(completion)
+	public static func getAgreementDocument(with agreementId: AirMapAgreementId, withMarkdown: Bool = false, _ completion: @escaping (Result<AirMapAgreementDocument>) -> Void) {
+		rx.getAgreementDocument(with: agreementId, withMarkdown: withMarkdown).thenSubscribe(completion)
 	}
 
 	/// Get the PDF of the agreement
