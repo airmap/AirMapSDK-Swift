@@ -27,7 +27,7 @@ class AirMapVerifySMSCodeViewController: UITableViewController, AnalyticsTrackab
 	var screenName = "Phone Verification - SMS Code"
 	
 	@IBOutlet var submitButton: UIButton!
-	@IBOutlet var header: UILabel!
+	@IBOutlet weak var header: UILabel!
 	@IBOutlet weak var smsCodeTextField: UITextField!
 
 	var phoneNumber:String?
