@@ -223,7 +223,7 @@ public struct LocalizedStrings {
 		
 		public static let sectionHeaderSocial = NSLocalizedString("FLIGHT_PLAN_SECTION_HEADER_SHARE", bundle: bundle, value: "Share My Flight", comment: "Title for the section displaying social sharing features")
 		
-		public static let rowTitleMaxAltitudeAGL = NSLocalizedString("FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE", bundle: bundle, value: "Max Altitude AGL", comment: "Title for the row displaying flight plan max altitude AGL (above ground level)")
+		public static let rowTitleMaxAltitudeAGL = NSLocalizedString("FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE", bundle: bundle, value: "Max Height", comment: "Title for the row displaying flight plan max altitude AGL (above ground level)")
 		
 		public static let rowTitleRadius = NSLocalizedString("FLIGHT_PLAN_ROW_TITLE_RADIUS", bundle: bundle, value: "Radius", comment: "Title for the row displaying flight plan radius")
 		
