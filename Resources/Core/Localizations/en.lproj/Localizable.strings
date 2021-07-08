@@ -332,7 +332,7 @@
 "FLIGHT_PLAN_ROW_TITLE_DURATION" = "Duration";
 
 /* Title for the row displaying flight plan max altitude AGL (above ground level) */
-"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Max Altitude AGL";
+"FLIGHT_PLAN_ROW_TITLE_MAX_ALTITUDE" = "Max Height";
 
 /* Call to action title for the user to select a pilot profile */
 "FLIGHT_PLAN_ROW_TITLE_PILOT" = "Select Pilot Profile";
